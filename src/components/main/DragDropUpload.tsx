@@ -1,5 +1,5 @@
 import React, { DragEvent, useState } from 'react';
-import UploadFileIcon from '@mui/icons-material/UploadFile';
+import UploadPng from '/Upload.png';
 import { postTaskId } from '@/apis/postTaskId';
 
 const DragDropUpload = () => {
@@ -22,31 +22,10 @@ const DragDropUpload = () => {
   };
   return (
     <>
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-
-          width: 'auto',
-          height: '100vh',
-          background: '#F5F5F5',
-          margin: '10rem',
-
-          boxSizing: 'border-box',
-
-          border: '10px solid',
-          borderStyle: 'dashed dashed',
-        }}
-        onDragOver={handleDragOver}
-        onDrop={handleDrop}
-      >
-        {/* <UploadFileIcon fontSize="large"></UploadFileIcon> */}
-        <img
-          style={{ width: '10em', userSelect: 'none' }}
-          src="/public/Upload.png"
-          alt="Upload"
-        />
+      <div onDragOver={handleDragOver} onDrop={handleDrop}>
+        <div>
+          <img src={UploadPng} alt="Upload" />
+        </div>
       </div>
     </>
   );
