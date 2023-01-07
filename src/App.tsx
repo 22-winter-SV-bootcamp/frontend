@@ -1,12 +1,16 @@
 import { useQuery } from '@tanstack/react-query';
-import axios, { Axios, AxiosError } from 'axios';
 import { RouterProvider } from 'react-router-dom';
+
+import { useRecoilState } from 'recoil';
+import { EasterEgg } from './components/EasterEgg';
+
 import router from './router/router';
 
 function App() {
   return (
     <>
-      <RouterProvider router={router}></RouterProvider>
+      {/* <RouterProvider router={router}></RouterProvider> */}
+      <EasterEgg />
     </>
   );
 }
