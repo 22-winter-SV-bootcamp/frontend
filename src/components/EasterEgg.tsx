@@ -6,6 +6,7 @@ import IconButton from '@mui/material/IconButton';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import { Container } from '@mui/system';
 
 const styleModal = {
   position: 'absolute',
@@ -27,7 +28,14 @@ const styleModal = {
 const styleRow = {
   display: 'flex' /* 레이아웃 */,
   flexDirection: 'row' /* 세로 방향 */,
-  justifyContent: 'space-between' /* 양 끝으로 이동 */,
+  justifyContent: 'center' /* 양 끝으로 이동 */,
+};
+
+const styleImg = {
+  width: '8.5rem' /* 16x8.5= 136px(default값 16) */,
+  height: '19.5rem' /* 16x19.5= 312px(default값 16) */,
+  alignSelf: 'center',
+  // object-fit:'cover',
 };
 
 export function EasterEgg() {
@@ -40,7 +48,7 @@ export function EasterEgg() {
   }, [open]);
 
   return (
-    <div>
+    <Container fixed>
       <Modal
         open={open} /* true 이면 모달창 open */
         onClose={handleClose} /* 빈 창 누르면 모달창 close */
@@ -52,22 +60,24 @@ export function EasterEgg() {
             <Typography id="modal-title" variant="h4" component="h2">
               Are you Homer Simpson?
             </Typography>
-            <IconButton color="primary" onClick={handleClose}>
+            <IconButton
+              color="primary"
+              onClick={handleClose}
+              style={{ position: 'absolute', right: 0, top: 0 }}
+            >
               <CancelPresentationIcon />
             </IconButton>
           </Box>
           {/* 자체 정렬 */}
-          <Box sx={{ alignSelf: 'center' }}>
-            <img
-              id="modal-description"
-              src={Simpson}
-              width="136rem"
-              height="312rem"
-              object-fit="cover"
-            ></img>
-          </Box>
+
+          <Box
+            component="img"
+            id="modal-description"
+            src={Simpson}
+            sx={styleImg}
+          ></Box>
         </Box>
       </Modal>
-    </div>
+    </Container>
   );
 }
