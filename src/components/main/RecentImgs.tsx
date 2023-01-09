@@ -6,6 +6,7 @@ import React, { useEffect, useState } from 'react';
 import { Transform } from 'stream';
 import tryNow from '../../assets/tryNow.png';
 import doh from '../../assets/doh.png';
+import { useQuery } from '@tanstack/react-query';
 type CardsType = {
   id: number;
   link: string;
@@ -14,6 +15,16 @@ type CardsType = {
 const RecentImgs = () => {
   const [index, setIndex] = useState(0);
   const [cards, setCards] = useState<CardsType[]>([]);
+  const [page, setPage] = useState(0);
+
+  const { isLoading, isError, data } = useQuery(
+    ['recentPage', page],
+    async () => await getRecentImgs(page),
+    {
+      staleTime: 1000 * 60 ** 60,
+      refetchOnWindowFocus: false,
+    },
+  );
 
   const mod = (n: number, m: number) => {
     let result = n % m;
@@ -23,26 +34,25 @@ const RecentImgs = () => {
   };
 
   useEffect(() => {
-    let data;
-
-    (async () => {
-      try {
-        data = await getRecentImgs(1);
-
-        setCards(data.data);
-      } catch (error) {}
-    })();
-  }, []);
+    if (data) setCards([...cards, ...data]);
+  }, [data]);
 
   const onClickRight = () => {
-    setIndex((index + 1) % cards.length);
-    console.log(index);
+    let midIndex = index + 1 < cards.length - 1 ? index + 1 : cards.length - 1;
+    console.log(midIndex);
+    setIndex(midIndex);
+  };
+
+  const onClickLeft = () => {
+    let midIndex = index - 1 > 0 ? index - 1 : 0;
+    console.log(midIndex);
+    setIndex(midIndex);
   };
 
   return (
     <Box
       sx={{
-        width: '100%',
+        width: '100vw',
         height: '100vh',
         backgroundColor: 'black',
         display: 'flex',
@@ -51,15 +61,19 @@ const RecentImgs = () => {
         justifyContent: 'space-between',
       }}
     >
-      <Box component="img" src={doh} sx={{ width: 250, height: 150 }}></Box>
+      <Box
+        component="img"
+        src={doh}
+        sx={{ width: '25rem', height: '15rem' }}
+      ></Box>
       <Box sx={{ width: '100%', height: '100%' }}>
         <Box sx={{ width: '100%', height: '100%', postion: 'relative' }}>
           {cards.map((card, i) => {
             const indexLeft = mod(index - 1, cards.length);
-            const indexRight = mod(index + 1, cards.length);
             const indexLeft2 = mod(index - 2, cards.length);
+            const indexRight = mod(index + 1, cards.length);
             const indexRight2 = mod(index + 2, cards.length);
-
+            let onClick: () => void = onClickRight;
             let style: any = [
               {
                 position: 'absolute',
@@ -68,8 +82,8 @@ const RecentImgs = () => {
                 bottom: 0,
                 left: 0,
                 margin: 'auto',
-                width: 320,
-                height: 490,
+                width: '32rem',
+                height: '49rem',
                 objectFit: 'cover',
                 cursor: 'pointer',
                 zIndex: 0,
@@ -77,13 +91,12 @@ const RecentImgs = () => {
                 transition: '500ms',
               },
             ];
-            // let className = "card";
-            // let click = onClickRight;
 
             if (i === index) {
               style.push({
                 opacity: 1,
                 transform: 'scale(1)',
+                transition: '500ms',
                 zIndex: 99,
               });
             } else if (i === indexRight) {
@@ -100,6 +113,7 @@ const RecentImgs = () => {
                 transition: '500ms',
                 zIndex: 66,
               });
+              onClick = onClickLeft;
             } else if (i === indexLeft2) {
               style.push({
                 opacity: 0.3,
@@ -107,6 +121,7 @@ const RecentImgs = () => {
                 transition: '500ms',
                 zIndex: 33,
               });
+              onClick = onClickLeft;
             } else if (i === indexRight2) {
               style.push({
                 opacity: 0.3,
@@ -118,18 +133,25 @@ const RecentImgs = () => {
 
             return (
               <Box
-                key={card?.id}
+                key={i}
                 component="img"
                 sx={style}
                 alt="심슨 이미지"
                 src={card?.link}
-                onClick={onClickRight}
+                onClick={() => {
+                  if (index === cards.length - 3) setPage(page + 1);
+                  onClick();
+                }}
               ></Box>
             );
           })}
         </Box>
       </Box>
-      <Box component="img" src={tryNow} sx={{ width: 300, height: 150 }}></Box>
+      <Box
+        component="img"
+        src={tryNow}
+        sx={{ width: '30rem', height: '15rem' }}
+      ></Box>
     </Box>
   );
 };

@@ -25,6 +25,29 @@ const recentImgs = [
   },
 ];
 
+const recentImgs1 = [
+  {
+    id: 1,
+    link: 'https://mblogthumb-phinf.pstatic.net/MjAyMDA1MDRfMjQ4/MDAxNTg4NTY5ODM2MDEx.WyAMhYtqOIQRJ0K0ucdCUvSO4FoMrcxgTa5F7i33YbUg.Ls8hExGrAoSwTmn0oXHBU71Ar0bHoYOAHQyR2kXdCmwg.PNG.wonch888/image.png?type=w800',
+  },
+  {
+    id: 2,
+    link: 'https://mblogthumb-phinf.pstatic.net/MjAyMDA1MDRfMjQ4/MDAxNTg4NTY5ODM2MDEx.WyAMhYtqOIQRJ0K0ucdCUvSO4FoMrcxgTa5F7i33YbUg.Ls8hExGrAoSwTmn0oXHBU71Ar0bHoYOAHQyR2kXdCmwg.PNG.wonch888/image.png?type=w800',
+  },
+  {
+    id: 3,
+    link: 'https://mblogthumb-phinf.pstatic.net/MjAyMDA1MDVfMjgg/MDAxNTg4NjgyNTkxODYz.bujlnUzbi9J6B_IuTG70QMMkVU_nFh9gBjCO_aSG8ukg.NbHujuRj84h1nq6AiSwEsvNgnYXA4CVdWoS-zheeBuAg.PNG.wonch888/image.png?type=w800',
+  },
+  {
+    id: 4,
+    link: 'https://mblogthumb-phinf.pstatic.net/MjAyMDA1MDRfMjQ4/MDAxNTg4NTY5ODM2MDEx.WyAMhYtqOIQRJ0K0ucdCUvSO4FoMrcxgTa5F7i33YbUg.Ls8hExGrAoSwTmn0oXHBU71Ar0bHoYOAHQyR2kXdCmwg.PNG.wonch888/image.png?type=w800',
+  },
+  {
+    id: 5,
+    link: 'http://file3.instiz.net/data/file3/2018/06/05/a/1/e/a1e8fe23fe4dc2b841cd37a0fb9e7175.jpg',
+  },
+];
+
 export const handlers = [
   // 테스트 mock api
   rest.get('api/v1/test', (req, res, ctx) => {
@@ -33,7 +56,15 @@ export const handlers = [
 
   rest.get(`api/v1/images?`, (req, res, ctx) => {
     console.log('images');
-    console.log(req.url.searchParams.get('page'));
-    return res(ctx.status(200), ctx.json(recentImgs));
+    let pageNumber = req.url.searchParams.get('page');
+    if (pageNumber === '0') {
+      console.log('mock 0');
+      return res(ctx.status(200), ctx.json(recentImgs));
+    } else if (pageNumber === '1') {
+      console.log('mock 1');
+      return res(ctx.status(200), ctx.json(recentImgs1));
+    } else {
+      return res(ctx.status(200), ctx.json(recentImgs));
+    }
   }),
 ];
