@@ -7,6 +7,7 @@ import { Transform } from 'stream';
 import tryNow from '../../assets/tryNow.png';
 import doh from '../../assets/doh.png';
 import { useQuery } from '@tanstack/react-query';
+import { transferableAbortController } from 'util';
 type CardsType = {
   id: number;
   link: string;
@@ -50,24 +51,32 @@ const RecentImgs = () => {
   };
 
   return (
-    <Box
-      sx={{
-        width: '100vw',
-        height: '100vh',
-        backgroundColor: 'black',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-      }}
-    >
+    <Box sx={{ backgroundColor: 'black', height: '100vh' }}>
       <Box
-        component="img"
-        src={doh}
-        sx={{ width: '25rem', height: '15rem' }}
-      ></Box>
-      <Box sx={{ width: '100%', height: '100%' }}>
-        <Box sx={{ width: '100%', height: '100%', postion: 'relative' }}>
+        sx={{
+          height: '20%',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        <Box
+          component="img"
+          src={doh}
+          sx={{ width: 200, background: 'red', padding: 0.5 }}
+        ></Box>
+      </Box>
+
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: '60%',
+          position: 'relative',
+        }}
+      >
+        <Box sx={{}}>
           {cards.map((card, i) => {
             const indexLeft = mod(index - 1, cards.length);
             const indexLeft2 = mod(index - 2, cards.length);
@@ -81,13 +90,18 @@ const RecentImgs = () => {
                 right: 0,
                 bottom: 0,
                 left: 0,
+
                 margin: 'auto',
-                width: '32rem',
-                height: '49rem',
+                width: '30vw',
+                minWidth: '200px',
+                maxWidth: '300px',
+                height: '50vh',
+
                 objectFit: 'cover',
                 cursor: 'pointer',
                 zIndex: 0,
                 opacity: 0,
+
                 transition: '500ms',
               },
             ];
@@ -97,20 +111,25 @@ const RecentImgs = () => {
                 opacity: 1,
                 transform: 'scale(1)',
                 transition: '500ms',
+
                 zIndex: 99,
               });
             } else if (i === indexRight) {
               style.push({
                 opacity: 0.8,
                 transform: 'translateX(30%) scale(0.8)',
+
                 transition: '500ms',
+
                 zIndex: 66,
               });
             } else if (i === indexLeft) {
               style.push({
                 opacity: 0.8,
                 transform: 'translateX(-30%) scale(0.8)',
+
                 transition: '500ms',
+
                 zIndex: 66,
               });
               onClick = onClickLeft;
@@ -118,6 +137,7 @@ const RecentImgs = () => {
               style.push({
                 opacity: 0.3,
                 transform: 'translateX(-60%) scale(0.6)',
+
                 transition: '500ms',
                 zIndex: 33,
               });
@@ -126,6 +146,7 @@ const RecentImgs = () => {
               style.push({
                 opacity: 0.3,
                 transform: 'translateX(60%) scale(0.6)',
+
                 transition: '500ms',
                 zIndex: 33,
               });
@@ -148,10 +169,19 @@ const RecentImgs = () => {
         </Box>
       </Box>
       <Box
-        component="img"
-        src={tryNow}
-        sx={{ width: '30rem', height: '15rem' }}
-      ></Box>
+        sx={{
+          height: '20%',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        <Box
+          component="img"
+          src={tryNow}
+          sx={{ width: 200, background: 'red', padding: 0.5 }}
+        ></Box>
+      </Box>
     </Box>
   );
 };
