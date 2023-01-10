@@ -180,6 +180,9 @@ const RecentImgs = () => {
           component="img"
           src={tryNow}
           sx={{ width: 200, background: 'red', padding: 0.5 }}
+          onClick={() => {
+            window.scrollTo(0, window.innerHeight);
+          }}
         ></Box>
       </Box>
     </Box>
