@@ -24,11 +24,11 @@ const DragDropUpload = () => {
   };
   return (
     <>
-      <div onDragOver={handleDragOver} onDrop={handleDrop}>
-        <div>
-          <img src={UploadPng} alt="Upload" />
-        </div>
-      </div>
+      <Box onDragOver={handleDragOver} onDrop={handleDrop}>
+        <Box>
+          <Box component="img" src={UploadPng} alt="Upload" />
+        </Box>
+      </Box>
     </>
   );
 };
