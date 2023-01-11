@@ -1,11 +1,8 @@
 import React, { DragEvent, useState } from 'react';
 import UploadPng from '/Upload.png';
-<<<<<<< Updated upstream
 import { postTaskId } from '@/apis/postTaskId';
-=======
 
 import { Box } from '@mui/material';
->>>>>>> Stashed changes
 
 const DragDropUpload = () => {
   const UploadFileStyle = {};
