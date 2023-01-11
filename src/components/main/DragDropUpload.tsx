@@ -5,7 +5,7 @@ import titleone from '../../assets/titleone.png';
 import titletwo from '../../assets/titletwo.png';
 import { postTaskId } from '@/apis/postTaskId';
 
-import { Box, Hidden } from '@mui/material';
+import { Box, Button, Hidden } from '@mui/material';
 import { display, height, padding, positions } from '@mui/system';
 
 const DragDropUpload = () => {
@@ -22,8 +22,8 @@ const DragDropUpload = () => {
     formData.append('file', f);
 
     (async () => {
-      // let res = await postTaskId(formData);
-      // console.log(res);
+      let res = await postTaskId(formData);
+      console.log(res);
     })();
   };
   return (
@@ -79,25 +79,33 @@ const DragDropUpload = () => {
           }}
         >
           <Box
+            component="label"
             sx={{
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
               width: '50%',
               height: '70%',
-
               borderRadius: '10%',
               backgroundColor: 'rgba(255,255,255,0.7)',
               border: '3px dashed black',
+              transition: '200ms',
+              '&:hover': {
+                transform: 'scale(1.1)',
+              },
             }}
+            onDragOver={handleDragOver}
+            onDrop={handleDrop}
           >
-            <Box
-              component="img"
-              src={UploadPng}
-              alt="UploadIcon"
-              onDragOver={handleDragOver}
-              onDrop={handleDrop}
+            <input
+              onChange={(e: any) => {
+                console.log(e.target.files[0]);
+              }}
+              hidden
+              multiple
+              type="file"
             />
+            <Box component="img" src={UploadPng} alt="UploadIcon" />
           </Box>
         </Box>
 
