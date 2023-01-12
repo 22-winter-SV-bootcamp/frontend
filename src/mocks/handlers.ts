@@ -72,4 +72,22 @@ export const handlers = [
       return res(ctx.status(200), ctx.json(recentImgs));
     }
   }),
+
+  //AI task 완료되었는지 반환
+  rest.get('api/v1/images/tasks/1', (req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json({
+        task_status: '',
+        task_result: [
+          {
+            top: "'shirt",
+            top_color: 'white',
+            bottom: 'shorts',
+            bottom_color: 'blue',
+          },
+        ],
+      }),
+    );
+  }),
 ];
