@@ -56,7 +56,7 @@ export const handlers = [
   }),
 
   // ai task id 반환 api
-  rest.post('api/v1/tasks', (req, res, ctx) => {
+  rest.post('api/v1/images', (req, res, ctx) => {
     return res(ctx.status(200), ctx.json(dummyTaskId));
   }),
   rest.get(`api/v1/images?`, (req, res, ctx) => {
