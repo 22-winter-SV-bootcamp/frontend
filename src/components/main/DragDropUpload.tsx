@@ -9,7 +9,6 @@ import { Box, Button, Hidden } from '@mui/material';
 import { display, height, padding, positions } from '@mui/system';
 
 const DragDropUpload = () => {
-  const UploadFileStyle = {};
   let [taskId, setTaskId] = useState('');
 
   const handleDragOver = (e: DragEvent<HTMLDivElement>) => {
@@ -19,6 +18,20 @@ const DragDropUpload = () => {
     e.preventDefault();
     let formData = new FormData();
     let f = e.dataTransfer.files[0];
+    formData.append('file', f);
+
+    (async () => {
+      let res = await postTaskId(formData);
+      console.log(res);
+    })();
+  };
+
+  const handleClickFileUpload = (
+    e: React.ChangeEvent<HTMLInputElement> | any,
+  ) => {
+    e.preventDefault();
+    let formData = new FormData();
+    let f = e.target.files[0];
     formData.append('file', f);
 
     (async () => {
@@ -98,9 +111,7 @@ const DragDropUpload = () => {
             onDrop={handleDrop}
           >
             <input
-              onChange={(e: any) => {
-                console.log(e.target.files[0]);
-              }}
+              onChange={handleClickFileUpload}
               hidden
               multiple
               type="file"
