@@ -74,7 +74,7 @@ export const handlers = [
   }),
 
   //AI task 완료되었는지 반환
-  rest.get('api/v1/images/tasks/1', (req, res, ctx) => {
+  rest.get('api/v1/images/task/1', (req, res, ctx) => {
     return res(
       ctx.status(200),
       ctx.json({

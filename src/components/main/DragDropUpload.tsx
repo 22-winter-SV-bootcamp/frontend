@@ -1,43 +1,86 @@
-import React, { DragEvent, useState } from 'react';
+import React, { DragEvent, useEffect, useState } from 'react';
 import UploadPng from '/Upload.png';
 import bart from '../../assets/bart.png';
 import titleone from '../../assets/titleone.png';
 import titletwo from '../../assets/titletwo.png';
-import { postTaskId } from '@/apis/postTaskId';
+import { postUploadImage } from '@/apis/postUploadImage';
+import loadingGif from '../../assets/loading.gif';
 
-import { Box, Button, Hidden } from '@mui/material';
+import { Box, Button, dividerClasses, Hidden } from '@mui/material';
 import { display, height, padding, positions } from '@mui/system';
+import { useMutation, useQuery } from '@tanstack/react-query';
+import getAiResult from '@/apis/getAiResult';
+import { useNavigate } from 'react-router-dom';
 
 const DragDropUpload = () => {
   let [taskId, setTaskId] = useState('');
+  let {
+    data,
+    isLoading,
+    refetch,
+    isSuccess: Success,
+  } = useQuery(['AiResult'], async () => await getAiResult(taskId), {
+    enabled: false,
+    staleTime: 1000 * 60 ** 60,
+    refetchOnWindowFocus: false,
+  });
+  const navigate = useNavigate();
+  console.log('success', Success);
+
+  const {
+    mutate,
+    data: task_id,
+
+    isError,
+    error,
+    isSuccess,
+  } = useMutation(postUploadImage);
+  console.log('isS', isSuccess);
+
+  const appendImageToFormData = (file: File) => {
+    let formData = new FormData();
+    formData.append('file', file);
+    return formData;
+  };
 
   const handleDragOver = (e: DragEvent<HTMLDivElement>) => {
     e.preventDefault();
   };
   const handleDrop = (e: DragEvent<HTMLDivElement>) => {
     e.preventDefault();
-    let formData = new FormData();
-    let f = e.dataTransfer.files[0];
-    formData.append('file', f);
+    let formData = appendImageToFormData(e.dataTransfer.files[0]);
 
-    (async () => {
-      let res = await postTaskId(formData);
-      console.log(res);
-    })();
+    mutate(formData, {
+      onSuccess(task_id, variables, context) {
+        console.log('mutate', task_id.task_id);
+        setTaskId(task_id.task_id);
+      },
+    });
   };
+
+  useEffect(() => {
+    if (taskId !== '') {
+      refetch();
+      // refetch().then(res=>navigate('/custom')); // 이렇게 쓰는게 나을까??
+    }
+  }, [taskId]);
+
+  useEffect(() => {
+    if (Success) navigate('/custom');
+  }, [Success]);
 
   const handleClickFileUpload = (
     e: React.ChangeEvent<HTMLInputElement> | any,
   ) => {
     e.preventDefault();
-    let formData = new FormData();
-    let f = e.target.files[0];
-    formData.append('file', f);
+    let formData = appendImageToFormData(e.target.files[0]);
 
-    (async () => {
-      let res = await postTaskId(formData);
-      console.log(res);
-    })();
+    mutate(formData, {
+      onSuccess(task_id, variables, context) {
+        console.log('mutate', task_id.task_id);
+        setTaskId(task_id.task_id);
+      },
+    });
   };
   return (
     <Box
@@ -116,7 +159,13 @@ const DragDropUpload = () => {
               multiple
               type="file"
             />
-            <Box component="img" src={UploadPng} alt="UploadIcon" />
+
+            {!isSuccess && (
+              <Box component="img" src={UploadPng} alt="UploadIcon" />
+            )}
+            {isSuccess && (
+              <Box component="img" src={loadingGif} alt="loading" />
+            )}
           </Box>
         </Box>
 
