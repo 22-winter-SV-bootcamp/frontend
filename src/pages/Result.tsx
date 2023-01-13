@@ -1,7 +1,12 @@
-import React from "react";
+import { ResultImg } from '@/components/result/ResultImg';
+import React from 'react';
 
 const Result = () => {
-  return <div>Result Page</div>;
+  return (
+    <>
+      <ResultImg />
+    </>
+  );
 };
 
 export default Result;

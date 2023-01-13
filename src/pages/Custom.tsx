@@ -1,5 +1,6 @@
-import { EasterEgg } from '@/components/user/EasterEgg';
 import React from 'react';
+import { EasterEgg } from '@/components/user/EasterEgg';
+import ResultSimpson from '../assets/ResultSimpson.png';
 
 const Custom = () => {
   return (
