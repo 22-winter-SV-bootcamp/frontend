@@ -2,6 +2,7 @@ import { rest } from 'msw';
 
 const dummy = '테스트입니다.';
 
+const dummyTaskId = { task_id: '1' };
 const recentImgs = [
   {
     id: 1,
@@ -54,6 +55,10 @@ export const handlers = [
     return res(ctx.status(200), ctx.json(dummy));
   }),
 
+  // ai task id 반환 api
+  rest.post('api/v1/images', (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json(dummyTaskId));
+  }),
   rest.get(`api/v1/images?`, (req, res, ctx) => {
     console.log('images');
     let pageNumber = req.url.searchParams.get('page');
@@ -66,5 +71,23 @@ export const handlers = [
     } else {
       return res(ctx.status(200), ctx.json(recentImgs));
     }
+  }),
+
+  //AI task 완료되었는지 반환
+  rest.get('api/v1/images/task/1', (req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json({
+        task_status: '',
+        task_result: [
+          {
+            top: "'shirt",
+            top_color: 'white',
+            bottom: 'shorts',
+            bottom_color: 'blue',
+          },
+        ],
+      }),
+    );
   }),
 ];
