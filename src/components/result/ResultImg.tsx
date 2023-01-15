@@ -1,5 +1,11 @@
 import React from 'react';
-import { Box, Container, createTheme, styled } from '@mui/material';
+import {
+  autocompleteClasses,
+  Box,
+  Container,
+  createTheme,
+  styled,
+} from '@mui/material';
 import { display, margin } from '@mui/system';
 import BacktoTop from '../../assets/BacktoTop.png';
 import doh from '../../assets/doh.png';
@@ -15,12 +21,13 @@ type Image = {
 };
 
 const styleContainer = {
-  // position: 'relative',
+  position: 'relative',
   // width: '100vw',
   height: '100vh',
   p: 5,
   bgcolor: 'black',
-  //display: 'flex' /* 레이아웃 */,
+  overflow: 'hidden',
+  display: 'flex' /* 레이아웃 */,
   // /* 가로 방향 */,
 };
 
@@ -29,10 +36,13 @@ const styleLayout = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
+  // position: 'relative',
+  //m: '0 auto' /* margin: auto 하려면 상위 레이아웃에 flex와 같은 display가 있어야함 */,
+  //mt: '15rem',
   //width: '80vw' /* 480기준 384px */,
-  width: '33.6em',
+
+  // width: '33.6em',
   // height: '100vh',
-  mt: '5rem',
   display: 'flex',
   flexDirection: 'column',
 };
@@ -52,14 +62,14 @@ const styleSprayLayout = {
   position: 'absolute',
   // visibility: 'hidden',
   display: 'none',
-  bottom: '0px',
+  bottom: '-130px',
   right: '-290px',
 };
 
 const styleImgDoh = {
   /* 절대 위치 (좌 상단)*/
-  width: '14.4em',
-  height: '7em',
+  width: '14.4rem',
+  height: '7rem',
   objectFit: 'contain' /* 비율유지한채, 이미지 잘리지 않게, 남는공간 비워둠 */,
   position: 'absolute',
   top: '3vh',
@@ -84,40 +94,38 @@ const styleImgResult = {
   width: '33.6em',
   height: '33.6em',
   objectFit: 'cover',
-  m: '0 auto' /* 위 아래 m:0 좌우 가운데 정렬 */,
+  //m: '0 auto' /* 위 아래 m:0 좌우 가운데 정렬 */,
   mt: '1rem',
 };
 
 const BoxContainer = styled('div')(({ theme }) => ({
   // [theme.breakpoints.between('laptop', 'desktop')]: {} /* 필요시 사용, 크기 조정*/,
-  // [theme.breakpoints.between('mobile', 'tablet')]: {
-  //   fontSize: '10px',
-  // },
-  // [theme.breakpoints.between('tablet', 'desktop')]: {
-  //   fontSize: '14px',
-  // },
-  // [theme.breakpoints.up('desktop')]: {
-  //   fontSize: '17px',
-  // },
-}));
-
-const BoxLayout = styled('div')(({ theme }) => ({
-  // [theme.breakpoints.between('tablet', 'desktop')]: {},     /* 필요시 사용, 크기 조정*/
-
   [theme.breakpoints.between('tablet', 'desktop')]: {
     fontSize: '14px',
   },
   [theme.breakpoints.up('desktop')]: {
-    width: '33.6em',
-    // paddingTop: '4em',
-    // mt: '20vh',
+    fontSize: '17px',
+  },
+}));
+
+const BoxLayout = styled('div')(({ theme }) => ({
+  /* 중앙 레이아웃 */
+  [theme.breakpoints.between('mobile', 'tablet')]: {
+    // paddingTop: '15vh',
+  },
+
+  [theme.breakpoints.between('tablet', 'desktop')]: {
+    // marginTop: '10rem',
+    fontSize: '14px',
+  },
+  [theme.breakpoints.up('desktop')]: {
+    // marginTop: '5rem',
     fontSize: '17px',
   },
 }));
 
 const BoxSprayLayout = styled('div')(({ theme }) => ({
   // [theme.breakpoints.between('laptop', 'desktop')]: {} /* 필요시 사용, 크기 조정*/,
-
   [theme.breakpoints.up('desktop')]: {
     // visibility: 'visible',
     display: 'inLine',
@@ -202,37 +210,38 @@ export function ResultImg() {
             component="img"
             sx={{
               position: 'absolute',
-              right: '0.5rem',
-              bottom: '0.5rem',
+              left: '0.5rem',
+              bottom: '1rem',
               width: '3.5rem',
               heigh: '3.5rem',
             }}
             src={Download}
           />
-          {/* <BoxSprayLayout
-            className="sprayLayout"
-            sx={styleSprayLayout}
-            theme={theme}
-          >
-            <Box
-              className="spraySimpson"
-              component="img"
-              sx={styleImgSpray}
-              src={SpraySimpson}
-            />
-          </BoxSprayLayout> */}
         </Box>
 
         <Box
-          className="backtotop"
-          component="img"
+          className="backtotopLayout"
           sx={{
-            width: '27rem',
-            m: '0 auto',
-            mt: '8vh',
+            // position: 'relative',
+            height: '25%',
+            // width: '33.6em',
+            display: 'flex',
+
+            // mt: '8vh',
           }}
-          src={BacktoTop}
-        />
+        >
+          <Box
+            className="backtotop"
+            component="img"
+            sx={{
+              width: '27rem',
+              // height: '4.4rem',
+              m: 'auto',
+            }}
+            src={BacktoTop}
+          />
+        </Box>
+
         <BoxSprayLayout
           className="sprayLayout"
           sx={styleSprayLayout}
