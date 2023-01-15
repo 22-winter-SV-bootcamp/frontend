@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  autocompleteClasses,
-  Box,
-  Container,
-  createTheme,
-  styled,
-} from '@mui/material';
-import { display, margin } from '@mui/system';
+import { Box, createTheme, styled } from '@mui/material';
 import BacktoTop from '../../assets/BacktoTop.png';
 import doh from '../../assets/doh.png';
 import SpraySimpson from '../../assets/SpraySimpson.png';
@@ -24,7 +17,9 @@ const styleContainer = {
   position: 'relative',
   // width: '100vw',
   height: '100vh',
-  p: 5,
+  pl: '4rem',
+  pr: '4rem',
+  // pt: '15%',
   bgcolor: 'black',
   overflow: 'hidden',
   display: 'flex' /* 레이아웃 */,
@@ -33,16 +28,16 @@ const styleContainer = {
 
 const styleLayout = {
   position: 'absolute',
-  top: '50%',
+  // top: '50%',
   left: '50%',
-  transform: 'translate(-50%, -50%)',
+  transform: 'translate(-50%, 0)' /* translate(좌우, 상하) */,
   // position: 'relative',
   //m: '0 auto' /* margin: auto 하려면 상위 레이아웃에 flex와 같은 display가 있어야함 */,
   //mt: '15rem',
   //width: '80vw' /* 480기준 384px */,
 
   // width: '33.6em',
-  // height: '100vh',
+  height: '100vh',
   display: 'flex',
   flexDirection: 'column',
 };
@@ -62,7 +57,7 @@ const styleSprayLayout = {
   position: 'absolute',
   // visibility: 'hidden',
   display: 'none',
-  bottom: '-130px',
+  bottom: '0px',
   right: '-290px',
 };
 
@@ -81,6 +76,7 @@ const styleImgSpray = {
   heigh: '400px',
   display: 'inline',
   objectFit: 'contain' /* 비율유지한채, 이미지 잘리지 않게, 남는공간 비워둠 */,
+
   // display: { xs: 'none', lg: 'inline' },
   // position: 'absolute',
   // bottom: '-200px',
@@ -127,7 +123,6 @@ const BoxLayout = styled('div')(({ theme }) => ({
 const BoxSprayLayout = styled('div')(({ theme }) => ({
   // [theme.breakpoints.between('laptop', 'desktop')]: {} /* 필요시 사용, 크기 조정*/,
   [theme.breakpoints.up('desktop')]: {
-    // visibility: 'visible',
     display: 'inLine',
   },
 }));
@@ -163,70 +158,83 @@ export function ResultImg() {
   return (
     <BoxContainer className="container" sx={styleContainer} theme={theme}>
       <Box className="doh" component="img" sx={styleImgDoh} src={doh} />
+
       <BoxLayout className="layout" sx={styleLayout} theme={theme}>
-        <Box className="iconLayout" sx={styleIconLayout}>
-          <Box
-            className="instagram"
-            component="img"
-            sx={{
-              width: '3.5rem' /* (3.5rem) * 10 = 35px */,
-              heigh: '3.5rem',
-              objectFit: 'contain',
-              mr: '10px',
-            }}
-            src={Instagram}
-          />
-          <Box
-            className="kakaotalk"
-            component="img"
-            sx={{
-              width: '3.5rem',
-              heigh: '3.5rem',
-              objectFit: 'contain',
-              mr: '10px',
-            }}
-            src={Kakaotalk}
-          />
-          <Box
-            className="shareArrow"
-            component="img"
-            sx={{
-              width: '3.5rem',
-              heigh: '3.5rem',
-              objectFit: 'contain',
-            }}
-            src={ShareArrow}
-          />
-        </Box>
-        <Box className="imageLayout" sx={styleImageLayout}>
-          <Box
-            className="resultImg"
-            component="img"
-            sx={styleImgResult}
-            src={SimpsonHouse}
-          />
-          <Box
-            className="download"
-            component="img"
-            sx={{
-              position: 'absolute',
-              left: '0.5rem',
-              bottom: '1rem',
-              width: '3.5rem',
-              heigh: '3.5rem',
-            }}
-            src={Download}
-          />
+        <Box className="firstLayout" sx={{ height: '15%' }}></Box>
+        <Box
+          className="secondLayout"
+          sx={{
+            height: '70%',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+          }}
+        >
+          <Box className="iconLayout" sx={styleIconLayout}>
+            <Box
+              className="instagram"
+              component="img"
+              sx={{
+                width: '3.5rem' /* (3.5rem) * 10 = 35px */,
+                heigh: '3.5rem',
+                objectFit: 'contain',
+                mr: '10px',
+              }}
+              src={Instagram}
+            />
+            <Box
+              className="kakaotalk"
+              component="img"
+              sx={{
+                width: '3.5rem',
+                heigh: '3.5rem',
+                objectFit: 'contain',
+                mr: '10px',
+              }}
+              src={Kakaotalk}
+            />
+            <Box
+              className="shareArrow"
+              component="img"
+              sx={{
+                width: '3.5rem',
+                heigh: '3.5rem',
+                objectFit: 'contain',
+              }}
+              src={ShareArrow}
+            />
+          </Box>
+          <Box className="imageLayout" sx={styleImageLayout}>
+            <Box
+              className="resultImg"
+              component="img"
+              sx={styleImgResult}
+              src={SimpsonHouse}
+            />
+            <Box
+              className="download"
+              component="img"
+              sx={{
+                position: 'absolute',
+                left: '0.5rem',
+                bottom: '1rem',
+                width: '3.5rem',
+                heigh: '3.5rem',
+              }}
+              src={Download}
+            />
+          </Box>
         </Box>
 
         <Box
           className="backtotopLayout"
           sx={{
             // position: 'relative',
-            height: '25%',
+            height: '15%',
             // width: '33.6em',
             display: 'flex',
-
+            alignItems: 'center',
+            justifyContent: 'center',
             // mt: '8vh',
           }}
         >
@@ -236,7 +244,7 @@ export function ResultImg() {
             sx={{
               width: '27rem',
               // height: '4.4rem',
-              m: 'auto',
+              pb: '5rem',
             }}
             src={BacktoTop}
           />
