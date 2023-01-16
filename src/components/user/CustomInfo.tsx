@@ -26,6 +26,7 @@ const CustomInfo = () => {
 
   return (
     <div>
+      {/* // TODO: 이것만 따로 바꾸기 */}
       <CheckItem info={info} title="gender"></CheckItem>
       <CheckItem info={info} title="hair"></CheckItem>
       <CheckItem info={info} title="top"></CheckItem>
