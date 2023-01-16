@@ -8,7 +8,6 @@ const Custom = () => {
     <div>
       <CustomSVG></CustomSVG>
       <CustomInfo></CustomInfo>
-      <CustomSelectModal></CustomSelectModal>
     </div>
   );
 };
