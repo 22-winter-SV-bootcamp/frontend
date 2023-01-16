@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, createTheme, styled } from '@mui/material';
+import { Box, createTheme, IconButton, styled } from '@mui/material';
 import BacktoTop from '../../assets/BacktoTop.png';
 import doh from '../../assets/doh.png';
 import SpraySimpson from '../../assets/SpraySimpson.png';
@@ -7,7 +7,9 @@ import Download from '../../assets/Download.png';
 import Instagram from '../../assets/Instagram.png';
 import Kakaotalk from '../../assets/Kakaotalk.png';
 import ShareArrow from '../../assets/ShareArrow.png';
-import SimpsonHouse from '../../assets/SimpsonHouse.jpg';
+import { ReactComponent as Home } from '../../assets/home.svg';
+import { Navigate, useNavigate } from 'react-router-dom';
+import './style.css'; /* svg파일 스타일 적용 */
 
 type Image = {
   /* 프롭스로 받을 이미지의 타입? */
@@ -15,30 +17,10 @@ type Image = {
 
 const styleContainer = {
   position: 'relative',
-  // width: '100vw',
   height: '100vh',
-  pl: '4rem',
-  pr: '4rem',
-  // pt: '15%',
   bgcolor: 'black',
   overflow: 'hidden',
   display: 'flex' /* 레이아웃 */,
-  // /* 가로 방향 */,
-};
-
-const styleLayout = {
-  position: 'absolute',
-  // top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, 0)' /* translate(좌우, 상하) */,
-  // position: 'relative',
-  //m: '0 auto' /* margin: auto 하려면 상위 레이아웃에 flex와 같은 display가 있어야함 */,
-  //mt: '15rem',
-  //width: '80vw' /* 480기준 384px */,
-
-  // width: '33.6em',
-  height: '100vh',
-  display: 'flex',
   flexDirection: 'column',
 };
 
@@ -46,79 +28,27 @@ const styleIconLayout = {
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'flex-end',
+  width: '75%',
+  maxWidth: '55vmin',
+  minWidth: '285px',
+  mb: '10px',
 };
 
 const styleImageLayout = {
   position: 'relative',
-  m: '0 auto',
+  width: '75%',
+  maxWidth: '55vmin',
+  minWidth: '285px',
+  // display: 'block',
+  // pb: '100%',
 };
 
 const styleSprayLayout = {
   position: 'absolute',
-  // visibility: 'hidden',
   display: 'none',
-  bottom: '0px',
+  bottom: '-200px',
   right: '-290px',
 };
-
-const styleImgDoh = {
-  /* 절대 위치 (좌 상단)*/
-  width: '14.4rem',
-  height: '7rem',
-  objectFit: 'contain' /* 비율유지한채, 이미지 잘리지 않게, 남는공간 비워둠 */,
-  position: 'absolute',
-  top: '3vh',
-  left: '5vw',
-};
-
-const styleImgSpray = {
-  width: '400px',
-  heigh: '400px',
-  display: 'inline',
-  objectFit: 'contain' /* 비율유지한채, 이미지 잘리지 않게, 남는공간 비워둠 */,
-
-  // display: { xs: 'none', lg: 'inline' },
-  // position: 'absolute',
-  // bottom: '-200px',
-  // right: '-300px',
-  // visibility: 'hidden',
-};
-
-const styleImgResult = {
-  position: 'relative',
-  //width: '80vw',
-  width: '33.6em',
-  height: '33.6em',
-  objectFit: 'cover',
-  //m: '0 auto' /* 위 아래 m:0 좌우 가운데 정렬 */,
-  mt: '1rem',
-};
-
-const BoxContainer = styled('div')(({ theme }) => ({
-  // [theme.breakpoints.between('laptop', 'desktop')]: {} /* 필요시 사용, 크기 조정*/,
-  [theme.breakpoints.between('tablet', 'desktop')]: {
-    fontSize: '14px',
-  },
-  [theme.breakpoints.up('desktop')]: {
-    fontSize: '17px',
-  },
-}));
-
-const BoxLayout = styled('div')(({ theme }) => ({
-  /* 중앙 레이아웃 */
-  [theme.breakpoints.between('mobile', 'tablet')]: {
-    // paddingTop: '15vh',
-  },
-
-  [theme.breakpoints.between('tablet', 'desktop')]: {
-    // marginTop: '10rem',
-    fontSize: '14px',
-  },
-  [theme.breakpoints.up('desktop')]: {
-    // marginTop: '5rem',
-    fontSize: '17px',
-  },
-}));
 
 const BoxSprayLayout = styled('div')(({ theme }) => ({
   // [theme.breakpoints.between('laptop', 'desktop')]: {} /* 필요시 사용, 크기 조정*/,
@@ -155,114 +85,161 @@ declare module '@mui/material/styles' {
 }
 
 export function ResultImg() {
-  return (
-    <BoxContainer className="container" sx={styleContainer} theme={theme}>
-      <Box className="doh" component="img" sx={styleImgDoh} src={doh} />
+  const navigate = useNavigate();
+  const goFirstPage = (): void => {
+    /* 첫 페이지 */
+    navigate('/');
+  };
 
-      <BoxLayout className="layout" sx={styleLayout} theme={theme}>
-        <Box className="firstLayout" sx={{ height: '15%' }}></Box>
+  const download = () => {
+    const $svg = document.querySelector('.resultImg');
+    if (!$svg) {
+    } else {
+      /* TypeScript의 null체크 때문에 if문을 적용 */
+      const data = new XMLSerializer().serializeToString($svg);
+      const blob = new Blob([data], { type: 'image/svg+xml;charset=utf-8' });
+      const $link = document.createElement('a');
+      $link.download = 'customSimpson.svg';
+      $link.href = URL.createObjectURL(blob);
+      $link.click();
+    }
+  };
+  return (
+    <Box className="container" sx={styleContainer}>
+      <Box className="firstLayout" sx={{ height: '14%', position: 'relative' }}>
         <Box
-          className="secondLayout"
+          className="doh"
+          component="img"
           sx={{
-            height: '70%',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
+            width: '30vw',
+            maxWidth: '160px',
+            minWidth: '120px',
+            position: 'absolute',
+            top: '3vh',
+            left: '5vw',
           }}
-        >
-          <Box className="iconLayout" sx={styleIconLayout}>
+          src={doh}
+        />
+      </Box>
+      <Box
+        className="secondLayout"
+        sx={{
+          height: '64%',
+          position: 'relative',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        <Box className="iconLayout" sx={styleIconLayout}>
+          <IconButton
+            className="instagramButton"
+            sx={{
+              width: '15%',
+              maxWidth: '3rem',
+              p: '4px',
+            }}
+          >
             <Box
               className="instagram"
               component="img"
-              sx={{
-                width: '3.5rem' /* (3.5rem) * 10 = 35px */,
-                heigh: '3.5rem',
-                objectFit: 'contain',
-                mr: '10px',
-              }}
+              sx={{ width: '100%' }}
               src={Instagram}
             />
+          </IconButton>
+          <IconButton
+            className="kakaotalkButton"
+            sx={{
+              width: '15%',
+              maxWidth: '3rem',
+              p: '4px',
+            }}
+          >
             <Box
               className="kakaotalk"
               component="img"
-              sx={{
-                width: '3.5rem',
-                heigh: '3.5rem',
-                objectFit: 'contain',
-                mr: '10px',
-              }}
+              sx={{ width: '100%' }}
               src={Kakaotalk}
             />
+          </IconButton>
+
+          <IconButton
+            className="shareArrowButton"
+            sx={{
+              width: '15%',
+              maxWidth: '3rem',
+              p: '4px',
+            }}
+          >
             <Box
               className="shareArrow"
               component="img"
-              sx={{
-                width: '3.5rem',
-                heigh: '3.5rem',
-                objectFit: 'contain',
-              }}
+              sx={{ width: '100%' }}
               src={ShareArrow}
             />
-          </Box>
-          <Box className="imageLayout" sx={styleImageLayout}>
-            <Box
-              className="resultImg"
-              component="img"
-              sx={styleImgResult}
-              src={SimpsonHouse}
-            />
+          </IconButton>
+        </Box>
+        <Box className="imageLayout" sx={styleImageLayout}>
+          <Home className="resultImg" width="100%" fill="grey" />
+          <IconButton /* 기본 패딩이 8 인듯 */
+            className="downloadButton"
+            sx={{
+              position: 'absolute',
+              width: '15%',
+              maxWidth: '3rem',
+              p: '4px',
+              left: '0.5rem',
+              bottom: '0.5rem',
+            }}
+            onClick={download}
+          >
             <Box
               className="download"
               component="img"
               sx={{
-                position: 'absolute',
-                left: '0.5rem',
-                bottom: '1rem',
-                width: '3.5rem',
-                heigh: '3.5rem',
+                width: '100%',
               }}
               src={Download}
             />
-          </Box>
+          </IconButton>
+          <BoxSprayLayout
+            className="sprayLayout"
+            sx={styleSprayLayout}
+            theme={theme}
+          >
+            <Box
+              className="spraySimpson"
+              component="img"
+              sx={{ width: '400px' }}
+              src={SpraySimpson}
+            />
+          </BoxSprayLayout>
         </Box>
-
-        <Box
-          className="backtotopLayout"
-          sx={{
-            // position: 'relative',
-            height: '15%',
-            // width: '33.6em',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            // mt: '8vh',
-          }}
+      </Box>
+      <Box
+        className="thirdLayout"
+        sx={{
+          height: '22%',
+          position: 'relative',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        <IconButton
+          className="backtotopButton"
+          sx={{ width: '60vw', maxWidth: '270px', minWidth: '260px' }}
+          onClick={goFirstPage}
         >
           <Box
             className="backtotop"
             component="img"
-            sx={{
-              width: '27rem',
-              // height: '4.4rem',
-              pb: '5rem',
-            }}
+            sx={{ width: '100%', pb: '4rem' }}
             src={BacktoTop}
           />
-        </Box>
-
-        <BoxSprayLayout
-          className="sprayLayout"
-          sx={styleSprayLayout}
-          theme={theme}
-        >
-          <Box
-            className="spraySimpson"
-            component="img"
-            sx={styleImgSpray}
-            src={SpraySimpson}
-          />
-        </BoxSprayLayout>
-      </BoxLayout>
-    </BoxContainer>
+        </IconButton>
+      </Box>
+    </Box>
   );
 }
