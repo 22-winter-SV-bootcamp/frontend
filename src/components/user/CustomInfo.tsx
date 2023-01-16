@@ -1,18 +1,13 @@
 import { Check } from '@mui/icons-material';
+import { Button, Typography } from '@mui/material';
+import { Box } from '@mui/system';
 import React, { useState } from 'react';
 import CheckItem from './common/CheckItem';
+import CustomSelectModal from './CustomSelectModal';
 
 const CustomInfo = () => {
-  const colorArr = {
-    red: '#ee0f0f',
-    blue: '#083e73',
-    green: '#34a051',
-    pink: '#c53595',
-  };
-  const hairArr = {};
-  const topArr = {};
-  const bottomArr = {};
-  const backgroundArr = { one: '1.png', two: '2.png', three: '3.png' };
+  const [modal, setModal] = useState(false);
+  const [select, setSelect] = useState('hair');
   const [info, setInfo] = useState({
     gender: 'female',
     hair: 'short',
@@ -24,15 +19,45 @@ const CustomInfo = () => {
     background: 'type1',
   });
 
+  console.log('info가 바뀌었나?', info);
+
   return (
-    <div>
-      {/* // TODO: 이것만 따로 바꾸기 */}
-      <CheckItem info={info} title="gender"></CheckItem>
-      <CheckItem info={info} title="hair"></CheckItem>
-      <CheckItem info={info} title="top"></CheckItem>
-      <CheckItem info={info} title="bottom"></CheckItem>
-      <CheckItem info={info} title="background"></CheckItem>
-    </div>
+    <Box>
+      <Box>
+        <Typography>gender</Typography>
+        <Button>
+          <Box
+            component="img"
+            src="src/assets/custom/gender/male.png"
+            alt="male"
+          ></Box>
+        </Button>
+        <Button>
+          <Box
+            component="img"
+            src="src/assets/custom/gender/female.png"
+            alt="female"
+          ></Box>
+        </Button>
+      </Box>
+      {['hair', 'top', 'bottom', 'background'].map((title) => (
+        <CheckItem
+          key={title}
+          info={info}
+          title={title}
+          setModal={setModal}
+          setSelect={setSelect}
+        ></CheckItem>
+      ))}
+
+      {modal && (
+        <CustomSelectModal
+          select={select}
+          setInfo={setInfo}
+          setModal={setModal}
+        ></CustomSelectModal>
+      )}
+    </Box>
   );
 };
 
