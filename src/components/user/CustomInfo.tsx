@@ -21,11 +21,42 @@ const CustomInfo = () => {
 
   console.log('info가 바뀌었나?', info);
 
+  const changeGender = (gender: string) => {
+    let init =
+      gender === 'male'
+        ? {
+            gender: 'male',
+            hair: 'short',
+            hairColor: 'white',
+            top: 't-shirts',
+            topColor: 'white',
+            bottom: 'slacks',
+            bottomColor: 'white',
+            background: 'type1',
+          }
+        : {
+            gender: 'female',
+            hair: 'short',
+            hairColor: 'white',
+            top: 't-shirts',
+            topColor: 'white',
+            bottom: 'slacks',
+            bottomColor: 'white',
+            background: 'type1',
+          };
+
+    setInfo(init);
+  };
+
   return (
     <Box>
       <Box>
         <Typography>gender</Typography>
-        <Button>
+        <Button
+          onClick={() => {
+            changeGender('female');
+          }}
+        >
           <Box
             component="img"
             src="src/assets/custom/gender/male.png"
@@ -34,6 +65,9 @@ const CustomInfo = () => {
         </Button>
         <Button>
           <Box
+            onClick={() => {
+              changeGender('male');
+            }}
             component="img"
             src="src/assets/custom/gender/female.png"
             alt="female"
@@ -52,6 +86,7 @@ const CustomInfo = () => {
 
       {modal && (
         <CustomSelectModal
+          gender={info.gender}
           select={select}
           setInfo={setInfo}
           setModal={setModal}

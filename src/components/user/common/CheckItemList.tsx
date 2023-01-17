@@ -2,22 +2,23 @@ import { Button } from '@mui/material';
 import { Box, Stack } from '@mui/system';
 import React from 'react';
 
-const CheckItemList = (props: any) => {
+const CheckItemList = ({ title, setInfo, arr, select }: any) => {
   return (
     <Box>
-      <Box>{props.title}</Box>
-      <Stack spacing={1}>
-        {props.arr.map((v: any) => (
+      <Box>{title}</Box>
+      <Box sx={{ display: 'flex' }}>
+        {arr.map((v: any) => (
           <Button
+            sx={{ width: 100 }}
             key={v}
             onClick={() => {
-              props.setInfo((pre: any) => ({ ...pre, [props.select]: v }));
+              setInfo((pre: any) => ({ ...pre, [select]: v }));
             }}
           >
             {v}
           </Button>
         ))}
-      </Stack>
+      </Box>
     </Box>
   );
 };

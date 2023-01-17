@@ -7,10 +7,12 @@ const CustomSelectModal = ({
   setModal,
   select,
   setInfo,
+  gender,
 }: {
   setModal: React.Dispatch<SetStateAction<boolean>>;
   select: string;
   setInfo: any;
+  gender: string;
 }) => {
   const colorArr = {
     white: '#F9F6F6',
@@ -28,41 +30,56 @@ const CustomSelectModal = ({
     brown: '#886024',
     beige: '#CEB37D',
   };
-  const styles: any = {
-    hair: {
-      short: 'a',
-      long: 'b',
-      middle: 'c',
-    },
-    top: {
-      // TODO: -blazer 원래는 이거임
-      blazer: '@/assets/custom/bart.png',
-      blouse: '@/assets/custom/bart.png',
-      cardigan: '@/assets/custom/bart.png',
-      coat: '@/assets/custom/bart.png',
-      denim: '@/assets/custom/bart.png',
-      hoodi: '@/assets/custom/bart.png',
-      jumper: '@/assets/custom/bart.png',
-      mustang: '@/assets/custom/bart.png',
-      riders: '@/assets/custom/bart.png',
-      shirts: '@/assets/custom/bart.png',
-      pkshirts: '@/assets/custom/bart.png',
+  // const styles: any = {
+  //   hair: {
+  //     short: 'a',
+  //     long: 'b',
+  //     middle: 'c',
+  //   },
+  //   top: {
+  //     // TODO: -blazer 원래는 이거임
+  //     blazer: '@/assets/custom/bart.png',
+  //     blouse: '@/assets/custom/bart.png',
+  //     cardigan: '@/assets/custom/bart.png',
+  //     coat: '@/assets/custom/bart.png',
+  //     denim: '@/assets/custom/bart.png',
+  //     hoodi: '@/assets/custom/bart.png',
+  //     jumper: '@/assets/custom/bart.png',
+  //     mustang: '@/assets/custom/bart.png',
+  //     riders: '@/assets/custom/bart.png',
+  //     shirts: '@/assets/custom/bart.png',
+  //     pkshirts: '@/assets/custom/bart.png',
 
-      sweatshirts: '@/assets/custom/bart.png',
+  //     sweatshirts: '@/assets/custom/bart.png',
+  //   },
+  //   bottom: {
+  //     leggings: '@/assets/custom/bart.png',
+  //     sweatpants: '@/assets/custom/bart.png',
+  //     slacks: '@/assets/custom/bart.png',
+  //     skirt: '@/assets/custom/bart.png',
+  //     sweater: '@/assets/custom/bart.png',
+  //     // TODO: Half-shortpants 원래는 이거임
+  //     HalfShortpants: '@/assets/custom/bart.png',
+  //   },
+  //   background: {
+  //     type1: 'd',
+  //     type2: 'e',
+  //     type3: 'f',
+  //   },
+  // };
+
+  const styles: any = {
+    female: {
+      hair: ['short', 'middle', 'long'],
+      top: ['a', 'b', 'c', 'd'],
+      bottom: ['e', 'f'],
+      background: ['g', 'h', 'i'],
     },
-    bottom: {
-      leggings: '@/assets/custom/bart.png',
-      sweatpants: '@/assets/custom/bart.png',
-      slacks: '@/assets/custom/bart.png',
-      skirt: '@/assets/custom/bart.png',
-      sweater: '@/assets/custom/bart.png',
-      // TODO: Half-shortpants 원래는 이거임
-      HalfShortpants: '@/assets/custom/bart.png',
-    },
-    background: {
-      type1: 'd',
-      type2: 'e',
-      type3: 'f',
+    male: {
+      hair: ['short', 'middle', 'long'],
+      top: ['g', 'h', 'i'],
+      bottom: ['a', 'b', 'c', 'd'],
+      background: ['e', 'f'],
     },
   };
 
@@ -72,7 +89,7 @@ const CustomSelectModal = ({
         select={select}
         setInfo={setInfo}
         title="Style"
-        arr={Object.keys(styles[select])}
+        arr={styles[gender][select]}
       ></CheckItemList>
       <CheckItemList
         select={select + 'Color'}

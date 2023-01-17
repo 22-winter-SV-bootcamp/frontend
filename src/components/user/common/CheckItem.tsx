@@ -1,24 +1,20 @@
 import { Button, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 
-import React from 'react';
-
-const CheckItem = (props: any) => {
-  let { setModal } = props;
-
+const CheckItem = ({ info, title, setModal, setSelect }: any) => {
   return (
     <Box>
-      <Typography>{props.title}</Typography>
+      <Typography>{title}</Typography>
       <Button
         onClick={() => {
           setModal(true);
-          props.setSelect(props.title);
+          setSelect(title);
         }}
       >
         <Box
           component="img"
-          src={`@/assets/custom/${props.title}/${props.info[props.title]}.png`}
-          alt={props.info[props.title]}
+          src={`src/assets/custom/${title}/${info[title]}.png`}
+          alt={info[title]}
         ></Box>
       </Button>
     </Box>
