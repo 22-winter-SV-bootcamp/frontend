@@ -50,10 +50,20 @@ const recentImgs1 = [
 ];
 
 export const handlers = [
-  // 테스트 mock api
   rest.get('api/v1/test', (req, res, ctx) => {
     return res(ctx.status(200), ctx.json(dummy));
   }),
+  rest.get('/image', (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json({
+      firstImage: {
+        url: "/image 96.png", 
+        count: 2000,
+      },
+      secondImage: {
+        url: "/image 97.png", 
+        count: 123,
+      }
+    }))}),
 
   // ai task id 반환 api
   rest.post('api/v1/images', (req, res, ctx) => {
