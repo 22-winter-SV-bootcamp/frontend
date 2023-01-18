@@ -3,6 +3,7 @@ import { rest } from 'msw';
 const dummy =
   'https://simsontest.s3.ap-northeast-2.amazonaws.com/83b17690-8e22-471b-ad3c-c8ffba67066d.jpg';
 
+const dummyTaskId = { task_id: '1' };
 const recentImgs = [
   {
     id: 1,
@@ -54,7 +55,19 @@ export const handlers = [
   rest.get('api/v1/test', (req, res, ctx) => {
     return res(ctx.status(200), ctx.json(dummy));
   }),
+  rest.post('api/v1/styles', (req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json({
+        link: 'https://simsontest.s3.ap-northeast-2.amazonaws.com/83b17690-8e22-471b-ad3c-c8ffba67066d.jpg',
+      }),
+    );
+  }),
 
+  // ai task id 반환 api
+  rest.post('api/v1/images', (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json(dummyTaskId));
+  }),
   rest.get(`api/v1/images?`, (req, res, ctx) => {
     console.log('images');
     let pageNumber = req.url.searchParams.get('page');
@@ -67,5 +80,21 @@ export const handlers = [
     } else {
       return res(ctx.status(200), ctx.json(recentImgs));
     }
+  }),
+
+  //AI task 완료되었는지 반환
+  rest.get('api/v1/images/task/1', (req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json({
+        status: 'done',
+        result: [
+          {
+            top: 't-shirts',
+            bottom: 'slacks',
+          },
+        ],
+      }),
+    );
   }),
 ];
