@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Box, createTheme, IconButton, styled } from '@mui/material';
 import BacktoTop from '../../assets/BacktoTop.png';
 import doh from '../../assets/doh.png';
@@ -8,7 +8,7 @@ import Instagram from '../../assets/Instagram.png';
 import Kakaotalk from '../../assets/Kakaotalk.png';
 import ShareArrow from '../../assets/ShareArrow.png';
 import { ReactComponent as Home } from '../../assets/home.svg';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 //import './style.css'; /* svg파일 스타일 적용 */
 import { imageDownload } from './imageDownload';
 
@@ -87,7 +87,23 @@ declare module '@mui/material/styles' {
 
 export function ResultImg() {
   const [url, setUrl] = useState('');
+  const location = useLocation();
+  console.log(location.state);
   const navigate = useNavigate();
+  useEffect(() => {
+    const downloadApi = async () => {
+      const response = await fetch('api/v1/test').then((res) => res.json());
+      console.log(response);
+      setUrl(response);
+    };
+    downloadApi();
+  }, []);
+
+  useEffect(() => {
+    /* Link로 결과 페이지로 넘어갈떄 props에 state값을 주면 결과 페이지 에서 사용 가능, 나는 이걸 url 상태값에 저장 */
+    setUrl(location.state);
+  });
+
   const goFirstPage = (): void => {
     /* 첫 페이지 */
     navigate('/');
@@ -98,15 +114,6 @@ export function ResultImg() {
       href: url,
     });
   };
-
-  useEffect(() => {
-    const downloadApi = async () => {
-      const response = await fetch('api/v1/test').then((res) => res.json());
-      console.log(response);
-      setUrl(response);
-    };
-    downloadApi();
-  }, []);
 
   return (
     <Box className="container" sx={styleContainer}>
@@ -185,7 +192,12 @@ export function ResultImg() {
           </IconButton>
         </Box>
         <Box className="imageLayout" sx={styleImageLayout}>
-          <Home className="resultImg" width="100%" height="100%" fill="grey" />
+          <Box
+            className="resultImg"
+            component="img"
+            sx={{ width: '100%', height: '100%' }}
+            src=""
+          />
           <IconButton /* 기본 패딩이 8 인듯 */
             className="downloadButton"
             sx={{
