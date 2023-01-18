@@ -115,6 +115,13 @@ export function ResultImg() {
     });
   };
 
+  // const download = async () => {   /* location의 state값이 undefined이 아니라는 걸 알려주기 위해 사용 *?
+  //   url && imageDownload({
+  //     href: url,
+  //   });
+  // };
+
+
   return (
     <Box className="container" sx={styleContainer}>
       <Box className="firstLayout" sx={{ height: '14%', position: 'relative' }}>
