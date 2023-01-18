@@ -1,6 +1,7 @@
 import { rest } from 'msw';
 
-const dummy = '테스트입니다.';
+const dummy =
+  'https://simsontest.s3.ap-northeast-2.amazonaws.com/83b17690-8e22-471b-ad3c-c8ffba67066d.jpg';
 
 const recentImgs = [
   {

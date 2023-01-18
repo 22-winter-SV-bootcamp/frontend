@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, createTheme, IconButton, styled } from '@mui/material';
 import BacktoTop from '../../assets/BacktoTop.png';
 import doh from '../../assets/doh.png';
@@ -9,7 +9,8 @@ import Kakaotalk from '../../assets/Kakaotalk.png';
 import ShareArrow from '../../assets/ShareArrow.png';
 import { ReactComponent as Home } from '../../assets/home.svg';
 import { Navigate, useNavigate } from 'react-router-dom';
-import './style.css'; /* svg파일 스타일 적용 */
+//import './style.css'; /* svg파일 스타일 적용 */
+import { imageDownload } from './imageDownload';
 
 type Image = {
   /* 프롭스로 받을 이미지의 타입? */
@@ -85,25 +86,28 @@ declare module '@mui/material/styles' {
 }
 
 export function ResultImg() {
+  const [url, setUrl] = useState('');
   const navigate = useNavigate();
   const goFirstPage = (): void => {
     /* 첫 페이지 */
     navigate('/');
   };
 
-  const download = () => {
-    const $svg = document.querySelector('.resultImg');
-    if (!$svg) {
-    } else {
-      /* TypeScript의 null체크 때문에 if문을 적용 */
-      const data = new XMLSerializer().serializeToString($svg);
-      const blob = new Blob([data], { type: 'image/svg+xml;charset=utf-8' });
-      const $link = document.createElement('a');
-      $link.download = 'customSimpson.svg';
-      $link.href = URL.createObjectURL(blob);
-      $link.click();
-    }
+  const download = async () => {
+    imageDownload({
+      href: url,
+    });
   };
+
+  useEffect(() => {
+    const downloadApi = async () => {
+      const response = await fetch('api/v1/test').then((res) => res.json());
+      console.log(response);
+      setUrl(response);
+    };
+    downloadApi();
+  }, []);
+
   return (
     <Box className="container" sx={styleContainer}>
       <Box className="firstLayout" sx={{ height: '14%', position: 'relative' }}>
@@ -181,7 +185,7 @@ export function ResultImg() {
           </IconButton>
         </Box>
         <Box className="imageLayout" sx={styleImageLayout}>
-          <Home className="resultImg" width="100%" fill="grey" />
+          <Home className="resultImg" width="100%" height="100%" fill="grey" />
           <IconButton /* 기본 패딩이 8 인듯 */
             className="downloadButton"
             sx={{
