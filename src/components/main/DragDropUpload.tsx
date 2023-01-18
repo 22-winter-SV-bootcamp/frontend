@@ -24,18 +24,19 @@ const DragDropUpload = () => {
     staleTime: 1000 * 60 ** 60,
     refetchOnWindowFocus: false,
   });
+  // console.log('data', data);
+
   const navigate = useNavigate();
-  console.log('success', Success);
+  // console.log('success', Success);
 
   const {
     mutate,
     data: task_id,
-
     isError,
     error,
     isSuccess,
   } = useMutation(postUploadImage);
-  console.log('isS', isSuccess);
+  // console.log('isS', isSuccess);
 
   const appendImageToFormData = (file: File) => {
     let formData = new FormData();
@@ -52,7 +53,7 @@ const DragDropUpload = () => {
 
     mutate(formData, {
       onSuccess(task_id, variables, context) {
-        console.log('mutate', task_id.task_id);
+        // console.log('mutate', task_id.task_id);
         setTaskId(task_id.task_id);
       },
     });
@@ -66,7 +67,9 @@ const DragDropUpload = () => {
   }, [taskId]);
 
   useEffect(() => {
-    if (Success) navigate('/custom');
+    if (Success) {
+      navigate('/custom', { state: data });
+    }
   }, [Success]);
 
   const handleClickFileUpload = (

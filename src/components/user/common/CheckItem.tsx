@@ -13,6 +13,8 @@ const CheckItem = ({ info, title, setModal, setSelect }: any) => {
       >
         <Box
           component="img"
+          width={30}
+          height={30}
           src={`src/assets/custom/${title}/${info[title]}.png`}
           alt={info[title]}
         ></Box>

@@ -6,10 +6,17 @@ const CheckItemList = ({ title, setInfo, arr, select }: any) => {
   return (
     <Box>
       <Box>{title}</Box>
-      <Box sx={{ display: 'flex' }}>
+      <Box
+        sx={{
+          display: 'flex',
+          width: 300,
+          overflow: 'auto',
+          overflowY: 'hidden',
+        }}
+      >
         {arr.map((v: any) => (
           <Button
-            sx={{ width: 100 }}
+            sx={{ width: 60 }}
             key={v}
             onClick={() => {
               setInfo((pre: any) => ({ ...pre, [select]: v }));

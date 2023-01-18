@@ -1,13 +1,38 @@
 import { Box } from '@mui/system';
+import { relative } from 'path';
 import React from 'react';
 
-const CustomSVG = () => {
+const CustomSVG = ({ info }: any) => {
   return (
-    <Box>
-      <Box>배경</Box>
-      <Box>심슨 머리,몸</Box>
-      <Box>심슨 옷</Box>
-      <Box>심슨 바지</Box>
+    <Box sx={{ position: 'relative', width: 100, height: 100 }}>
+      <Box
+        sx={{ position: 'absolute' }}
+        component="img"
+        width={100}
+        height={100}
+        src="src/assets/custom/background/type1.png"
+      ></Box>
+      <Box
+        sx={{ position: 'absolute' }}
+        component="img"
+        width={100}
+        height={100}
+        src="src/assets/custom/female/hair/short.svg"
+      ></Box>
+      <Box
+        sx={{ position: 'absolute' }}
+        component="img"
+        width={100}
+        height={100}
+        src="src/assets/custom/female/bottom/jogger.svg"
+      ></Box>
+      <Box
+        sx={{ position: 'absolute' }}
+        component="img"
+        width={100}
+        height={100}
+        src="src/assets/custom/female/top/coat.svg"
+      ></Box>
     </Box>
   );
 };

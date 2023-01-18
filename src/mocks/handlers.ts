@@ -78,13 +78,11 @@ export const handlers = [
     return res(
       ctx.status(200),
       ctx.json({
-        task_status: '',
-        task_result: [
+        status: 'done',
+        result: [
           {
-            top: "'shirt",
-            top_color: 'white',
-            bottom: 'shorts',
-            bottom_color: 'blue',
+            top: 't-shirts',
+            bottom: 'slacks',
           },
         ],
       }),

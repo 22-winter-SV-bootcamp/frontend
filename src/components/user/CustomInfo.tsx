@@ -5,19 +5,9 @@ import React, { useState } from 'react';
 import CheckItem from './common/CheckItem';
 import CustomSelectModal from './CustomSelectModal';
 
-const CustomInfo = () => {
+const CustomInfo = ({ info, setInfo }: any) => {
   const [modal, setModal] = useState(false);
   const [select, setSelect] = useState('hair');
-  const [info, setInfo] = useState({
-    gender: 'female',
-    hair: 'short',
-    hairColor: 'red',
-    top: 'blaser',
-    topColor: 'blue',
-    bottom: 'jeans',
-    bottomColor: 'green',
-    background: 'type1',
-  });
 
   console.log('info가 바뀌었나?', info);
 
@@ -58,16 +48,19 @@ const CustomInfo = () => {
           }}
         >
           <Box
+            sx={{ width: 30, height: 30 }}
             component="img"
             src="src/assets/custom/gender/male.png"
             alt="male"
           ></Box>
         </Button>
-        <Button>
+        <Button
+          onClick={() => {
+            changeGender('male');
+          }}
+        >
           <Box
-            onClick={() => {
-              changeGender('male');
-            }}
+            sx={{ width: 30, height: 30 }}
             component="img"
             src="src/assets/custom/gender/female.png"
             alt="female"
