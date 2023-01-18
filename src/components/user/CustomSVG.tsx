@@ -10,21 +10,21 @@ const CustomSVG = ({ info }: any) => {
         component="img"
         width={100}
         height={100}
-        src="src/assets/custom/background/type1.png"
+        src="src/assets/custom/background/background1.png"
       ></Box>
       <Box
         sx={{ position: 'absolute' }}
         component="img"
         width={100}
         height={100}
-        src="src/assets/custom/female/hair/short.svg"
+        src="src/assets/custom/female/hair/long.svg"
       ></Box>
       <Box
         sx={{ position: 'absolute' }}
         component="img"
         width={100}
         height={100}
-        src="src/assets/custom/female/bottom/jogger.svg"
+        src="src/assets/custom/female/bottom/leggings.svg"
       ></Box>
       <Box
         sx={{ position: 'absolute' }}

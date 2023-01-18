@@ -3,9 +3,12 @@ import CustomSelectModal from '@/components/user/CustomSelectModal';
 import CustomSVG from '@/components/user/CustomSVG';
 import { SettingsInputAntennaTwoTone } from '@mui/icons-material';
 import { Box } from '@mui/system';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-
+import domtoimage from 'dom-to-image';
+import { saveAs } from 'file-saver';
+import * as htmlToImage from 'html-to-image';
+import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
 const Custom = () => {
   const [info, setInfo] = useState({
     gender: 'female',
@@ -18,11 +21,14 @@ const Custom = () => {
     background: 'type1',
   });
   const location = useLocation();
+  const svgRef: any = useRef();
+  console.log(svgRef);
   console.log(location.state.result);
 
   useEffect(() => {
-    const { top, bottom } = location.state.result[0];
-    setInfo((pre: any) => ({ ...pre, top, bottom }));
+    let { top, bottom } = location.state.result[0];
+
+    setInfo((pre: any) => ({ ...pre, top: top, bottom: bottom }));
   }, []);
 
   return (
@@ -36,9 +42,11 @@ const Custom = () => {
         alignItems: 'center',
       }}
     >
-      <CustomSVG info={info}></CustomSVG>
+      <div ref={svgRef}>
+        <CustomSVG info={info}></CustomSVG>
+      </div>
 
-      <CustomInfo info={info} setInfo={setInfo}></CustomInfo>
+      <CustomInfo svgRef={svgRef} info={info} setInfo={setInfo}></CustomInfo>
     </Box>
   );
 };
