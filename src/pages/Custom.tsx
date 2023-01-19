@@ -12,13 +12,13 @@ import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
 const Custom = () => {
   const [info, setInfo] = useState({
     gender: 'female',
-    hair: 'short',
+    hair: 'long',
     hairColor: 'red',
     top: 'blaser',
     topColor: 'blue',
     bottom: 'jeans',
     bottomColor: 'green',
-    background: 'type1',
+    background: 'background1',
   });
   const location = useLocation();
   const svgRef: any = useRef();
@@ -26,7 +26,12 @@ const Custom = () => {
   console.log(location.state.result);
 
   useEffect(() => {
+    // TODO: 결과값 필터링 하기
     let { top, bottom } = location.state.result[0];
+
+    if (top === '-blazer') top = 'blazer';
+    if (top === 't-shirts') top = 't_shirts';
+    if (bottom === 'Half-shortpants') top = 'half_shortpants';
 
     setInfo((pre: any) => ({ ...pre, top: top, bottom: bottom }));
   }, []);
@@ -34,16 +39,16 @@ const Custom = () => {
   return (
     <Box
       sx={{
+        background: 'black',
         width: '100vw',
         height: '100vh',
         display: 'flex',
-        flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
       }}
     >
-      <div ref={svgRef}>
-        <CustomSVG info={info}></CustomSVG>
+      <div style={{ width: '60%', height: '60%' }} ref={svgRef}>
+        <CustomSVG ref={svgRef} info={info}></CustomSVG>
       </div>
 
       <CustomInfo svgRef={svgRef} info={info} setInfo={setInfo}></CustomInfo>

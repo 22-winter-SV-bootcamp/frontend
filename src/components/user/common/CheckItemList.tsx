@@ -1,11 +1,11 @@
-import { Button } from '@mui/material';
+import { Button, Typography } from '@mui/material';
 import { Box, Stack } from '@mui/system';
 import React from 'react';
 
-const CheckItemList = ({ title, setInfo, arr, select }: any) => {
+const CheckItemList = ({ gender, title, setInfo, arr, select }: any) => {
   return (
     <Box>
-      <Box>{title}</Box>
+      <Typography variant="h4">{title}</Typography>
       <Box
         sx={{
           display: 'flex',
@@ -22,7 +22,11 @@ const CheckItemList = ({ title, setInfo, arr, select }: any) => {
               setInfo((pre: any) => ({ ...pre, [select]: v }));
             }}
           >
-            {v}
+            <Box
+              component="img"
+              alt={v}
+              src={`src/assets/custom/${gender}/${select}/${v}.svg`}
+            ></Box>
           </Button>
         ))}
       </Box>

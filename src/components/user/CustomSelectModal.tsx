@@ -1,9 +1,11 @@
 import { Button } from '@mui/material';
 import { Box } from '@mui/system';
-import React, { SetStateAction } from 'react';
+import React, { SetStateAction, useState } from 'react';
+import CheckColorList from './common/CheckColorList';
 import CheckItemList from './common/CheckItemList';
 
 const CustomSelectModal = ({
+  modal,
   setModal,
   select,
   setInfo,
@@ -13,90 +15,114 @@ const CustomSelectModal = ({
   select: string;
   setInfo: any;
   gender: string;
+  modal: boolean;
 }) => {
   const colorArr = {
-    white: '#F9F6F6',
+    white: '#f9f6f6',
     cream: '#292121',
-    black: '#32454C',
-    gary: '#B8BFDA',
-    pink: '#E4007F',
-    red: '#FF0000',
-    orange: '#FE8B10',
-    yellow: '#FFF174',
-    green: '#60906D',
-    blue: '#0809FF',
-    navy: '#3E4982',
-    purple: '#E179E3',
+    black: '#32454c',
+    gary: '#b8bfda',
+    pink: '#e4007f',
+    red: '#ff0000',
+    orange: '#fe8b10',
+    yellow: '#fff174',
+    green: '#60906d',
+    blue: '#0809ff',
+    navy: '#3e4982',
+    purple: '#e179e3',
     brown: '#886024',
-    beige: '#CEB37D',
+    beige: '#ceb37d',
   };
-  // const styles: any = {
-  //   hair: {
-  //     short: 'a',
-  //     long: 'b',
-  //     middle: 'c',
-  //   },
-  //   top: {
-  //     // TODO: -blazer 원래는 이거임
-  //     blazer: '@/assets/custom/bart.png',
-  //     blouse: '@/assets/custom/bart.png',
-  //     cardigan: '@/assets/custom/bart.png',
-  //     coat: '@/assets/custom/bart.png',
-  //     denim: '@/assets/custom/bart.png',
-  //     hoodi: '@/assets/custom/bart.png',
-  //     jumper: '@/assets/custom/bart.png',
-  //     mustang: '@/assets/custom/bart.png',
-  //     riders: '@/assets/custom/bart.png',
-  //     shirts: '@/assets/custom/bart.png',
-  //     pkshirts: '@/assets/custom/bart.png',
-
-  //     sweatshirts: '@/assets/custom/bart.png',
-  //   },
-  //   bottom: {
-  //     leggings: '@/assets/custom/bart.png',
-  //     sweatpants: '@/assets/custom/bart.png',
-  //     slacks: '@/assets/custom/bart.png',
-  //     skirt: '@/assets/custom/bart.png',
-  //     sweater: '@/assets/custom/bart.png',
-  //     // TODO: Half-shortpants 원래는 이거임
-  //     HalfShortpants: '@/assets/custom/bart.png',
-  //   },
-  //   background: {
-  //     type1: 'd',
-  //     type2: 'e',
-  //     type3: 'f',
-  //   },
-  // };
 
   const styles: any = {
     female: {
       hair: ['short', 'middle', 'long'],
-      top: ['a', 'b', 'c', 'd'],
-      bottom: ['e', 'f'],
-      background: ['g', 'h', 'i'],
+      top: [
+        'blazer',
+        'blouse',
+        'cardigan',
+        'coat',
+        'hoodi',
+        'jumper',
+        'mustang',
+        'onepiece',
+        'pkshirts',
+        'shirts',
+        'sweater',
+        'sweatshirts',
+        't_shirts',
+      ],
+      bottom: [
+        'denim',
+        'half_shortpants',
+        'leggings',
+        'skirt',
+        'slacks',
+        'sweatpants',
+      ],
+      background: ['background1', 'background2', 'background3'],
     },
     male: {
       hair: ['short', 'middle', 'long'],
-      top: ['g', 'h', 'i'],
-      bottom: ['a', 'b', 'c', 'd'],
-      background: ['e', 'f'],
+      top: [
+        'blazer',
+        'blouse',
+        'cardigan',
+        'coat',
+        'hoodi',
+        'jumper',
+        'mustang',
+        'onepiece',
+        'pkshirts',
+        'shirts',
+        'sweater',
+        'sweatshirts',
+        't_shirts',
+      ],
+      bottom: [
+        'denim',
+        'half_shortpants',
+        'leggings',
+        'skirt',
+        'slacks',
+        'sweatpants',
+      ],
+      background: ['background1', 'background2', 'background3'],
     },
   };
 
   return (
-    <Box>
+    <Box
+      sx={{
+        width: '100%',
+        height: '100%',
+        color: 'black',
+        background: '#FFCE00',
+        display: modal ? 'flex' : 'block',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+    >
       <CheckItemList
         select={select}
         setInfo={setInfo}
         title="Style"
+        gender={gender}
         arr={styles[gender][select]}
       ></CheckItemList>
-      <CheckItemList
+      {/* <CheckItemList
         select={select + 'Color'}
         setInfo={setInfo}
         title="Color"
         arr={Object.keys(colorArr)}
-      ></CheckItemList>
+      ></CheckItemList> */}
+      <CheckColorList
+        select={select + 'Color'}
+        color={colorArr}
+        setInfo={setInfo}
+        title="Color"
+      ></CheckColorList>
       <Button
         onClick={() => {
           setModal(false);
