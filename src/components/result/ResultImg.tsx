@@ -11,6 +11,8 @@ import { ReactComponent as Home } from '../../assets/home.svg';
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 //import './style.css'; /* svg파일 스타일 적용 */
 import { imageDownload } from './imageDownload';
+import { BoxSprayLayout, theme } from './breakpoint';
+import { Copyelement } from './Copyelement';
 
 type Image = {
   /* 프롭스로 받을 이미지의 타입? */
@@ -27,6 +29,7 @@ const styleContainer = {
 
 const styleIconLayout = {
   display: 'flex',
+  position: 'relative',
   flexDirection: 'row',
   justifyContent: 'flex-end',
   width: '75%',
@@ -51,76 +54,29 @@ const styleSprayLayout = {
   right: '-290px',
 };
 
-const BoxSprayLayout = styled('div')(({ theme }) => ({
-  // [theme.breakpoints.between('laptop', 'desktop')]: {} /* 필요시 사용, 크기 조정*/,
-  [theme.breakpoints.up('desktop')]: {
-    display: 'inLine',
-  },
-}));
-
-const theme = createTheme({
-  /* custom MediaQuery */
-  breakpoints: {
-    values: {
-      mobile: 480,
-      tablet: 768,
-      laptop: 0,
-      desktop: 1024,
-    },
-  },
-});
-
-declare module '@mui/material/styles' {
-  /* 타입 스크립트때문에 사용 */
-  interface BreakpointOverrides {
-    xs: false; // removes the `xs` breakpoint
-    sm: false;
-    md: false;
-    lg: false;
-    xl: false;
-    mobile: true; // adds the `mobile` breakpoint
-    tablet: true;
-    laptop: true;
-    desktop: true;
-  }
-}
-
 export function ResultImg() {
   const [url, setUrl] = useState('');
   const location = useLocation();
   console.log(location.state);
   const navigate = useNavigate();
-  useEffect(() => {
-    const downloadApi = async () => {
-      const response = await fetch('api/v1/test').then((res) => res.json());
-      console.log(response);
-      setUrl(response);
-    };
-    downloadApi();
-  }, []);
 
   useEffect(() => {
     /* Link로 결과 페이지로 넘어갈떄 props에 state값을 주면 결과 페이지 에서 사용 가능, 나는 이걸 url 상태값에 저장 */
-    setUrl(location.state);
+    setUrl(location.state.link);
   });
 
-  const goFirstPage = (): void => {
+  const goFirstPage = () => {
     /* 첫 페이지 */
-    navigate('/');
+    navigate('/', { replace: true });
   };
 
   const download = async () => {
-    imageDownload({
-      href: url,
-    });
+    /* location의 state값이 undefined이 아니라는 걸 알려주기 위해 사용 */
+    url &&
+      imageDownload({
+        href: url,
+      });
   };
-
-  // const download = async () => {   /* location의 state값이 undefined이 아니라는 걸 알려주기 위해 사용 *?
-  //   url && imageDownload({
-  //     href: url,
-  //   });
-  // };
-
 
   return (
     <Box className="container" sx={styleContainer}>
@@ -181,29 +137,24 @@ export function ResultImg() {
               src={Kakaotalk}
             />
           </IconButton>
-
-          <IconButton
-            className="shareArrowButton"
+          <Box
+            className="copyButton"
             sx={{
               width: '15%',
+              height: '30px',
+              maxHeight: '30px',
               maxWidth: '3rem',
-              p: '4px',
             }}
           >
-            <Box
-              className="shareArrow"
-              component="img"
-              sx={{ width: '100%' }}
-              src={ShareArrow}
-            />
-          </IconButton>
+            <Copyelement />
+          </Box>
         </Box>
         <Box className="imageLayout" sx={styleImageLayout}>
           <Box
             className="resultImg"
             component="img"
             sx={{ width: '100%', height: '100%' }}
-            src=""
+            src={location.state.link}
           />
           <IconButton /* 기본 패딩이 8 인듯 */
             className="downloadButton"

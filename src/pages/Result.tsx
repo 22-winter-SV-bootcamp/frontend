@@ -8,7 +8,6 @@ const Result = () => {
 
   return (
     <>
-      <div>Result Page {location.state.link}</div>
       <ResultImg />
     </>
   );
