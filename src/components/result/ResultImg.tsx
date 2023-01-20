@@ -13,6 +13,8 @@ import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { imageDownload } from './imageDownload';
 import { BoxSprayLayout, theme } from './breakpoint';
 import { Copyelement } from './Copyelement';
+import testSimpson from '../../assets/customSimpsonWoman.png';
+import { sendKakao } from './kakaotalk/sendKakao';
 
 type Image = {
   /* 프롭스로 받을 이미지의 타입? */
@@ -129,6 +131,7 @@ export function ResultImg() {
               maxWidth: '3rem',
               p: '4px',
             }}
+            onClick={sendKakao}
           >
             <Box
               className="kakaotalk"
@@ -154,7 +157,8 @@ export function ResultImg() {
             className="resultImg"
             component="img"
             sx={{ width: '100%', height: '100%' }}
-            src={location.state.link}
+            // src={location.state.link}
+            src={testSimpson}
           />
           <IconButton /* 기본 패딩이 8 인듯 */
             className="downloadButton"
