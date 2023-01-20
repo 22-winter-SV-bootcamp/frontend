@@ -1,24 +1,18 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Box, createTheme, IconButton, styled } from '@mui/material';
+import { Box, IconButton, styled } from '@mui/material';
 import BacktoTop from '../../assets/BacktoTop.png';
 import doh from '../../assets/doh.png';
 import SpraySimpson from '../../assets/SpraySimpson.png';
 import Download from '../../assets/Download.png';
 import Instagram from '../../assets/Instagram.png';
 import Kakaotalk from '../../assets/Kakaotalk.png';
-import ShareArrow from '../../assets/ShareArrow.png';
 import { ReactComponent as Home } from '../../assets/home.svg';
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
-//import './style.css'; /* svg파일 스타일 적용 */
 import { imageDownload } from './imageDownload';
 import { BoxSprayLayout, theme } from './breakpoint';
 import { Copyelement } from './Copyelement';
 import testSimpson from '../../assets/customSimpsonWoman.png';
 import { sendKakao } from './kakaotalk/sendKakao';
-
-type Image = {
-  /* 프롭스로 받을 이미지의 타입? */
-};
 
 const styleContainer = {
   position: 'relative',
@@ -57,6 +51,7 @@ const styleSprayLayout = {
 };
 
 export function ResultImg() {
+  const [hover, setHover] = useState('false');
   const [url, setUrl] = useState('');
   const location = useLocation();
   console.log(location.state);
@@ -120,7 +115,9 @@ export function ResultImg() {
             <Box
               className="instagram"
               component="img"
-              sx={{ width: '100%' }}
+              sx={{
+                width: '100%',
+              }}
               src={Instagram}
             />
           </IconButton>
@@ -144,7 +141,7 @@ export function ResultImg() {
             className="copyButton"
             sx={{
               width: '15%',
-              height: '30px',
+              // height: '30px',
               maxHeight: '30px',
               maxWidth: '3rem',
             }}
@@ -176,6 +173,9 @@ export function ResultImg() {
               className="download"
               component="img"
               sx={{
+                '&:hover': {
+                  width: '130%',
+                },
                 width: '100%',
               }}
               src={Download}
