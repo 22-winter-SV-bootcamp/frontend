@@ -9,7 +9,7 @@ import Kakaotalk from '../../assets/Kakaotalk.png';
 import { ReactComponent as Home } from '../../assets/home.svg';
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { imageDownload } from './imageDownload';
-import { BoxSprayLayout, theme } from './breakpoint';
+import { BoxSprayLayout, theme } from '../utils/muiResponse';
 import { Copyelement } from './Copyelement';
 import testSimpson from '../../assets/customSimpsonWoman.png';
 import { sendKakao } from './kakaotalk/sendKakao';
@@ -116,6 +116,9 @@ export function ResultImg() {
               className="instagram"
               component="img"
               sx={{
+                // '&:hover': {
+                //   width: '110%',
+                // },
                 width: '100%',
               }}
               src={Instagram}
@@ -133,7 +136,9 @@ export function ResultImg() {
             <Box
               className="kakaotalk"
               component="img"
-              sx={{ width: '100%' }}
+              sx={{
+                width: '100%',
+              }}
               src={Kakaotalk}
             />
           </IconButton>

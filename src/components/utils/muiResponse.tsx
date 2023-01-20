@@ -7,6 +7,33 @@ export const BoxSprayLayout = styled('div')(({ theme }) => ({
   },
 }));
 
+export const ModalLayout = styled('div')(({ theme }) => ({
+  height: '100vh',
+  padding: theme.spacing(1),
+  [theme.breakpoints.up('desktop')]: {
+    height: '50rem',
+    width: '64rem',
+  },
+  // [theme.breakpoints.up('tablet')]: {},
+  // [theme.breakpoints.up('desktop')]: {},
+}));
+
+export const EasterImgLayout = styled('div')(({ theme }) => ({
+  height: '100vh',
+  padding: theme.spacing(1),
+  // [theme.breakpoints.between('tablet', 'desktop')]: {
+  //   height: '70vh',
+  //   width: '55vw',
+  // },     /* 필요시 사용, 크기 조정*/
+
+  [theme.breakpoints.up('desktop')]: {
+    height: '420px',
+    width: '400px',
+  },
+
+  // [theme.breakpoints.up('desktop')]: {},
+}));
+
 export const theme = createTheme({
   /* custom MediaQuery */
   breakpoints: {
