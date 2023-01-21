@@ -62,6 +62,9 @@ const CustomSVG = ({ info }: any) => {
     background,
   } = info;
 
+  let sub = 85;
+  let detail = 10;
+
   const colorArr: ColorArrType = {
     white: '#f9f6f6',
     coolGray: '#d4d4d4',
@@ -100,15 +103,15 @@ const CustomSVG = ({ info }: any) => {
         basic_neck_pole: (
           <SVGFemaleBasic_neck_pole
             main={'white'}
-            sub={''}
-            detail={''}
+            sub={sub}
+            detail={detail}
           ></SVGFemaleBasic_neck_pole>
         ),
         basic_t_shirts: (
           <SVGFemaleBasic_t_shirts
             main={'white'}
-            sub={''}
-            detail={''}
+            sub={sub}
+            detail={detail}
           ></SVGFemaleBasic_t_shirts>
         ),
       },
@@ -116,93 +119,93 @@ const CustomSVG = ({ info }: any) => {
         blouse: (
           <SVGFemaleBlouse
             main={colorArr[topColor]}
-            sub={''}
-            detail={''}
+            sub={sub}
+            detail={detail}
           ></SVGFemaleBlouse>
         ),
 
         blazer: (
           <SVGFemaleBlazer
             main={colorArr[topColor]}
-            sub={''}
-            detail={''}
+            sub={sub}
+            detail={detail}
           ></SVGFemaleBlazer>
         ),
         cardigan: (
           <SVGFemaleCardigan
             main={colorArr[topColor]}
-            sub={''}
-            detail={''}
+            sub={sub}
+            detail={detail}
           ></SVGFemaleCardigan>
         ),
         coat: (
           <SVGFemaleCoat
             main={colorArr[topColor]}
-            sub={''}
-            detail={''}
+            sub={sub}
+            detail={detail}
           ></SVGFemaleCoat>
         ),
         hoodi: (
           <SVGFemaleHoodi
             main={colorArr[topColor]}
-            sub={''}
-            detail={''}
+            sub={sub}
+            detail={detail}
           ></SVGFemaleHoodi>
         ),
         jumper: (
           <SVGFemaleJumper
             main={colorArr[topColor]}
-            sub={''}
-            detail={''}
+            sub={sub}
+            detail={detail}
           ></SVGFemaleJumper>
         ),
         mustang: (
           <SVGFemaleMustang
             main={colorArr[topColor]}
-            sub={''}
-            detail={''}
+            sub={sub}
+            detail={detail}
           ></SVGFemaleMustang>
         ),
         onepiece: (
           <SVGFemaleOnepiece
             main={colorArr[topColor]}
-            sub={''}
-            detail={''}
+            sub={sub}
+            detail={detail}
           ></SVGFemaleOnepiece>
         ),
         pkshirts: (
           <SVGFemalePkshirts
             main={colorArr[topColor]}
-            sub={''}
-            detail={''}
+            sub={sub}
+            detail={detail}
           ></SVGFemalePkshirts>
         ),
         shirts: (
           <SVGFemaleShirts
             main={colorArr[topColor]}
-            sub={''}
-            detail={''}
+            sub={sub}
+            detail={detail}
           ></SVGFemaleShirts>
         ),
         sweater: (
           <SVGFemaleSweater
             main={colorArr[topColor]}
-            sub={''}
-            detail={''}
+            sub={sub}
+            detail={detail}
           ></SVGFemaleSweater>
         ),
         sweatershirts: (
           <SVGFemaleT_shirts
             main={colorArr[topColor]}
-            sub={''}
-            detail={''}
+            sub={sub}
+            detail={detail}
           ></SVGFemaleT_shirts>
         ),
         t_shirts: (
           <SVGFemaleT_shirts
             main={colorArr[topColor]}
-            sub={''}
-            detail={''}
+            sub={sub}
+            detail={detail}
           ></SVGFemaleT_shirts>
         ),
       },
@@ -210,49 +213,53 @@ const CustomSVG = ({ info }: any) => {
         denim: (
           <SVGFemaleDenim
             main={bottomColor}
-            sub={''}
-            detail={''}
+            sub={sub}
+            detail={detail}
           ></SVGFemaleDenim>
         ),
         half_shortpants: (
           <SVGFemaleHalf_shortpants
             main={bottomColor}
-            sub={''}
-            detail={''}
+            sub={sub}
+            detail={detail}
           ></SVGFemaleHalf_shortpants>
         ),
         leggings: (
           <SVGFemaleLeggings
             main={bottomColor}
-            sub={''}
-            detail={''}
+            sub={sub}
+            detail={detail}
           ></SVGFemaleLeggings>
         ),
         skirt: (
           <SVGFemaleSkirt
             main={bottomColor}
-            sub={''}
-            detail={''}
+            sub={sub}
+            detail={detail}
           ></SVGFemaleSkirt>
         ),
         slacks: (
           <SVGFemaleSlacks
             main={bottomColor}
-            sub={''}
-            detail={''}
+            sub={sub}
+            detail={detail}
           ></SVGFemaleSlacks>
         ),
         sweatpants: (
           <SVGFemaleSweatpants
             main={bottomColor}
-            sub={''}
-            detail={''}
+            sub={sub}
+            detail={detail}
           ></SVGFemaleSweatpants>
         ),
       },
       hair: {
         long: (
-          <SVGFemaleLong main={hairColor} sub={''} detail={''}></SVGFemaleLong>
+          <SVGFemaleLong
+            main={hairColor}
+            sub={sub}
+            detail={detail}
+          ></SVGFemaleLong>
         ),
       },
     },
@@ -261,15 +268,15 @@ const CustomSVG = ({ info }: any) => {
         basic_neck_pole: (
           <SVGMaleBasic_neck_pole
             main={colorArr[topColor]}
-            sub={''}
-            detail={''}
+            sub={sub}
+            detail={detail}
           ></SVGMaleBasic_neck_pole>
         ),
         basic_t_shirts: (
           <SVGMaleBasic_t_shirts
             main={colorArr[topColor]}
-            sub={''}
-            detail={''}
+            sub={sub}
+            detail={detail}
           ></SVGMaleBasic_t_shirts>
         ),
       },
@@ -277,146 +284,146 @@ const CustomSVG = ({ info }: any) => {
         blouse: (
           <SVGMaleBlouse
             main={colorArr[topColor]}
-            sub={''}
-            detail={''}
+            sub={sub}
+            detail={detail}
           ></SVGMaleBlouse>
         ),
 
         blazer: (
           <SVGMaleBlazer
             main={colorArr[topColor]}
-            sub={''}
-            detail={''}
+            sub={sub}
+            detail={detail}
           ></SVGMaleBlazer>
         ),
         cardigan: (
           <SVGMaleCardigan
             main={colorArr[topColor]}
-            sub={''}
-            detail={''}
+            sub={sub}
+            detail={detail}
           ></SVGMaleCardigan>
         ),
         coat: (
           <SVGMaleCoat
             main={colorArr[topColor]}
-            sub={''}
-            detail={''}
+            sub={sub}
+            detail={detail}
           ></SVGMaleCoat>
         ),
         hoodi: (
           <SVGMaleHoodi
             main={colorArr[topColor]}
-            sub={''}
-            detail={''}
+            sub={sub}
+            detail={detail}
           ></SVGMaleHoodi>
         ),
         jumper: (
           <SVGMaleJumper
             main={colorArr[topColor]}
-            sub={''}
-            detail={''}
+            sub={sub}
+            detail={detail}
           ></SVGMaleJumper>
         ),
         mustang: (
           <SVGMaleMustang
             main={colorArr[topColor]}
-            sub={''}
-            detail={''}
+            sub={sub}
+            detail={detail}
           ></SVGMaleMustang>
         ),
         onepiece: (
           <SVGMaleOnepiece
             main={colorArr[topColor]}
-            sub={''}
-            detail={''}
+            sub={sub}
+            detail={detail}
           ></SVGMaleOnepiece>
         ),
         pkshirts: (
           <SVGMalePkshirts
             main={colorArr[topColor]}
-            sub={''}
-            detail={''}
+            sub={sub}
+            detail={detail}
           ></SVGMalePkshirts>
         ),
         shirts: (
           <SVGMaleShirts
             main={colorArr[topColor]}
-            sub={''}
-            detail={''}
+            sub={sub}
+            detail={detail}
           ></SVGMaleShirts>
         ),
         sweater: (
           <SVGMaleSweater
             main={colorArr[topColor]}
-            sub={''}
-            detail={''}
+            sub={sub}
+            detail={detail}
           ></SVGMaleSweater>
         ),
         sweatershirts: (
           <SVGMaleT_shirts
             main={colorArr[topColor]}
-            sub={''}
-            detail={''}
+            sub={sub}
+            detail={detail}
           ></SVGMaleT_shirts>
         ),
         t_shirts: (
           <SVGMaleT_shirts
             main={colorArr[topColor]}
-            sub={''}
-            detail={''}
+            sub={sub}
+            detail={detail}
           ></SVGMaleT_shirts>
         ),
       },
       bottom: {
         denim: (
           <SVGMaleDenim
-            main={colorArr[topColor]}
-            sub={''}
-            detail={''}
+            main={colorArr[bottomColor]}
+            sub={sub}
+            detail={detail}
           ></SVGMaleDenim>
         ),
         half_shortpants: (
           <SVGMaleHalf_shortpants
-            main={colorArr[topColor]}
-            sub={''}
-            detail={''}
+            main={colorArr[bottomColor]}
+            sub={sub}
+            detail={detail}
           ></SVGMaleHalf_shortpants>
         ),
         leggings: (
           <SVGMaleLeggings
-            main={colorArr[topColor]}
-            sub={''}
-            detail={''}
+            main={colorArr[bottomColor]}
+            sub={sub}
+            detail={detail}
           ></SVGMaleLeggings>
         ),
         skirt: (
           <SVGMaleSkirt
-            main={colorArr[topColor]}
-            sub={''}
-            detail={''}
+            main={colorArr[bottomColor]}
+            sub={sub}
+            detail={detail}
           ></SVGMaleSkirt>
         ),
         slacks: (
           <SVGMaleSlacks
-            main={colorArr[topColor]}
-            sub={''}
-            detail={''}
+            main={colorArr[bottomColor]}
+            sub={sub}
+            detail={detail}
           ></SVGMaleSlacks>
         ),
         sweatpants: (
           <SVGMaleSweatpants
-            main={colorArr[topColor]}
-            sub={''}
-            detail={''}
+            main={colorArr[bottomColor]}
+            sub={sub}
+            detail={detail}
           ></SVGMaleSweatpants>
         ),
       },
       hair: {
         middle: (
           <SVGMaleMiddle
-            main={colorArr[topColor]}
-            sub={''}
-            detail={''}
+            main={colorArr[hairColor]}
+            sub={sub}
+            detail={detail}
           ></SVGMaleMiddle>
         ),
       },
@@ -462,7 +469,6 @@ const CustomSVG = ({ info }: any) => {
       <Box sx={{ position: 'absolute' }} width="100%" height="100%">
         {SVGComponents['background']['background'][background]}
       </Box>
-
       <Box sx={{ position: 'absolute' }} width="100%" height="100%">
         {SVGComponents[gender]['hair'][hair]}
       </Box>
