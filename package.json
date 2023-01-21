@@ -27,7 +27,8 @@
     "react-color": "^2.19.3",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.6.1",
-    "recoil": "^0.7.6"
+    "recoil": "^0.7.6",
+    "vite-plugin-svgr": "^2.4.0"
   },
   "devDependencies": {
     "@types/node": "^18.11.18",
