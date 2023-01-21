@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 type AiResultType = {
-  task_status: string;
-  task_result: [] | string;
+  status: string;
+  result?: [] | string;
 };
 
 type TaskResultType = {

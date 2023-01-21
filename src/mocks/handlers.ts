@@ -88,12 +88,10 @@ export const handlers = [
       ctx.status(200),
       ctx.json({
         status: 'done',
-        result: [
-          {
-            top: 't-shirts',
-            bottom: 'slacks',
-          },
-        ],
+        result: {
+          top: 't-shirts',
+          bottom: 'slacks',
+        },
       }),
     );
   }),

@@ -1,3 +1,4 @@
+import { Box } from '@mui/system';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { RouterProvider } from 'react-router-dom';
@@ -12,23 +13,9 @@ import router from './router/router';
 
 function App() {
   return (
-    <>
-      {/* <EasterEgg
-        text="Are you Homer Simpson?"
-        textSize="4.0"
-        img1={Simpson}
-        img2={Simpson2}
-        img3={Simpson3}
-      /> */}
-      <EasterEgg
-        text="AI failed to determine the top & bottom."
-        textSize="3.5"
-        img1={SimpsonDoh}
-        img2={SimpsonDoh}
-        img3={Simpson3}
-      />
-      {/* <RouterProvider router={router}></RouterProvider> */}
-    </>
+    <Box sx={{width:1,height:1}}>
+      <RouterProvider router={router}></RouterProvider>
+    </Box>
   );
 }
 export default App;
