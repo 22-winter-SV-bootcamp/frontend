@@ -54,6 +54,14 @@ export const handlers = [
   rest.get('api/v1/test', (req, res, ctx) => {
     return res(ctx.status(200), ctx.json(dummy));
   }),
+  rest.post('api/v1/styles', (req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json({
+        link: 'https://simsontest.s3.ap-northeast-2.amazonaws.com/83b17690-8e22-471b-ad3c-c8ffba67066d.jpg',
+      }),
+    );
+  }),
 
   // ai task id 반환 api
   rest.post('api/v1/images', (req, res, ctx) => {
@@ -78,15 +86,11 @@ export const handlers = [
     return res(
       ctx.status(200),
       ctx.json({
-        task_status: '',
-        task_result: [
-          {
-            top: "'shirt",
-            top_color: 'white',
-            bottom: 'shorts',
-            bottom_color: 'blue',
-          },
-        ],
+        status: 'done',
+        result: {
+          top: 't-shirts',
+          bottom: 'slacks',
+        },
       }),
     );
   }),

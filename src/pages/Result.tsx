@@ -1,7 +1,11 @@
-import React from "react";
+import React from 'react';
+import { useLocation } from 'react-router-dom';
 
 const Result = () => {
-  return <div>Result Page</div>;
+  let location = useLocation();
+  console.log('location state', location.state);
+
+  return <div>Result Page {location.state.link}</div>;
 };
 
 export default Result;
