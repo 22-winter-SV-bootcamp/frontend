@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-import React from "react";
-
-const Custom = () => {
-  return <div>Custom Page</div>;
-};
-
-export default Custom;
-=======
 import CustomInfo from '@/components/user/CustomInfo';
 import CustomSelectModal from '@/components/user/CustomSelectModal';
 import CustomSVG from '@/components/user/CustomSVG';
@@ -114,4 +105,3 @@ const Custom = () => {
 };
 
 export default Custom;
->>>>>>> e3403ce9cef98f556be1c94cb0800098dd6ea5fb
