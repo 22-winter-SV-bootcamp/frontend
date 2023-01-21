@@ -1,7 +1,8 @@
-import { Button } from '@mui/material';
+import { Button, Hidden, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import React, { SetStateAction, useState } from 'react';
 import CheckColorList from './common/CheckColorList';
+
 import CheckItemList from './common/CheckItemList';
 
 const CustomSelectModal = ({
@@ -19,19 +20,33 @@ const CustomSelectModal = ({
 }) => {
   const colorArr = {
     white: '#f9f6f6',
-    cream: '#292121',
-    black: '#32454c',
-    gary: '#b8bfda',
-    pink: '#e4007f',
-    red: '#ff0000',
-    orange: '#fe8b10',
-    yellow: '#fff174',
-    green: '#60906d',
-    blue: '#0809ff',
-    navy: '#3e4982',
-    purple: '#e179e3',
-    brown: '#886024',
-    beige: '#ceb37d',
+    coolGray: '#d4d4d4',
+    gray: '#a6a6a6',
+    darkGray: '#4b5053',
+    charcoal: '#444444',
+    red: '#900000',
+    orange: '#d98200',
+    yellow: '#ffcb00',
+    navy: '#2c376f',
+    purple: '#8a00ac',
+    green: '#0a7c00',
+    black: '#000000',
+    neonBlue: '#02abcf',
+    peach: '#DF5353',
+    darkBrown: '#362710',
+    brown: '#4A3A2A',
+    darkBagie: '#A3907B',
+    bagie: '#A3907B',
+    ligthBegie: '#A3907B',
+    ivory: '#DED3AA',
+    kaki: '#3C492A',
+    ligthBlue: '#CCE7FF',
+    middleBlue: '#417797',
+    darkBlue: '#165690',
+    denim: '#1A2B47',
+    sora: '#5C71C9',
+    skyBlue: '#9CB0FF',
+    pink: '#FFB6B6',
   };
 
   const styles: any = {
@@ -100,8 +115,11 @@ const CustomSelectModal = ({
         background: '#FFCE00',
         display: modal ? 'flex' : 'block',
         flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
+        justifyContent: 'space-between',
+        padding: 4,
+
+        // justifyContent: 'center',
+        // alignItems: 'center',
       }}
     >
       <CheckItemList
@@ -111,24 +129,18 @@ const CustomSelectModal = ({
         gender={gender}
         arr={styles[gender][select]}
       ></CheckItemList>
-      {/* <CheckItemList
-        select={select + 'Color'}
-        setInfo={setInfo}
-        title="Color"
-        arr={Object.keys(colorArr)}
-      ></CheckItemList> */}
       <CheckColorList
         select={select + 'Color'}
-        color={colorArr}
         setInfo={setInfo}
-        title="Color"
       ></CheckColorList>
+
       <Button
+        sx={{ color: 'black' }}
         onClick={() => {
           setModal(false);
         }}
       >
-        <Box>OK</Box>
+        <Typography variant="h4">OK</Typography>
       </Button>
     </Box>
   );

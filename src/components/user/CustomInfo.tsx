@@ -13,6 +13,16 @@ const CustomInfo = ({ info, setInfo, svgRef }: any) => {
   const [select, setSelect] = useState('hair');
   const navigate = useNavigate();
 
+  let {
+    gender,
+    hair,
+    hairColor,
+    top,
+    topColor,
+    bottom,
+    bottomColor,
+    background,
+  } = info;
   console.log('info가 바뀌었나?', info);
 
   const changeGender = (gender: string) => {
@@ -46,28 +56,31 @@ const CustomInfo = ({ info, setInfo, svgRef }: any) => {
     <Box
       sx={{
         color: '#FFCE00',
-        width: '60%',
-        height: '60%',
+        width: '100%',
+        maxWidth: '400px',
+        height: '400px',
         display: 'flex',
         flexDirection: 'column',
-
-        padding: 2,
-        paddingLeft: 3,
       }}
     >
       <Box
         sx={{
+          padding: 2,
+          background: '#95989b',
+          width: '90%',
           height: '100%',
+          marginLeft: 'auto',
           display: modal ? 'none' : 'flex',
           flexDirection: 'column',
 
-          justifyContent: 'center',
+          justifyContent: 'space-between',
           alignItems: 'center',
         }}
       >
         <Box
           sx={{
             width: '100%',
+            height: 50,
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
@@ -81,7 +94,7 @@ const CustomInfo = ({ info, setInfo, svgRef }: any) => {
               }}
             >
               <Box
-                sx={{ width: 30, height: 30 }}
+                sx={{ width: 50, height: 50 }}
                 component="img"
                 src={`src/assets/custom/gender/female.png`}
                 alt="male"
@@ -93,7 +106,7 @@ const CustomInfo = ({ info, setInfo, svgRef }: any) => {
               }}
             >
               <Box
-                sx={{ width: 30, height: 30 }}
+                sx={{ width: 50, height: 50 }}
                 component="img"
                 src="src/assets/custom/gender/male.png"
                 alt="female"
@@ -111,6 +124,8 @@ const CustomInfo = ({ info, setInfo, svgRef }: any) => {
           ></CheckItem>
         ))}
         <Button
+          variant="contained"
+          sx={{ alignSelf: 'end', background: '#D9D9D9', color: 'black' }}
           onClick={async () => {
             const svg = svgRef.current;
             console.log(svg);
@@ -136,11 +151,11 @@ const CustomInfo = ({ info, setInfo, svgRef }: any) => {
             await axios
               .post('api/v1/styles', {
                 file: d,
-                gender: 'female',
-                top: 'coat',
-                top_color: 'yellow',
-                bottom: 'leggings',
-                bottom_color: 'red',
+                gender: gender,
+                top: top,
+                top_color: topColor,
+                bottom: bottom,
+                bottom_color: bottomColor,
               })
               .then((res) => {
                 console.log(res.data);

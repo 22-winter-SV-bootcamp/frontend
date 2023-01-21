@@ -1,4 +1,4 @@
-import { Button, Typography } from '@mui/material';
+import { Button, Tooltip, Typography } from '@mui/material';
 import { Box, Stack } from '@mui/system';
 import React from 'react';
 
@@ -9,24 +9,32 @@ const CheckItemList = ({ gender, title, setInfo, arr, select }: any) => {
       <Box
         sx={{
           display: 'flex',
-          width: 300,
+          width: '100%',
+          height: 'auto',
           overflow: 'auto',
           overflowY: 'hidden',
         }}
       >
         {arr.map((v: any) => (
           <Button
-            sx={{ width: 60 }}
+            sx={{ width: 'auto' }}
             key={v}
             onClick={() => {
               setInfo((pre: any) => ({ ...pre, [select]: v }));
             }}
           >
-            <Box
-              component="img"
-              alt={v}
-              src={`src/assets/custom/${gender}/${select}/${v}.svg`}
-            ></Box>
+            <Tooltip title={v}>
+              <Box
+                width={100}
+                component="img"
+                alt={v}
+                src={
+                  select === 'background'
+                    ? `src/assets/custom/background/${v}.png`
+                    : `src/assets/custom/${gender}/${select}/${v}.svg`
+                }
+              ></Box>
+            </Tooltip>
           </Button>
         ))}
       </Box>
