@@ -13,6 +13,7 @@ export const ModalLayout = styled('div')(({ theme }) => ({
   [theme.breakpoints.up('desktop')]: {
     height: '50rem',
     width: '64rem',
+    // fontSize: '8px',
   },
   // [theme.breakpoints.up('tablet')]: {},
   // [theme.breakpoints.up('desktop')]: {},

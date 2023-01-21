@@ -5,13 +5,28 @@ import { EasterEgg } from './components/user/EasterEgg';
 import Simpson from './assets/Simpson.png';
 import Simpson2 from './assets/Simpson2.png';
 import Simpson3 from './assets/Simpson3.png';
+import SimpsonDoh from './assets/SimpsonDoh.jpg';
+import SimpsonDoh2 from './assets/SimpsonDoh2.jpg';
 
 import router from './router/router';
 
 function App() {
   return (
     <>
-      <EasterEgg img1={Simpson} img2={Simpson2} img3={Simpson3} />
+      {/* <EasterEgg
+        text="Are you Homer Simpson?"
+        textSize="4.0"
+        img1={Simpson}
+        img2={Simpson2}
+        img3={Simpson3}
+      /> */}
+      <EasterEgg
+        text="AI failed to determine the top & bottom."
+        textSize="3.5"
+        img1={SimpsonDoh}
+        img2={SimpsonDoh}
+        img3={Simpson3}
+      />
       {/* <RouterProvider router={router}></RouterProvider> */}
     </>
   );
