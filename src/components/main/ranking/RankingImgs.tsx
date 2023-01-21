@@ -8,11 +8,11 @@ export default function RankingImgs() {
 
   const [imageState, setImageState] = React.useState<ImageState>({
     firstImage: {
-      url: "",
+      url: '',
       count: 123,
     },
     secondImage: {
-      url: "",
+      url: '',
       count: 222,
     },
   });
@@ -37,27 +37,35 @@ export default function RankingImgs() {
       }}
     >
       <Box>
-        <Box sx={{
-          display: 'flex', justifyContent: 'center',
-          //mobile
-          [theme.breakpoints.between("mobile", "tablet")]: {
-            py: 4,
-          },
-          //tablet
-          [theme.breakpoints.between("tablet", "laptop")]: {
-            py: 4,
-          },
-          //pc
-          [theme.breakpoints.up("laptop")]: {
-            py: 8,
-          },
-        }}>
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            //mobile
+            [theme.breakpoints.between('mobile', 'tablet')]: {
+              py: 4,
+            },
+            //tablet
+            [theme.breakpoints.between('tablet', 'laptop')]: {
+              py: 4,
+            },
+            //pc
+            [theme.breakpoints.up('laptop')]: {
+              py: 8,
+            },
+          }}
+        >
           <Box component={'img'} src="/image 104.png" sx={{ width: 0.8 }} />
         </Box>
         <Box sx={{ display: 'flex', justifyContent: 'center', pb: 8 }}>
           <Box sx={{ display: 'flex' }}>
             {Object.keys(imageState).map((v) => {
-              return <ImageComponent imageState={imageState[v as ImageType]} isEnd={v === "secondImage"} />
+              return (
+                <ImageComponent
+                  imageState={imageState[v as ImageType]}
+                  isEnd={v === 'secondImage'}
+                />
+              );
             })}
           </Box>
         </Box>
