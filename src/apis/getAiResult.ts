@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axiosCustom from './createAxios';
 
 type AiResultType = {
   status: string;
@@ -15,9 +15,9 @@ type TaskResultType = {
 export default async function getAiResult(
   task_id: string,
 ): Promise<AiResultType> {
-  return await axios.get(`api/v1/images/task/${task_id}`).then((res) => {
-    console.log('getAiResult axios');
-    console.log(res.data);
-    return res.data;
-  });
+  return await axiosCustom
+    .get(`api/v1/images/task?task_id=${task_id}`)
+    .then((res) => {
+      return res.data;
+    });
 }
