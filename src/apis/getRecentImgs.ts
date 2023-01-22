@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axiosCustom from './createAxios';
 
 type CardsType = {
   id: number;
@@ -8,11 +8,7 @@ type CardsType = {
 export default async function getRecentImgs(
   page: number,
 ): Promise<CardsType[]> {
-  return await axios
-    .get(`api/v1/images`, { params: { page: page } })
-    .then((res) => {
-      console.log('getgeget');
-      console.log(res.data);
-      return res.data;
-    });
+  return await axiosCustom.get(`/api/v1/images?page=${page}`).then((res) => {
+    return res.data;
+  });
 }
