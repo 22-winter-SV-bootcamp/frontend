@@ -1,4 +1,4 @@
-import { Box, useTheme } from '@mui/material';
+import { Box, Theme, useMediaQuery, useTheme } from '@mui/material';
 import React from 'react';
 import { ImageComponent } from './component';
 import { ImageState, ImageType } from './types';
@@ -6,13 +6,17 @@ import { ImageState, ImageType } from './types';
 export default function RankingImgs() {
   const theme = useTheme();
 
+  const isSmallScreen = useMediaQuery((theme: Theme) =>
+    theme.breakpoints.down('laptop'),
+  );
+
   const [imageState, setImageState] = React.useState<ImageState>({
     firstImage: {
-      url: '',
+      url: 'public/image 96.png',
       count: 123,
     },
     secondImage: {
-      url: '',
+      url: 'public/image 96.png',
       count: 222,
     },
   });
@@ -25,6 +29,11 @@ export default function RankingImgs() {
   React.useEffect(() => {
     fetchFunc();
   }, []);
+
+  React.useEffect(() => {
+    console.log(theme);
+  }, [theme]);
+
   return (
     <Box
       sx={{
@@ -55,7 +64,12 @@ export default function RankingImgs() {
             },
           }}
         >
-          <Box component={'img'} src="/image 104.png" sx={{ width: 0.8 }} />
+          {!isSmallScreen && (
+            <Box component={'img'} src="/image 104.png" sx={{ width: 1 }} />
+          )}
+          {isSmallScreen && (
+            <Box component={'img'} src="/Group 58.png" sx={{ width: 0.6 }} />
+          )}
         </Box>
         <Box sx={{ display: 'flex', justifyContent: 'center', pb: 8 }}>
           <Box sx={{ display: 'flex' }}>
