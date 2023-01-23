@@ -6,7 +6,7 @@ import Simpson from './assets/Simpson.png';
 import Simpson2 from './assets/Simpson2.png';
 import Simpson3 from './assets/Simpson3.png';
 import SimpsonDoh from './assets/SimpsonDoh.jpg';
-import SimpsonDoh2 from './assets/SimpsonDoh2.jpg';
+import SimpsonDoh2 from './assets/SimpsonDoh2.png';
 
 import router from './router/router';
 
@@ -20,14 +20,15 @@ function App() {
         img2={Simpson2}
         img3={Simpson3}
       /> */}
-      <EasterEgg
+      {/* <EasterEgg
         text="AI failed to determine the top & bottom."
+        // textSize="3.5"
         textSize="3.5"
         img1={SimpsonDoh}
         img2={SimpsonDoh}
-        img3={Simpson3}
-      />
-      {/* <RouterProvider router={router}></RouterProvider> */}
+        img3={SimpsonDoh2}
+      /> */}
+      <RouterProvider router={router}></RouterProvider>
     </>
   );
 }
