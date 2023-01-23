@@ -14,12 +14,12 @@ const SVGMaleLaggings = ({ main, sub, detail }: any) => (
     <g id="\uC0C9">
       <path
         className="cls-1"
-        style={{ fill: '#FFD521' }}
+        style={{ fill: '#2B2929' }}
         d="M400.79,595.2v-8.78h58.42q-.21,4.4-.43,8.78Z"
       />
       <path
         className="cls-1"
-        style={{ fill: '#FFD521' }}
+        style={{ fill: '#2B2929' }}
         d="M474.6,595.2,473,588.84l-.43-1.76h42.83c3.06,0,6.13.07,9.2.08.77,0,1.23.17,1.05,1.09a2.24,2.24,0,0,0,.19,1c.63,2,1.28,3.94,1.93,5.91Z"
       />
       <path
