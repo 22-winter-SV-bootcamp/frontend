@@ -8,6 +8,9 @@ import CustomSelectModal from './CustomSelectModal';
 import domtoimage from 'dom-to-image';
 import { saveAs } from 'file-saver';
 import { useNavigate } from 'react-router-dom';
+import domToImg from '@/components/utils/domToImg';
+import axiosCustom from '@/apis/createAxios';
+import postCustomStyleInfo from '@/apis/postCustoStyleInfo';
 const CustomInfo = ({ info, setInfo, svgRef }: any) => {
   const [modal, setModal] = useState(false);
   const [select, setSelect] = useState('hair');
@@ -127,40 +130,19 @@ const CustomInfo = ({ info, setInfo, svgRef }: any) => {
           variant="contained"
           sx={{ alignSelf: 'end', background: '#D9D9D9', color: 'black' }}
           onClick={async () => {
-            const svg = svgRef.current;
-            console.log(svg);
-            let d = new FormData();
+            let formData = new FormData();
 
-            await domtoimage
-              .toBlob(svg, {
-                width: svg.clientWidth * 4,
-                height: svg.clientHeight * 4,
-                style: {
-                  transform: 'scale(' + 4 + ')',
-                  transformOrigin: 'top left',
-                },
-              })
-              .then((blob) => {
-                d.append('file', blob);
-                console.log(d);
-                saveAs(blob, 'card.png');
-                for (const i of d) {
-                  console.log(i);
-                }
-              });
-            await axios
-              .post('api/v1/styles', {
-                file: d,
-                gender: gender,
-                top: top,
-                top_color: topColor,
-                bottom: bottom,
-                bottom_color: bottomColor,
-              })
-              .then((res) => {
-                console.log(res.data);
-                navigate('/result', { state: res.data });
-              });
+            let blob = await domToImg(svgRef.current);
+
+            formData.append('file', blob);
+            formData.append('gender', gender);
+            formData.append('top', top);
+            formData.append('top_color', topColor);
+            formData.append('bottom', bottom);
+            formData.append('bottom_color', bottomColor);
+
+            let link = await postCustomStyleInfo(formData);
+            navigate('/result', { state: link });
           }}
         >
           <Typography variant="h4">Done</Typography>
