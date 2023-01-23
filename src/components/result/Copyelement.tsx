@@ -8,7 +8,7 @@ import { green, orange } from '@mui/material/colors';
 import CheckIcon from '@mui/icons-material/Check';
 import ShareIcon from '@mui/icons-material/Share';
 
-export const Copyelement = () => {
+export const Copyelement = ({ resultImg }: { resultImg: string }) => {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [open, setOpen] = useState(false);
@@ -40,9 +40,7 @@ export const Copyelement = () => {
         setLoading(false);
       }, 300);
     }
-    clipboard(
-      'https://simsontest.s3.ap-northeast-2.amazonaws.com/83b17690-8e22-471b-ad3c-c8ffba67066d.jpg',
-    );
+    clipboard(resultImg);
   };
 
   const clipboard = (url: string) => {

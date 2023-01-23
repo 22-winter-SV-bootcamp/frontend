@@ -90,6 +90,7 @@ export function ResultImg() {
             left: '5vw',
           }}
           src={doh}
+          onClick={goFirstPage}
         />
       </Box>
       <Box
@@ -104,7 +105,7 @@ export function ResultImg() {
         }}
       >
         <Box className="iconLayout" sx={styleIconLayout}>
-          <IconButton
+          {/* <IconButton
             className="instagramButton"
             sx={{
               width: '15%',
@@ -123,7 +124,7 @@ export function ResultImg() {
               }}
               src={Instagram}
             />
-          </IconButton>
+          </IconButton> */}
           <IconButton
             className="kakaotalkButton"
             sx={{
@@ -131,7 +132,7 @@ export function ResultImg() {
               maxWidth: '3rem',
               p: '4px',
             }}
-            onClick={sendKakao}
+            onClick={() => sendKakao(url)}
           >
             <Box
               className="kakaotalk"
@@ -151,7 +152,7 @@ export function ResultImg() {
               maxWidth: '3rem',
             }}
           >
-            <Copyelement />
+            <Copyelement resultImg={url} />
           </Box>
         </Box>
         <Box className="imageLayout" sx={styleImageLayout}>
@@ -160,7 +161,7 @@ export function ResultImg() {
             component="img"
             sx={{ width: '100%', height: '100%' }}
             // src={location.state.link}
-            src={testSimpson}
+            src={url}
           />
           <IconButton /* 기본 패딩이 8 인듯 */
             className="downloadButton"

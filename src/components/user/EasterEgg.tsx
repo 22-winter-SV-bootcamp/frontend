@@ -28,7 +28,7 @@ const styleModal = {
 
 const styleRow = {
   position: 'relative',
-  height: '18%',
+  height: '20%',
   display: 'flex' /* 레이아웃 */,
   flexDirection: 'row' /* 가로 방향 */,
   justifyContent: 'center' /* 중앙으로 이동 */,
@@ -63,7 +63,7 @@ export function EasterEgg({
     /* props 사용하기 위해 함수형 컴포넌트 안에 배치 */
     width: '46vw' /* 16x8.5= 136px(default값 16) */,
     //height: '64vh' /* 16x19.5= 312px(default값 16) */,
-    height: '78%',
+    height: '76%',
     alignSelf: 'center',
     objectFit:
       'contain' /* 비율유지한채, 이미지 잘리지 않게, 남는공간 비워둠 */,
