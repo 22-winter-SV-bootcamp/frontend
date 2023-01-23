@@ -14,15 +14,26 @@ import { useNavigate } from 'react-router-dom';
 
 const DragDropUpload = () => {
   let [taskId, setTaskId] = useState('');
+
+  let [isLoading, setIsLoading] = useState(false);
   let {
     data,
-    isLoading,
+
     refetch,
+
     isSuccess: Success,
   } = useQuery(['AiResult'], async () => await getAiResult(taskId), {
     enabled: false,
     staleTime: 1000 * 60 ** 60,
     refetchOnWindowFocus: false,
+
+    onSuccess: (data: any) => {
+      if (data?.status === 'not yet') setTimeout(refetch, 5000);
+      else {
+        setIsLoading(false);
+        navigate('/custom', { state: data });
+      }
+    },
   });
   // console.log('data', data);
 
@@ -50,7 +61,7 @@ const DragDropUpload = () => {
   const handleDrop = (e: DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     let formData = appendImageToFormData(e.dataTransfer.files[0]);
-
+    setIsLoading(true);
     mutate(formData, {
       onSuccess(task_id, variables, context) {
         // console.log('mutate', task_id.task_id);
@@ -66,11 +77,13 @@ const DragDropUpload = () => {
     }
   }, [taskId]);
 
-  useEffect(() => {
-    if (Success) {
-      navigate('/custom', { state: data });
-    }
-  }, [Success]);
+  console.log('data', data);
+
+  // useEffect(() => {
+  //   if (Success) {
+  //     navigate('/custom', { state: data });
+  //   }
+  // }, [Success]);
 
   const handleClickFileUpload = (
     e: React.ChangeEvent<HTMLInputElement> | any,

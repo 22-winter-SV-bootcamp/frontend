@@ -1,9 +1,12 @@
-import { Button } from '@mui/material';
+import { Button, Hidden, Typography } from '@mui/material';
 import { Box } from '@mui/system';
-import React, { SetStateAction } from 'react';
+import React, { SetStateAction, useState } from 'react';
+import CheckColorList from './common/CheckColorList';
+
 import CheckItemList from './common/CheckItemList';
 
 const CustomSelectModal = ({
+  modal,
   setModal,
   select,
   setInfo,
@@ -13,96 +16,131 @@ const CustomSelectModal = ({
   select: string;
   setInfo: any;
   gender: string;
+  modal: boolean;
 }) => {
   const colorArr = {
-    white: '#F9F6F6',
-    cream: '#292121',
-    black: '#32454C',
-    gary: '#B8BFDA',
-    pink: '#E4007F',
-    red: '#FF0000',
-    orange: '#FE8B10',
-    yellow: '#FFF174',
-    green: '#60906D',
-    blue: '#0809FF',
-    navy: '#3E4982',
-    purple: '#E179E3',
-    brown: '#886024',
-    beige: '#CEB37D',
+    white: '#f9f6f6',
+    coolGray: '#d4d4d4',
+    gray: '#a6a6a6',
+    darkGray: '#4b5053',
+    charcoal: '#444444',
+    red: '#900000',
+    orange: '#d98200',
+    yellow: '#ffcb00',
+    navy: '#2c376f',
+    purple: '#8a00ac',
+    green: '#0a7c00',
+    black: '#000000',
+    neonBlue: '#02abcf',
+    peach: '#DF5353',
+    darkBrown: '#362710',
+    brown: '#4A3A2A',
+    darkBagie: '#A3907B',
+    bagie: '#A3907B',
+    ligthBegie: '#A3907B',
+    ivory: '#DED3AA',
+    kaki: '#3C492A',
+    ligthBlue: '#CCE7FF',
+    middleBlue: '#417797',
+    darkBlue: '#165690',
+    denim: '#1A2B47',
+    sora: '#5C71C9',
+    skyBlue: '#9CB0FF',
+    pink: '#FFB6B6',
   };
-  // const styles: any = {
-  //   hair: {
-  //     short: 'a',
-  //     long: 'b',
-  //     middle: 'c',
-  //   },
-  //   top: {
-  //     // TODO: -blazer 원래는 이거임
-  //     blazer: '@/assets/custom/bart.png',
-  //     blouse: '@/assets/custom/bart.png',
-  //     cardigan: '@/assets/custom/bart.png',
-  //     coat: '@/assets/custom/bart.png',
-  //     denim: '@/assets/custom/bart.png',
-  //     hoodi: '@/assets/custom/bart.png',
-  //     jumper: '@/assets/custom/bart.png',
-  //     mustang: '@/assets/custom/bart.png',
-  //     riders: '@/assets/custom/bart.png',
-  //     shirts: '@/assets/custom/bart.png',
-  //     pkshirts: '@/assets/custom/bart.png',
-
-  //     sweatshirts: '@/assets/custom/bart.png',
-  //   },
-  //   bottom: {
-  //     leggings: '@/assets/custom/bart.png',
-  //     sweatpants: '@/assets/custom/bart.png',
-  //     slacks: '@/assets/custom/bart.png',
-  //     skirt: '@/assets/custom/bart.png',
-  //     sweater: '@/assets/custom/bart.png',
-  //     // TODO: Half-shortpants 원래는 이거임
-  //     HalfShortpants: '@/assets/custom/bart.png',
-  //   },
-  //   background: {
-  //     type1: 'd',
-  //     type2: 'e',
-  //     type3: 'f',
-  //   },
-  // };
 
   const styles: any = {
     female: {
       hair: ['short', 'middle', 'long'],
-      top: ['a', 'b', 'c', 'd'],
-      bottom: ['e', 'f'],
-      background: ['g', 'h', 'i'],
+      top: [
+        'blazer',
+        'blouse',
+        'cardigan',
+        'coat',
+        'hoodi',
+        'jumper',
+        'mustang',
+        'onepiece',
+        'pkshirts',
+        'shirts',
+        'sweater',
+        'sweatshirts',
+        't_shirts',
+      ],
+      bottom: [
+        'denim',
+        'half_shortpants',
+        'leggings',
+        'skirt',
+        'slacks',
+        'sweatpants',
+      ],
+      background: ['background1', 'background2', 'background3'],
     },
     male: {
       hair: ['short', 'middle', 'long'],
-      top: ['g', 'h', 'i'],
-      bottom: ['a', 'b', 'c', 'd'],
-      background: ['e', 'f'],
+      top: [
+        'blazer',
+        'blouse',
+        'cardigan',
+        'coat',
+        'hoodi',
+        'jumper',
+        'mustang',
+        'onepiece',
+        'pkshirts',
+        'shirts',
+        'sweater',
+        'sweatshirts',
+        't_shirts',
+      ],
+      bottom: [
+        'denim',
+        'half_shortpants',
+        'leggings',
+        'skirt',
+        'slacks',
+        'sweatpants',
+      ],
+      background: ['background1', 'background2', 'background3'],
     },
   };
 
   return (
-    <Box>
+    <Box
+      sx={{
+        width: '100%',
+        height: '100%',
+        color: 'black',
+        background: '#FFCE00',
+        display: modal ? 'flex' : 'block',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        padding: 4,
+
+        // justifyContent: 'center',
+        // alignItems: 'center',
+      }}
+    >
       <CheckItemList
         select={select}
         setInfo={setInfo}
         title="Style"
+        gender={gender}
         arr={styles[gender][select]}
       ></CheckItemList>
-      <CheckItemList
+      <CheckColorList
         select={select + 'Color'}
         setInfo={setInfo}
-        title="Color"
-        arr={Object.keys(colorArr)}
-      ></CheckItemList>
+      ></CheckColorList>
+
       <Button
+        sx={{ color: 'black' }}
         onClick={() => {
           setModal(false);
         }}
       >
-        <Box>OK</Box>
+        <Typography variant="h4">OK</Typography>
       </Button>
     </Box>
   );
