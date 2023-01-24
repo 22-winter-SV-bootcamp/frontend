@@ -9,13 +9,11 @@ import Simpson3 from './assets/Simpson3.png';
 import SimpsonDoh from './assets/SimpsonDoh.jpg';
 import SimpsonDoh2 from './assets/SimpsonDoh2.png';
 import router from './router/router';
-import SVGMaleLaggings from './svgComponents/male/bottom/SVGMaleLeggings';
 
 function App() {
   return (
     <Box sx={{ width: 1, height: 1 }}>
-      {/* <RouterProvider router={router}></RouterProvider> */}
-      <SVGMaleLaggings main="blue"></SVGMaleLaggings>
+      <RouterProvider router={router}></RouterProvider>
     </Box>
   );
 }
