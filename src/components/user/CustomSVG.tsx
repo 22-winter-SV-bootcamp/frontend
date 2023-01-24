@@ -18,6 +18,7 @@ import SVGFemaleOnepiece from '@/svgComponents/female/top/SVGFemaleOnepiece';
 import SVGFemalePkshirts from '@/svgComponents/female/top/SVGFemalePkshirts';
 import SVGFemaleShirts from '@/svgComponents/female/top/SVGFemaleShirts';
 import SVGFemaleSweater from '@/svgComponents/female/top/SVGFemaleSweater';
+import SVGFemaleSweatshirts from '@/svgComponents/female/top/SVGFemaleSweatshirts';
 import SVGFemaleT_shirts from '@/svgComponents/female/top/SVGFemaleT_shirts';
 import SVGMaleDenim from '@/svgComponents/male/bottom/SVGMaleDenim';
 import SVGMaleHalf_shortpants from '@/svgComponents/male/bottom/SVGMaleHalf_shortpants';
@@ -39,6 +40,7 @@ import SVGMaleOnepiece from '@/svgComponents/male/top/SVGMaleOnepiece';
 import SVGMalePkshirts from '@/svgComponents/male/top/SVGMalePkshirts';
 import SVGMaleShirts from '@/svgComponents/male/top/SVGMaleShirts';
 import SVGMaleSweater from '@/svgComponents/male/top/SVGMaleSweater';
+import SVGMaleSweatshirts from '@/svgComponents/male/top/SVGMaleSweatshirts';
 import SVGMaleT_shirts from '@/svgComponents/male/top/SVGMaleT_shirts';
 import { Box } from '@mui/system';
 import { relative } from 'path';
@@ -66,35 +68,48 @@ const CustomSVG = ({ info }: any) => {
   let detail = 10;
 
   const colorArr: ColorArrType = {
-    white: '#f9f6f6',
-    coolGray: '#d4d4d4',
-    gray: '#a6a6a6',
-    darkGray: '#4b5053',
+    white: '#FFFFFF',
+    melangeGrey: '#D4D4D4',
+    grey: '#A6A6A6',
+    coolGrey: '#4B5053',
     charcoal: '#444444',
-    red: '#900000',
-    orange: '#d98200',
-    yellow: '#ffcb00',
-    navy: '#2c376f',
-    purple: '#8a00ac',
-    green: '#0a7c00',
-    black: '#000000',
-    neonBlue: '#02abcf',
-    peach: '#DF5353',
+    black: '#2B2929',
+    ivory: '#F5EFEF',
+    lightBeige: '#DED3AA',
+    beige: '#D6BB87',
+    peachBeige: '#DBBC97',
+    deepBeige: '#BEA78C',
+    darkBeige: '#A3907B',
+    beigeBrown: '#7B6146',
+    deepbrown: '#4A3A2A',
     darkBrown: '#362710',
-    brown: '#4A3A2A',
-    darkBagie: '#A3907B',
-    bagie: '#A3907B',
-    ligthBegie: '#A3907B',
-    lightIvory: '#F5EFEF',
-    ivory: '#DED3AA',
-    kaki: '#3C492A',
-    ligthBlue: '#CCE7FF',
+    blond: '#FFECAE',
+    lightBrown: '#A36B3E',
+    brickBrown: '#854809',
+    brown: '#54310A',
+    khaki: '#3C492A',
+    dustyGreen: '#76A973',
+    lightBlue: '#CCE7FF',
     middleBlue: '#417797',
-    darkBlue: '#165690',
-    denim: '#1A2B47',
-    sora: '#5C71C9',
+    deepBlue: '#165690',
+    indigoBlue: '#1A2B47',
+    burgundy: '#740E21',
+    orange: '#D98200',
+    yellow: '#FFCB00',
+    navy: '#2C376F',
+    purple: '#8A00AC',
     skyBlue: '#9CB0FF',
+    sora: '#5C71C9',
+    blue: '#0088D4',
     pink: '#FFB6B6',
+    magentaPink: '#EE6989',
+    red: '#A40707',
+    pastelGreen: '#87B24A',
+    lightGreen: '#629021',
+    green: '#0A7C00',
+    neonBlue: '#02ABCF',
+    coral: '#DF5353',
+    skin: '#FFD521',
   };
 
   const SVGComponents: SVGComponentsType = {
@@ -194,12 +209,12 @@ const CustomSVG = ({ info }: any) => {
             detail={detail}
           ></SVGFemaleSweater>
         ),
-        sweatershirts: (
-          <SVGFemaleT_shirts
+        sweatshirts: (
+          <SVGFemaleSweatshirts
             main={colorArr[topColor]}
             sub={sub}
             detail={detail}
-          ></SVGFemaleT_shirts>
+          ></SVGFemaleSweatshirts>
         ),
         t_shirts: (
           <SVGFemaleT_shirts
@@ -359,12 +374,12 @@ const CustomSVG = ({ info }: any) => {
             detail={detail}
           ></SVGMaleSweater>
         ),
-        sweatershirts: (
-          <SVGMaleT_shirts
+        sweatshirts: (
+          <SVGMaleSweatshirts
             main={colorArr[topColor]}
             sub={sub}
             detail={detail}
-          ></SVGMaleT_shirts>
+          ></SVGMaleSweatshirts>
         ),
         t_shirts: (
           <SVGMaleT_shirts
