@@ -1,7 +1,5 @@
-FROM node
-RUN mkdir /app
-WORKDIR /app
+FROM node:16-alpine
+WORKDIR /frontend
 COPY . ./
 RUN npm i
-CMD ["npm","run","dev"]
-
+CMD ["npm", "run", "build"]

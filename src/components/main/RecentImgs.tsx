@@ -51,7 +51,7 @@ const RecentImgs = () => {
   };
 
   return (
-    <Box sx={{ backgroundColor: 'black', height: '100vh' }}>
+    <Box sx={{ backgroundColor: 'black', height: '100vh', overflow: 'hidden' }}>
       <Box
         sx={{
           height: '20%',
@@ -92,10 +92,9 @@ const RecentImgs = () => {
                 left: 0,
 
                 margin: 'auto',
-                width: '30vw',
-                minWidth: '200px',
+
+                minWidth: '300px',
                 maxWidth: '300px',
-                height: '50vh',
 
                 objectFit: 'cover',
                 cursor: 'pointer',

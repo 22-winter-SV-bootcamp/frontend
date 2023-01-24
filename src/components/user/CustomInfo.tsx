@@ -25,34 +25,13 @@ const CustomInfo = ({ info, setInfo, svgRef }: any) => {
     bottom,
     bottomColor,
     background,
+    inner,
+    innerColor,
   } = info;
   console.log('info가 바뀌었나?', info);
 
   const changeGender = (gender: string) => {
-    let init =
-      gender === 'male'
-        ? {
-            gender: 'male',
-            hair: 'middle',
-            hairColor: 'white',
-            top: 't_shirts',
-            topColor: 'white',
-            bottom: 'slacks',
-            bottomColor: 'white',
-            background: 'background1',
-          }
-        : {
-            gender: 'female',
-            hair: 'long',
-            hairColor: 'white',
-            top: 't_shirts',
-            topColor: 'white',
-            bottom: 'slacks',
-            bottomColor: 'white',
-            background: 'background1',
-          };
-
-    setInfo(init);
+    setInfo((pre: any) => ({ ...pre, gender: gender }));
   };
 
   return (
@@ -71,8 +50,9 @@ const CustomInfo = ({ info, setInfo, svgRef }: any) => {
           padding: 2,
           background: '#95989b',
           width: '90%',
+          margin: 'auto',
           height: '100%',
-          marginLeft: 'auto',
+
           display: modal ? 'none' : 'flex',
           flexDirection: 'column',
 
@@ -117,7 +97,7 @@ const CustomInfo = ({ info, setInfo, svgRef }: any) => {
             </Button>
           </Box>
         </Box>
-        {['hair', 'top', 'bottom', 'background'].map((title) => (
+        {['hair', 'inner', 'top', 'bottom', 'background'].map((title) => (
           <CheckItem
             key={title}
             info={info}

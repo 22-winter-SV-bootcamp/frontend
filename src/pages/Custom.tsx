@@ -49,12 +49,14 @@ const Custom = () => {
   const [info, setInfo] = useState({
     gender: 'female',
     hair: 'long',
-    hairColor: 'red',
+    hairColor: 'skyBlue',
     top: 'blazer',
     topColor: 'blue',
     bottom: 'jeans',
-    bottomColor: 'green',
+    bottomColor: 'black',
     background: 'background1',
+    inner: 'basic_t_shirts',
+    innerColor: 'red',
   });
   const location = useLocation();
   const svgRef: any = useRef();
@@ -87,12 +89,11 @@ const Custom = () => {
     >
       <div
         style={{
-          width: '100%',
-          height: '100%',
-          minWidth: 300,
-          minHeight: 300,
-          maxHeight: 300,
+          minWidth: 350,
+          minHeight: 350,
+          maxHeight: 500,
           maxWidth: 500,
+          backgroundColor: 'red',
         }}
         ref={svgRef}
       >

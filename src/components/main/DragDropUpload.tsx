@@ -64,39 +64,27 @@ const DragDropUpload = () => {
     setIsLoading(true);
     mutate(formData, {
       onSuccess(task_id, variables, context) {
-        // console.log('mutate', task_id.task_id);
+        setTaskId(task_id.task_id);
+      },
+    });
+  };
+
+  const handleClickFileUpload = (
+    e: React.ChangeEvent<HTMLInputElement> | any,
+  ) => {
+    e.preventDefault();
+    let formData = appendImageToFormData(e.target.files[0]);
+    mutate(formData, {
+      onSuccess(task_id, variables, context) {
         setTaskId(task_id.task_id);
       },
     });
   };
 
   useEffect(() => {
-    if (taskId !== '') {
-      refetch();
-      // refetch().then(res=>navigate('/custom')); // 이렇게 쓰는게 나을까??
-    }
+    if (taskId !== '') refetch();
   }, [taskId]);
 
-  // useEffect(() => {
-  //   if (Success) {
-  //     navigate('/custom', { state: data });
-  //   }
-  // }, [Success]);
-
-  const handleClickFileUpload = (
-    e: React.ChangeEvent<HTMLInputElement> | any,
-  ) => {
-    e.preventDefault();
-
-    let formData = appendImageToFormData(e.target.files[0]);
-
-    mutate(formData, {
-      onSuccess(task_id, variables, context) {
-        console.log('mutate', task_id.task_id);
-        setTaskId(task_id.task_id);
-      },
-    });
-  };
   return (
     <Box
       sx={{
@@ -170,7 +158,7 @@ const DragDropUpload = () => {
           >
             <input
               onChange={handleClickFileUpload}
-              // hidden
+              hidden
               multiple
               type="file"
             />

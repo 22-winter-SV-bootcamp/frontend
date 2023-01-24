@@ -5,8 +5,8 @@ import SVGFemaleSkirt from '@/svgComponents/female/bottom/SVGFemaleSkirt';
 import SVGFemaleSlacks from '@/svgComponents/female/bottom/SVGFemaleSlacks';
 import SVGFemaleSweatpants from '@/svgComponents/female/bottom/SVGFemaleSweatpants';
 import SVGFemaleLong from '@/svgComponents/female/hair/SVGFemaleLong';
-import SVGFemaleBasic_neck_pole from '@/svgComponents/female/top/SVGFemaleBasic_neck_pole';
-import SVGFemaleBasic_t_shirts from '@/svgComponents/female/top/SVGFemaleBasic_t_shirts';
+import SVGFemaleBasic_neck_pole from '@/svgComponents/female/inner/SVGFemaleBasic_neck_pole';
+import SVGFemaleBasic_t_shirts from '@/svgComponents/female/inner/SVGFemaleBasic_t_shirts';
 import SVGFemaleBlazer from '@/svgComponents/female/top/SVGFemaleBlazer';
 import SVGFemaleBlouse from '@/svgComponents/female/top/SVGFemaleBlouse';
 import SVGFemaleCardigan from '@/svgComponents/female/top/SVGFemaleCardigan';
@@ -27,8 +27,8 @@ import SVGMaleSkirt from '@/svgComponents/male/bottom/SVGMaleSkirt';
 import SVGMaleSlacks from '@/svgComponents/male/bottom/SVGMaleSlacks';
 import SVGMaleSweatpants from '@/svgComponents/male/bottom/SVGMaleSweatpants';
 import SVGMaleMiddle from '@/svgComponents/male/hair/SVGMaleMiddle';
-import SVGMaleBasic_neck_pole from '@/svgComponents/male/top/SVGMaleBasic_neck_pole';
-import SVGMaleBasic_t_shirts from '@/svgComponents/male/top/SVGMaleBasic_t_shirts';
+import SVGMaleBasic_neck_pole from '@/svgComponents/male/inner/SVGMaleBasic_neck_pole';
+import SVGMaleBasic_t_shirts from '@/svgComponents/male/inner/SVGMaleBasic_t_shirts';
 import SVGMaleBlazer from '@/svgComponents/male/top/SVGMaleBlazer';
 import SVGMaleBlouse from '@/svgComponents/male/top/SVGMaleBlouse';
 import SVGMaleCardigan from '@/svgComponents/male/top/SVGMaleCardigan';
@@ -62,6 +62,8 @@ const CustomSVG = ({ info }: any) => {
     bottom,
     bottomColor,
     background,
+    inner,
+    innerColor,
   } = info;
 
   let sub = 85;
@@ -117,14 +119,14 @@ const CustomSVG = ({ info }: any) => {
       inner: {
         basic_neck_pole: (
           <SVGFemaleBasic_neck_pole
-            main={'white'}
+            main={colorArr[innerColor]}
             sub={sub}
             detail={detail}
           ></SVGFemaleBasic_neck_pole>
         ),
         basic_t_shirts: (
           <SVGFemaleBasic_t_shirts
-            main={'white'}
+            main={colorArr[innerColor]}
             sub={sub}
             detail={detail}
           ></SVGFemaleBasic_t_shirts>
@@ -227,42 +229,42 @@ const CustomSVG = ({ info }: any) => {
       bottom: {
         denim: (
           <SVGFemaleDenim
-            main={bottomColor}
+            main={colorArr[bottomColor]}
             sub={sub}
             detail={detail}
           ></SVGFemaleDenim>
         ),
         half_shortpants: (
           <SVGFemaleHalf_shortpants
-            main={bottomColor}
+            main={colorArr[bottomColor]}
             sub={sub}
             detail={detail}
           ></SVGFemaleHalf_shortpants>
         ),
         leggings: (
           <SVGFemaleLeggings
-            main={bottomColor}
+            main={colorArr[bottomColor]}
             sub={sub}
             detail={detail}
           ></SVGFemaleLeggings>
         ),
         skirt: (
           <SVGFemaleSkirt
-            main={bottomColor}
+            main={colorArr[bottomColor]}
             sub={sub}
             detail={detail}
           ></SVGFemaleSkirt>
         ),
         slacks: (
           <SVGFemaleSlacks
-            main={bottomColor}
+            main={colorArr[bottomColor]}
             sub={sub}
             detail={detail}
           ></SVGFemaleSlacks>
         ),
         sweatpants: (
           <SVGFemaleSweatpants
-            main={bottomColor}
+            main={colorArr[bottomColor]}
             sub={sub}
             detail={detail}
           ></SVGFemaleSweatpants>
@@ -271,7 +273,7 @@ const CustomSVG = ({ info }: any) => {
       hair: {
         long: (
           <SVGFemaleLong
-            main={hairColor}
+            main={colorArr[hairColor]}
             sub={sub}
             detail={detail}
           ></SVGFemaleLong>
@@ -282,14 +284,14 @@ const CustomSVG = ({ info }: any) => {
       inner: {
         basic_neck_pole: (
           <SVGMaleBasic_neck_pole
-            main={colorArr[topColor]}
+            main={colorArr[innerColor]}
             sub={sub}
             detail={detail}
           ></SVGMaleBasic_neck_pole>
         ),
         basic_t_shirts: (
           <SVGMaleBasic_t_shirts
-            main={colorArr[topColor]}
+            main={colorArr[innerColor]}
             sub={sub}
             detail={detail}
           ></SVGMaleBasic_t_shirts>
@@ -474,9 +476,9 @@ const CustomSVG = ({ info }: any) => {
     <Box
       sx={{
         position: 'relative',
-        minWidth: 300,
+        minWidth: 350,
         maxWidth: 500,
-        minHeight: 300,
+        minHeight: 350,
         maxHeight: 500,
         height: 'auto',
       }}
@@ -489,7 +491,7 @@ const CustomSVG = ({ info }: any) => {
       </Box>
 
       <Box sx={{ position: 'absolute' }} width="100%" height="100%">
-        {SVGComponents[gender]['inner']['basic_t_shirts']}
+        {SVGComponents[gender]['inner'][inner]}
       </Box>
 
       <Box sx={{ position: 'absolute' }} width="100%" height="100%">
