@@ -16,7 +16,7 @@ type CardsType = {
 const RecentImgs = () => {
   const [index, setIndex] = useState(0);
   const [cards, setCards] = useState<CardsType[]>([]);
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(1);
 
   const { isLoading, isError, data } = useQuery(
     ['recentPage', page],

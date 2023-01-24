@@ -77,8 +77,6 @@ const DragDropUpload = () => {
     }
   }, [taskId]);
 
-  console.log('data', data);
-
   // useEffect(() => {
   //   if (Success) {
   //     navigate('/custom', { state: data });
@@ -89,6 +87,7 @@ const DragDropUpload = () => {
     e: React.ChangeEvent<HTMLInputElement> | any,
   ) => {
     e.preventDefault();
+
     let formData = appendImageToFormData(e.target.files[0]);
 
     mutate(formData, {
@@ -171,7 +170,7 @@ const DragDropUpload = () => {
           >
             <input
               onChange={handleClickFileUpload}
-              hidden
+              // hidden
               multiple
               type="file"
             />

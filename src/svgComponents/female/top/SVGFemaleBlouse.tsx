@@ -8,7 +8,7 @@ const SVGFemaleBlouse = ({ main, sub, detail }: any) => (
     height="100%"
   >
     <defs>
-      <style>{`.cls-1{fill:${main}}`}</style>
+      <style>{'.cls-1{fill:#fff;}'}</style>
     </defs>
     <g id="\uB808\uC774\uC5B4_50" data-name="\uB808\uC774\uC5B4 50">
       <path

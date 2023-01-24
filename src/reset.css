@@ -131,3 +131,15 @@ table {
 * {
   box-sizing: border-box;
 }
+
+/* 아이폰에서 가능하게 하려고 */
+input,
+textarea {
+  -moz-user-select: auto;
+
+  -webkit-user-select: auto;
+
+  -ms-user-select: auto;
+
+  user-select: auto;
+}
