@@ -9,9 +9,9 @@ import App from './App';
 import { worker } from './mocks/worker';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
-if (import.meta.env.DEV) {
-  worker.start();
-}
+// if (import.meta.env.DEV) {
+//   worker.start();
+// }
 
 const theme = createTheme({
   breakpoints: {
@@ -23,7 +23,6 @@ const theme = createTheme({
     },
   },
 });
-
 
 const queryClient = new QueryClient();
 
