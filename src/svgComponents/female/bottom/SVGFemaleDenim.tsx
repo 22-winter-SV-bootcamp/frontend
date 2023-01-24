@@ -1,10 +1,10 @@
 import * as React from 'react';
-const SVGFemaleDenim = ({ main, sub, detail }: any) => (
+const SVGFemaleDenim = ({ main, sub, detail, viewBox }: any) => (
   <svg
     id="_\uC815\uBC14\uC9C0"
     data-name="\uC815\uBC14\uC9C0"
     xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 595.2 595.2"
+    viewBox={viewBox}
     width="100%"
     height="100%"
   >
@@ -36,11 +36,13 @@ const SVGFemaleDenim = ({ main, sub, detail }: any) => (
         <path
           className="cls-1"
           style={{ fill: main, filter: `brightness(${sub}%)` }}
-          d="M446.82,478.63h45.65v7.12h-45.65v-7.12Z" />
+          d="M446.82,478.63h45.65v7.12h-45.65v-7.12Z"
+        />
         <path
           className="cls-1"
           style={{ fill: main, filter: `brightness(${sub}%)` }}
-          d="M395.95,485.3v-6.74h40.96v6.74h-40.96Z" />
+          d="M395.95,485.3v-6.74h40.96v6.74h-40.96Z"
+        />
         <path
           className="cls-1"
           style={{ fill: main }}
@@ -49,7 +51,8 @@ const SVGFemaleDenim = ({ main, sub, detail }: any) => (
         <path
           className="cls-1"
           style={{ fill: main, filter: `brightness(${sub}%)` }}
-          d="M436.84,486.44v2.4h-41.04v-2.4h41.04Z" />
+          d="M436.84,486.44v2.4h-41.04v-2.4h41.04Z"
+        />
         <path
           className="cls-1"
           style={{ fill: main, filter: `brightness(${sub}%)` }}
@@ -58,7 +61,8 @@ const SVGFemaleDenim = ({ main, sub, detail }: any) => (
         <path
           className="cls-1"
           style={{ fill: main }}
-          d="M445.19,488.79h-6.8v-10.16h6.8v10.16Z" />
+          d="M445.19,488.79h-6.8v-10.16h6.8v10.16Z"
+        />
       </g>
     </g>
     <g id="_\uC120" data-name="\uC120">
@@ -66,4 +70,7 @@ const SVGFemaleDenim = ({ main, sub, detail }: any) => (
     </g>
   </svg>
 );
+SVGFemaleDenim.defaultProps = {
+  viewBox: '0 0 595.2 595.2',
+};
 export default SVGFemaleDenim;

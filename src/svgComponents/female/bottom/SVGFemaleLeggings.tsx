@@ -1,10 +1,10 @@
 import * as React from 'react';
-const SVGFemaleLeggings = ({ main, sub, detail }: any) => (
+const SVGFemaleLeggings = ({ main, sub, detail, viewBox }: any) => (
   <svg
     id="_\uB808\uAE45\uC2A4"
     data-name="\uB808\uAE45\uC2A4"
     xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 595.2 595.2"
+    viewBox={viewBox}
     width="100%"
     height="100%"
   >
@@ -37,4 +37,7 @@ const SVGFemaleLeggings = ({ main, sub, detail }: any) => (
     </g>
   </svg>
 );
+SVGFemaleLeggings.defaultProps = {
+  viewBox: '0 0 595.2 595.2',
+};
 export default SVGFemaleLeggings;

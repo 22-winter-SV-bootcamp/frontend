@@ -1,10 +1,10 @@
 import * as React from 'react';
-const SVGFemaleLong = ({ main, sub, detail }: any) => (
+const SVGFemaleLong = ({ main, sub, detail, viewBox }: any) => (
   <svg
     id="_\uBCA0\uC774\uC2A4"
     data-name="\uBCA0\uC774\uC2A4"
     xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 595.2 595.2"
+    viewBox={viewBox}
     width="100%"
     height="100%"
   >
@@ -16,7 +16,6 @@ const SVGFemaleLong = ({ main, sub, detail }: any) => (
     <g id="_\uC0C9\uAE54" data-name="\uC0C9\uAE54">
       <path
         className="cls-1"
-
         d="M519.01,301.94c-.03-.69,.42-1.51,1-1.34,.42,.11,1.22,.66,1.27,1.43,.03,.6-.35,.93-.8,1.01-.85-.06-1.43-.34-1.47-1.1Z"
       />
       <path
@@ -113,4 +112,7 @@ const SVGFemaleLong = ({ main, sub, detail }: any) => (
     </g>
   </svg>
 );
+SVGFemaleLong.defaultProps = {
+  viewBox: '0 0 595.2 595.2',
+};
 export default SVGFemaleLong;

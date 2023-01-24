@@ -1,10 +1,10 @@
 import * as React from 'react';
-const SVGMaleCoat = ({ main, sub, detail }: any) => (
+const SVGMaleCoat = ({ main, sub, detail, viewBox }: any) => (
   <svg
     id="\uCF54\uD2B8_\uC774\uBBF8\uC9C0"
     data-name="\uCF54\uD2B8\xA0\uC774\uBBF8\uC9C0"
     xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 595.2 595.2"
+    viewBox={viewBox}
     width="100%"
     height="100%"
   >
@@ -60,4 +60,7 @@ const SVGMaleCoat = ({ main, sub, detail }: any) => (
     </g>
   </svg>
 );
+SVGMaleCoat.defaultProps = {
+  viewBox: '0 0 595.2 595.2',
+};
 export default SVGMaleCoat;

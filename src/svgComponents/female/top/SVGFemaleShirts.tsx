@@ -1,10 +1,10 @@
 import * as React from 'react';
-const SVGFemaleShirts = ({ main, sub, detail }: any) => (
+const SVGFemaleShirts = ({ main, sub, detail, viewBox }: any) => (
   <svg
     id="_\uC154\uCE20"
     data-name="\uC154\uCE20"
     xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 595.2 595.2"
+    viewBox={viewBox}
     width="100%"
     height="100%"
   >
@@ -67,4 +67,7 @@ const SVGFemaleShirts = ({ main, sub, detail }: any) => (
     </g>
   </svg>
 );
+SVGFemaleShirts.defaultProps = {
+  viewBox: '0 0 595.2 595.2',
+};
 export default SVGFemaleShirts;

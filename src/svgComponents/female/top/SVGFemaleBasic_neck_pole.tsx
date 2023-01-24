@@ -1,10 +1,10 @@
 import * as React from 'react';
-const SVGFemaleBasic_neck_pole = ({ main, sub, detail }: any) => (
+const SVGFemaleBasic_neck_pole = ({ main, sub, detail, viewBox }: any) => (
   <svg
     id="_\uBAA9\uD2F0"
     data-name="\uBAA9\uD2F0"
     xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 595.2 595.2"
+    viewBox={viewBox}
     width="100%"
     height="100%"
   >
@@ -23,4 +23,7 @@ const SVGFemaleBasic_neck_pole = ({ main, sub, detail }: any) => (
     </g>
   </svg>
 );
+SVGFemaleBasic_neck_pole.defaultProps = {
+  viewBox: '0 0 595.2 595.2',
+};
 export default SVGFemaleBasic_neck_pole;
