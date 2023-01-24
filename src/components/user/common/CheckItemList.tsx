@@ -103,7 +103,6 @@ const CheckItemList = ({ info, gender, title, setInfo, arr, select }: any) => {
     coral: '#DF5353',
     skin: '#FFD521',
   };
-  console.log('Info:', info);
   const SVGComponents: SVGComponentsType = {
     female: {
       inner: {
@@ -287,6 +286,7 @@ const CheckItemList = ({ info, gender, title, setInfo, arr, select }: any) => {
             main={hairColor}
             sub={sub}
             detail={detail}
+            viewBox="300 100 300 300"
           ></SVGFemaleLong>
         ),
       },
@@ -473,6 +473,7 @@ const CheckItemList = ({ info, gender, title, setInfo, arr, select }: any) => {
             main={colorArr[hairColor]}
             sub={sub}
             detail={detail}
+            viewBox="300 100 300 300"
           ></SVGMaleMiddle>
         ),
       },
@@ -532,8 +533,6 @@ const CheckItemList = ({ info, gender, title, setInfo, arr, select }: any) => {
                   alt={v}
                   src={`src/assets/custom/background/${v}.png`}
                 />
-              ) : select === 'hair' ? (
-                SVGComponents[gender]['hair']['long']
               ) : (
                 SVGComponents[gender][select][v]
               )}
