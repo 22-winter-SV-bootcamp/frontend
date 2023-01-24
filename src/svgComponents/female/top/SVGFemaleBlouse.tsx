@@ -1,14 +1,14 @@
 import * as React from 'react';
-const SVGFemaleBlouse = ({ main, sub, detail }: any) => (
+const SVGFemaleBlouse = ({ main, sub, detail, viewBox }: any) => (
   <svg
     id="\uBE14\uB77C\uC6B0\uC2A4"
     xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 595.2 595.2"
+    viewBox={viewBox}
     width="100%"
     height="100%"
   >
     <defs>
-      <style>{`.cls-1{fill:${main}}`}</style>
+      <style>{'.cls-1{fill:#fff;}'}</style>
     </defs>
     <g id="\uB808\uC774\uC5B4_50" data-name="\uB808\uC774\uC5B4 50">
       <path
@@ -34,4 +34,7 @@ const SVGFemaleBlouse = ({ main, sub, detail }: any) => (
     />
   </svg>
 );
+SVGFemaleBlouse.defaultProps = {
+  viewBox: '0 0 595.2 595.2',
+};
 export default SVGFemaleBlouse;

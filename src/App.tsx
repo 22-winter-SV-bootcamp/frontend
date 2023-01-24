@@ -8,7 +8,6 @@ import Simpson2 from './assets/Simpson2.png';
 import Simpson3 from './assets/Simpson3.png';
 import SimpsonDoh from './assets/SimpsonDoh.jpg';
 import SimpsonDoh2 from './assets/SimpsonDoh2.png';
-
 import router from './router/router';
 
 function App() {

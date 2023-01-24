@@ -1,10 +1,10 @@
 import * as React from 'react';
-const SVGMaleCardigan = ({ main, sub, detail }: any) => (
+const SVGMaleCardigan = ({ main, sub, detail, viewBox }: any) => (
   <svg
     id="\uAC00\uB514\uAC74_\uC774\uBBF8\uC9C0"
     data-name="\uAC00\uB514\uAC74\xA0\uC774\uBBF8\uC9C0"
     xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 595.2 595.2"
+    viewBox={viewBox}
     width="100%"
     height="100%"
   >
@@ -157,4 +157,7 @@ const SVGMaleCardigan = ({ main, sub, detail }: any) => (
     </g>
   </svg>
 );
+SVGMaleCardigan.defaultProps = {
+  viewBox: '0 0 595.2 595.2',
+};
 export default SVGMaleCardigan;

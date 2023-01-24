@@ -1,5 +1,7 @@
 import { rest } from 'msw';
 
+const base = 'http://localhost:8080';
+
 const dummy =
   'https://simsontest.s3.ap-northeast-2.amazonaws.com/83b17690-8e22-471b-ad3c-c8ffba67066d.jpg';
 
@@ -51,11 +53,7 @@ const recentImgs1 = [
 ];
 
 export const handlers = [
-  // 테스트 mock api
-  rest.get('api/v1/test', (req, res, ctx) => {
-    return res(ctx.status(200), ctx.json(dummy));
-  }),
-  rest.post('api/v1/styles', (req, res, ctx) => {
+  rest.post(base + '/api/v1/styles', (req, res, ctx) => {
     return res(
       ctx.status(200),
       ctx.json({
@@ -65,10 +63,10 @@ export const handlers = [
   }),
 
   // ai task id 반환 api
-  rest.post('api/v1/images', (req, res, ctx) => {
+  rest.post(base + '/api/v1/images', (req, res, ctx) => {
     return res(ctx.status(200), ctx.json(dummyTaskId));
   }),
-  rest.get(`api/v1/images?`, (req, res, ctx) => {
+  rest.get(`http://localhost:8080/api/v1/images`, (req, res, ctx) => {
     console.log('images');
     let pageNumber = req.url.searchParams.get('page');
     if (pageNumber === '0') {
@@ -83,7 +81,7 @@ export const handlers = [
   }),
 
   //AI task 완료되었는지 반환
-  rest.get('api/v1/images/task/1', (req, res, ctx) => {
+  rest.get(base + '/api/v1/images/tasks?', (req, res, ctx) => {
     return res(
       ctx.status(200),
       ctx.json({
