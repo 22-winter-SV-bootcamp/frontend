@@ -1,10 +1,10 @@
 import * as React from 'react';
-const SVGMaleBlazer = ({ main, sub, detail }: any) => (
+const SVGMaleBlazer = ({ main, sub, detail, viewBox }: any) => (
   <svg
     id="\uBE14\uB808\uC774\uC800_\uC774\uBBF8\uC9C0"
     data-name="\uBE14\uB808\uC774\uC800\xA0\uC774\uBBF8\uC9C0"
     xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 595.2 595.2"
+    viewBox={viewBox}
     width="100%"
     height="100%"
   >
@@ -59,4 +59,7 @@ const SVGMaleBlazer = ({ main, sub, detail }: any) => (
     </g>
   </svg>
 );
+SVGMaleBlazer.defaultProps = {
+  viewBox: '0 0 595.2 595.2',
+};
 export default SVGMaleBlazer;

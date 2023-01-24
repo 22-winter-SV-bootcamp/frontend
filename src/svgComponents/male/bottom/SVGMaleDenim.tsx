@@ -1,10 +1,10 @@
 import * as React from 'react';
-const SVGMaleDenim = ({ main, sub, detail }: any) => (
+const SVGMaleDenim = ({ main, sub, detail, viewBox }: any) => (
   <svg
     id="\uCCAD\uBC14\uC9C0_\uC774\uBBF8\uC9C0"
     data-name="\uCCAD\uBC14\uC9C0\xA0\uC774\uBBF8\uC9C0"
     xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 595.2 595.2"
+    viewBox={viewBox}
     width="100%"
     height="100%"
   >
@@ -69,4 +69,7 @@ const SVGMaleDenim = ({ main, sub, detail }: any) => (
     </g>
   </svg>
 );
+SVGMaleDenim.defaultProps = {
+  viewBox: '0 0 595.2 595.2',
+};
 export default SVGMaleDenim;

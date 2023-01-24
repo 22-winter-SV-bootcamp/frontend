@@ -1,10 +1,10 @@
 import * as React from 'react';
-const SVGFemaleSweatpants = ({ main, sub, detail }: any) => (
+const SVGFemaleSweatpants = ({ main, sub, detail, viewBox }: any) => (
   <svg
     id="_\uC870\uAC70"
     data-name="\uC870\uAC70"
     xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 595.2 595.2"
+    viewBox={viewBox}
     width="100%"
     height="100%"
   >
@@ -55,7 +55,8 @@ const SVGFemaleSweatpants = ({ main, sub, detail }: any) => (
       <path
         className="cls-1"
         style={{ fill: main, filter: `brightness(${sub}%)` }}
-        d="M395.47,478.14h9.81v9.74h-9.81v-9.74Z" />
+        d="M395.47,478.14h9.81v9.74h-9.81v-9.74Z"
+      />
       <path
         className="cls-1"
         style={{ fill: main, filter: `brightness(${sub}%)` }}
@@ -92,4 +93,7 @@ const SVGFemaleSweatpants = ({ main, sub, detail }: any) => (
     </g>
   </svg>
 );
+SVGFemaleSweatpants.defaultProps = {
+  viewBox: '0 0 595.2 595.2',
+};
 export default SVGFemaleSweatpants;

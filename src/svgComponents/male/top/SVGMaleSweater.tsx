@@ -1,10 +1,10 @@
 import * as React from 'react';
-const SVGMaleSweater = ({ main, sub, detail }: any) => (
+const SVGMaleSweater = ({ main, sub, detail, viewBox }: any) => (
   <svg
     id="\uC2A4\uC6E8\uD130_\uC774\uBBF8\uC9C0"
     data-name="\uC2A4\uC6E8\uD130\xA0\uC774\uBBF8\uC9C0"
     xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 595.2 595.2"
+    viewBox={viewBox}
     width="100%"
     height="100%"
   >
@@ -64,4 +64,7 @@ const SVGMaleSweater = ({ main, sub, detail }: any) => (
     />
   </svg>
 );
+SVGMaleSweater.defaultProps = {
+  viewBox: '0 0 595.2 595.2',
+};
 export default SVGMaleSweater;

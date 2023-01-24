@@ -1,10 +1,10 @@
 import * as React from 'react';
-const SVGFemaleSlacks = ({ main, sub, detail }: any) => (
+const SVGFemaleSlacks = ({ main, sub, detail, viewBox }: any) => (
   <svg
     id="_\uC2AC\uB809\uC2A4"
     data-name="\uC2AC\uB809\uC2A4"
     xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 595.2 595.2"
+    viewBox={viewBox}
     width="100%"
     height="100%"
   >
@@ -59,8 +59,9 @@ const SVGFemaleSlacks = ({ main, sub, detail }: any) => (
       />
       <path
         className="cls-1"
-        style={{ fill: main, }}
-        d="M412.18,478.43h3.74v8.48h-3.74v-8.48Z" />
+        style={{ fill: main }}
+        d="M412.18,478.43h3.74v8.48h-3.74v-8.48Z"
+      />
       <path
         className="cls-1"
         style={{ fill: main }}
@@ -73,4 +74,7 @@ const SVGFemaleSlacks = ({ main, sub, detail }: any) => (
     </g>
   </svg>
 );
+SVGFemaleSlacks.defaultProps = {
+  viewBox: '0 0 595.2 595.2',
+};
 export default SVGFemaleSlacks;

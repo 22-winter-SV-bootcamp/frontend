@@ -1,9 +1,9 @@
 import * as React from 'react';
-const SVGFemaleJumper = ({ main, sub, detail }: any) => (
+const SVGFemaleJumper = ({ main, sub, detail, viewBox }: any) => (
   <svg
     id="\uD56D\uACF5\uC810\uD37C"
     xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 595.2 595.2"
+    viewBox={viewBox}
     width="100%"
     height="100%"
   >
@@ -61,4 +61,7 @@ const SVGFemaleJumper = ({ main, sub, detail }: any) => (
     </g>
   </svg>
 );
+SVGFemaleJumper.defaultProps = {
+  viewBox: '0 0 595.2 595.2',
+};
 export default SVGFemaleJumper;

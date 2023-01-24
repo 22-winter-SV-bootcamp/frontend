@@ -9,6 +9,7 @@ const CustomSelectModal = ({
   modal,
   setModal,
   select,
+  info,
   setInfo,
   gender,
 }: {
@@ -16,6 +17,7 @@ const CustomSelectModal = ({
   select: string;
   setInfo: any;
   gender: string;
+  info: any;
   modal: boolean;
 }) => {
   const colorArr = {
@@ -107,7 +109,7 @@ const CustomSelectModal = ({
       background: ['background1', 'background2', 'background3'],
     },
   };
-
+  console.log('setModalInfo:', info);
   return (
     <Box
       sx={{
@@ -129,6 +131,7 @@ const CustomSelectModal = ({
         setInfo={setInfo}
         title="Style"
         gender={gender}
+        info={info}
         arr={styles[gender][select]}
       ></CheckItemList>
       <CheckColorList

@@ -1,10 +1,10 @@
 import * as React from 'react';
-const SVGMaleMustang = ({ main, sub, detail }: any) => (
+const SVGMaleMustang = ({ main, sub, detail, viewBox }: any) => (
   <svg
     id="\uBB34\uC2A4\uD0D5_\uC774\uBBF8\uC9C0"
     data-name="\uBB34\uC2A4\uD0D5\xA0\uC774\uBBF8\uC9C0"
     xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 595.2 595.2"
+    viewBox={viewBox}
     width="100%"
     height="100%"
   >
@@ -94,4 +94,7 @@ const SVGMaleMustang = ({ main, sub, detail }: any) => (
     </g>
   </svg>
 );
+SVGMaleMustang.defaultProps = {
+  viewBox: '0 0 595.2 595.2',
+};
 export default SVGMaleMustang;
