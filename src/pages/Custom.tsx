@@ -11,6 +11,7 @@ import * as htmlToImage from 'html-to-image';
 import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
 import resultFilter from '@/utils/method/resultFilter';
 
+
 const theme = createTheme({
   /* custom MediaQuery */
   breakpoints: {
@@ -37,6 +38,7 @@ declare module '@mui/material/styles' {
     desktop: true;
   }
 }
+
 
 const Box2 = styled('div')(({ theme }) => ({
   [theme.breakpoints.down('mobile')]: {
@@ -86,8 +88,8 @@ const Custom = () => {
     >
       <div
         style={{
-          minWidth: 350,
-          minHeight: 350,
+          minWidth: 300,
+          minHeight: 300,
           maxHeight: 500,
           maxWidth: 500,
         }}

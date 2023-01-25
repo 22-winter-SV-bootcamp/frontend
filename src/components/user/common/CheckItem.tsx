@@ -42,8 +42,9 @@ import SVGMaleShirts from '@/svgComponents/male/top/SVGMaleShirts';
 import SVGMaleSweater from '@/svgComponents/male/top/SVGMaleSweater';
 import SVGMaleSweatshirts from '@/svgComponents/male/top/SVGMaleSweatshirts';
 import SVGMaleT_shirts from '@/svgComponents/male/top/SVGMaleT_shirts';
-import { Button, Typography } from '@mui/material';
+import { Button, styled, Typography } from '@mui/material';
 import { Box } from '@mui/system';
+import { theme } from '@/utils/mui/breakpoints';
 
 type ColorArrType = {
   [key: string]: string;
@@ -519,16 +520,43 @@ const CheckItem = ({ info, title, setModal, setSelect }: any) => {
       },
     },
   };
+
+  // CustomInfo.tsx === Box3
+  const Box1 = styled('div')(({ theme }) => ({
+    width: '100%',
+    height: '12.5%',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+
+    [theme.breakpoints.down('mobile')]: {},
+    [theme.breakpoints.between('mobile', 'tablet')]: {},
+    [theme.breakpoints.between('tablet', 'desktop')]: {},
+    [theme.breakpoints.up('desktop')]: {},
+  }));
+
+  const IconBox = styled('div')(({ theme }) => ({
+    [theme.breakpoints.down('mobile')]: {
+      width: 35,
+      heigth: 35,
+    },
+    [theme.breakpoints.between('mobile', 'tablet')]: {
+      width: 40,
+      heigth: 40,
+    },
+    [theme.breakpoints.between('tablet', 'desktop')]: {
+      width: 45,
+      heigth: 45,
+    },
+    [theme.breakpoints.up('desktop')]: {
+      width: 50,
+      heigth: 50,
+    },
+  }));
+  console.log(info[title]);
+
   return (
-    <Box
-      sx={{
-        width: '100%',
-        height: 50,
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-      }}
-    >
+    <Box1 theme={theme}>
       <Typography variant="h4">{title}</Typography>
       <Button
         onClick={() => {
@@ -537,20 +565,18 @@ const CheckItem = ({ info, title, setModal, setSelect }: any) => {
         }}
       >
         {title === 'background' ? (
-          <Box
-            height={50}
-            width={50}
-            component="img"
-            alt={info[title]}
-            src={`/assets/custom/background/${info[title]}.png`}
-          />
+          <IconBox>
+            <img
+              width={35}
+              height={35}
+              src={`/assets/custom/background/${info[title]}.png`}
+            ></img>
+          </IconBox>
         ) : (
-          <Box height={50} width={50}>
-            {SVGComponents[info.gender][title][info[title]]}
-          </Box>
+          <IconBox>{SVGComponents[info.gender][title][info[title]]}</IconBox>
         )}
       </Button>
-    </Box>
+    </Box1>
   );
 };
 

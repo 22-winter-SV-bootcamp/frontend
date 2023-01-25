@@ -1,6 +1,6 @@
 import { Box } from '@mui/material';
 import React from 'react';
-import DragDropUpload from '@/components/main/DragDropUpload';
+import DragDropUpload from '@/components/main/DragDropUpload/DragDropUpload';
 import RecentImgs from '@/components/main/RecentImgs';
 import RankingImgs from '@/components/main/ranking/RankingImgs';
 

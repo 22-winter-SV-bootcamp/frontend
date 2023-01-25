@@ -8,6 +8,7 @@ import Modal from '@mui/material/Modal';
 import { styled } from '@mui/material';
 import { theme } from '@/utils/mui/breakpoints';
 
+
 type CustomModal = {
   text: string;
   textSize: string;

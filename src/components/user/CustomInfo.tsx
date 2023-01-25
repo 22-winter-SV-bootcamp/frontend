@@ -11,6 +11,10 @@ import { useNavigate } from 'react-router-dom';
 import domToImg from '@/utils/method/domToImg';
 import axiosCustom from '@/apis/createAxios';
 import postCustomStyleInfo from '@/apis/postCustomStyleInfo';
+import { styled } from '@mui/material';
+import { theme } from '@/utils/mui/breakpoints';
+import html2canvasToBlob from '@/utils/method/html2canvasToBlob';
+
 const CustomInfo = ({ info, setInfo, svgRef }: any) => {
   const [modal, setModal] = useState(false);
   const [select, setSelect] = useState('hair');
@@ -34,41 +38,94 @@ const CustomInfo = ({ info, setInfo, svgRef }: any) => {
     setInfo((pre: any) => ({ ...pre, gender: gender }));
   };
 
+  const Box1 = styled('div')(({ theme }) => ({
+    width: 300,
+    height: 300,
+    color: '#FFCE00',
+    maxWidth: 500,
+    maxHeight: 500,
+    display: 'flex',
+    flexDirection: 'column',
+    [theme.breakpoints.down('mobile')]: {
+      width: 300,
+      height: 300,
+    },
+    [theme.breakpoints.between('mobile', 'tablet')]: {
+      width: 350,
+      height: 350,
+    },
+    [theme.breakpoints.between('tablet', 'desktop')]: {
+      width: 400,
+      height: 400,
+    },
+    [theme.breakpoints.up('desktop')]: {
+      width: 500,
+      height: 500,
+    },
+  }));
+
+  const Box2 = styled('div')(({ theme }) => ({
+    width: '100%',
+    height: '100%',
+    background: '#95989b',
+    maxWidth: 500,
+    maxHeight: 500,
+    margin: 'auto',
+    display: modal ? 'none' : 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+
+    alignItems: 'center',
+    [theme.breakpoints.down('mobile')]: {
+      padding: theme.spacing(1, 1),
+    },
+    [theme.breakpoints.between('mobile', 'tablet')]: {
+      padding: theme.spacing(2, 2),
+    },
+    [theme.breakpoints.between('tablet', 'desktop')]: {
+      padding: theme.spacing(3, 3),
+    },
+    [theme.breakpoints.up('desktop')]: {
+      padding: theme.spacing(5, 5),
+    },
+  }));
+
+  const Box3 = styled('div')(({ theme }) => ({
+    width: '100%',
+    height: '15%',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+
+    [theme.breakpoints.down('mobile')]: {},
+    [theme.breakpoints.between('mobile', 'tablet')]: {},
+    [theme.breakpoints.between('tablet', 'desktop')]: {},
+    [theme.breakpoints.up('desktop')]: {},
+  }));
+
+  const IconBox = styled('div')(({ theme }) => ({
+    [theme.breakpoints.down('mobile')]: {
+      width: 35,
+      heigth: 35,
+    },
+    [theme.breakpoints.between('mobile', 'tablet')]: {
+      width: 40,
+      heigth: 40,
+    },
+    [theme.breakpoints.between('tablet', 'desktop')]: {
+      width: 45,
+      heigth: 45,
+    },
+    [theme.breakpoints.up('desktop')]: {
+      width: 50,
+      heigth: 50,
+    },
+  }));
+
   return (
-    <Box
-      sx={{
-        color: '#FFCE00',
-        width: '100%',
-        maxWidth: '400px',
-        height: '400px',
-        display: 'flex',
-        flexDirection: 'column',
-      }}
-    >
-      <Box
-        sx={{
-          padding: 2,
-          background: '#95989b',
-          width: '90%',
-          margin: 'auto',
-          height: '100%',
-
-          display: modal ? 'none' : 'flex',
-          flexDirection: 'column',
-
-          justifyContent: 'space-between',
-          alignItems: 'center',
-        }}
-      >
-        <Box
-          sx={{
-            width: '100%',
-            height: 50,
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-          }}
-        >
+    <Box1 theme={theme}>
+      <Box2 theme={theme}>
+        <Box3 theme={theme}>
           <Typography variant="h4">gender</Typography>
           <Box>
             <Button
@@ -76,27 +133,29 @@ const CustomInfo = ({ info, setInfo, svgRef }: any) => {
                 changeGender('female');
               }}
             >
-              <Box
-                sx={{ width: 50, height: 50 }}
-                component="img"
-                src={`/assets/pages/user/female.png`}
-                alt="male"
-              ></Box>
+              <IconBox>
+                <img
+                  width={35}
+                  height={35}
+                  src={`/assets/pages/user/female.png`}
+                ></img>
+              </IconBox>
             </Button>
             <Button
               onClick={() => {
                 changeGender('male');
               }}
             >
-              <Box
-                sx={{ width: 50, height: 50 }}
-                component="img"
-                src="/assets/pages/user/male.png"
-                alt="female"
-              ></Box>
+              <IconBox>
+                <img
+                  width={35}
+                  height={35}
+                  src={`/assets/pages/user/male.png`}
+                ></img>
+              </IconBox>
             </Button>
           </Box>
-        </Box>
+        </Box3>
         {['hair', 'inner', 'top', 'bottom', 'background'].map((title) => (
           <CheckItem
             key={title}
@@ -109,26 +168,36 @@ const CustomInfo = ({ info, setInfo, svgRef }: any) => {
         <Button
           variant="contained"
           sx={{ alignSelf: 'end', background: '#D9D9D9', color: 'black' }}
-          onClick={async () => {
+          onClick={async (e: any) => {
+            e.preventDefault();
+            alert(1);
             let formData = new FormData();
 
-            let blob = await domToImg(svgRef.current);
+            // let blob = await domToImg(svgRef.current);
+            let blob = await html2canvasToBlob(svgRef.current);
+            console.log('blob', blob);
 
-            formData.append('file', blob);
+            blob.toBlob((b: any) => formData.append('file', b));
             formData.append('gender', gender);
             formData.append('top', top);
             formData.append('top_color', topColor);
             formData.append('bottom', bottom);
             formData.append('bottom_color', bottomColor);
 
-            let link = await postCustomStyleInfo(formData);
-            console.log(link);
-            navigate('/result', { state: link });
+            // 모바일에서 안먹힘..?
+            // let link = postCustomStyleInfo(formData);
+            // console.log(link);
+            // alert('hi');
+            // navigate('/result', { state: link });
+
+            postCustomStyleInfo(formData).then((link) => {
+              navigate('/result', { state: link });
+            });
           }}
         >
           <Typography variant="h4">Done</Typography>
         </Button>
-      </Box>
+      </Box2>
       {modal && (
         <CustomSelectModal
           info={info}
@@ -139,7 +208,7 @@ const CustomInfo = ({ info, setInfo, svgRef }: any) => {
           setModal={setModal}
         ></CustomSelectModal>
       )}
-    </Box>
+    </Box1>
   );
 };
 
