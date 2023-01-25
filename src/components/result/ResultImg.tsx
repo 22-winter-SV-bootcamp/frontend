@@ -8,7 +8,7 @@ import Kakaotalk from '/assets/pages/result/Kakaotalk.png';
 import { ReactComponent as Home } from '../../assets/home.svg';
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { imageDownload } from './imageDownload';
-import { BoxSprayLayout, theme } from '../../../utils/muiResponse';
+import { BoxSprayLayout, theme } from '../../utils/muiResponse';
 import { Copyelement } from './Copyelement';
 import testSimpson from '../../assets/customSimpsonWoman.png';
 import { sendKakao } from './kakaotalk/sendKakao';

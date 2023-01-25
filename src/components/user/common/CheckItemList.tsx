@@ -531,7 +531,7 @@ const CheckItemList = ({ info, gender, title, setInfo, arr, select }: any) => {
                   width={100}
                   component="img"
                   alt={v}
-                  src={`src/assets/custom/background/${v}.png`}
+                  src={`/assets/custom/background/${v}.png`}
                 />
               ) : (
                 SVGComponents[gender][select][v]

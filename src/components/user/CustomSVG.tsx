@@ -43,6 +43,9 @@ import SVGMaleSweater from '@/svgComponents/male/top/SVGMaleSweater';
 import SVGMaleSweatshirts from '@/svgComponents/male/top/SVGMaleSweatshirts';
 import SVGMaleT_shirts from '@/svgComponents/male/top/SVGMaleT_shirts';
 import { Box } from '@mui/system';
+import { styled } from '@mui/material';
+import { theme } from '@/utils/mui/breakpoints';
+
 import { relative } from 'path';
 import React from 'react';
 type ColorArrType = {
@@ -472,13 +475,35 @@ const CustomSVG = ({ info }: any) => {
     },
   };
 
+  const Box1 = styled('div')(({ theme }) => ({
+    width: 300,
+    height: 300,
+    [theme.breakpoints.down('mobile')]: {
+      width: 300,
+      height: 300,
+    },
+    [theme.breakpoints.between('mobile', 'tablet')]: {
+      width: 350,
+      height: 350,
+    },
+    [theme.breakpoints.between('tablet', 'desktop')]: {
+      width: 400,
+      height: 400,
+    },
+    [theme.breakpoints.up('desktop')]: {
+      width: 500,
+      height: 500,
+    },
+  }));
+
   return (
-    <Box
+    <Box1
+      theme={theme}
       sx={{
         position: 'relative',
-        minWidth: 350,
+
         maxWidth: 500,
-        minHeight: 350,
+
         maxHeight: 500,
         height: 'auto',
       }}
@@ -501,7 +526,7 @@ const CustomSVG = ({ info }: any) => {
       <Box sx={{ position: 'absolute' }} width="100%" height="100%">
         {SVGComponents[gender]['top'][top]}
       </Box>
-    </Box>
+    </Box1>
   );
 };
 
