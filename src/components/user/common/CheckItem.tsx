@@ -5,8 +5,8 @@ import SVGFemaleSkirt from '@/svgComponents/female/bottom/SVGFemaleSkirt';
 import SVGFemaleSlacks from '@/svgComponents/female/bottom/SVGFemaleSlacks';
 import SVGFemaleSweatpants from '@/svgComponents/female/bottom/SVGFemaleSweatpants';
 import SVGFemaleLong from '@/svgComponents/female/hair/SVGFemaleLong';
-import SVGFemaleBasic_neck_pole from '@/svgComponents/female/top/SVGFemaleBasic_neck_pole';
-import SVGFemaleBasic_t_shirts from '@/svgComponents/female/top/SVGFemaleBasic_t_shirts';
+import SVGFemaleBasic_neck_pole from '@/svgComponents/female/inner/SVGFemaleBasic_neck_pole';
+import SVGFemaleBasic_t_shirts from '@/svgComponents/female/inner/SVGFemaleBasic_t_shirts';
 import SVGFemaleBlazer from '@/svgComponents/female/top/SVGFemaleBlazer';
 import SVGFemaleBlouse from '@/svgComponents/female/top/SVGFemaleBlouse';
 import SVGFemaleCardigan from '@/svgComponents/female/top/SVGFemaleCardigan';
@@ -27,8 +27,8 @@ import SVGMaleSkirt from '@/svgComponents/male/bottom/SVGMaleSkirt';
 import SVGMaleSlacks from '@/svgComponents/male/bottom/SVGMaleSlacks';
 import SVGMaleSweatpants from '@/svgComponents/male/bottom/SVGMaleSweatpants';
 import SVGMaleMiddle from '@/svgComponents/male/hair/SVGMaleMiddle';
-import SVGMaleBasic_neck_pole from '@/svgComponents/male/top/SVGMaleBasic_neck_pole';
-import SVGMaleBasic_t_shirts from '@/svgComponents/male/top/SVGMaleBasic_t_shirts';
+import SVGMaleBasic_neck_pole from '@/svgComponents/male/inner/SVGMaleBasic_neck_pole';
+import SVGMaleBasic_t_shirts from '@/svgComponents/male/inner/SVGMaleBasic_t_shirts';
 import SVGMaleBlazer from '@/svgComponents/male/top/SVGMaleBlazer';
 import SVGMaleBlouse from '@/svgComponents/male/top/SVGMaleBlouse';
 import SVGMaleCardigan from '@/svgComponents/male/top/SVGMaleCardigan';
@@ -62,6 +62,7 @@ const CheckItem = ({ info, title, setModal, setSelect }: any) => {
     bottom,
     bottomColor,
     background,
+    innerColor,
   } = info;
 
   let sub = 85;
@@ -119,7 +120,7 @@ const CheckItem = ({ info, title, setModal, setSelect }: any) => {
       inner: {
         basic_neck_pole: (
           <SVGFemaleBasic_neck_pole
-            main={'white'}
+            main={colorArr[innerColor]}
             sub={sub}
             detail={detail}
             viewBox={viewBoxTop}
@@ -127,7 +128,7 @@ const CheckItem = ({ info, title, setModal, setSelect }: any) => {
         ),
         basic_t_shirts: (
           <SVGFemaleBasic_t_shirts
-            main={'white'}
+            main={colorArr[innerColor]}
             sub={sub}
             detail={detail}
             viewBox={viewBoxTop}
@@ -244,7 +245,7 @@ const CheckItem = ({ info, title, setModal, setSelect }: any) => {
       bottom: {
         denim: (
           <SVGFemaleDenim
-            main={bottomColor}
+            main={colorArr[bottomColor]}
             sub={sub}
             detail={detail}
             viewBox={viewBoxBottom}
@@ -252,7 +253,7 @@ const CheckItem = ({ info, title, setModal, setSelect }: any) => {
         ),
         half_shortpants: (
           <SVGFemaleHalf_shortpants
-            main={bottomColor}
+            main={colorArr[bottomColor]}
             sub={sub}
             detail={detail}
             viewBox={viewBoxBottom}
@@ -260,7 +261,7 @@ const CheckItem = ({ info, title, setModal, setSelect }: any) => {
         ),
         leggings: (
           <SVGFemaleLeggings
-            main={bottomColor}
+            main={colorArr[bottomColor]}
             sub={sub}
             detail={detail}
             viewBox={viewBoxBottom}
@@ -268,7 +269,7 @@ const CheckItem = ({ info, title, setModal, setSelect }: any) => {
         ),
         skirt: (
           <SVGFemaleSkirt
-            main={bottomColor}
+            main={colorArr[bottomColor]}
             sub={sub}
             detail={detail}
             viewBox={viewBoxBottom}
@@ -276,7 +277,7 @@ const CheckItem = ({ info, title, setModal, setSelect }: any) => {
         ),
         slacks: (
           <SVGFemaleSlacks
-            main={bottomColor}
+            main={colorArr[bottomColor]}
             sub={sub}
             detail={detail}
             viewBox={viewBoxBottom}
@@ -284,7 +285,7 @@ const CheckItem = ({ info, title, setModal, setSelect }: any) => {
         ),
         sweatpants: (
           <SVGFemaleSweatpants
-            main={bottomColor}
+            main={colorArr[bottomColor]}
             sub={sub}
             detail={detail}
             viewBox={viewBoxBottom}
@@ -294,7 +295,7 @@ const CheckItem = ({ info, title, setModal, setSelect }: any) => {
       hair: {
         long: (
           <SVGFemaleLong
-            main={hairColor}
+            main={colorArr[hairColor]}
             sub={sub}
             detail={detail}
             viewBox="300 100 300 300"
@@ -306,7 +307,7 @@ const CheckItem = ({ info, title, setModal, setSelect }: any) => {
       inner: {
         basic_neck_pole: (
           <SVGMaleBasic_neck_pole
-            main={colorArr[topColor]}
+            main={colorArr[innerColor]}
             sub={sub}
             detail={detail}
             viewBox={viewBoxTop}
@@ -314,7 +315,7 @@ const CheckItem = ({ info, title, setModal, setSelect }: any) => {
         ),
         basic_t_shirts: (
           <SVGMaleBasic_t_shirts
-            main={colorArr[topColor]}
+            main={colorArr[innerColor]}
             sub={sub}
             detail={detail}
             viewBox={viewBoxTop}

@@ -8,9 +8,9 @@ import CustomSelectModal from './CustomSelectModal';
 import domtoimage from 'dom-to-image';
 import { saveAs } from 'file-saver';
 import { useNavigate } from 'react-router-dom';
-import domToImg from '@/components/utils/domToImg';
+import domToImg from '@/utils/domToImg';
 import axiosCustom from '@/apis/createAxios';
-import postCustomStyleInfo from '@/apis/postCustoStyleInfo';
+import postCustomStyleInfo from '@/apis/postCustomStyleInfo';
 const CustomInfo = ({ info, setInfo, svgRef }: any) => {
   const [modal, setModal] = useState(false);
   const [select, setSelect] = useState('hair');
@@ -77,9 +77,9 @@ const CustomInfo = ({ info, setInfo, svgRef }: any) => {
               }}
             >
               <Box
-                sx={{ width: 50, height: 50 }}
+                sx={{ width: 100, height: 100 }}
                 component="img"
-                src={`src/assets/custom/gender/female.png`}
+                src={`/assets/custom/gender/female.png`}
                 alt="male"
               ></Box>
             </Button>
@@ -89,9 +89,9 @@ const CustomInfo = ({ info, setInfo, svgRef }: any) => {
               }}
             >
               <Box
-                sx={{ width: 50, height: 50 }}
+                sx={{ width: 100, height: 100 }}
                 component="img"
-                src="src/assets/custom/gender/male.png"
+                src="/assets/custom/gender/male.png"
                 alt="female"
               ></Box>
             </Button>
@@ -122,6 +122,7 @@ const CustomInfo = ({ info, setInfo, svgRef }: any) => {
             formData.append('bottom_color', bottomColor);
 
             let link = await postCustomStyleInfo(formData);
+            console.log(link);
             navigate('/result', { state: link });
           }}
         >

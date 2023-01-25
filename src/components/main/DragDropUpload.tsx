@@ -1,10 +1,10 @@
 import React, { DragEvent, useEffect, useState } from 'react';
 import UploadPng from '/Upload.png';
-import bart from '../../assets/bart.png';
-import titleone from '../../assets/titleone.png';
-import titletwo from '../../assets/titletwo.png';
+import bart from '/assets/custom/bart.png';
+import titleone from '/assets/titleone.png';
+import titletwo from '/assets/titletwo.png';
 import { postUploadImage } from '@/apis/postUploadImage';
-import loadingGif from '../../assets/loading.gif';
+import loadingGif from '/assets/loading.gif';
 
 import { Box, Button, dividerClasses, Hidden } from '@mui/material';
 import { display, height, padding, positions } from '@mui/system';
