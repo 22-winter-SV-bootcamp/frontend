@@ -1,6 +1,7 @@
 import { useTheme } from '@mui/material';
 import { Box } from '@mui/system';
 import { ImageInfo } from './types';
+import { createTheme, styled } from '@mui/material';
 
 interface ImageComponentProps {
   imageState: ImageInfo;

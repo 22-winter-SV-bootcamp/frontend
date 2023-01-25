@@ -9,7 +9,7 @@ import domtoimage from 'dom-to-image';
 import { saveAs } from 'file-saver';
 import * as htmlToImage from 'html-to-image';
 import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
-import resultFilter from 'utils/resultFilter';
+import resultFilter from '@/utils/method/resultFilter';
 
 const theme = createTheme({
   /* custom MediaQuery */

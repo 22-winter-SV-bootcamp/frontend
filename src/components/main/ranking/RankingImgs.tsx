@@ -12,11 +12,11 @@ export default function RankingImgs() {
 
   const [imageState, setImageState] = React.useState<ImageState>({
     firstImage: {
-      url: 'public/image 96.png',
+      url: '/assets/pages/main/rank_male.png',
       count: 123,
     },
     secondImage: {
-      url: 'public/image 96.png',
+      url: '/assets/pages/main/rank_female.png',
       count: 222,
     },
   });
@@ -65,10 +65,18 @@ export default function RankingImgs() {
           }}
         >
           {!isSmallScreen && (
-            <Box component={'img'} src="/image 104.png" sx={{ width: 1 }} />
+            <Box
+              component={'img'}
+              src="/assets/pages/main/titlefour.png"
+              sx={{ width: 1 }}
+            />
           )}
           {isSmallScreen && (
-            <Box component={'img'} src="/Group 58.png" sx={{ width: 0.6 }} />
+            <Box
+              component={'img'}
+              src="/assets/pages/main/titlethree.png"
+              sx={{ width: 0.6 }}
+            />
           )}
         </Box>
         <Box sx={{ display: 'flex', justifyContent: 'center', pb: 8 }}>

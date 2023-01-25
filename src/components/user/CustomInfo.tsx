@@ -8,7 +8,7 @@ import CustomSelectModal from './CustomSelectModal';
 import domtoimage from 'dom-to-image';
 import { saveAs } from 'file-saver';
 import { useNavigate } from 'react-router-dom';
-import domToImg from '@/utils/domToImg';
+import domToImg from '@/utils/method/domToImg';
 import axiosCustom from '@/apis/createAxios';
 import postCustomStyleInfo from '@/apis/postCustomStyleInfo';
 const CustomInfo = ({ info, setInfo, svgRef }: any) => {
