@@ -68,8 +68,11 @@ const CheckItem = ({ info, title, setModal, setSelect }: any) => {
 
   let sub = 85;
   let detail = 10;
-  let viewBoxTop = '370 320 180 180';
-  let viewBoxBottom = '360 440 180 180';
+  let viewBoxFemailTop = '370 340 180 180';
+  let viewBoxMailTop = '350 305 230 230';
+  let viewBoxFemailBottom = '360 440 180 180';
+  let viewBoxMailBottom = '370 440 180 180';
+  let viewBoxInner = '355 320 220 220';
 
   const colorArr: ColorArrType = {
     white: '#FFFFFF',
@@ -124,7 +127,7 @@ const CheckItem = ({ info, title, setModal, setSelect }: any) => {
             main={colorArr[innerColor]}
             sub={sub}
             detail={detail}
-            viewBox={viewBoxTop}
+            viewBox={viewBoxFemailTop}
           ></SVGFemaleBasic_neck_pole>
         ),
         basic_t_shirts: (
@@ -132,7 +135,7 @@ const CheckItem = ({ info, title, setModal, setSelect }: any) => {
             main={colorArr[innerColor]}
             sub={sub}
             detail={detail}
-            viewBox={viewBoxTop}
+            viewBox={viewBoxFemailTop}
           ></SVGFemaleBasic_t_shirts>
         ),
       },
@@ -142,7 +145,7 @@ const CheckItem = ({ info, title, setModal, setSelect }: any) => {
             main={colorArr[topColor]}
             sub={sub}
             detail={detail}
-            viewBox={viewBoxTop}
+            viewBox={viewBoxFemailTop}
           ></SVGFemaleBlouse>
         ),
 
@@ -151,7 +154,7 @@ const CheckItem = ({ info, title, setModal, setSelect }: any) => {
             main={colorArr[topColor]}
             sub={sub}
             detail={detail}
-            viewBox={viewBoxTop}
+            viewBox={viewBoxFemailTop}
           ></SVGFemaleBlazer>
         ),
         cardigan: (
@@ -159,7 +162,7 @@ const CheckItem = ({ info, title, setModal, setSelect }: any) => {
             main={colorArr[topColor]}
             sub={sub}
             detail={detail}
-            viewBox={viewBoxTop}
+            viewBox={viewBoxFemailTop}
           ></SVGFemaleCardigan>
         ),
         coat: (
@@ -175,7 +178,7 @@ const CheckItem = ({ info, title, setModal, setSelect }: any) => {
             main={colorArr[topColor]}
             sub={sub}
             detail={detail}
-            viewBox={viewBoxTop}
+            viewBox={viewBoxFemailTop}
           ></SVGFemaleHoodi>
         ),
         jumper: (
@@ -183,7 +186,7 @@ const CheckItem = ({ info, title, setModal, setSelect }: any) => {
             main={colorArr[topColor]}
             sub={sub}
             detail={detail}
-            viewBox={viewBoxTop}
+            viewBox={viewBoxFemailTop}
           ></SVGFemaleJumper>
         ),
         mustang: (
@@ -191,7 +194,7 @@ const CheckItem = ({ info, title, setModal, setSelect }: any) => {
             main={colorArr[topColor]}
             sub={sub}
             detail={detail}
-            viewBox={viewBoxTop}
+            viewBox={viewBoxFemailTop}
           ></SVGFemaleMustang>
         ),
         onepiece: (
@@ -207,7 +210,7 @@ const CheckItem = ({ info, title, setModal, setSelect }: any) => {
             main={colorArr[topColor]}
             sub={sub}
             detail={detail}
-            viewBox={viewBoxTop}
+            viewBox={viewBoxFemailTop}
           ></SVGFemalePkshirts>
         ),
         shirts: (
@@ -215,7 +218,7 @@ const CheckItem = ({ info, title, setModal, setSelect }: any) => {
             main={colorArr[topColor]}
             sub={sub}
             detail={detail}
-            viewBox={viewBoxTop}
+            viewBox={viewBoxFemailTop}
           ></SVGFemaleShirts>
         ),
         sweater: (
@@ -223,7 +226,7 @@ const CheckItem = ({ info, title, setModal, setSelect }: any) => {
             main={colorArr[topColor]}
             sub={sub}
             detail={detail}
-            viewBox={viewBoxTop}
+            viewBox={viewBoxFemailTop}
           ></SVGFemaleSweater>
         ),
         sweatshirts: (
@@ -231,7 +234,7 @@ const CheckItem = ({ info, title, setModal, setSelect }: any) => {
             main={colorArr[topColor]}
             sub={sub}
             detail={detail}
-            viewBox={viewBoxTop}
+            viewBox={viewBoxFemailTop}
           ></SVGFemaleSweatshirts>
         ),
         t_shirts: (
@@ -239,7 +242,7 @@ const CheckItem = ({ info, title, setModal, setSelect }: any) => {
             main={colorArr[topColor]}
             sub={sub}
             detail={detail}
-            viewBox={viewBoxTop}
+            viewBox={viewBoxFemailTop}
           ></SVGFemaleT_shirts>
         ),
       },
@@ -249,7 +252,7 @@ const CheckItem = ({ info, title, setModal, setSelect }: any) => {
             main={colorArr[bottomColor]}
             sub={sub}
             detail={detail}
-            viewBox={viewBoxBottom}
+            viewBox={viewBoxFemailBottom}
           ></SVGFemaleDenim>
         ),
         half_shortpants: (
@@ -257,7 +260,7 @@ const CheckItem = ({ info, title, setModal, setSelect }: any) => {
             main={colorArr[bottomColor]}
             sub={sub}
             detail={detail}
-            viewBox={viewBoxBottom}
+            viewBox={viewBoxFemailBottom}
           ></SVGFemaleHalf_shortpants>
         ),
         leggings: (
@@ -265,7 +268,7 @@ const CheckItem = ({ info, title, setModal, setSelect }: any) => {
             main={colorArr[bottomColor]}
             sub={sub}
             detail={detail}
-            viewBox={viewBoxBottom}
+            viewBox={viewBoxFemailBottom}
           ></SVGFemaleLeggings>
         ),
         skirt: (
@@ -273,7 +276,7 @@ const CheckItem = ({ info, title, setModal, setSelect }: any) => {
             main={colorArr[bottomColor]}
             sub={sub}
             detail={detail}
-            viewBox={viewBoxBottom}
+            viewBox={viewBoxFemailBottom}
           ></SVGFemaleSkirt>
         ),
         slacks: (
@@ -281,7 +284,7 @@ const CheckItem = ({ info, title, setModal, setSelect }: any) => {
             main={colorArr[bottomColor]}
             sub={sub}
             detail={detail}
-            viewBox={viewBoxBottom}
+            viewBox={viewBoxFemailBottom}
           ></SVGFemaleSlacks>
         ),
         sweatpants: (
@@ -289,7 +292,7 @@ const CheckItem = ({ info, title, setModal, setSelect }: any) => {
             main={colorArr[bottomColor]}
             sub={sub}
             detail={detail}
-            viewBox={viewBoxBottom}
+            viewBox={viewBoxFemailBottom}
           ></SVGFemaleSweatpants>
         ),
       },
@@ -311,7 +314,7 @@ const CheckItem = ({ info, title, setModal, setSelect }: any) => {
             main={colorArr[innerColor]}
             sub={sub}
             detail={detail}
-            viewBox={viewBoxTop}
+            viewBox={viewBoxInner}
           ></SVGMaleBasic_neck_pole>
         ),
         basic_t_shirts: (
@@ -319,7 +322,7 @@ const CheckItem = ({ info, title, setModal, setSelect }: any) => {
             main={colorArr[innerColor]}
             sub={sub}
             detail={detail}
-            viewBox={viewBoxTop}
+            viewBox={viewBoxInner}
           ></SVGMaleBasic_t_shirts>
         ),
       },
@@ -329,7 +332,7 @@ const CheckItem = ({ info, title, setModal, setSelect }: any) => {
             main={colorArr[topColor]}
             sub={sub}
             detail={detail}
-            viewBox={viewBoxTop}
+            viewBox={viewBoxMailTop}
           ></SVGMaleBlouse>
         ),
 
@@ -338,7 +341,7 @@ const CheckItem = ({ info, title, setModal, setSelect }: any) => {
             main={colorArr[topColor]}
             sub={sub}
             detail={detail}
-            viewBox={viewBoxTop}
+            viewBox={viewBoxMailTop}
           ></SVGMaleBlazer>
         ),
         cardigan: (
@@ -346,7 +349,7 @@ const CheckItem = ({ info, title, setModal, setSelect }: any) => {
             main={colorArr[topColor]}
             sub={sub}
             detail={detail}
-            viewBox={viewBoxTop}
+            viewBox={viewBoxMailTop}
           ></SVGMaleCardigan>
         ),
         coat: (
@@ -354,7 +357,7 @@ const CheckItem = ({ info, title, setModal, setSelect }: any) => {
             main={colorArr[topColor]}
             sub={sub}
             detail={detail}
-            viewBox={viewBoxTop}
+            viewBox="340 315 250 250"
           ></SVGMaleCoat>
         ),
         hoodi: (
@@ -362,7 +365,7 @@ const CheckItem = ({ info, title, setModal, setSelect }: any) => {
             main={colorArr[topColor]}
             sub={sub}
             detail={detail}
-            viewBox={viewBoxTop}
+            viewBox={viewBoxMailTop}
           ></SVGMaleHoodi>
         ),
         jumper: (
@@ -370,7 +373,7 @@ const CheckItem = ({ info, title, setModal, setSelect }: any) => {
             main={colorArr[topColor]}
             sub={sub}
             detail={detail}
-            viewBox={viewBoxTop}
+            viewBox={viewBoxMailTop}
           ></SVGMaleJumper>
         ),
         mustang: (
@@ -378,7 +381,7 @@ const CheckItem = ({ info, title, setModal, setSelect }: any) => {
             main={colorArr[topColor]}
             sub={sub}
             detail={detail}
-            viewBox={viewBoxTop}
+            viewBox={viewBoxMailTop}
           ></SVGMaleMustang>
         ),
         onepiece: (
@@ -386,7 +389,7 @@ const CheckItem = ({ info, title, setModal, setSelect }: any) => {
             main={colorArr[topColor]}
             sub={sub}
             detail={detail}
-            viewBox={viewBoxTop}
+            viewBox="340 325 255 255"
           ></SVGMaleOnepiece>
         ),
         pkshirts: (
@@ -394,7 +397,7 @@ const CheckItem = ({ info, title, setModal, setSelect }: any) => {
             main={colorArr[topColor]}
             sub={sub}
             detail={detail}
-            viewBox={viewBoxTop}
+            viewBox={viewBoxMailTop}
           ></SVGMalePkshirts>
         ),
         shirts: (
@@ -402,7 +405,7 @@ const CheckItem = ({ info, title, setModal, setSelect }: any) => {
             main={colorArr[topColor]}
             sub={sub}
             detail={detail}
-            viewBox={viewBoxTop}
+            viewBox={viewBoxMailTop}
           ></SVGMaleShirts>
         ),
         sweater: (
@@ -410,7 +413,7 @@ const CheckItem = ({ info, title, setModal, setSelect }: any) => {
             main={colorArr[topColor]}
             sub={sub}
             detail={detail}
-            viewBox={viewBoxTop}
+            viewBox={viewBoxMailTop}
           ></SVGMaleSweater>
         ),
         sweatshirts: (
@@ -418,7 +421,7 @@ const CheckItem = ({ info, title, setModal, setSelect }: any) => {
             main={colorArr[topColor]}
             sub={sub}
             detail={detail}
-            viewBox={viewBoxTop}
+            viewBox={viewBoxMailTop}
           ></SVGMaleSweatshirts>
         ),
         t_shirts: (
@@ -426,7 +429,7 @@ const CheckItem = ({ info, title, setModal, setSelect }: any) => {
             main={colorArr[topColor]}
             sub={sub}
             detail={detail}
-            viewBox={viewBoxTop}
+            viewBox={viewBoxMailTop}
           ></SVGMaleT_shirts>
         ),
       },
@@ -436,7 +439,7 @@ const CheckItem = ({ info, title, setModal, setSelect }: any) => {
             main={colorArr[bottomColor]}
             sub={sub}
             detail={detail}
-            viewBox={viewBoxBottom}
+            viewBox={viewBoxMailBottom}
           ></SVGMaleDenim>
         ),
         half_shortpants: (
@@ -444,7 +447,7 @@ const CheckItem = ({ info, title, setModal, setSelect }: any) => {
             main={colorArr[bottomColor]}
             sub={sub}
             detail={detail}
-            viewBox={viewBoxBottom}
+            viewBox={viewBoxMailBottom}
           ></SVGMaleHalf_shortpants>
         ),
         leggings: (
@@ -452,7 +455,7 @@ const CheckItem = ({ info, title, setModal, setSelect }: any) => {
             main={colorArr[bottomColor]}
             sub={sub}
             detail={detail}
-            viewBox={viewBoxBottom}
+            viewBox={viewBoxMailBottom}
           ></SVGMaleLeggings>
         ),
         skirt: (
@@ -460,7 +463,7 @@ const CheckItem = ({ info, title, setModal, setSelect }: any) => {
             main={colorArr[bottomColor]}
             sub={sub}
             detail={detail}
-            viewBox={viewBoxBottom}
+            viewBox={viewBoxMailBottom}
           ></SVGMaleSkirt>
         ),
         slacks: (
@@ -468,7 +471,7 @@ const CheckItem = ({ info, title, setModal, setSelect }: any) => {
             main={colorArr[bottomColor]}
             sub={sub}
             detail={detail}
-            viewBox={viewBoxBottom}
+            viewBox={viewBoxMailBottom}
           ></SVGMaleSlacks>
         ),
         sweatpants: (
@@ -476,7 +479,7 @@ const CheckItem = ({ info, title, setModal, setSelect }: any) => {
             main={colorArr[bottomColor]}
             sub={sub}
             detail={detail}
-            viewBox={viewBoxBottom}
+            viewBox={viewBoxMailBottom}
           ></SVGMaleSweatpants>
         ),
       },

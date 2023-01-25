@@ -1,60 +1,26 @@
 import React, { useEffect } from 'react';
-import Simpson from '../../assets/Simpson.png';
-import Simpson2 from '../../assets/Simpson2.png';
-import Simpson3 from '../../assets/Simpson3.png';
 
 import CancelPresentationIcon from '@mui/icons-material/CancelPresentation';
 import IconButton from '@mui/material/IconButton';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import { EasterImgLayout, ModalLayout, theme } from '../../utils/muiResponse';
+import { styled } from '@mui/material';
+import { theme } from '@/utils/mui/breakpoints';
 
-const styleModal = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: '80vw' /* 16x32= 500px(default값 16) */,
-  height: '90vh' /* 16x25= 400px(default값 16) */,
-  bgcolor: 'background.paper',
-  border: '2px solid #2196f3',
-  borderRadius: 5,
-  boxShadow: 24 /* 그림자 효과 */,
-  p: '2%' /* padding */,
-  display: 'flex' /* 레이아웃 */,
-  flexDirection: 'column' /* 세로 방향 */,
-};
 
-const styleRow = {
-  position: 'relative',
-  height: '20%',
-  display: 'flex' /* 레이아웃 */,
-  flexDirection: 'row' /* 가로 방향 */,
-  justifyContent: 'center' /* 중앙으로 이동 */,
-  pr: '30px',
-  pl: '30px',
-};
-
-const styleIcon = { position: 'absolute', right: 1, top: 1 };
-
-export function EasterEgg({
-  text,
-  textSize,
-  img1,
-  img2,
-  img3,
-}: {
+type CustomModal = {
   text: string;
   textSize: string;
   img1: string;
   img2: string;
   img3: string;
-}) {
+};
+
+export function EasterEgg({ text, textSize, img1, img2, img3 }: CustomModal) {
   const [open, setOpen] = React.useState(true);
-  // const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  console.log(styleModal);
+
   useEffect(() => {
     console.log(open); /* 모달창 상태 확인 */
   }, [open]);
@@ -62,7 +28,6 @@ export function EasterEgg({
   const styleImg = {
     /* props 사용하기 위해 함수형 컴포넌트 안에 배치 */
     width: '46vw' /* 16x8.5= 136px(default값 16) */,
-    //height: '64vh' /* 16x19.5= 312px(default값 16) */,
     height: '76%',
     alignSelf: 'center',
     objectFit:
@@ -75,6 +40,52 @@ export function EasterEgg({
     },
     alt: 'Loading...',
   };
+
+  const styleModal = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: '80vw' /* 16x32= 500px(default값 16) */,
+    height: '90vh' /* 16x25= 400px(default값 16) */,
+    bgcolor: 'background.paper',
+    border: '2px solid #2196f3',
+    borderRadius: 5,
+    boxShadow: 24 /* 그림자 효과 */,
+    p: '2%' /* padding */,
+    display: 'flex' /* 레이아웃 */,
+    flexDirection: 'column' /* 세로 방향 */,
+  };
+
+  const styleRow = {
+    position: 'relative',
+    height: '20%',
+    display: 'flex' /* 레이아웃 */,
+    flexDirection: 'row' /* 가로 방향 */,
+    justifyContent: 'center' /* 중앙으로 이동 */,
+    pr: '30px',
+    pl: '30px',
+  };
+
+  const styleIcon = { position: 'absolute', right: 1, top: 1 };
+
+  const ModalLayout = styled('div')(({ theme }) => ({
+    height: '100vh',
+    padding: theme.spacing(1),
+    [theme.breakpoints.up('desktop')]: {
+      height: '50rem',
+      width: '64rem',
+    },
+  }));
+
+  const EasterImgLayout = styled('div')(({ theme }) => ({
+    height: '100vh',
+    padding: theme.spacing(1),
+    [theme.breakpoints.up('desktop')]: {
+      height: '420px',
+      width: '400px',
+    },
+  }));
 
   return (
     // <Container fixed>
