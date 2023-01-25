@@ -8,6 +8,9 @@ import CustomSelectModal from './CustomSelectModal';
 import domtoimage from 'dom-to-image';
 import { saveAs } from 'file-saver';
 import { useNavigate } from 'react-router-dom';
+import domToImg from '@/utils/domToImg';
+import axiosCustom from '@/apis/createAxios';
+import postCustomStyleInfo from '@/apis/postCustomStyleInfo';
 const CustomInfo = ({ info, setInfo, svgRef }: any) => {
   const [modal, setModal] = useState(false);
   const [select, setSelect] = useState('hair');
@@ -22,34 +25,13 @@ const CustomInfo = ({ info, setInfo, svgRef }: any) => {
     bottom,
     bottomColor,
     background,
+    inner,
+    innerColor,
   } = info;
   console.log('info가 바뀌었나?', info);
 
   const changeGender = (gender: string) => {
-    let init =
-      gender === 'male'
-        ? {
-            gender: 'male',
-            hair: 'middle',
-            hairColor: 'white',
-            top: 't_shirts',
-            topColor: 'white',
-            bottom: 'slacks',
-            bottomColor: 'white',
-            background: 'background1',
-          }
-        : {
-            gender: 'female',
-            hair: 'long',
-            hairColor: 'white',
-            top: 't_shirts',
-            topColor: 'white',
-            bottom: 'slacks',
-            bottomColor: 'white',
-            background: 'background1',
-          };
-
-    setInfo(init);
+    setInfo((pre: any) => ({ ...pre, gender: gender }));
   };
 
   return (
@@ -68,8 +50,9 @@ const CustomInfo = ({ info, setInfo, svgRef }: any) => {
           padding: 2,
           background: '#95989b',
           width: '90%',
+          margin: 'auto',
           height: '100%',
-          marginLeft: 'auto',
+
           display: modal ? 'none' : 'flex',
           flexDirection: 'column',
 
@@ -96,7 +79,7 @@ const CustomInfo = ({ info, setInfo, svgRef }: any) => {
               <Box
                 sx={{ width: 50, height: 50 }}
                 component="img"
-                src={`src/assets/custom/gender/female.png`}
+                src={`/assets/pages/user/female.png`}
                 alt="male"
               ></Box>
             </Button>
@@ -108,13 +91,13 @@ const CustomInfo = ({ info, setInfo, svgRef }: any) => {
               <Box
                 sx={{ width: 50, height: 50 }}
                 component="img"
-                src="src/assets/custom/gender/male.png"
+                src="/assets/pages/user/male.png"
                 alt="female"
               ></Box>
             </Button>
           </Box>
         </Box>
-        {['hair', 'top', 'bottom', 'background'].map((title) => (
+        {['hair', 'inner', 'top', 'bottom', 'background'].map((title) => (
           <CheckItem
             key={title}
             info={info}
@@ -127,40 +110,20 @@ const CustomInfo = ({ info, setInfo, svgRef }: any) => {
           variant="contained"
           sx={{ alignSelf: 'end', background: '#D9D9D9', color: 'black' }}
           onClick={async () => {
-            const svg = svgRef.current;
-            console.log(svg);
-            let d = new FormData();
+            let formData = new FormData();
 
-            await domtoimage
-              .toBlob(svg, {
-                width: svg.clientWidth * 4,
-                height: svg.clientHeight * 4,
-                style: {
-                  transform: 'scale(' + 4 + ')',
-                  transformOrigin: 'top left',
-                },
-              })
-              .then((blob) => {
-                d.append('file', blob);
-                console.log(d);
-                saveAs(blob, 'card.png');
-                for (const i of d) {
-                  console.log(i);
-                }
-              });
-            await axios
-              .post('api/v1/styles', {
-                file: d,
-                gender: gender,
-                top: top,
-                top_color: topColor,
-                bottom: bottom,
-                bottom_color: bottomColor,
-              })
-              .then((res) => {
-                console.log(res.data);
-                navigate('/result', { state: res.data });
-              });
+            let blob = await domToImg(svgRef.current);
+
+            formData.append('file', blob);
+            formData.append('gender', gender);
+            formData.append('top', top);
+            formData.append('top_color', topColor);
+            formData.append('bottom', bottom);
+            formData.append('bottom_color', bottomColor);
+
+            let link = await postCustomStyleInfo(formData);
+            console.log(link);
+            navigate('/result', { state: link });
           }}
         >
           <Typography variant="h4">Done</Typography>

@@ -4,8 +4,8 @@ import { Box } from '@mui/system';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Transform } from 'stream';
-import tryNow from '../../assets/tryNow.png';
-import doh from '../../assets/doh.png';
+import tryNow from '/assets/pages/main/tryNow.png';
+import doh from '/assets/pages/common/doh.png';
 import { useQuery } from '@tanstack/react-query';
 import { transferableAbortController } from 'util';
 type CardsType = {
@@ -51,7 +51,7 @@ const RecentImgs = () => {
   };
 
   return (
-    <Box sx={{ backgroundColor: 'black', height: '100vh' }}>
+    <Box sx={{ backgroundColor: 'black', height: '100vh', overflow: 'hidden' }}>
       <Box
         sx={{
           height: '20%',
@@ -92,10 +92,9 @@ const RecentImgs = () => {
                 left: 0,
 
                 margin: 'auto',
-                width: '30vw',
-                minWidth: '200px',
+
+                minWidth: '300px',
                 maxWidth: '300px',
-                height: '50vh',
 
                 objectFit: 'cover',
                 cursor: 'pointer',

@@ -53,6 +53,7 @@ const CustomSelectModal = ({
 
   const styles: any = {
     female: {
+      inner: ['basic_t_shirts', 'basic_neck_pole'],
       hair: ['short', 'middle', 'long'],
       top: [
         'blazer',
@@ -80,6 +81,7 @@ const CustomSelectModal = ({
       background: ['background1', 'background2', 'background3'],
     },
     male: {
+      inner: ['basic_t_shirts', 'basic_neck_pole'],
       hair: ['short', 'middle', 'long'],
       top: [
         'blazer',

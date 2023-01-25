@@ -1,10 +1,10 @@
 import React, { DragEvent, useEffect, useState } from 'react';
-import UploadPng from '/Upload.png';
-import bart from '../../assets/bart.png';
-import titleone from '../../assets/titleone.png';
-import titletwo from '../../assets/titletwo.png';
+import UploadPng from '/assets/pages/main/Upload.png';
+import bart from '/assets/pages/main//bart.png';
+import titleone from '/assets/pages/main/titleone.png';
+import titletwo from '/assets/pages/main/titletwo.png';
 import { postUploadImage } from '@/apis/postUploadImage';
-import loadingGif from '../../assets/loading.gif';
+import loadingGif from '/assets/pages/main/loading.gif';
 
 import { Box, Button, dividerClasses, Hidden } from '@mui/material';
 import { display, height, padding, positions } from '@mui/system';
@@ -14,13 +14,10 @@ import { useNavigate } from 'react-router-dom';
 
 const DragDropUpload = () => {
   let [taskId, setTaskId] = useState('');
-
   let [isLoading, setIsLoading] = useState(false);
   let {
     data,
-
     refetch,
-
     isSuccess: Success,
   } = useQuery(['AiResult'], async () => await getAiResult(taskId), {
     enabled: false,
@@ -64,39 +61,27 @@ const DragDropUpload = () => {
     setIsLoading(true);
     mutate(formData, {
       onSuccess(task_id, variables, context) {
-        // console.log('mutate', task_id.task_id);
+        setTaskId(task_id.task_id);
+      },
+    });
+  };
+
+  const handleClickFileUpload = (
+    e: React.ChangeEvent<HTMLInputElement> | any,
+  ) => {
+    e.preventDefault();
+    let formData = appendImageToFormData(e.target.files[0]);
+    mutate(formData, {
+      onSuccess(task_id, variables, context) {
         setTaskId(task_id.task_id);
       },
     });
   };
 
   useEffect(() => {
-    if (taskId !== '') {
-      refetch();
-      // refetch().then(res=>navigate('/custom')); // 이렇게 쓰는게 나을까??
-    }
+    if (taskId !== '') refetch();
   }, [taskId]);
 
-  // useEffect(() => {
-  //   if (Success) {
-  //     navigate('/custom', { state: data });
-  //   }
-  // }, [Success]);
-
-  const handleClickFileUpload = (
-    e: React.ChangeEvent<HTMLInputElement> | any,
-  ) => {
-    e.preventDefault();
-
-    let formData = appendImageToFormData(e.target.files[0]);
-
-    mutate(formData, {
-      onSuccess(task_id, variables, context) {
-        console.log('mutate', task_id.task_id);
-        setTaskId(task_id.task_id);
-      },
-    });
-  };
   return (
     <Box
       sx={{
@@ -170,7 +155,7 @@ const DragDropUpload = () => {
           >
             <input
               onChange={handleClickFileUpload}
-              // hidden
+              hidden
               multiple
               type="file"
             />
