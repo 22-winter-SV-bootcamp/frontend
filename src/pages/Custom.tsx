@@ -9,6 +9,7 @@ import domtoimage from 'dom-to-image';
 import { saveAs } from 'file-saver';
 import * as htmlToImage from 'html-to-image';
 import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
+import resultFilter from 'utils/resultFilter';
 
 const theme = createTheme({
   /* custom MediaQuery */
@@ -65,13 +66,9 @@ const Custom = () => {
 
   useEffect(() => {
     // TODO: 결과값 필터링 하기
-    let { top, bottom } = location.state.result;
+    let result = resultFilter(location.state.result);
 
-    if (top === '-blazer') top = 'blazer';
-    if (top === 't-shirts') top = 't_shirts';
-    if (bottom === 'Half-shortpants') top = 'half_shortpants';
-
-    setInfo((pre: any) => ({ ...pre, top: top, bottom: bottom }));
+    setInfo((pre: any) => ({ ...pre, ...result }));
   }, []);
 
   return (
@@ -93,13 +90,11 @@ const Custom = () => {
           minHeight: 350,
           maxHeight: 500,
           maxWidth: 500,
-          backgroundColor: 'red',
         }}
         ref={svgRef}
       >
-        <CustomSVG ref={svgRef} info={info}></CustomSVG>
+        <CustomSVG info={info}></CustomSVG>
       </div>
-
       <CustomInfo svgRef={svgRef} info={info} setInfo={setInfo}></CustomInfo>
     </Box2>
   );

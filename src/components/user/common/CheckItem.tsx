@@ -539,7 +539,7 @@ const CheckItem = ({ info, title, setModal, setSelect }: any) => {
             width={50}
             component="img"
             alt={info[title]}
-            src={`src/assets/custom/background/${info[title]}.png`}
+            src={`/assets/custom/background/${info[title]}.png`}
           />
         ) : (
           <Box height={50} width={50}>

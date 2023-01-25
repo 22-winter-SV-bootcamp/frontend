@@ -77,9 +77,9 @@ const CustomInfo = ({ info, setInfo, svgRef }: any) => {
               }}
             >
               <Box
-                sx={{ width: 100, height: 100 }}
+                sx={{ width: 50, height: 50 }}
                 component="img"
-                src={`/assets/custom/gender/female.png`}
+                src={`/assets/pages/user/female.png`}
                 alt="male"
               ></Box>
             </Button>
@@ -89,9 +89,9 @@ const CustomInfo = ({ info, setInfo, svgRef }: any) => {
               }}
             >
               <Box
-                sx={{ width: 100, height: 100 }}
+                sx={{ width: 50, height: 50 }}
                 component="img"
-                src="/assets/custom/gender/male.png"
+                src="/assets/pages/user/male.png"
                 alt="female"
               ></Box>
             </Button>

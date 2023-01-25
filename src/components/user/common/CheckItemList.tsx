@@ -504,7 +504,7 @@ const CheckItemList = ({ info, gender, title, setInfo, arr, select }: any) => {
       },
     },
   };
-  console.log('hair 확인', SVGComponents[gender]['hair']['long']);
+
   return (
     <Box>
       <Typography variant="h4">{title}</Typography>

@@ -1,10 +1,10 @@
 import React, { DragEvent, useEffect, useState } from 'react';
-import UploadPng from '/Upload.png';
-import bart from '/assets/custom/bart.png';
-import titleone from '/assets/titleone.png';
-import titletwo from '/assets/titletwo.png';
+import UploadPng from '/assets/pages/main/Upload.png';
+import bart from '/assets/pages/main//bart.png';
+import titleone from '/assets/pages/main/titleone.png';
+import titletwo from '/assets/pages/main/titletwo.png';
 import { postUploadImage } from '@/apis/postUploadImage';
-import loadingGif from '/assets/loading.gif';
+import loadingGif from '/assets/pages/main/loading.gif';
 
 import { Box, Button, dividerClasses, Hidden } from '@mui/material';
 import { display, height, padding, positions } from '@mui/system';
@@ -14,13 +14,10 @@ import { useNavigate } from 'react-router-dom';
 
 const DragDropUpload = () => {
   let [taskId, setTaskId] = useState('');
-
   let [isLoading, setIsLoading] = useState(false);
   let {
     data,
-
     refetch,
-
     isSuccess: Success,
   } = useQuery(['AiResult'], async () => await getAiResult(taskId), {
     enabled: false,

@@ -4,8 +4,8 @@ import { Box } from '@mui/system';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Transform } from 'stream';
-import tryNow from '../../assets/tryNow.png';
-import doh from '../../assets/doh.png';
+import tryNow from '/assets/pages/main/tryNow.png';
+import doh from '/assets/pages/common/doh.png';
 import { useQuery } from '@tanstack/react-query';
 import { transferableAbortController } from 'util';
 type CardsType = {

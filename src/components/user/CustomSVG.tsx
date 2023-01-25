@@ -451,21 +451,21 @@ const CustomSVG = ({ info }: any) => {
           <img
             width="100%"
             height="100%"
-            src="src/assets/custom/background/background1.png"
+            src="/assets/custom/background/background1.png"
           ></img>
         ),
         background2: (
           <img
             width="100%"
             height="100%"
-            src="src/assets/custom/background/background2.png"
+            src="/assets/custom/background/background2.png"
           ></img>
         ),
         background3: (
           <img
             width="100%"
             height="100%"
-            src="src/assets/custom/background/background3.png"
+            src="/assets/custom/background/background3.png"
           ></img>
         ),
       },
