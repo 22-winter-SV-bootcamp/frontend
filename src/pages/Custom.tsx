@@ -9,34 +9,8 @@ import domtoimage from 'dom-to-image';
 import { saveAs } from 'file-saver';
 import * as htmlToImage from 'html-to-image';
 import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
-import resultFilter from 'utils/resultFilter';
-
-const theme = createTheme({
-  /* custom MediaQuery */
-  breakpoints: {
-    values: {
-      mobile: 480,
-      tablet: 768,
-      laptop: 0,
-      desktop: 1024,
-    },
-  },
-});
-
-declare module '@mui/material/styles' {
-  /* 타입 스크립트때문에 사용 */
-  interface BreakpointOverrides {
-    xs: false; // removes the `xs` breakpoint
-    sm: false;
-    md: false;
-    lg: false;
-    xl: false;
-    mobile: true; // adds the `mobile` breakpoint
-    tablet: true;
-    laptop: true;
-    desktop: true;
-  }
-}
+import resultFilter from '@/utils/method/resultFilter';
+import { theme } from '@/utils/muiResponse';
 
 const Box2 = styled('div')(({ theme }) => ({
   [theme.breakpoints.down('mobile')]: {
@@ -86,8 +60,8 @@ const Custom = () => {
     >
       <div
         style={{
-          minWidth: 350,
-          minHeight: 350,
+          minWidth: 300,
+          minHeight: 300,
           maxHeight: 500,
           maxWidth: 500,
         }}

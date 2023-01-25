@@ -8,11 +8,7 @@ import IconButton from '@mui/material/IconButton';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import {
-  EasterImgLayout,
-  ModalLayout,
-  theme,
-} from '../../../utils/muiResponse';
+import { EasterImgLayout, ModalLayout, theme } from '../../utils/muiResponse';
 
 const styleModal = {
   position: 'absolute',

@@ -32,10 +32,8 @@ const DragDropUpload = () => {
       }
     },
   });
-  // console.log('data', data);
 
   const navigate = useNavigate();
-  // console.log('success', Success);
 
   const {
     mutate,
@@ -44,7 +42,6 @@ const DragDropUpload = () => {
     error,
     isSuccess,
   } = useMutation(postUploadImage);
-  // console.log('isS', isSuccess);
 
   const appendImageToFormData = (file: File) => {
     let formData = new FormData();
