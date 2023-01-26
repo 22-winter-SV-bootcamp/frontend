@@ -1,4 +1,6 @@
+import axiosCustom from '@/apis/createAxios';
 import { Box, Theme, useMediaQuery, useTheme } from '@mui/material';
+import axios from 'axios';
 import React from 'react';
 import { ImageComponent } from './component';
 import { ImageState, ImageType } from './types';
@@ -21,8 +23,14 @@ export default function RankingImgs() {
     },
   });
 
+  // const fetchFunc = async () => {
+  //   const res = await fetch('/image').then((res) => res.json());
+  //   setImageState(res);
+  // };
+
   const fetchFunc = async () => {
-    const res = await fetch('/image').then((res) => res.json());
+    const res = await axiosCustom.get('/api/v1/image').then((res) => res.data);
+    console.log(res);
     setImageState(res);
   };
 
@@ -81,9 +89,10 @@ export default function RankingImgs() {
         </Box>
         <Box sx={{ display: 'flex', justifyContent: 'center', pb: 8 }}>
           <Box sx={{ display: 'flex' }}>
-            {Object.keys(imageState).map((v) => {
+            {Object.keys(imageState).map((v, i) => {
               return (
                 <ImageComponent
+                  key={i.toString()}
                   imageState={imageState[v as ImageType]}
                   isEnd={v === 'secondImage'}
                 />

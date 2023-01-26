@@ -76,7 +76,7 @@ const RecentImgs = () => {
           position: 'relative',
         }}
       >
-        <Box sx={{}}>
+        <Box>
           {cards.map((card, i) => {
             const indexLeft = mod(index - 1, cards.length);
             const indexLeft2 = mod(index - 2, cards.length);
@@ -153,7 +153,7 @@ const RecentImgs = () => {
 
             return (
               <Box
-                key={i}
+                key={i.toString()}
                 component="img"
                 sx={style}
                 alt="심슨 이미지"
