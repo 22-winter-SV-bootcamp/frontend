@@ -1,6 +1,6 @@
 import { rest } from 'msw';
 
-const base = 'http://localhost:8080';
+const base = 'http://localhost';
 
 const dummy =
   'https://simsontest.s3.ap-northeast-2.amazonaws.com/83b17690-8e22-471b-ad3c-c8ffba67066d.jpg';
@@ -62,11 +62,35 @@ export const handlers = [
     );
   }),
 
+  rest.get(base + '/api/v1/styles', (req, res, ctx) => {
+    let male = {
+      gender: 'male',
+      top: 'shirts',
+      top_color: 'white',
+      bottom: 'slacks',
+      bottom_color: 'balck',
+      count: '333',
+    };
+
+    let female = {
+      gender: 'male',
+      top: 'shirts',
+      top_color: 'red',
+      bottom: 'skirt',
+      bottom_color: 'blue',
+      count: '333',
+    };
+
+    let gender = req.url.searchParams.get('gender') === 'male' ? male : female;
+
+    return res(ctx.status(200), ctx.json(gender));
+  }),
+
   // ai task id 반환 api
   rest.post(base + '/api/v1/images', (req, res, ctx) => {
     return res(ctx.status(200), ctx.json(dummyTaskId));
   }),
-  rest.get(`http://localhost:8080/api/v1/images`, (req, res, ctx) => {
+  rest.get(base + `/api/v1/images`, (req, res, ctx) => {
     console.log('images');
     let pageNumber = req.url.searchParams.get('page');
     if (pageNumber === '0') {
@@ -81,7 +105,7 @@ export const handlers = [
   }),
 
   //AI task 완료되었는지 반환
-  rest.get(base + '/api/v1/images/tasks?', (req, res, ctx) => {
+  rest.get(base + '/api/v1/images/tasks/1', (req, res, ctx) => {
     return res(
       ctx.status(200),
       ctx.json({
