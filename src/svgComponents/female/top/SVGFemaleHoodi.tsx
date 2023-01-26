@@ -9,7 +9,7 @@ const SVGFemaleHoodi = ({ main, sub, detail, viewBox }: any) => (
     height="100%"
   >
     <defs>
-      <style>{'.cls-1 {fill: #fff;}'}</style>
+      <style></style>
     </defs>
     <g id="_\uC0C9" data-name="\uC0C9">
       <path
@@ -19,23 +19,23 @@ const SVGFemaleHoodi = ({ main, sub, detail, viewBox }: any) => (
       />
       <path
         className="cls-1"
-        style={{ fill: main, filter: `brightness(${sub}}%)` }}
+        style={{ fill: main, filter: `brightness(${sub}%)` }}
         d="M492.76,476.76v8.47h-3.11v-8.47h3.11Z"
       />
       ````
       <path
         className="cls-1"
-        style={{ fill: main, filter: `brightness(${sub}}%)` }}
+        style={{ fill: main, filter: `brightness(${sub}%)` }}
         d="M489.01,476.74v8.46h-7.96v-8.46h7.96Z"
       />
       <path
         className="cls-1"
-        style={{ fill: main, filter: `brightness(${detail}}%)` }}
+        style={{ fill: main, filter: `brightness(${detail}%)` }}
         d="M484.95,349.15c.13-3.86,.3-7.72,.45-11.58,.2-.1,.39-.2,.58-.31,2.75,2.46,5.84,4.63,8.17,7.44,2.78,3.35,1.19,6.5-1.46,9.24-.21,.22-.77,.3-1.09,.21-1.52-.47-3.05-.94-4.51-1.56-1.45-.62-2.19-1.84-2.14-3.44Z"
       />
       <path
         className="cls-1"
-        style={{ fill: main, filter: `brightness(${sub}}%)` }}
+        style={{ fill: main, filter: `brightness(${sub}%)` }}
         d="M480.36,476.75v8.46h-24.88v-8.46h24.88Z"
       />
       <path
@@ -60,12 +60,12 @@ const SVGFemaleHoodi = ({ main, sub, detail, viewBox }: any) => (
       />
       <path
         className="cls-1"
-        style={{ fill: main, filter: `brightness(${sub}}%)` }}
+        style={{ fill: main, filter: `brightness(${sub}%)` }}
         d="M453.6,476.66c.34,.06,.71,.01,1.23,.01v8.54h-2.52v-3.03c0-1.39,.06-2.79-.02-4.18-.06-1.02,.21-1.51,1.31-1.34Z"
       />
       <path
         className="cls-1"
-        style={{ fill: main, filter: `brightness(${sub}}%)` }}
+        style={{ fill: main, filter: `brightness(${sub}%)` }}
         d="M451.69,476.73v8.47h-23.27v-8.47h23.27Z"
       />
       <path
@@ -75,7 +75,7 @@ const SVGFemaleHoodi = ({ main, sub, detail, viewBox }: any) => (
       />
       <path
         className="cls-1"
-        style={{ fill: main, filter: `brightness(${detail}}%)` }}
+        style={{ fill: main, filter: `brightness(${detail}%)` }}
         d="M440.92,354.25c-.52,.09-.98,.18-1.34,.26-.02,.01-.04,.01-.06,.02-.01-1.03,.15-2.09,.53-3.16,1.15-3.21,3.48-5.68,5.81-8.25,0,3.08-.03,5.94,.02,8.8,.01,.93-.36,1.46-1.21,1.64-.26,.05-.58,.12-.94,.18-.88,.15-1.77,.28-2.63,.47-.06,.01-.12,.02-.18,.04Z"
       />
       <path
@@ -90,7 +90,7 @@ const SVGFemaleHoodi = ({ main, sub, detail, viewBox }: any) => (
       />
       <path
         className="cls-1"
-        style={{ fill: main, filter: `brightness(${sub}}%)` }}
+        style={{ fill: main, filter: `brightness(${sub}%)` }}
         d="M427.85,476.8c0,2.64,.02,5.23-.03,7.81-.01,.23-.46,.65-.71,.66-3.94,.04-7.89,.02-11.94,.02v-8.49h12.68Z"
       />
       <path
@@ -105,17 +105,17 @@ const SVGFemaleHoodi = ({ main, sub, detail, viewBox }: any) => (
       />
       <path
         className="cls-1"
-        style={{ fill: main, filter: `brightness(${sub}}%)` }}
+        style={{ fill: main, filter: `brightness(${sub}%)` }}
         d="M413.14,477.82c-.02-.96,.36-1.2,1.31-.94v8.3c-.97,.3-1.33,.02-1.31-.92,.05-2.15,.05-4.3,0-6.44Z"
       />
       <path
         className="cls-1"
-        style={{ fill: main, filter: `brightness(${sub}}%)` }}
+        style={{ fill: main, filter: `brightness(${sub}%)` }}
         d="M412.59,476.86v8.35h-8.34v-8.35h8.34Z"
       />
       <path
         className="cls-1"
-        style={{ fill: main, filter: `brightness(${sub}}%)` }}
+        style={{ fill: main, filter: `brightness(${sub}%)` }}
         d="M402.84,476.8c.25,.01,.71,.34,.71,.53,.05,2.61,.04,5.23,.04,7.9h-8.02c.19-2.82,.37-5.62,.56-8.45,2.27,0,4.49-.02,6.71,.02Z"
       />
       <path

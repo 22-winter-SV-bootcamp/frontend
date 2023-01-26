@@ -31,7 +31,7 @@ const SVGMaleMiddle = ({ main, sub, detail, viewBox }: any) => (
       />
       <path
         className="cls-1"
-        style={{ fill: main, filter: `brightness(${sub}%)` }}
+        style={{ fill: main, filter: `brightness(${detail}%)` }}
         d="M434.62,184.94c.82-1.5,1.51-3,2.38-4.33a23.49,23.49,0,0,1,7.45-7.81,13.35,13.35,0,0,1,4.6-1.84c3.23-.52,6,2,6.73,5.8-3.95-.26-7.55,1-11,2.73S438.15,183,434.62,184.94Z"
       />
       <path
@@ -41,7 +41,7 @@ const SVGMaleMiddle = ({ main, sub, detail, viewBox }: any) => (
       />
       <path
         className="cls-1"
-        style={{ fill: main, filter: `brightness(${sub}%)` }}
+        style={{ fill: main, filter: `brightness(${detail}%)` }}
         d="M444.52,184.47c1.07-2.19,1.81-4.34,4.49-4.77,2-.32,4-.82,6-1.1,1-.14,1.72.27,1.94,1.52.46,2.66,1.12,5.29,1.73,8.1l-7.1-2.28a5.17,5.17,0,0,0,.6-1.48,3,3,0,0,0-.28-2,2.17,2.17,0,0,0-1.85-.18c-1.44.45-2.82,1.1-4.22,1.67Z"
       />
       <path
@@ -51,7 +51,7 @@ const SVGMaleMiddle = ({ main, sub, detail, viewBox }: any) => (
       />
       <path
         className="cls-1"
-        style={{ fill: main, filter: `brightness(${sub}%)` }}
+        style={{ fill: main, filter: `brightness(${detail}%)` }}
         d="M431.31,186.13c-3.53-2.63-7-4-11.23-2.13.82-2,1.72-3.81,3.59-4.86a2.32,2.32,0,0,1,2.81.11A19.07,19.07,0,0,1,431.31,186.13Z"
       />
       <path

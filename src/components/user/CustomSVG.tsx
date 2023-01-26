@@ -70,7 +70,7 @@ const CustomSVG = ({ info }: any) => {
   } = info;
 
   let sub = 85;
-  let detail = 10;
+  let detail = 70;
 
   const colorArr: ColorArrType = {
     white: '#FFFFFF',
