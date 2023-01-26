@@ -55,7 +55,7 @@ type SVGComponentsType = {
 
 const CheckItemList = ({ info, gender, title, setInfo, arr, select }: any) => {
   let sub = 85;
-  let detail = 10;
+  let detail = 70;
   let viewBoxFemailTop = '370 340 180 180';
   let viewBoxMailTop = '350 305 230 230';
   let viewBoxFemailBottom = '360 440 180 180';
