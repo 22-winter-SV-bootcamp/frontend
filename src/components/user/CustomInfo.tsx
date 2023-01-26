@@ -170,14 +170,15 @@ const CustomInfo = ({ info, setInfo, svgRef }: any) => {
           sx={{ alignSelf: 'end', background: '#D9D9D9', color: 'black' }}
           onClick={async (e: any) => {
             e.preventDefault();
-            alert(1);
+            // alert(1);
             let formData = new FormData();
 
-            // let blob = await domToImg(svgRef.current);
-            let blob = await html2canvasToBlob(svgRef.current);
+            let blob = await domToImg(svgRef.current);
+            // let blob = await html2canvasToBlob(svgRef.current);
             console.log('blob', blob);
 
-            blob.toBlob((b: any) => formData.append('file', b));
+            // blob.toBlob((b: any) => formData.append('file', b));
+            formData.append('file', blob);
             formData.append('gender', gender);
             formData.append('top', top);
             formData.append('top_color', topColor);
@@ -190,9 +191,8 @@ const CustomInfo = ({ info, setInfo, svgRef }: any) => {
             // alert('hi');
             // navigate('/result', { state: link });
 
-            postCustomStyleInfo(formData).then((link) => {
-              navigate('/result', { state: link });
-            });
+            let link = await postCustomStyleInfo(formData);
+            navigate('/result', { state: link });
           }}
         >
           <Typography variant="h4">Done</Typography>

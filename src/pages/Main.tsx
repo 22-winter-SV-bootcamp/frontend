@@ -25,7 +25,7 @@ const Main = () => {
       {/* 업로드 버튼 오는 자리 */}
       <DragDropUpload></DragDropUpload>
       {/* 랭킹 보여주는 자리 */}
-      <RankingImgs />
+      {/* <RankingImgs /> */}
     </>
   );
 };
