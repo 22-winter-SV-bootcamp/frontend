@@ -11,7 +11,6 @@ import * as htmlToImage from 'html-to-image';
 import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
 import resultFilter from '@/utils/method/resultFilter';
 
-
 const theme = createTheme({
   /* custom MediaQuery */
   breakpoints: {
@@ -39,7 +38,6 @@ declare module '@mui/material/styles' {
   }
 }
 
-
 const Box2 = styled('div')(({ theme }) => ({
   [theme.breakpoints.down('mobile')]: {
     flexDirection: 'column',
@@ -52,14 +50,14 @@ const Custom = () => {
   const [info, setInfo] = useState({
     gender: 'female',
     hair: 'long',
-    hairColor: 'skyBlue',
+    hairColor: 'white',
     top: 'blazer',
-    topColor: 'blue',
+    topColor: 'white',
     bottom: 'jeans',
-    bottomColor: 'black',
+    bottomColor: 'white',
     background: 'background1',
     inner: 'basic_t_shirts',
-    innerColor: 'red',
+    innerColor: 'white',
   });
   const location = useLocation();
   const svgRef: any = useRef();
