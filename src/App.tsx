@@ -10,6 +10,7 @@ import SimpsonDoh from './assets/SimpsonDoh.jpg';
 import SimpsonDoh2 from './assets/SimpsonDoh2.png';
 
 import router from './router/router';
+import { ResultPage } from './components/result/ResultPage';
 
 function App() {
   return (

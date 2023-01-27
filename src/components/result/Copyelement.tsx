@@ -54,6 +54,21 @@ export const Copyelement = ({ resultImg }: { resultImg: string }) => {
     }, 3000);
   };
 
+  const FabResponse = {
+    width: {
+      laptop: '45px', //img src from 0 up to mobile
+      mobile: '35px', //img src from mobile up to tablet
+      tablet: '45px', //img src from tablet up to desktop
+      desktop: '45px', //img src from desktop up to ~
+    },
+    height: {
+      laptop: '45px', //img src from 0 up to mobile
+      mobile: '35px', //img src from mobile up to tablet
+      tablet: '45px', //img src from tablet up to desktop
+      desktop: '45px', //img src from desktop up to ~
+    },
+  };
+
   return (
     <>
       <ClickAwayListener onClickAway={handleButtonClick}>
@@ -84,25 +99,13 @@ export const Copyelement = ({ resultImg }: { resultImg: string }) => {
             color="primary"
             sx={buttonSx}
             onClick={handleButtonClick}
-            size="small"
-            style={{ transform: 'scale(0.6)', top: '-4px', left: '-4px' }}
+            // style={{ transform: 'scale(0.9)' }}
+            style={{ width: '45px', height: '45px' }}
           >
             {success ? <CheckIcon /> : <ShareIcon />}
           </Fab>
         </CustomTooltip>
       </ClickAwayListener>
-      {loading && (
-        <CircularProgress
-          size={30}
-          sx={{
-            color: green[500],
-            position: 'absolute',
-            top: '1px',
-            right: '-1px',
-            zIndex: 1,
-          }}
-        />
-      )}
     </>
   );
 };

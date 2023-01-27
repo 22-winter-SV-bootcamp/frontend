@@ -15,7 +15,6 @@ import { styled } from '@mui/material';
 export function ResultImg() {
   const [url, setUrl] = useState('');
   const location = useLocation();
-  console.log(location.state);
   const navigate = useNavigate();
 
   useEffect(() => {
