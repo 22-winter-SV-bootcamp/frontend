@@ -1,6 +1,7 @@
 import { Check } from '@mui/icons-material';
 import { Button, Typography } from '@mui/material';
-import { Box, height } from '@mui/system';
+import { height } from '@mui/system';
+import { Box } from '@mui/material';
 import axios from 'axios';
 import React, { useState } from 'react';
 import CheckItem from './common/CheckItem';

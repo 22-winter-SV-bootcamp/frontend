@@ -1,5 +1,5 @@
 import { Button, Hidden, Typography } from '@mui/material';
-import { Box } from '@mui/system';
+import { Box } from '@mui/material';
 import React, { SetStateAction, useState } from 'react';
 import CheckColorList from './common/CheckColorList';
 

@@ -42,7 +42,7 @@ import SVGMaleShirts from '@/svgComponents/male/top/SVGMaleShirts';
 import SVGMaleSweater from '@/svgComponents/male/top/SVGMaleSweater';
 import SVGMaleSweatshirts from '@/svgComponents/male/top/SVGMaleSweatshirts';
 import SVGMaleT_shirts from '@/svgComponents/male/top/SVGMaleT_shirts';
-import { Box } from '@mui/system';
+import { Box } from '@mui/material';
 import { styled } from '@mui/material';
 import { theme } from '@/utils/mui/breakpoints';
 
@@ -502,9 +502,9 @@ const CustomSVG = ({ info }: any) => {
       sx={{
         position: 'relative',
 
-        maxWidth: 500,
+        maxWidth: 200,
 
-        maxHeight: 500,
+        maxHeight: 200,
         height: 'auto',
       }}
     >

@@ -2,7 +2,7 @@ import CustomInfo from '@/components/user/CustomInfo';
 import CustomSelectModal from '@/components/user/CustomSelectModal';
 import CustomSVG from '@/components/user/CustomSVG';
 import { SettingsInputAntennaTwoTone } from '@mui/icons-material';
-import { Box, createTheme, styled } from '@mui/system';
+import { createTheme, styled } from '@mui/material';
 import React, { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import domtoimage from 'dom-to-image';

@@ -1,6 +1,7 @@
 import getRecentImgs from '@/apis/getRecentImgs';
 import { convertLength } from '@mui/material/styles/cssUtils';
-import { Box } from '@mui/system';
+import { breakpoints, maxWidth, styled } from '@mui/system';
+import { Box } from '@mui/material';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Transform } from 'stream';
@@ -8,6 +9,9 @@ import tryNow from '/assets/pages/main/tryNow.png';
 import doh from '/assets/pages/common/doh.png';
 import { useQuery } from '@tanstack/react-query';
 import { transferableAbortController } from 'util';
+import { red } from '@mui/material/colors';
+import { relative } from 'path';
+import { theme } from '@/utils/mui/breakpoints';
 type CardsType = {
   id: number;
   link: string;
@@ -27,164 +31,68 @@ const RecentImgs = () => {
     },
   );
 
-  const mod = (n: number, m: number) => {
-    let result = n % m;
-
-    // Return a positive value
-    return result >= 0 ? result : result + m;
-  };
-
   useEffect(() => {
-    if (data) setCards([...cards, ...data]);
+    if (data) setCards([...data]);
   }, [data]);
 
-  const onClickRight = () => {
-    let midIndex = index + 1 < cards.length - 1 ? index + 1 : cards.length - 1;
-    console.log(midIndex);
-    setIndex(midIndex);
-  };
+  const p = [
+    { left: 20, top: 60, transform: `rotateX(45deg) rotateZ(-35deg)` },
+    { left: 210, top: 10, transform: `rotateX(45deg) rotateZ(25deg)` },
+    { left: 150, top: 220, transform: `rotateX(45deg) rotateZ(-15deg)` },
+    { left: 30, top: 350, transform: `rotateX(45deg) rotateZ(25deg)` },
+    { left: 220, top: 450, transform: `rotateX(45deg) rotateZ(-25deg)` },
+  ];
 
-  const onClickLeft = () => {
-    let midIndex = index - 1 > 0 ? index - 1 : 0;
-    console.log(midIndex);
-    setIndex(midIndex);
-  };
+  const Box1 = styled('div')(({ theme }) => ({
+    overflow: 'hidden',
+    position: 'relative',
+    minWidth: 400,
+    maxWidth: 500,
+    width: '100%',
+    height: '100%',
+    backgroundColor: 'rgb(255, 226, 197)',
+    background:
+      'linear-gradient(169deg, rgba(255,226,197,1) 49%, rgba(236,226,216,1) 55%, rgba(255,255,255,1) 56%, rgba(216,196,177,1) 60%, rgba(186,150,115,1) 64%, rgba(197,167,138,1) 65%, rgba(178,138,99,1) 68%)',
+    [theme.breakpoints.down('desktop')]: {
+      position: 'absolute',
+      zIndex: -1,
+    },
+    [theme.breakpoints.up('desktop')]: {
+      position: 'relative',
+      zIndex: -1,
+    },
+  }));
+
+  const Triangle = styled('div')(({ theme }) => ({
+    width: 0,
+    height: 0,
+    borderBottom: `100px solid transparent`,
+    borderTop: `300px solid #FFE2C5`,
+    borderLeft: `300px solid #FFE2C5`,
+    borderRight: `900px solid transparent`,
+    [theme.breakpoints.down('mobile')]: {
+      borderTop: `50px solid #C5E8FF`,
+      borderLeft: `160px solid #C5E8FF`,
+    },
+  }));
 
   return (
-    <Box sx={{ backgroundColor: 'black', height: '100vh', overflow: 'hidden' }}>
-      <Box
-        sx={{
-          height: '20%',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
+    <Box1 theme={theme}>
+      <Triangle theme={theme}></Triangle>
+      {cards?.map((card, i) => (
         <Box
-          component="img"
-          src={doh}
-          sx={{ width: 200, background: 'red', padding: 0.5 }}
-        ></Box>
-      </Box>
-
-      <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          height: '60%',
-          position: 'relative',
-        }}
-      >
-        <Box>
-          {cards.map((card, i) => {
-            const indexLeft = mod(index - 1, cards.length);
-            const indexLeft2 = mod(index - 2, cards.length);
-            const indexRight = mod(index + 1, cards.length);
-            const indexRight2 = mod(index + 2, cards.length);
-            let onClick: () => void = onClickRight;
-            let style: any = [
-              {
-                position: 'absolute',
-                top: 0,
-                right: 0,
-                bottom: 0,
-                left: 0,
-
-                margin: 'auto',
-
-                minWidth: '300px',
-                maxWidth: '300px',
-
-                objectFit: 'cover',
-                cursor: 'pointer',
-                zIndex: 0,
-                opacity: 0,
-
-                transition: '500ms',
-              },
-            ];
-
-            if (i === index) {
-              style.push({
-                opacity: 1,
-                transform: 'scale(1)',
-                transition: '500ms',
-
-                zIndex: 99,
-              });
-            } else if (i === indexRight) {
-              style.push({
-                opacity: 0.8,
-                transform: 'translateX(30%) scale(0.8)',
-
-                transition: '500ms',
-
-                zIndex: 66,
-              });
-            } else if (i === indexLeft) {
-              style.push({
-                opacity: 0.8,
-                transform: 'translateX(-30%) scale(0.8)',
-
-                transition: '500ms',
-
-                zIndex: 66,
-              });
-              onClick = onClickLeft;
-            } else if (i === indexLeft2) {
-              style.push({
-                opacity: 0.3,
-                transform: 'translateX(-60%) scale(0.6)',
-
-                transition: '500ms',
-                zIndex: 33,
-              });
-              onClick = onClickLeft;
-            } else if (i === indexRight2) {
-              style.push({
-                opacity: 0.3,
-                transform: 'translateX(60%) scale(0.6)',
-
-                transition: '500ms',
-                zIndex: 33,
-              });
-            }
-
-            return (
-              <Box
-                key={i.toString()}
-                component="img"
-                sx={style}
-                alt="심슨 이미지"
-                src={card?.link}
-                onClick={() => {
-                  if (index === cards.length - 3) setPage(page + 1);
-                  onClick();
-                }}
-              ></Box>
-            );
-          })}
-        </Box>
-      </Box>
-      <Box
-        sx={{
-          height: '20%',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        <Box
-          component="img"
-          src={tryNow}
-          sx={{ width: 200, background: 'red', padding: 0.5 }}
-          onClick={() => {
-            window.scrollTo(0, window.innerHeight);
+          key={i}
+          sx={{
+            ...p[i],
+            position: 'absolute',
           }}
+          width="100px"
+          height="150px"
+          component="img"
+          src={card.link}
         ></Box>
-      </Box>
-    </Box>
+      ))}
+    </Box1>
   );
 };
 
