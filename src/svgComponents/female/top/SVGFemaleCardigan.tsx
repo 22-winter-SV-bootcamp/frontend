@@ -9,7 +9,7 @@ const SVGFemaleCardigan = ({ main, sub, detail, viewBox }: any) => (
     height="100%"
   >
     <defs>
-      <style>{'.cls-1 {fill: #fff;}'}</style>
+      <style></style>
     </defs>
     <g id="_\uC0C9" data-name="\uC0C9">
       <path

@@ -14,7 +14,7 @@ import { useNavigate } from 'react-router-dom';
 
 const DragDropUpload = () => {
   let [taskId, setTaskId] = useState('');
-  let [isLoading, setIsLoading] = useState(false);
+  let [isLoading, setIsLoading] = useState(true);
   let {
     data,
     refetch,
@@ -68,6 +68,7 @@ const DragDropUpload = () => {
   ) => {
     e.preventDefault();
     let formData = appendImageToFormData(e.target.files[0]);
+    setIsLoading(true);
     mutate(formData, {
       onSuccess(task_id, variables, context) {
         setTaskId(task_id.task_id);
