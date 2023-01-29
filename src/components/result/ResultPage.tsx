@@ -1,19 +1,16 @@
 // @flow
-import { AspectRatio } from '@mui/joy';
 import { Box, Button, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import testSimpson from '/assets/pages/user/Simpson.png';
 import downloadIcon from '/assets/pages/result/downloadIcon.png';
-import home from '/assets/pages/result/home.png';
+import home from '/assets/pages/result/homeBtn.png';
 import ShareArrow from '/assets/pages/result/ShareArrow.png';
-import Kakaotalk from '/assets/pages/result/Kakaotalk.png';
+import Kakaotalk from '/assets/pages/result/kakaotalk.png';
 import { imageDownload } from './imageDownload';
 import { Copyelement } from './Copyelement';
 import { sendKakao } from './kakaotalk/sendKakao';
 
-Kakaotalk;
-ShareArrow;
 type Props = {};
 export const ResultPage = (props: Props) => {
   const [url, setUrl] = useState('');
@@ -40,7 +37,7 @@ export const ResultPage = (props: Props) => {
 
   const styleContainer = {
     height: '100%',
-    background: 'linear-gradient(to bottom, #C5E8FF, #F8E3CC 90%)',
+    background: 'linear-gradient(to bottom, #C5E8FF, #FFFFFF 90%)',
     position: 'relative',
     display: 'flex',
     justifyContent: 'center',
@@ -75,6 +72,7 @@ export const ResultPage = (props: Props) => {
     position: 'relative',
     display: 'flex',
     justifyContent: 'center',
+    bgcolor: '#CCE7FF',
   };
 
   const styleMainImg = {
@@ -84,6 +82,7 @@ export const ResultPage = (props: Props) => {
     maxWidth: '590px' /* 화면에 따라 수정 예정 */,
     objectFit: 'contain',
     border: 2,
+    filter: 'opacity(0.5) drop-shadow(0 0 0 #CCE7FF)',
   };
 
   const footerLayout = {

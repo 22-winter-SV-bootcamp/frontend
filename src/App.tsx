@@ -11,12 +11,14 @@ import SimpsonDoh2 from './assets/SimpsonDoh2.png';
 
 import router from './router/router';
 import { ResultPage } from './components/result/ResultPage';
+import { UploadPage } from './components/upload/UploadPage';
 
 function App() {
   return (
     <Box sx={{ width: 1, height: 1 }}>
       <RouterProvider router={router}></RouterProvider>
     </Box>
+    // <UploadPage />
   );
 }
 export default App;
