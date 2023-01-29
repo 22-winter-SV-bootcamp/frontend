@@ -90,18 +90,9 @@ export const handlers = [
   rest.post(base + '/api/v1/images', (req, res, ctx) => {
     return res(ctx.status(200), ctx.json(dummyTaskId));
   }),
+
   rest.get(base + `/api/v1/images`, (req, res, ctx) => {
-    console.log('images');
-    let pageNumber = req.url.searchParams.get('page');
-    if (pageNumber === '0') {
-      console.log('mock 0');
-      return res(ctx.status(200), ctx.json(recentImgs));
-    } else if (pageNumber === '1') {
-      console.log('mock 1');
-      return res(ctx.status(200), ctx.json(recentImgs1));
-    } else {
-      return res(ctx.status(200), ctx.json(recentImgs));
-    }
+    return res(ctx.status(200), ctx.json(recentImgs1));
   }),
 
   //AI task 완료되었는지 반환

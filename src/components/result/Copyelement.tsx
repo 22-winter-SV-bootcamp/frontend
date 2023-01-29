@@ -1,9 +1,14 @@
 // @flow
-import { ClickAwayListener, Fab, Fade, CircularProgress } from '@mui/material';
+import {
+  Box,
+  ClickAwayListener,
+  Fab,
+  Fade,
+  CircularProgress,
+} from '@mui/material';
 import React, { useEffect, useRef, useState } from 'react';
 import { CustomTooltip } from './CustomTooltip';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
-import { Box } from '@mui/system';
 import { green, orange } from '@mui/material/colors';
 import CheckIcon from '@mui/icons-material/Check';
 import ShareIcon from '@mui/icons-material/Share';

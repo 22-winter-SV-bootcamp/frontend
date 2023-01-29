@@ -1,5 +1,5 @@
 import { Button, ButtonGroup, Typography } from '@mui/material';
-import { Box } from '@mui/system';
+import { Box } from '@mui/material';
 import React from 'react';
 import Tooltip from '@mui/material/Tooltip';
 type ColorArrType = {

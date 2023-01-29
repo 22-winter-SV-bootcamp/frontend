@@ -43,7 +43,7 @@ import SVGMaleSweater from '@/svgComponents/male/top/SVGMaleSweater';
 import SVGMaleSweatshirts from '@/svgComponents/male/top/SVGMaleSweatshirts';
 import SVGMaleT_shirts from '@/svgComponents/male/top/SVGMaleT_shirts';
 import { Button, Tooltip, Typography } from '@mui/material';
-import { Box, Stack } from '@mui/system';
+import { Box, Stack } from '@mui/material';
 import React from 'react';
 
 type ColorArrType = {

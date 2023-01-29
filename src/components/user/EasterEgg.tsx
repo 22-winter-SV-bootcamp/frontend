@@ -2,12 +2,11 @@ import React, { useEffect } from 'react';
 
 import CancelPresentationIcon from '@mui/icons-material/CancelPresentation';
 import IconButton from '@mui/material/IconButton';
-import Box from '@mui/material/Box';
+import { Box } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { styled } from '@mui/material';
 import { theme } from '@/utils/mui/breakpoints';
-
 
 type CustomModal = {
   text: string;

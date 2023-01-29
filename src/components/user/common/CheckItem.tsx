@@ -43,7 +43,6 @@ import SVGMaleSweater from '@/svgComponents/male/top/SVGMaleSweater';
 import SVGMaleSweatshirts from '@/svgComponents/male/top/SVGMaleSweatshirts';
 import SVGMaleT_shirts from '@/svgComponents/male/top/SVGMaleT_shirts';
 import { Button, styled, Typography } from '@mui/material';
-import { Box } from '@mui/system';
 import { theme } from '@/utils/mui/breakpoints';
 
 type ColorArrType = {
