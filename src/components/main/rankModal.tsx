@@ -43,6 +43,7 @@ export default function RankModal({ open, setOpen }: any) {
       count: '1',
     },
   ]);
+
   const { data: male } = useQuery(
     ['maleRank'],
     async () => await getBestStyle('male'),
@@ -63,35 +64,52 @@ export default function RankModal({ open, setOpen }: any) {
   };
 
   const Box1 = styled('div')(({ theme }) => ({
-    [theme.breakpoints.down('desktop')]: {
-      position: 'absolute',
-      width: '100vw',
-      height: '100vh',
-      top: 0,
-      left: 0,
-      backgroundColor: 'white',
-      opacity: 0.7,
-      zIndex: 10,
-    },
-    [theme.breakpoints.up('desktop')]: {},
+    top: 0,
+    left: 0,
+    backgroundColor: 'white',
+    opacity: 0.7,
+    zIndex: 10,
+    width: '100vw',
+    height: '100vh',
+    position: 'absolute',
+
+    [theme.breakpoints.down('tablet')]: {},
+    [theme.breakpoints.between('tablet', 'desktop')]: {},
+    [theme.breakpoints.between('desktop', 'bigDesktop')]: {},
+    [theme.breakpoints.up('bigDesktop')]: {},
   }));
 
   const Box2 = styled('div')(({ theme }) => ({
     display: 'flex',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: 'red',
+    backgroundColor: 'white',
+    position: 'absolute',
 
-    [theme.breakpoints.down('desktop')]: {
-      position: 'absolute',
-      width: '500px',
-      height: '600px',
-      top: '50%',
-      left: '50%',
-      transform: `translate(-50%,-50%)`,
-      zIndex: 20,
+    top: '50%',
+    left: '50%',
+    padding: 20,
+    boxShadow: '3px 3px 0px 0px #C7C7C7',
+
+    transform: `translate(-50%,-50%)`,
+    zIndex: 20,
+    [theme.breakpoints.down('tablet')]: {
+      width: '276px',
+      height: '276px',
+      borderRadius: 30,
     },
-    [theme.breakpoints.up('desktop')]: {},
+    [theme.breakpoints.between('tablet', 'desktop')]: {
+      width: '550px',
+      height: '550px',
+    },
+    [theme.breakpoints.between('desktop', 'bigDesktop')]: {
+      width: '440px',
+      height: '440px',
+    },
+    [theme.breakpoints.up('bigDesktop')]: {
+      width: '440px',
+      height: '440px',
+    },
   }));
 
   const Box3 = styled('div')(({ theme }) => ({

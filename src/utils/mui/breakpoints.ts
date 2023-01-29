@@ -12,6 +12,7 @@ declare module '@mui/material/styles' {
     tablet: true;
     laptop: true;
     desktop: true;
+    bigDesktop: true;
   }
 }
 
@@ -23,6 +24,7 @@ export const theme = createTheme({
       tablet: 768,
       laptop: 0,
       desktop: 1024,
+      bigDesktop: 1400,
     },
   },
 });

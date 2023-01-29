@@ -1,28 +1,29 @@
 import { Box, Button } from '@mui/material';
 import React, { useState } from 'react';
 
-const ButtonIcon = ({ title, setOpen }: any) => {
+const ButtonIcon = ({ title, setOpen, setPage }: any) => {
   return (
     <Button
+      onClick={() => {
+        if (title === 'rank') setOpen(true);
+        else setPage((page: number) => page + 1);
+      }}
       variant="contained"
       color="inherit"
       sx={{
-        boxShadow: '5px 5px 0px 0px #C7C7C7',
+        boxShadow: '3px 3px 0px 0px #C7C7C7',
         padding: 2,
-        width: 70,
-        height: 70,
+        width: '40%',
+        height: '100%',
+        borderRadius: '50px',
         backgroundColor: '#FFFFFF',
-        borderRadius: 5,
       }}
     >
       <Box
-        onClick={() => {
-          if (title === 'rank') setOpen(true);
-        }}
         sx={{ opacity: 0.5 }}
         component="img"
-        width="100%"
-        height="100%"
+        width="75%"
+        height="75%"
         src={`/assets/pages/main/${title}.png`}
       ></Box>
     </Button>

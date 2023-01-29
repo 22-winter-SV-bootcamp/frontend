@@ -1,5 +1,5 @@
 import { Box, Button, styled, Typography } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import DragDropUpload from '@/components/main/DragDropUpload/DragDropUpload';
 import RecentImgs from '@/components/main/RecentImgs';
 
@@ -7,60 +7,80 @@ import IconButton from '@/components/common/ButtonIcon';
 import { theme } from '@/utils/mui/breakpoints';
 import RankModal from '@/components/main/rankModal';
 import ButtonIcon from '@/components/common/ButtonIcon';
+import getRecentImgs from '@/apis/getRecentImgs';
+import { useQuery } from '@tanstack/react-query';
+import { useNavigate } from 'react-router-dom';
+
+type CardsType = {
+  id: number;
+  link: string;
+};
 
 const Main = () => {
   const MainBox = styled('div')(({ theme }) => ({
-    width: '100%',
+    width: '100vw',
     overflow: 'hidden',
-    height: '100%',
-    background: 'linear-gradient(to bottom, #abdeff 50.29%, #F8E3CC 100%)',
+    height: '100vh',
+    // TODO: 배경 바꿔야함
+    background:
+      'linear-gradient(180deg, rgba(197,232,255,1) 0%, rgba(198,233,255,1) 34%, rgba(204,236,255,1) 66%, rgba(222,242,255,1) 100%)',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
     position: 'relative',
     zIndex: 0,
-    [theme.breakpoints.down('mobile')]: {},
-    [theme.breakpoints.between('mobile', 'tablet')]: {},
-    [theme.breakpoints.up('desktop')]: {
-      flexDirection: 'row',
-    },
+    [theme.breakpoints.down('tablet')]: {},
+    [theme.breakpoints.between('tablet', 'desktop')]: {},
+    [theme.breakpoints.between('desktop', 'bigDesktop')]: {},
+    [theme.breakpoints.up('bigDesktop')]: {},
   }));
 
   const TopBox = styled('div')(({ theme }) => ({
-    width: 400,
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    paddingTop: 40,
-    paddingBottom: 40,
     justifyContent: 'center',
     zIdenx: 1,
-    [theme.breakpoints.down('desktop')]: {
-      marginBottom: 'auto',
-      paddingTop: 10,
-      paddingRight: 160,
-      alignSelf: 'center',
+
+    [theme.breakpoints.down('tablet')]: {
+      marginBottom: '185px',
+      fontSize: '70px',
     },
-    [theme.breakpoints.between('mobile', 'tablet')]: {},
-    [theme.breakpoints.up('desktop')]: {
-      alignSelf: 'start',
+    [theme.breakpoints.between('tablet', 'desktop')]: {
+      marginBottom: '390px',
+      fontSize: '140px',
+    },
+    [theme.breakpoints.between('desktop', 'bigDesktop')]: {
+      marginBottom: '310px',
+      fontSize: '125px',
+    },
+    [theme.breakpoints.up('bigDesktop')]: {
+      marginBottom: '310px',
+      fontSize: '125px',
     },
   }));
 
   const BottomBox = styled('div')(({ theme }) => ({
-    width: 400,
     display: 'flex',
-    paddingTop: 40,
-    paddingBottom: 40,
-    justifyContent: 'space-evenly',
-    [theme.breakpoints.down('desktop')]: {
-      alignSelf: 'center',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+
+    [theme.breakpoints.down('tablet')]: {
+      width: 182,
+      height: 125,
     },
-    [theme.breakpoints.between('mobile', 'tablet')]: {},
-    [theme.breakpoints.up('desktop')]: {
-      alignSelf: 'end',
-      zIdenx: 1,
+    [theme.breakpoints.between('tablet', 'desktop')]: {
+      width: 372,
+      height: 261,
+    },
+    [theme.breakpoints.between('desktop', 'bigDesktop')]: {
+      width: 325,
+      height: 222,
+    },
+    [theme.breakpoints.up('bigDesktop')]: {
+      width: 325,
+      height: 222,
     },
   }));
 
@@ -76,23 +96,76 @@ const Main = () => {
   }));
 
   const [open, setOpen] = useState(false);
+  // const [cards, setCards] = useState<CardsType[]>([]);
+  const [page, setPage] = useState(1);
+
+  const {
+    isLoading,
+    isError,
+    data: cards,
+  } = useQuery(['recentPage', page], async () => await getRecentImgs(page), {
+    staleTime: 1000 * 60 ** 60,
+    refetchOnWindowFocus: false,
+  });
+
+  const navigate = useNavigate();
+
+  // useEffect(() => {
+  //   if (data) setCards([...data]);
+  // }, [data]);
+
   return (
     <>
       <MainBox theme={theme}>
         <TopBox theme={theme}>
-          <Typography sx={{ color: 'white', fontWeight: 400 }} variant="h1">
+          <Box sx={{ marginBottom: 1, color: 'white', fontWeight: 400 }}>
             심슨필름
-          </Typography>
-          <Typography sx={{ color: 'white', fontWeight: 400 }} variant="h4">
+          </Box>
+          <Box sx={{ fontSize: '50%', color: 'white', fontWeight: 400 }}>
             D’oh film
-          </Typography>
-        </TopBox>
-        <RecentImgs></RecentImgs>
-        <BottomBox theme={theme}>
+          </Box>
           <RankModal open={open} setOpen={setOpen}></RankModal>
-          <ButtonIcon title="refresh"></ButtonIcon>
-          <ButtonIcon title="photo"></ButtonIcon>
-          <ButtonIcon title="rank" setOpen={setOpen}></ButtonIcon>
+        </TopBox>
+        <RecentImgs cards={cards}></RecentImgs>
+        <BottomBox theme={theme}>
+          <Box
+            sx={{
+              width: '100%',
+              height: '43%',
+              display: 'flex',
+              justifyContent: 'space-between',
+            }}
+          >
+            <ButtonIcon
+              setPage={setPage}
+              setOpen={setOpen}
+              title="refresh"
+            ></ButtonIcon>
+            <ButtonIcon
+              title="rank"
+              setPage={setPage}
+              setOpen={setOpen}
+            ></ButtonIcon>
+          </Box>
+          <Button
+            onClick={() => {
+              navigate('/upload');
+            }}
+            variant="contained"
+            color="inherit"
+            sx={{
+              width: '100%',
+              height: '45%',
+              boxShadow: '3px 3px 0px 0px #C7C7C7',
+              padding: 2,
+              borderRadius: '50px',
+              backgroundColor: '#FFFFFF',
+            }}
+          >
+            <Typography sx={{ opacity: 0.5 }} variant="h3">
+              찍으러 가기
+            </Typography>
+          </Button>
         </BottomBox>
         <Img src="/assets/pages/main/middle.svg"></Img>
       </MainBox>
