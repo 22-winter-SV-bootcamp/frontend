@@ -1,0 +1,9 @@
+.MainImg {
+  position: relative;
+  width: 77%;
+}
+.MainImg::after {
+  display: block;
+  content: '';
+  padding-bottom: 100%;
+}
