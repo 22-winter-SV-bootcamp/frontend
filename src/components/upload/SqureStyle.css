@@ -1,9 +1,18 @@
-.MainImg {
-  position: relative;
-  width: 77%;
+.loadingText {
+  width: 22ch;
+  animation: typing 6s steps(22), blink 0.5s step-end infinite alternate;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid;
 }
-.MainImg::after {
-  display: block;
-  content: '';
-  padding-bottom: 100%;
+@keyframes typing {
+  from {
+    width: 0;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
 }
