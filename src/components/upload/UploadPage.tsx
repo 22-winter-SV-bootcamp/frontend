@@ -1,6 +1,5 @@
 import React, { DragEvent, useEffect, useState } from 'react';
-import { Box, Button, styled, Typography } from '@mui/material';
-import CameraAltIcon from '@mui/icons-material/CameraAlt';
+import { Box, Button, styled, Typography, Zoom } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import getAiResult from '@/apis/getAiResult';
@@ -8,11 +7,12 @@ import { postUploadImage } from '@/apis/postUploadImage';
 import triangle from '/assets/triangle.png';
 import { theme } from '@/utils/mui/breakpoints';
 import Description from './Description';
+import AddIcon from '@mui/icons-material/Add';
 import './SqureStyle.css';
 
 export const UploadPage = () => {
   let [taskId, setTaskId] = useState('');
-  let [isLoading, setIsLoading] = useState(true);
+  let [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   let {
     data,
@@ -91,11 +91,12 @@ export const UploadPage = () => {
     position: 'relative',
     display: 'flex',
     justifyContent: 'center',
-    height: '55.6%',
+    alignItems: 'center',
     width: '77%',
     maxWidth: '450px' /* 화면에 따라 수정 예정 */,
     borderRadius: '10%',
     background: isLoading ? '#FFE2C5' : '#C7C7C7',
+    aspectRatio: '1/1',
     [theme.breakpoints.down('desktop')]: {
       maxWidth: '557px',
     },
@@ -109,7 +110,7 @@ export const UploadPage = () => {
     flexDirection: 'column',
     justifyContent: 'center',
     paddingLeft: '10%',
-    height: '38%',
+    height: '30%',
     width: '77%',
     maxWidth: '450px' /* 화면에 따라 수정 예정 */,
     borderRadius: '10%',
@@ -220,15 +221,12 @@ export const UploadPage = () => {
             ></Box>
             {isLoading ? (
               <Typography
+                className="loadingText"
                 variant="h3"
                 align="center"
                 sx={[
                   styleTitle,
                   {
-                    position: 'absolute',
-                    top: '50%',
-                    left: '50%',
-                    transform: 'translate(-50%, -50%)',
                     color: '#FFFFFF',
                     textShadow: '3px 3px #ACACAC',
                   },
@@ -249,13 +247,14 @@ export const UploadPage = () => {
                   type="file"
                   onChange={handleClickFileUpload}
                 />
-                <CameraAltIcon
+                <AddIcon
                   sx={{
-                    fontSize: {
-                      mobile: '4em',
-                      tablet: '7em',
-                      laptop: '5em',
-                    },
+                    // fontSize: {
+                    //   mobile: '4em',
+                    //   tablet: '7em',
+                    //   laptop: '15em',
+                    // },
+                    fontSize: '4em',
                   }}
                 />
               </Button>
