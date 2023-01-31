@@ -2,10 +2,9 @@
 import { Box, Button, Typography, styled, IconButton } from '@mui/material';
 import React, { useEffect, useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import testSimpson from '/assets/pages/user/Simpson.png';
 import downloadIcon from '/assets/pages/result/downloadIcon.png';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
-import { imageDownload } from './imageDownload';
+import { imageDownload } from './download/imageDownload';
 
 import { theme } from '@/utils/mui/breakpoints';
 import customBtn from '/assets/pages/result/customBtn.png';
@@ -13,12 +12,11 @@ import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
 import ratio_1_1 from '/assets/pages/result/1_1.png';
 import ratio_2_3 from '/assets/pages/result/2_3.png';
 import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
-import SVGMaleMiddle from '@/svgComponents/male/hair/SVGMaleMiddle';
 import ModalComponent from './modal/ModalComponent';
 import CustomSVG from '../user/CustomSVG';
-import { borderBottom } from '@mui/system';
 import domToImg from '@/utils/method/domToImg';
 import { saveAs } from 'file-saver';
+import { CustomBox } from './custom/CustomBox';
 
 type Props = {};
 export const ResultPage = (props: Props) => {
@@ -28,6 +26,9 @@ export const ResultPage = (props: Props) => {
   const [change, setChange] = useState(false);
   const [ratioBtn, setRatioBtn] = useState(false);
   const [modal, setModal] = useState(false);
+  const [custom, setCustom] = useState(false);
+  const svgRef: any = useRef();
+
   console.log(location.state);
   // useEffect(() => {
   //   /* Link로 결과 페이지로 넘어갈떄 props에 state값을 주면 결과 페이지 에서 사용 가능, 나는 이걸 url 상태값에 저장 */
@@ -37,9 +38,6 @@ export const ResultPage = (props: Props) => {
   const goFirstPage = () => {
     navigate('/', { replace: true });
   };
-  const goCustomPage = () => {
-    navigate('/custom', { replace: true });
-  };
 
   const ratioChange = () => {
     /* 비율 수정 */
@@ -47,11 +45,19 @@ export const ResultPage = (props: Props) => {
   };
 
   const changeBtn = () => {
+    /* 하단 아이콘 버튼 3개 상태 변환 */
     setChange(true);
   };
 
   const openModal = () => {
+    /* 모달창 상태 변환 */
     setModal((pre) => !pre);
+  };
+
+  const onChangeCustom = () => {
+    /* 하단 버튼 3개 커스텀 상태 창으로 변환 */
+    setCustom((pre) => !pre);
+    ratioBtn && setRatioBtn((pre) => !pre);
   };
 
   const download = async () => {
@@ -84,6 +90,7 @@ export const ResultPage = (props: Props) => {
     flexDirection: 'column',
     background: '#FFFFFF',
     justifyContent: 'space-between',
+    alignItems: 'center',
     [theme.breakpoints.down('desktop')]: {
       maxWidth: '760px',
       fontSize: '15px',
@@ -117,32 +124,6 @@ export const ResultPage = (props: Props) => {
     flexDirection: 'column',
     alignItems: 'center',
   };
-
-  // const StyleMainImg = styled('div')(({ theme }) => ({
-  //   position: 'relative',
-  //   display: 'flex',
-  //   justifyContent: 'center',
-  //   alignItems: 'bottom',
-  //   width: '77%',
-  //   background: '#FFAEAE',
-  //   aspectRatio: ratioBtn ? '2/3' : '1/1',
-  //   overflow: 'hidden',
-  //   // filter: 'opacity(0.5) drop-shadow(0 0 0 #CCE7FF)',
-  //   [theme.breakpoints.down('desktop')]: {
-  //     maxWidth: '557px',
-  //   },
-  //   [theme.breakpoints.up('desktop')]: {
-  //     maxWidth: '477px',
-  //   },
-  // }));
-
-  // const styletriangle = {
-  //   position: 'absolute',
-  //   bottom: '0',
-  //   height: ratioBtn ? '130%' : '140%',
-  //   width: ratioBtn ? '90%' : '130%',
-  //   objectFit: 'fill',
-  // };
 
   const footerLayout = {
     height: '21%',
@@ -225,12 +206,56 @@ export const ResultPage = (props: Props) => {
     filter: 'drop-shadow(3px 3px rgba(0, 0, 0, 0.25))',
   };
 
-  const svgRef: any = useRef();
+  const StyleDescibe = styled('div')(({ theme }) => ({
+    position: 'relative',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    paddingLeft: '10%',
+    height: '30%',
+    width: '77%',
+    maxWidth: '450px' /* 화면에 따라 수정 예정 */,
+    borderRadius: '10%',
+    background: '#FFBA75',
+    whiteSpace: 'pre-line',
+    boxShadow: '3px 3px rgba(0, 0, 0, 0.25)',
+    marginBottom: '3px',
+    [theme.breakpoints.down('desktop')]: {
+      maxWidth: '557px',
+    },
+    [theme.breakpoints.up('desktop')]: {
+      maxWidth: '477px',
+    },
+  }));
+
+  const firstLayout = {
+    height: '15%',
+    position: 'relative',
+    display: 'flex',
+    justifyContent: 'end',
+    alignItems: 'bottom',
+    paddingRight: '10px',
+    paddingTop: '10px',
+  };
+
+  const okBtn = {
+    minWidth: '23px',
+    minHeight: '50px',
+    height: '90%',
+    position: 'relative',
+  };
+
+  const styleOkIcon = {
+    width: '100%',
+    height: '70%',
+    color: '#FFFFFF',
+    filter: 'drop-shadow(4px 2px rgba(0, 0, 0, 0.25))',
+  };
 
   return (
     <Box sx={styleContainer}>
       <FilmLayout theme={theme}>
-        <Box ref={svgRef} sx={{ heigth: 'auto', backgroundColor: 'white' }}>
+        <Box ref={svgRef} sx={{ width: '100%' }}>
           <Box className="headerLayout" sx={headerLayout}>
             <Typography
               variant="h3"
@@ -242,7 +267,6 @@ export const ResultPage = (props: Props) => {
           </Box>
           <Box className="mainLayout" sx={mainLayout}>
             {modal && <ModalComponent url={url} changeModal={openModal} />}
-
             <CustomSVG
               info={{
                 gender: 'female',
@@ -257,69 +281,77 @@ export const ResultPage = (props: Props) => {
                 innerColor: 'white',
               }}
               ratioBtn={ratioBtn}
+              custom={custom}
             ></CustomSVG>
-            <Box sx={{ height: 100, width: '100%', bgcolor: 'white' }}></Box>
-          </Box>
-        </Box>
-        <Box
-          sx={{
-            width: '100%',
-            position: 'absolute',
-            bottom: 50,
-            left: '50%',
-            transform: 'translateX(-50%)',
-          }}
-        >
-          <Box className="footerLayout" sx={footerLayout}>
-            <IconButton
-              sx={[styleLeftBtn, { paddingRight: 0 }]}
-              onClick={change ? goFirstPage : goCustomPage}
-            >
-              {change ? (
-                <HomeOutlinedIcon sx={styleCameraIcon} />
-              ) : (
-                <Box
-                  component="img"
-                  alt="goCustomPage"
-                  src={customBtn}
-                  sx={styleCustomIcon}
-                />
-              )}
-            </IconButton>
-            {change ? (
-              <Button sx={styleDownloadBtn} onClick={download}>
-                <Box
-                  component="img"
-                  alt="downloadImage"
-                  src={downloadIcon}
-                  sx={{
-                    height: '110%',
-                    textShadow: '3px 3px rgba(0, 0, 0, 0.25)',
-                  }}
-                />
-              </Button>
-            ) : (
-              <Button sx={styleCenterBtn} onClick={changeBtn}>
-                <PhotoCameraIcon sx={styleCameraIcon} />
-              </Button>
+            {!custom ? null : (
+              <Box sx={{ height: 100, width: '100%', bgcolor: 'white' }}></Box>
             )}
-            <IconButton
-              sx={styleRightBtn}
-              onClick={change ? openModal : ratioChange}
-            >
-              {change ? (
-                <ShareOutlinedIcon sx={styleCameraIcon} />
-              ) : (
-                <Box
-                  component="img"
-                  alt="ratioControl"
-                  src={ratioBtn ? ratio_1_1 : ratio_2_3}
-                  sx={{ height: ratioBtn ? '50%' : '40%' }}
-                />
-              )}
-            </IconButton>
           </Box>
         </Box>
+        {!custom ? (
+          <CustomBox onChangeCustom={onChangeCustom} />
+        ) : (
+          <Box
+            /* footerlayout 제일 하단에 고정 */
+            sx={{
+              width: '100%',
+              position: 'absolute',
+              bottom: 50,
+              left: '50%',
+              transform: 'translateX(-50%)',
+            }}
+          >
+            <Box className="footerLayout" sx={footerLayout}>
+              <IconButton
+                sx={[styleLeftBtn, { paddingRight: 0 }]}
+                onClick={change ? goFirstPage : onChangeCustom}
+              >
+                {change ? (
+                  <HomeOutlinedIcon sx={styleCameraIcon} />
+                ) : (
+                  <Box
+                    component="img"
+                    alt="goCustomPage"
+                    src={customBtn}
+                    sx={styleCustomIcon}
+                  />
+                )}
+              </IconButton>
+              {change ? (
+                <Button sx={styleDownloadBtn} onClick={download}>
+                  <Box
+                    component="img"
+                    alt="downloadImage"
+                    src={downloadIcon}
+                    sx={{
+                      height: '110%',
+                      textShadow: '3px 3px rgba(0, 0, 0, 0.25)',
+                    }}
+                  />
+                </Button>
+              ) : (
+                <Button sx={styleCenterBtn} onClick={changeBtn}>
+                  <PhotoCameraIcon sx={styleCameraIcon} />
+                </Button>
+              )}
+              <IconButton
+                sx={styleRightBtn}
+                onClick={change ? openModal : ratioChange}
+              >
+                {change ? (
+                  <ShareOutlinedIcon sx={styleCameraIcon} />
+                ) : (
+                  <Box
+                    component="img"
+                    alt="ratioControl"
+                    src={ratioBtn ? ratio_1_1 : ratio_2_3}
+                    sx={{ height: ratioBtn ? '50%' : '40%' }}
+                  />
+                )}
+              </IconButton>
+            </Box>
+          </Box>
+        )}
       </FilmLayout>
     </Box>
   );

@@ -61,7 +61,7 @@ type SVGComponentsType = {
   [key: string]: { [key: string]: { [key: string]: JSX.Element } };
 };
 
-const CustomSVG = ({ info, ratioBtn }: any) => {
+const CustomSVG = ({ info, ratioBtn, custom }: any) => {
   let {
     gender,
     hair,
@@ -595,6 +595,7 @@ const CustomSVG = ({ info, ratioBtn }: any) => {
     background: '#FFAEAE',
     aspectRatio: ratioBtn ? '2/3' : '1/1',
     overflow: 'hidden',
+    borderRadius: custom ? 0 : '10%',
     // filter: 'opacity(0.5) drop-shadow(0 0 0 #CCE7FF)',
     [theme.breakpoints.down('desktop')]: {
       maxWidth: '557px',
