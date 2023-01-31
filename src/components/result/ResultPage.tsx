@@ -5,19 +5,16 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import testSimpson from '/assets/pages/user/Simpson.png';
 import downloadIcon from '/assets/pages/result/downloadIcon.png';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
-import Kakaotalk from '/assets/pages/result/kakaotalk.png';
 import { imageDownload } from './imageDownload';
-import { Copyelement } from './Copyelement';
-import { sendKakao } from './kakaotalk/sendKakao';
 import triangle from '/assets/triangle.png';
 import { theme } from '@/utils/mui/breakpoints';
 import customBtn from '/assets/pages/result/customBtn.png';
 import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
 import ratio_1_1 from '/assets/pages/result/1_1.png';
 import ratio_2_3 from '/assets/pages/result/2_3.png';
-
 import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
 import SVGMaleMiddle from '@/svgComponents/male/hair/SVGMaleMiddle';
+import ModalComponent from './modal/ModalComponent';
 
 type Props = {};
 export const ResultPage = (props: Props) => {
@@ -26,6 +23,7 @@ export const ResultPage = (props: Props) => {
   const navigate = useNavigate();
   const [change, setChange] = useState(false);
   const [ratioBtn, setRatioBtn] = useState(false);
+  const [modal, setModal] = useState(false);
 
   useEffect(() => {
     /* Link로 결과 페이지로 넘어갈떄 props에 state값을 주면 결과 페이지 에서 사용 가능, 나는 이걸 url 상태값에 저장 */
@@ -48,7 +46,9 @@ export const ResultPage = (props: Props) => {
     setChange(true);
   };
 
-  const openModal = () => {};
+  const openModal = () => {
+    setModal((pre) => !pre);
+  };
 
   const download = async () => {
     /* location의 state값이 undefined이 아니라는 걸 알려주기 위해 사용 */
@@ -212,7 +212,6 @@ export const ResultPage = (props: Props) => {
     minHeight: '66px',
     fontSize: 'inherit',
     filter: 'drop-shadow(3px 3px rgba(0, 0, 0, 0.25))',
-    // borderRadius: '40%',
   };
 
   return (
@@ -228,13 +227,14 @@ export const ResultPage = (props: Props) => {
           </Typography>
         </Box>
         <Box className="mainLayout" sx={mainLayout}>
+          {modal && <ModalComponent url={url} changeModal={openModal} />}
           <StyleMainImg theme={theme}>
             <Box
               component="img"
               src={triangle}
               alt="upload Layout"
               sx={styletriangle}
-            ></Box>
+            />
             <SVGMaleMiddle viewBox="-40 114 550 550" />
           </StyleMainImg>
         </Box>

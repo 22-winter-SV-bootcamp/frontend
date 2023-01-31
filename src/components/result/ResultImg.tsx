@@ -7,7 +7,7 @@ import Download from '/assets/pages/result/Download.png';
 import Kakaotalk from '/assets/pages/result/Kakaotalk.png';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { imageDownload } from './imageDownload';
-import { Copyelement } from './Copyelement';
+import { Copyelement } from './modal/Copyelement';
 import { sendKakao } from './kakaotalk/sendKakao';
 import { theme } from '@/utils/mui/breakpoints';
 import { styled } from '@mui/material';
