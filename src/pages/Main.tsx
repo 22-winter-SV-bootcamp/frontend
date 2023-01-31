@@ -1,4 +1,4 @@
-import { Box, Button, styled, Typography } from '@mui/material';
+import { Box, Button, styled, Typography, useMediaQuery } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import DragDropUpload from '@/components/main/DragDropUpload/DragDropUpload';
 import RecentImgs from '@/components/main/RecentImgs';
@@ -10,6 +10,7 @@ import ButtonIcon from '@/components/common/ButtonIcon';
 import getRecentImgs from '@/apis/getRecentImgs';
 import { useQuery } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
+import { Translate } from '@mui/icons-material';
 
 type CardsType = {
   id: number;
@@ -22,8 +23,7 @@ const Main = () => {
     overflow: 'hidden',
     height: '100vh',
     // TODO: 배경 바꿔야함
-    background:
-      'linear-gradient(180deg, rgba(197,232,255,1) 0%, rgba(198,233,255,1) 34%, rgba(204,236,255,1) 66%, rgba(222,242,255,1) 100%)',
+    background: 'linear-gradient(to bottom, #C5E8FF 80%, #FFFFFF 100%)',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
@@ -32,8 +32,9 @@ const Main = () => {
     zIndex: 0,
     [theme.breakpoints.down('tablet')]: {},
     [theme.breakpoints.between('tablet', 'desktop')]: {},
-    [theme.breakpoints.between('desktop', 'bigDesktop')]: {},
-    [theme.breakpoints.up('bigDesktop')]: {},
+    [theme.breakpoints.up('desktop')]: {
+      flexDirection: 'row',
+    },
   }));
 
   const TopBox = styled('div')(({ theme }) => ({
@@ -42,6 +43,7 @@ const Main = () => {
     alignItems: 'center',
     justifyContent: 'center',
     zIdenx: 1,
+    position: 'relative',
 
     [theme.breakpoints.down('tablet')]: {
       marginBottom: '185px',
@@ -51,19 +53,22 @@ const Main = () => {
       marginBottom: '390px',
       fontSize: '140px',
     },
-    [theme.breakpoints.between('desktop', 'bigDesktop')]: {
-      marginBottom: '310px',
-      fontSize: '125px',
-    },
-    [theme.breakpoints.up('bigDesktop')]: {
-      marginBottom: '310px',
-      fontSize: '125px',
+
+    [theme.breakpoints.up('desktop')]: {
+      margin: '0 auto',
+      marginTop: 100,
+      alignSelf: 'start',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      fontSize: '100px',
     },
   }));
 
   const BottomBox = styled('div')(({ theme }) => ({
     display: 'flex',
     flexDirection: 'column',
+    position: 'relative',
     justifyContent: 'space-between',
 
     [theme.breakpoints.down('tablet')]: {
@@ -74,22 +79,22 @@ const Main = () => {
       width: 372,
       height: 261,
     },
-    [theme.breakpoints.between('desktop', 'bigDesktop')]: {
-      width: 325,
-      height: 222,
-    },
-    [theme.breakpoints.up('bigDesktop')]: {
-      width: 325,
-      height: 222,
+
+    [theme.breakpoints.up('desktop')]: {
+      alignSelf: 'end',
+      margin: '0 auto',
+      marginBottom: 100,
+      width: 270,
+      height: 200,
     },
   }));
 
   const Img = styled('img')(({ theme }) => ({
     position: 'absolute',
     zIndex: -4,
-    width: 500,
-    bottom: -10,
-    left: -240,
+    width: 700,
+    bottom: -120,
+    left: -200,
     [theme.breakpoints.down('desktop')]: {},
     [theme.breakpoints.between('mobile', 'tablet')]: {},
     [theme.breakpoints.up('desktop')]: {},
@@ -110,6 +115,8 @@ const Main = () => {
 
   const navigate = useNavigate();
 
+  const matches = useMediaQuery(theme.breakpoints.up('desktop'));
+
   // useEffect(() => {
   //   if (data) setCards([...data]);
   // }, [data]);
@@ -117,6 +124,23 @@ const Main = () => {
   return (
     <>
       <MainBox theme={theme}>
+        {open ? (
+          <Box
+            onClick={() => {
+              setOpen(false);
+            }}
+            sx={{
+              position: 'absolute',
+              background: 'white',
+              width: '100vw',
+              height: '100vh',
+              top: 0,
+              left: 0,
+              opacity: 0.7,
+              zIndex: 1,
+            }}
+          ></Box>
+        ) : null}
         <TopBox theme={theme}>
           <Box sx={{ marginBottom: 1, color: 'white', fontWeight: 400 }}>
             심슨필름
@@ -124,10 +148,18 @@ const Main = () => {
           <Box sx={{ fontSize: '50%', color: 'white', fontWeight: 400 }}>
             D’oh film
           </Box>
-          <RankModal open={open} setOpen={setOpen}></RankModal>
+          {!matches ? (
+            <RankModal open={open} setOpen={setOpen}></RankModal>
+          ) : null}
         </TopBox>
+        {/* <Box1 theme={theme}> */}
         <RecentImgs cards={cards}></RecentImgs>
+        {/* </Box1> */}
+
         <BottomBox theme={theme}>
+          {matches ? (
+            <RankModal open={open} setOpen={setOpen}></RankModal>
+          ) : null}
           <Box
             sx={{
               width: '100%',
@@ -162,19 +194,14 @@ const Main = () => {
               backgroundColor: '#FFFFFF',
             }}
           >
-            <Typography sx={{ opacity: 0.5 }} variant="h3">
+            <Typography sx={{ opacity: 0.5 }} variant="h2">
               찍으러 가기
             </Typography>
           </Button>
         </BottomBox>
+
         <Img src="/assets/pages/main/middle.svg"></Img>
       </MainBox>
-      {/* 슬라이드 그림 오는 자리 */}
-
-      {/* 업로드 버튼 오는 자리 */}
-      {/* <DragDropUpload></DragDropUpload> */}
-      {/* 랭킹 보여주는 자리 */}
-      {/* <RankingImgs /> */}
     </>
   );
 };

@@ -26,7 +26,7 @@ import SVGMaleLeggings from '@/svgComponents/male/bottom/SVGMaleLeggings';
 import SVGMaleSkirt from '@/svgComponents/male/bottom/SVGMaleSkirt';
 import SVGMaleSlacks from '@/svgComponents/male/bottom/SVGMaleSlacks';
 import SVGMaleSweatpants from '@/svgComponents/male/bottom/SVGMaleSweatpants';
-import SVGMaleMiddle from '@/svgComponents/male/hair/SVGMaleMiddle';
+import SVGMaleMiddle from '@/svgComponents/male/hair/SVGMaleShort';
 import SVGMaleBasic_neck_pole from '@/svgComponents/male/inner/SVGMaleBasic_neck_pole';
 import SVGMaleBasic_t_shirts from '@/svgComponents/male/inner/SVGMaleBasic_t_shirts';
 import SVGMaleBlazer from '@/svgComponents/male/top/SVGMaleBlazer';

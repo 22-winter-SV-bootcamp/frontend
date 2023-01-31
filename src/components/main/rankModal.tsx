@@ -64,8 +64,6 @@ export default function RankModal({ open, setOpen }: any) {
   };
 
   const Box1 = styled('div')(({ theme }) => ({
-    top: 0,
-    left: 0,
     backgroundColor: 'white',
     opacity: 0.7,
     zIndex: 10,
@@ -86,12 +84,12 @@ export default function RankModal({ open, setOpen }: any) {
     backgroundColor: 'white',
     position: 'absolute',
 
-    top: '50%',
-    left: '50%',
+    top: 0,
+    left: 0,
     padding: 20,
-    boxShadow: '3px 3px 0px 0px #C7C7C7',
+    boxShadow: '4px 4px 0px 0px #C7C7C7',
 
-    transform: `translate(-50%,-50%)`,
+    // transform: `translate(-50%,-50%)`,
     zIndex: 20,
     [theme.breakpoints.down('tablet')]: {
       width: '276px',
@@ -99,58 +97,45 @@ export default function RankModal({ open, setOpen }: any) {
       borderRadius: 30,
     },
     [theme.breakpoints.between('tablet', 'desktop')]: {
-      width: '550px',
-      height: '550px',
+      width: '500px',
+      height: '500px',
+      borderRadius: 30,
     },
-    [theme.breakpoints.between('desktop', 'bigDesktop')]: {
-      width: '440px',
-      height: '440px',
-    },
-    [theme.breakpoints.up('bigDesktop')]: {
-      width: '440px',
-      height: '440px',
-    },
-  }));
 
-  const Box3 = styled('div')(({ theme }) => ({
-    [theme.breakpoints.down('desktop')]: {
-      position: 'ablsolute',
+    [theme.breakpoints.up('desktop')]: {
+      width: '440px',
+      height: '440px',
+      left: '50%',
+      transform: 'translateX(-50%)',
+      top: '-600px',
+      borderRadius: 30,
     },
-    [theme.breakpoints.up('desktop')]: {},
   }));
 
   return (
     <>
       {open ? (
-        <Box3>
-          <Box1
-            onClick={() => {
-              setOpen(false);
-            }}
-            theme={theme}
-          ></Box1>
-          <Box2
-            onClick={() => {
-              setOpen(false);
-            }}
-            theme={theme}
-            sx={{ display: 'flex' }}
-          >
-            {rankInfo?.map((gender) => (
-              <Box
-                sx={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                }}
-              >
-                <Typography variant="h4">1st</Typography>
-                <CustomSVG info={gender}></CustomSVG>
-                <Typography variant="h3">{gender.count}'s pick</Typography>
-              </Box>
-            ))}
-          </Box2>{' '}
-        </Box3>
+        <Box2
+          onClick={() => {
+            setOpen(false);
+          }}
+          theme={theme}
+          sx={{ display: 'flex' }}
+        >
+          {rankInfo?.map((gender) => (
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+              }}
+            >
+              <Typography variant="h4">1st</Typography>
+              <CustomSVG info={gender}></CustomSVG>
+              <Typography variant="h3">{gender.count}'s pick</Typography>
+            </Box>
+          ))}
+        </Box2>
       ) : null}
     </>
   );

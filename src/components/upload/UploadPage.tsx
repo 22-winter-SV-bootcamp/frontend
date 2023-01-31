@@ -12,7 +12,7 @@ import './SqureStyle.css';
 
 export const UploadPage = () => {
   let [taskId, setTaskId] = useState('');
-  let [isLoading, setIsLoading] = useState(false);
+  let [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
   let {
     data,

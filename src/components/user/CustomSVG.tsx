@@ -26,7 +26,7 @@ import SVGMaleLeggings from '@/svgComponents/male/bottom/SVGMaleLeggings';
 import SVGMaleSkirt from '@/svgComponents/male/bottom/SVGMaleSkirt';
 import SVGMaleSlacks from '@/svgComponents/male/bottom/SVGMaleSlacks';
 import SVGMaleSweatpants from '@/svgComponents/male/bottom/SVGMaleSweatpants';
-import SVGMaleMiddle from '@/svgComponents/male/hair/SVGMaleMiddle';
+import SVGMaleMiddle from '@/svgComponents/male/hair/SVGMaleShort';
 import SVGMaleBasic_neck_pole from '@/svgComponents/male/inner/SVGMaleBasic_neck_pole';
 import SVGMaleBasic_t_shirts from '@/svgComponents/male/inner/SVGMaleBasic_t_shirts';
 import SVGMaleBlazer from '@/svgComponents/male/top/SVGMaleBlazer';
@@ -46,8 +46,12 @@ import { Box } from '@mui/material';
 import { styled } from '@mui/material';
 import { theme } from '@/utils/mui/breakpoints';
 
-import { relative } from 'path';
-import React from 'react';
+import SVGMaleShort from '@/svgComponents/male/hair/SVGMaleShort';
+import SVGMaleLong from '@/svgComponents/male/hair/SVGMaleLong';
+import SVGMaleBasic_Nasi from '@/svgComponents/male/inner/SVGMaleBasic_Nasi';
+import SVGFemaleBasic_Nasi from '@/svgComponents/female/inner/SVGFemaleBasic_Nasi';
+import SVGFemaleShort from '@/svgComponents/female/hair/SVGFemaleShort';
+import SVGFemaleMiddle from '@/svgComponents/female/hair/SVGFemaleMiddle';
 type ColorArrType = {
   [key: string]: string;
 };
@@ -134,6 +138,13 @@ const CustomSVG = ({ info }: any) => {
             sub={sub}
             detail={detail}
           ></SVGFemaleBasic_t_shirts>
+        ),
+        basic_Nasi: (
+          <SVGFemaleBasic_Nasi
+            main={colorArr[innerColor]}
+            sub={sub}
+            detail={detail}
+          ></SVGFemaleBasic_Nasi>
         ),
       },
       top: {
@@ -275,6 +286,20 @@ const CustomSVG = ({ info }: any) => {
         ),
       },
       hair: {
+        short: (
+          <SVGFemaleShort
+            main={colorArr[hairColor]}
+            sub={sub}
+            detail={detail}
+          ></SVGFemaleShort>
+        ),
+        middle: (
+          <SVGFemaleMiddle
+            main={colorArr[hairColor]}
+            sub={sub}
+            detail={detail}
+          ></SVGFemaleMiddle>
+        ),
         long: (
           <SVGFemaleLong
             main={colorArr[hairColor]}
@@ -299,6 +324,13 @@ const CustomSVG = ({ info }: any) => {
             sub={sub}
             detail={detail}
           ></SVGMaleBasic_t_shirts>
+        ),
+        basic_Nasi: (
+          <SVGMaleBasic_Nasi
+            main={colorArr[innerColor]}
+            sub={sub}
+            detail={detail}
+          ></SVGMaleBasic_Nasi>
         ),
       },
       top: {
@@ -440,12 +472,26 @@ const CustomSVG = ({ info }: any) => {
         ),
       },
       hair: {
+        short: (
+          <SVGMaleShort
+            main={colorArr[hairColor]}
+            sub={sub}
+            detail={detail}
+          ></SVGMaleShort>
+        ),
         middle: (
           <SVGMaleMiddle
             main={colorArr[hairColor]}
             sub={sub}
             detail={detail}
           ></SVGMaleMiddle>
+        ),
+        long: (
+          <SVGMaleLong
+            main={colorArr[hairColor]}
+            sub={sub}
+            detail={detail}
+          ></SVGMaleLong>
         ),
       },
     },
