@@ -13,7 +13,7 @@ import { green, orange } from '@mui/material/colors';
 import CheckIcon from '@mui/icons-material/Check';
 import ShareIcon from '@mui/icons-material/Share';
 
-export const Copyelement = ({ resultImg }: { resultImg: string }) => {
+export const Copyelement = ({ url }: { url: string }) => {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [open, setOpen] = useState(false);
@@ -45,7 +45,7 @@ export const Copyelement = ({ resultImg }: { resultImg: string }) => {
         setLoading(false);
       }, 300);
     }
-    clipboard(resultImg);
+    clipboard(url);
   };
 
   const clipboard = (url: string) => {
