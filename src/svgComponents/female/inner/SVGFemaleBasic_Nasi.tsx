@@ -1,6 +1,12 @@
 import * as React from 'react';
 const SVGFemaleBasic_Nasi = ({ main, sub, detail, viewBox }: any) => (
-  <svg id="\uB098\uC2DC" xmlns="http://www.w3.org/2000/svg" viewBox={viewBox}>
+  <svg
+    id="\uB098\uC2DC"
+    xmlns="http://www.w3.org/2000/svg"
+    width="100%"
+    height="100%"
+    viewBox={viewBox}
+  >
     <defs>
       <style></style>
     </defs>

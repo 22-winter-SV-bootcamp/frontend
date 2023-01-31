@@ -4,6 +4,8 @@ const SVGMaleBasic_Nasi = ({ main, sub, detail, viewBox }: any) => (
     id="\uB0A8\uC790_\uB098\uC2DC_\uC774\uBBF8\uC9C0"
     data-name="\uB0A8\uC790 \uB098\uC2DC\xA0\uC774\uBBF8\uC9C0"
     xmlns="http://www.w3.org/2000/svg"
+    width="100%"
+    height="100%"
     viewBox={viewBox}
   >
     <defs>

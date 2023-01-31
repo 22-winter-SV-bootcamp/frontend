@@ -1,10 +1,12 @@
 // @flow
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { theme } from '@/utils/mui/breakpoints';
 import { Box, Button, IconButton, styled } from '@mui/material';
 import closeIcon from '/assets/pages/result/closeIcon.png';
 import CustomSelectModal from '@/components/user/CustomSelectModal';
 import { width } from '@mui/system';
+import { useLocation } from 'react-router-dom';
+import resultFilter from '@/utils/method/resultFilter';
 
 type Props = {
   onChangeCustom: () => void;
@@ -50,6 +52,7 @@ export const CustomBox = ({ onChangeCustom, info, setInfo }: Props) => {
     minHeight: '40px',
     position: 'absolute',
     right: 0,
+    zIndex: 20,
   };
 
   const styleOkIcon = {
@@ -92,7 +95,7 @@ export const CustomBox = ({ onChangeCustom, info, setInfo }: Props) => {
   };
 
   const [titleIconBtn, setTitleIconBtn] = useState(false);
-
+  const [title, setTitle] = useState('hair');
   return (
     <StyleDescibe theme={theme}>
       <Button sx={okBtn}>
@@ -120,8 +123,7 @@ export const CustomBox = ({ onChangeCustom, info, setInfo }: Props) => {
           <CustomSelectModal
             info={info}
             setInfo={setInfo}
-            gender={'male'}
-            select={'top'}
+            select={title}
           ></CustomSelectModal>
         ) : (
           <Box className="firstLayout" sx={subLayout}>
@@ -131,6 +133,7 @@ export const CustomBox = ({ onChangeCustom, info, setInfo }: Props) => {
                   sx={styleBtn}
                   onClick={() => {
                     setTitleIconBtn(true);
+                    setTitle(title);
                   }}
                 >
                   <Box

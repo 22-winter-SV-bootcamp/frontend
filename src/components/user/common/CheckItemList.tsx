@@ -59,7 +59,7 @@ type SVGComponentsType = {
   [key: string]: { [key: string]: { [key: string]: JSX.Element } };
 };
 
-const CheckItemList = ({ info, gender, setInfo, arr, select }: any) => {
+const CheckItemList = ({ info, setInfo, arr, select }: any) => {
   let sub = 85;
   let detail = 70;
   const viewBoxFemaleInner = '105 405 270 270';
@@ -304,7 +304,7 @@ const CheckItemList = ({ info, gender, setInfo, arr, select }: any) => {
             main={colorArr[hairColor]}
             sub={sub}
             detail={detail}
-            viewBox="-40 80 550 550"
+            viewBox={viewBoxFemaleHair}
           ></SVGFemaleLong>
         ),
         middle: (
@@ -572,7 +572,7 @@ const CheckItemList = ({ info, gender, setInfo, arr, select }: any) => {
           overflowY: 'hidden',
         }}
       >
-        {arr.map((v: any) => (
+        {arr?.map((v: any) => (
           <Tooltip title={v}>
             <Button
               sx={{ width: 'auto' }}
@@ -589,7 +589,7 @@ const CheckItemList = ({ info, gender, setInfo, arr, select }: any) => {
                   src={`/assets/custom/background/${v}.png`}
                 />
               ) : (
-                SVGComponents[gender][select][v]
+                SVGComponents[info.gender][select][v]
               )}
             </Button>
           </Tooltip>
