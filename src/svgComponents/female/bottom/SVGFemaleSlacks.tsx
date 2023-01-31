@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 const SVGFemaleSlacks = ({ main, sub, detail, viewBox }: any) => (
   <svg
     id="\uC2AC\uB809\uC2A4"
@@ -36,10 +36,11 @@ const SVGFemaleSlacks = ({ main, sub, detail, viewBox }: any) => (
         style={{ fill: main, filter: `brightness(${sub}%)` }}
         d="M227.7,554.53c0,2.62,0,5.2,0,7.78,0,.93-.6.77-1.11.77H215.2c-2.58,0-5.15,0-7.72,0-.83,0-1.17-.19-1.14-1.14.06-2.21,0-4.43,0-6.65,0-.63.13-1,.82-1l20.05,0A2.75,2.75,0,0,1,227.7,554.53Z"
       />
-      <path 
+      <path
         className="cls-1"
         style={{ fill: main, filter: `brightness(${sub}%)` }}
-        d="M278.32,554.45l.83,8.52H259.43v-8.52Z" />
+        d="M278.32,554.45l.83,8.52H259.43v-8.52Z"
+      />
       <path
         className="cls-1"
         style={{ fill: main, filter: `brightness(${sub}%)` }}
@@ -55,10 +56,10 @@ const SVGFemaleSlacks = ({ main, sub, detail, viewBox }: any) => (
         style={{ fill: main, filter: `brightness(${sub}%)` }}
         d="M228.68,563.08v-8.72h5.54c2.67,0,2.67,0,2.67,2.87,0,1.65,0,3.3,0,4.95,0,.31-.39.85-.61.86C233.77,563.1,231.28,563.08,228.68,563.08Z"
       />
-      <path 
-        className="cls-1" 
+      <path
+        className="cls-1"
         style={{ fill: main }}
-        d="M201.82,554.43h3.59V563h-3.59Z" 
+        d="M201.82,554.43h3.59V563h-3.59Z"
       />
       <path
         className="cls-1"
@@ -73,7 +74,6 @@ const SVGFemaleSlacks = ({ main, sub, detail, viewBox }: any) => (
   </svg>
 );
 SVGFemaleSlacks.defaultProps = {
-    viewBox: '0 0 595.2 595.2',
+  viewBox: '-40 114 550 550',
 };
-  export default SVGFemaleSlacks;
-  
+export default SVGFemaleSlacks;

@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 const SVGMaleSlacks = ({ main, sub, detail, viewBox }: any) => (
   <svg
     id="\uC2AC\uB809\uC2A4_\uC774\uBBF8\uC9C0"
@@ -27,10 +27,11 @@ const SVGMaleSlacks = ({ main, sub, detail, viewBox }: any) => (
         style={{ fill: main }}
         d="M192.36,665.37H182.3c-.07-1-.21-1.91-.2-2.86,0-9.57,0-19.15.18-28.72.15-8.93.47-17.86.78-26.79.27-7.69.63-15.38.94-23.07a9.69,9.69,0,0,1,.1-2.48c1.57-4.9,3.25-9.76,4.86-14.64a1.14,1.14,0,0,1,1.3-.89c3.79,0,7.58,0,11.37,0a8.08,8.08,0,0,1,1,.12c-.17.45-.28.78-.41,1.11-2.67,6.44-5.32,12.9-8,19.32a11.53,11.53,0,0,0-.92,5.29c.17,3,.08,6,0,9-.25,9.65-.67,19.3-.78,29C192.29,641.59,192.37,653.48,192.36,665.37Z"
       />
-      <path 
-        className="cls-1" 
+      <path
+        className="cls-1"
         style={{ fill: main }}
-        d="M268.86,553.6v10.87H234V553.6Z" />
+        d="M268.86,553.6v10.87H234V553.6Z"
+      />
       <path
         className="cls-1"
         style={{ fill: main, filter: `brightness(${sub}%)` }}
@@ -41,10 +42,11 @@ const SVGMaleSlacks = ({ main, sub, detail, viewBox }: any) => (
         style={{ fill: main }}
         d="M275.87,564.49c.18-3.57.33-7,.57-10.4,0-.3.67-.77,1-.78,1.39,0,2.79.09,4.18.11,4.07.05,8.13.07,12.2.1h1.42c-.5,3.72-3.09,7-1.68,11Z"
       />
-      <path 
-        className="cls-1" 
+      <path
+        className="cls-1"
         style={{ fill: main }}
-        d="M222.26,564.5H208.33V553.61h13.93Z" />
+        d="M222.26,564.5H208.33V553.61h13.93Z"
+      />
       <path
         className="cls-1"
         style={{ fill: main }}
@@ -55,10 +57,11 @@ const SVGMaleSlacks = ({ main, sub, detail, viewBox }: any) => (
         style={{ fill: main }}
         d="M223.75,553.53c2.68,0,5.38,0,8.08,0a1,1,0,0,1,.7.67c0,3.38,0,6.76,0,10.23h-8.81Z"
       />
-      <path 
+      <path
         className="cls-1"
         style={{ fill: main, filter: `brightness(${sub}%)` }}
-        d="M269.88,553.59h5.58l-.54,10.86h-5Z" />
+        d="M269.88,553.59h5.58l-.54,10.86h-5Z"
+      />
       <path
         className="cls-1"
         style={{ fill: main, filter: `brightness(${sub}%)` }}
@@ -72,7 +75,6 @@ const SVGMaleSlacks = ({ main, sub, detail, viewBox }: any) => (
   </svg>
 );
 SVGMaleSlacks.defaultProps = {
-    viewBox: '0 0 595.2 595.2',
-  };
-  export default SVGMaleSlacks;
-  
+  viewBox: '-40 114 550 550',
+};
+export default SVGMaleSlacks;

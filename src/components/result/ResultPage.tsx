@@ -1,12 +1,12 @@
 // @flow
 import { Box, Button, Typography, styled, IconButton } from '@mui/material';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import testSimpson from '/assets/pages/user/Simpson.png';
 import downloadIcon from '/assets/pages/result/downloadIcon.png';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import { imageDownload } from './imageDownload';
-import triangle from '/assets/triangle.png';
+
 import { theme } from '@/utils/mui/breakpoints';
 import customBtn from '/assets/pages/result/customBtn.png';
 import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
@@ -15,6 +15,10 @@ import ratio_2_3 from '/assets/pages/result/2_3.png';
 import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
 import SVGMaleMiddle from '@/svgComponents/male/hair/SVGMaleMiddle';
 import ModalComponent from './modal/ModalComponent';
+import CustomSVG from '../user/CustomSVG';
+import { borderBottom } from '@mui/system';
+import domToImg from '@/utils/method/domToImg';
+import { saveAs } from 'file-saver';
 
 type Props = {};
 export const ResultPage = (props: Props) => {
@@ -24,11 +28,11 @@ export const ResultPage = (props: Props) => {
   const [change, setChange] = useState(false);
   const [ratioBtn, setRatioBtn] = useState(false);
   const [modal, setModal] = useState(false);
-
-  useEffect(() => {
-    /* Link로 결과 페이지로 넘어갈떄 props에 state값을 주면 결과 페이지 에서 사용 가능, 나는 이걸 url 상태값에 저장 */
-    setUrl(location.state.link);
-  });
+  console.log(location.state);
+  // useEffect(() => {
+  //   /* Link로 결과 페이지로 넘어갈떄 props에 state값을 주면 결과 페이지 에서 사용 가능, 나는 이걸 url 상태값에 저장 */
+  //   setUrl(location.state.link);
+  // });
 
   const goFirstPage = () => {
     navigate('/', { replace: true });
@@ -52,6 +56,11 @@ export const ResultPage = (props: Props) => {
 
   const download = async () => {
     /* location의 state값이 undefined이 아니라는 걸 알려주기 위해 사용 */
+
+    console.log(svgRef.current);
+    const blob = await domToImg(svgRef.current);
+    saveAs(blob);
+
     url &&
       imageDownload({
         href: url,
@@ -74,6 +83,7 @@ export const ResultPage = (props: Props) => {
     display: 'flex',
     flexDirection: 'column',
     background: '#FFFFFF',
+    justifyContent: 'space-between',
     [theme.breakpoints.down('desktop')]: {
       maxWidth: '760px',
       fontSize: '15px',
@@ -88,7 +98,8 @@ export const ResultPage = (props: Props) => {
   }));
 
   const headerLayout = {
-    height: '9%',
+    marginTop: 1,
+    marginBottom: 1,
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
@@ -100,38 +111,38 @@ export const ResultPage = (props: Props) => {
   };
 
   const mainLayout = {
-    height: '70%',
+    // height: '70%',
     position: 'relative',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
   };
 
-  const StyleMainImg = styled('div')(({ theme }) => ({
-    position: 'relative',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'bottom',
-    width: '77%',
-    background: '#FFAEAE',
-    aspectRatio: ratioBtn ? '2/3' : '1/1',
-    overflow: 'hidden',
-    // filter: 'opacity(0.5) drop-shadow(0 0 0 #CCE7FF)',
-    [theme.breakpoints.down('desktop')]: {
-      maxWidth: '557px',
-    },
-    [theme.breakpoints.up('desktop')]: {
-      maxWidth: '477px',
-    },
-  }));
+  // const StyleMainImg = styled('div')(({ theme }) => ({
+  //   position: 'relative',
+  //   display: 'flex',
+  //   justifyContent: 'center',
+  //   alignItems: 'bottom',
+  //   width: '77%',
+  //   background: '#FFAEAE',
+  //   aspectRatio: ratioBtn ? '2/3' : '1/1',
+  //   overflow: 'hidden',
+  //   // filter: 'opacity(0.5) drop-shadow(0 0 0 #CCE7FF)',
+  //   [theme.breakpoints.down('desktop')]: {
+  //     maxWidth: '557px',
+  //   },
+  //   [theme.breakpoints.up('desktop')]: {
+  //     maxWidth: '477px',
+  //   },
+  // }));
 
-  const styletriangle = {
-    position: 'absolute',
-    bottom: '0',
-    height: ratioBtn ? '130%' : '140%',
-    width: ratioBtn ? '90%' : '130%',
-    objectFit: 'fill',
-  };
+  // const styletriangle = {
+  //   position: 'absolute',
+  //   bottom: '0',
+  //   height: ratioBtn ? '130%' : '140%',
+  //   width: ratioBtn ? '90%' : '130%',
+  //   objectFit: 'fill',
+  // };
 
   const footerLayout = {
     height: '21%',
@@ -214,110 +225,102 @@ export const ResultPage = (props: Props) => {
     filter: 'drop-shadow(3px 3px rgba(0, 0, 0, 0.25))',
   };
 
+  const svgRef: any = useRef();
+
   return (
     <Box sx={styleContainer}>
       <FilmLayout theme={theme}>
-        <Box className="headerLayout" sx={headerLayout}>
-          <Typography
-            variant="h3"
-            align="center"
-            sx={[styleTitle, { color: '#7E7E7E' }]}
-          >
-            심슨필름
-          </Typography>
+        <Box ref={svgRef} sx={{ heigth: 'auto', backgroundColor: 'white' }}>
+          <Box className="headerLayout" sx={headerLayout}>
+            <Typography
+              variant="h3"
+              align="center"
+              sx={[styleTitle, { color: '#7E7E7E' }]}
+            >
+              심슨필름
+            </Typography>
+          </Box>
+          <Box className="mainLayout" sx={mainLayout}>
+            {modal && <ModalComponent url={url} changeModal={openModal} />}
+
+            <CustomSVG
+              info={{
+                gender: 'female',
+                hair: 'long',
+                hairColor: 'white',
+                top: 'blazer',
+                topColor: 'white',
+                bottom: 'jeans',
+                bottomColor: 'white',
+                background: 'background1',
+                inner: 'basic_t_shirts',
+                innerColor: 'white',
+              }}
+              ratioBtn={ratioBtn}
+            ></CustomSVG>
+            <Box sx={{ height: 100, width: '100%', bgcolor: 'white' }}></Box>
+          </Box>
         </Box>
-        <Box className="mainLayout" sx={mainLayout}>
-          {modal && <ModalComponent url={url} changeModal={openModal} />}
-          <StyleMainImg theme={theme}>
-            <Box
-              component="img"
-              src={triangle}
-              alt="upload Layout"
-              sx={styletriangle}
-            />
-            <SVGMaleMiddle viewBox="-40 114 550 550" />
-          </StyleMainImg>
-        </Box>
-        <Box className="footerLayout" sx={footerLayout}>
-          <IconButton
-            sx={[styleLeftBtn, { paddingRight: 0 }]}
-            onClick={change ? goFirstPage : goCustomPage}
-          >
+        <Box
+          sx={{
+            width: '100%',
+            position: 'absolute',
+            bottom: 50,
+            left: '50%',
+            transform: 'translateX(-50%)',
+          }}
+        >
+          <Box className="footerLayout" sx={footerLayout}>
+            <IconButton
+              sx={[styleLeftBtn, { paddingRight: 0 }]}
+              onClick={change ? goFirstPage : goCustomPage}
+            >
+              {change ? (
+                <HomeOutlinedIcon sx={styleCameraIcon} />
+              ) : (
+                <Box
+                  component="img"
+                  alt="goCustomPage"
+                  src={customBtn}
+                  sx={styleCustomIcon}
+                />
+              )}
+            </IconButton>
             {change ? (
-              <HomeOutlinedIcon sx={styleCameraIcon} />
+              <Button sx={styleDownloadBtn} onClick={download}>
+                <Box
+                  component="img"
+                  alt="downloadImage"
+                  src={downloadIcon}
+                  sx={{
+                    height: '110%',
+                    textShadow: '3px 3px rgba(0, 0, 0, 0.25)',
+                  }}
+                />
+              </Button>
             ) : (
-              <Box
-                component="img"
-                alt="goCustomPage"
-                src={customBtn}
-                sx={styleCustomIcon}
-              />
+              <Button sx={styleCenterBtn} onClick={changeBtn}>
+                <PhotoCameraIcon sx={styleCameraIcon} />
+              </Button>
             )}
-          </IconButton>
-          {change ? (
-            <Button sx={styleDownloadBtn} onClick={download}>
-              <Box
-                component="img"
-                alt="downloadImage"
-                src={downloadIcon}
-                sx={{
-                  height: '110%',
-                  textShadow: '3px 3px rgba(0, 0, 0, 0.25)',
-                }}
-              />
-            </Button>
-          ) : (
-            <Button sx={styleCenterBtn} onClick={changeBtn}>
-              <PhotoCameraIcon sx={styleCameraIcon} />
-            </Button>
-          )}
-          <IconButton
-            sx={styleRightBtn}
-            onClick={change ? openModal : ratioChange}
-          >
-            {change ? (
-              <ShareOutlinedIcon sx={styleCameraIcon} />
-            ) : (
-              <Box
-                component="img"
-                alt="ratioControl"
-                src={ratioBtn ? ratio_1_1 : ratio_2_3}
-                sx={{ height: ratioBtn ? '50%' : '40%' }}
-              />
-            )}
-          </IconButton>
+            <IconButton
+              sx={styleRightBtn}
+              onClick={change ? openModal : ratioChange}
+            >
+              {change ? (
+                <ShareOutlinedIcon sx={styleCameraIcon} />
+              ) : (
+                <Box
+                  component="img"
+                  alt="ratioControl"
+                  src={ratioBtn ? ratio_1_1 : ratio_2_3}
+                  sx={{ height: ratioBtn ? '50%' : '40%' }}
+                />
+              )}
+            </IconButton>
+          </Box>
         </Box>
       </FilmLayout>
     </Box>
   );
 };
-
-{
-  /* <Button variant="text" sx={styleSideBtn} onClick={goFirstPage}>
-            <Box component="img" src={home} alt="homeBtn" sx={styleIconImg} />
-          </Button>
-          <Button
-            variant="text"
-            sx={styleCenterBtn}
-            onClick={() => sendKakao(url)}
-          >
-            <Box
-              component="img"
-              src={Kakaotalk}
-              alt="downloadBtn"
-              sx={styleIconImg}
-            />
-          </Button>
-          <Button variant="text" sx={styleCenterBtn}>
-            <Box
-              component="img"
-              src={downloadIcon}
-              alt="downloadBtn"
-              sx={styleIconImg}
-              onClick={download}
-            />
-          </Button>
-          <Button variant="text" sx={styleSideBtn}>
-            <Copyelement resultImg={url} />
-          </Button> */
-}

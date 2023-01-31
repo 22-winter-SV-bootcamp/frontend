@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 const SVGMaleMustang = ({ main, sub, detail, viewBox }: any) => (
   <svg
     id="\uBB34\uC2A4\uD0D5_\uC774\uBBF8\uC9C0"
@@ -95,7 +95,6 @@ const SVGMaleMustang = ({ main, sub, detail, viewBox }: any) => (
   </svg>
 );
 SVGMaleMustang.defaultProps = {
-    viewBox: '0 0 595.2 595.2',
-  };
-  export default SVGMaleMustang;
-  
+  viewBox: '-40 114 550 550',
+};
+export default SVGMaleMustang;

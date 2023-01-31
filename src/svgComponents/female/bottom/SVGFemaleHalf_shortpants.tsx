@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 const SVGFemaleHalf_shortpants = ({ main, sub, detail, viewBox }: any) => (
   <svg
     id="\uBC18\uBC14\uC9C0"
@@ -69,7 +69,6 @@ const SVGFemaleHalf_shortpants = ({ main, sub, detail, viewBox }: any) => (
   </svg>
 );
 SVGFemaleHalf_shortpants.defaultProps = {
-    viewBox: '0 0 595.2 595.2',
-  };
-  export default SVGFemaleHalf_shortpants;
-  
+  viewBox: '-40 114 550 550',
+};
+export default SVGFemaleHalf_shortpants;

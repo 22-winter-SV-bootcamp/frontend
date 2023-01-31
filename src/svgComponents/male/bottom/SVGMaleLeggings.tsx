@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 const SVGMaleLaggings = ({ main, sub, detail, viewBox }: any) => (
   <svg
     id="\uB808\uAE45\uC2A4_\uC774\uBBF8\uC9C0"
@@ -47,7 +47,6 @@ const SVGMaleLaggings = ({ main, sub, detail, viewBox }: any) => (
   </svg>
 );
 SVGMaleLaggings.defaultProps = {
-    viewBox: '0 0 595.2 595.2',
-  };
-  export default SVGMaleLaggings;
-  
+  viewBox: '-40 114 550 550',
+};
+export default SVGMaleLaggings;

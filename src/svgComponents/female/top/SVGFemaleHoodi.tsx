@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 const SVGFemaleHoodi = ({ main, sub, detail, viewBox }: any) => (
   <svg
     id="\uD6C4\uB4DC\uD2F0"
@@ -16,26 +16,27 @@ const SVGFemaleHoodi = ({ main, sub, detail, viewBox }: any) => (
         style={{ fill: main }}
         d="M283.27,590.29c-.37-2.23-.71-4.09-1-6-.54-3.52-1.12-7-1.55-10.56-.27-2.22-.3-4.47-.4-6.7s-.14-4.36-.26-6.53a19.52,19.52,0,0,1,1.17-8.1,60.82,60.82,0,0,0,2.57-9.38,27.69,27.69,0,0,0-1-13.27c-.78-2.66-1.42-5.37-2.42-7.94a16,16,0,0,1-.78-8.61c1.44-8.82,2.71-17.68,4.24-26.49a104,104,0,0,1,7.52-24.09c.52-1.16,1-2.33,1.41-3.53.12-.36-.1-.83-.17-1.24-.17.12-.39.22-.57.34l-.84-2.29.93-.33.35-.11c4.77-1.33,7.29-4.55,8-9.38a10.83,10.83,0,0,0-.78-6.85,8.32,8.32,0,0,1,.83.45,21.37,21.37,0,0,1,7.62,9.93c1.53,4.19,3.5,8.24,4.82,12.49,1.87,6.05,1.85,12.35,1.62,18.63-.4,10.49-3,20.56-5.57,30.67-2.5,9.93-4.44,20-7.64,29.77-2.39,7.27-4.72,14.55-7.36,21.71-3.26,8.83-6.82,17.56-10.25,26.34C283.7,589.47,283.56,589.71,283.27,590.29Z"
       />
-      <path 
-      className="cls-1" 
-      style={{ fill: main, filter: `brightness(${sub}%)` }}
-      d="M278.37,555.26v8.41h-3.08v-8.41Z" 
-      />
-
-      <path 
+      <path
         className="cls-1"
         style={{ fill: main, filter: `brightness(${sub}%)` }}
-        d="M274.66,555.24v8.4h-7.89v-8.4Z" 
-        />
+        d="M278.37,555.26v8.41h-3.08v-8.41Z"
+      />
+
+      <path
+        className="cls-1"
+        style={{ fill: main, filter: `brightness(${sub}%)` }}
+        d="M274.66,555.24v8.4h-7.89v-8.4Z"
+      />
       <path
         className="cls-1"
         style={{ fill: main, filter: `brightness(${detail}%)` }}
         d="M270.63,428.65c.13-3.83.3-7.66.45-11.49.2-.1.39-.2.57-.31,2.73,2.44,5.79,4.59,8.1,7.38,2.75,3.33,1.18,6.45-1.45,9.17a1.3,1.3,0,0,1-1.08.21,47.22,47.22,0,0,1-4.47-1.55A3.36,3.36,0,0,1,270.63,428.65Z"
       />
-      <path 
-      className="cls-1" 
-      style={{ fill: main, filter: `brightness(${sub}%)` }}
-      d="M266.09,555.25v8.4H241.43v-8.4Z" />
+      <path
+        className="cls-1"
+        style={{ fill: main, filter: `brightness(${sub}%)` }}
+        d="M266.09,555.25v8.4H241.43v-8.4Z"
+      />
       <path
         className="cls-1"
         style={{ fill: main }}
@@ -61,11 +62,11 @@ const SVGFemaleHoodi = ({ main, sub, detail, viewBox }: any) => (
         style={{ fill: main, filter: `brightness(${sub}%)` }}
         d="M239.57,555.16a8,8,0,0,0,1.22,0v8.48h-2.5v-3c0-1.38.06-2.77,0-4.15C238.21,555.48,238.48,555,239.57,555.16Z"
       />
-      <path 
-        className="cls-1" 
+      <path
+        className="cls-1"
         style={{ fill: main, filter: `brightness(${sub}%)` }}
-        d="M237.68,555.23v8.41H214.62v-8.41Z" 
-        />
+        d="M237.68,555.23v8.41H214.62v-8.41Z"
+      />
       <path
         className="cls-1"
         style={{ fill: main }}
@@ -106,10 +107,11 @@ const SVGFemaleHoodi = ({ main, sub, detail, viewBox }: any) => (
         style={{ fill: main, filter: `brightness(${sub}%)` }}
         d="M199.48,556.31c0-.95.36-1.19,1.3-.93v8.24c-1,.29-1.32,0-1.3-.92Q199.56,559.51,199.48,556.31Z"
       />
-      <path 
-        className="cls-1" 
+      <path
+        className="cls-1"
         style={{ fill: main, filter: `brightness(${sub}%)` }}
-        d="M198.94,555.36v8.29h-8.27v-8.29Z" />
+        d="M198.94,555.36v8.29h-8.27v-8.29Z"
+      />
       <path
         className="cls-1"
         style={{ fill: main, filter: `brightness(${sub}%)` }}
@@ -127,6 +129,6 @@ const SVGFemaleHoodi = ({ main, sub, detail, viewBox }: any) => (
   </svg>
 );
 SVGFemaleHoodi.defaultProps = {
-    viewBox: '0 0 595.2 595.2',
-  };
-  export default SVGFemaleHoodi;
+  viewBox: '-40 114 550 550',
+};
+export default SVGFemaleHoodi;

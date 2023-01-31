@@ -116,6 +116,6 @@ const SVGFemaleLong = ({ main, sub, detail, invert, viewBox }: any) => (
   </svg>
 );
 SVGFemaleLong.defaultProps = {
-  viewBox: '0 0 453.54 666.14',
+  viewBox: '-40 114 550 550',
 };
 export default SVGFemaleLong;

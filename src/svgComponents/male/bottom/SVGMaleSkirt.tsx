@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 const SVGMaleSkirt = ({ main, sub, detail, viewBox }: any) => (
   <svg
     id="\uCE58\uB9C8_\uC774\uBBF8\uC9C0"
@@ -17,10 +17,11 @@ const SVGMaleSkirt = ({ main, sub, detail, viewBox }: any) => (
         style={{ fill: main, filter: `brightness(${sub}%)` }}
         d="M293.81,552.59c-.9,3.22-1.65,6.32-2.67,9.34a7.42,7.42,0,0,0,.2,5.31c1.74,4.57,2,9.43,2.64,14.2,2.14,15,4.35,30,6.45,45.06,1.72,12.42,3.32,24.85,5,37.28,0,.3,0,.61.06,1.1H299.2c-9.63,0-19.25,0-28.87,0-1,0-1.38-.33-1.51-1.31-1.51-11-3-22-4.6-33-1.49-10.14-3.11-20.26-4.66-30.4a10,10,0,0,1-.11-1.54c0-9.19,0-18.37,0-27.55a6.68,6.68,0,0,0-.49-1.74,7,7,0,0,0-.43,1.7q0,46,0,92v1.68c-.58,0-1.08.09-1.58.09H218.57c-1.62,0-1.63,0-1.63-1.6q0-46.42,0-92.83a13.81,13.81,0,0,0-.24-1.78l-.53,0c0,.52-.15,1-.15,1.55,0,19.36.05,38.73,0,58.09,0,4.08-.6,8.16-1,12.23-.74,7.71-1.55,15.41-2.3,23.11-.07.79-.2,1.22-1.15,1.22-10.34,0-20.68,0-31,0a7.31,7.31,0,0,1-.81-.08c0-2.36-.09-4.71,0-7,.43-9.69.92-19.38,1.4-29.06q1-19.38,1.92-38.75c.2-4.14.3-8.29.49-12.44a13,13,0,0,1,.46-3.18q2.57-8.42,5.26-16.79a32.18,32.18,0,0,1,1.78-4.3,1.75,1.75,0,0,1,1.32-.61c5.15,0,10.3,0,15.45,0h86Z"
       />
-      <path 
-        className="cls-1" 
+      <path
+        className="cls-1"
         style={{ fill: main }}
-        d="M206.18,551.11V542h74.07v9.13Z" />
+        d="M206.18,551.11V542h74.07v9.13Z"
+      />
       <path
         className="cls-1"
         style={{ fill: main }}
@@ -31,23 +32,26 @@ const SVGMaleSkirt = ({ main, sub, detail, viewBox }: any) => (
         style={{ fill: main }}
         d="M268.08,664.82h-8.54V606.89l.25,0C262.55,626.12,265.3,645.39,268.08,664.82Z"
       />
-      <path 
-        className="cls-1" 
+      <path
+        className="cls-1"
         style={{ fill: main }}
-        d="M284,551.15V542h12.63l-2.83,9.15Z" />
+        d="M284,551.15V542h12.63l-2.83,9.15Z"
+      />
       <path
         className="cls-1"
         style={{ fill: main }}
         d="M191.76,551.13c1.15-3,2.26-5.88,3.4-8.76a.86.86,0,0,1,.6-.45c2.46,0,4.92,0,7.56,0v9.23Z"
       />
-      <path 
-        className="cls-1" 
+      <path
+        className="cls-1"
         style={{ fill: main }}
-        d="M216,642v22.82h-2.47l2.32-22.88Z" />
-      <path 
+        d="M216,642v22.82h-2.47l2.32-22.88Z"
+      />
+      <path
         className="cls-1"
         style={{ fill: main, filter: `brightness(${sub}%)` }}
-        d="M283.26,551.16h-2.32V542h2.32Z" />
+        d="M283.26,551.16h-2.32V542h2.32Z"
+      />
       <path
         className="cls-1"
         style={{ fill: main, filter: `brightness(${sub}%)` }}
@@ -61,7 +65,6 @@ const SVGMaleSkirt = ({ main, sub, detail, viewBox }: any) => (
   </svg>
 );
 SVGMaleSkirt.defaultProps = {
-    viewBox: '0 0 595.2 595.2',
-  };
-  export default SVGMaleSkirt;
-  
+  viewBox: '-40 114 550 550',
+};
+export default SVGMaleSkirt;
