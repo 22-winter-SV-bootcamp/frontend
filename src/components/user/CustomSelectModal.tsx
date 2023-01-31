@@ -5,21 +5,17 @@ import CheckColorList from './common/CheckColorList';
 
 import CheckItemList from './common/CheckItemList';
 
-const CustomSelectModal = ({
-  modal,
-  setModal,
+function CustomSelectModal({
   select,
-  info,
   setInfo,
   gender,
+  info,
 }: {
-  setModal: React.Dispatch<SetStateAction<boolean>>;
   select: string;
   setInfo: any;
   gender: string;
   info: any;
-  modal: boolean;
-}) => {
+}) {
   const colorArr = {
     white: '#f9f6f6',
     coolGray: '#d4d4d4',
@@ -115,21 +111,14 @@ const CustomSelectModal = ({
       sx={{
         width: '100%',
         height: '100%',
-        color: 'black',
-        background: '#FFCE00',
-        display: modal ? 'flex' : 'block',
+
         flexDirection: 'column',
         justifyContent: 'space-between',
-        padding: 4,
-
-        // justifyContent: 'center',
-        // alignItems: 'center',
       }}
     >
       <CheckItemList
         select={select}
         setInfo={setInfo}
-        title="Style"
         gender={gender}
         info={info}
         arr={styles[gender][select]}
@@ -138,17 +127,8 @@ const CustomSelectModal = ({
         select={select + 'Color'}
         setInfo={setInfo}
       ></CheckColorList>
-
-      <Button
-        sx={{ color: 'black' }}
-        onClick={() => {
-          setModal(false);
-        }}
-      >
-        <Typography variant="h4">OK</Typography>
-      </Button>
     </Box>
   );
-};
+}
 
 export default CustomSelectModal;

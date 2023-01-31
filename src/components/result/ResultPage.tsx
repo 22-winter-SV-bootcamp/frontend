@@ -17,6 +17,7 @@ import CustomSVG from '../user/CustomSVG';
 import domToImg from '@/utils/method/domToImg';
 import { saveAs } from 'file-saver';
 import { CustomBox } from './custom/CustomBox';
+import resultFilter from '@/utils/method/resultFilter';
 
 type Props = {};
 export const ResultPage = (props: Props) => {
@@ -29,7 +30,24 @@ export const ResultPage = (props: Props) => {
   const [custom, setCustom] = useState(false);
   const svgRef: any = useRef();
 
-  console.log(location.state);
+  const [info, setInfo] = useState({
+    gender: 'female',
+    hair: 'long',
+    hairColor: 'white',
+    top: 'blazer',
+    topColor: 'white',
+    bottom: 'jeans',
+    bottomColor: 'white',
+    background: 'background1',
+    inner: 'basic_t_shirts',
+    innerColor: 'white',
+  });
+
+  useEffect(() => {
+    let result = resultFilter(location.state.result);
+
+    setInfo((pre: any) => ({ ...pre, ...result }));
+  }, []);
   // useEffect(() => {
   //   /* Link로 결과 페이지로 넘어갈떄 props에 state값을 주면 결과 페이지 에서 사용 가능, 나는 이걸 url 상태값에 저장 */
   //   setUrl(location.state.link);
@@ -289,7 +307,11 @@ export const ResultPage = (props: Props) => {
           </Box>
         </Box>
         {!custom ? (
-          <CustomBox onChangeCustom={onChangeCustom} />
+          <CustomBox
+            info={info}
+            setInfo={setInfo}
+            onChangeCustom={onChangeCustom}
+          />
         ) : (
           <Box
             /* footerlayout 제일 하단에 고정 */

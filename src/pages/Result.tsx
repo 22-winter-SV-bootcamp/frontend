@@ -1,4 +1,4 @@
-import { ResultImg } from '@/components/result/ResultImg';
+// import { ResultImg } from '@/components/result/ResultImg';
 import { ResultPage } from '@/components/result/ResultPage';
 import React from 'react';
 import { useLocation } from 'react-router-dom';

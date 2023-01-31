@@ -53,7 +53,7 @@ type SVGComponentsType = {
   [key: string]: { [key: string]: { [key: string]: JSX.Element } };
 };
 
-const CheckItemList = ({ info, gender, title, setInfo, arr, select }: any) => {
+const CheckItemList = ({ info, gender, setInfo, arr, select }: any) => {
   let sub = 85;
   let detail = 70;
   let viewBoxFemailTop = '370 340 180 180';
@@ -510,7 +510,6 @@ const CheckItemList = ({ info, gender, title, setInfo, arr, select }: any) => {
 
   return (
     <Box>
-      <Typography variant="h4">{title}</Typography>
       <Box
         sx={{
           display: 'flex',

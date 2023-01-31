@@ -1,20 +1,24 @@
 // @flow
-import React from 'react';
+import React, { useState } from 'react';
 import { theme } from '@/utils/mui/breakpoints';
 import { Box, Button, IconButton, styled } from '@mui/material';
 import closeIcon from '/assets/pages/result/closeIcon.png';
-import genderIcon from '/assets/pages/result/genderIcon.png';
+import CustomSelectModal from '@/components/user/CustomSelectModal';
+import { width } from '@mui/system';
 
 type Props = {
   onChangeCustom: () => void;
+  info: any;
+  setInfo: any;
 };
-export const CustomBox = ({ onChangeCustom }: Props) => {
+export const CustomBox = ({ onChangeCustom, info, setInfo }: Props) => {
   const StyleDescibe = styled('div')(({ theme }) => ({
     position: 'relative',
     display: 'flex',
     flexDirection: 'column',
+
     // justifyContent: 'center',
-    paddingLeft: '10%',
+    // paddingLeft: '10%',
     height: '30%',
     width: '77%',
     maxWidth: '450px' /* 화면에 따라 수정 예정 */,
@@ -22,7 +26,7 @@ export const CustomBox = ({ onChangeCustom }: Props) => {
     background: '#FFBA75',
     whiteSpace: 'pre-line',
     boxShadow: '3px 3px rgba(0, 0, 0, 0.25)',
-    marginBottom: '3px',
+    marginBottom: '50px',
     [theme.breakpoints.down('desktop')]: {
       maxWidth: '557px',
     },
@@ -42,10 +46,10 @@ export const CustomBox = ({ onChangeCustom }: Props) => {
   };
 
   const okBtn = {
-    minWidth: '23px',
-    minHeight: '50px',
-    height: '90%',
-    position: 'relative',
+    minWidth: '40px',
+    minHeight: '40px',
+    position: 'absolute',
+    right: 0,
   };
 
   const styleOkIcon = {
@@ -56,61 +60,90 @@ export const CustomBox = ({ onChangeCustom }: Props) => {
   };
 
   const mainLayout = {
-    height: '85%',
+    width: '100%',
+    height: '100%',
     position: 'relative',
     display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
+    // flexDirection: 'column',
+    justifyContent: 'center',
     alignItems: 'center',
   };
 
   const subLayout = {
-    height: '50%',
+    // height: '100%',
     position: 'relative',
-    display: 'flex',
-    justifyContent: 'space-evenly',
+    display: 'grid',
     alignItems: 'center',
+    justifyItems: 'center',
+    gap: '50px',
+    gridTemplateColumns: `1fr 1fr 1fr`,
   };
 
   const styleBtn = {
-    p: '6px',
+    // p: '6px',
     // pr: ratioBtn ? '6px' : 0,
-    '&:hover': {
-      height: '6.5em',
-      width: '6.5em',
-    },
-    height: '5.8em',
-    width: '5.8em',
-    minWidth: '58px',
+
+    height: '100px',
+
+    // minWidth: '58px',
     boxShadow: '3px 3px rgba(0, 0, 0, 0.25)',
     background: 'linear-gradient(135deg, #E9E9E9, #FFFFFF)',
     fontSize: 'inherit',
   };
 
+  const [titleIconBtn, setTitleIconBtn] = useState(false);
+
   return (
     <StyleDescibe theme={theme}>
-      <Box className="HeaderLayout" sx={HeaderLayout}>
-        <Button sx={okBtn} onClick={onChangeCustom}>
-          <Box component="img" src={closeIcon} sx={styleOkIcon} />
-        </Button>
-      </Box>
-      <Box className="mainLayout" sx={mainLayout}>
-        <Box className="firstLayout" sx={subLayout}>
-          <IconButton
-            sx={styleBtn}
+      <Button sx={okBtn}>
+        {titleIconBtn ? (
+          <Box
             onClick={() => {
-              console.log('기능을 넣으시요');
+              setTitleIconBtn(false);
             }}
-          >
-            <Box
-              component="img"
-              alt="ratioControl"
-              src={genderIcon}
-              sx={{ height: '50%' }}
-            />
-          </IconButton>
-        </Box>
-        <Box className="secondLayout" sx={subLayout}></Box>
+            component="img"
+            src={'/assets/pages/result/1_1.png'}
+            sx={styleOkIcon}
+          />
+        ) : (
+          <Box
+            onClick={onChangeCustom}
+            component="img"
+            src={closeIcon}
+            sx={styleOkIcon}
+          />
+        )}
+      </Button>
+
+      <Box className="mainLayout" sx={mainLayout}>
+        {titleIconBtn ? (
+          <CustomSelectModal
+            info={info}
+            setInfo={setInfo}
+            gender={'male'}
+            select={'top'}
+          ></CustomSelectModal>
+        ) : (
+          <Box className="firstLayout" sx={subLayout}>
+            {['gender', 'hair', 'background', 'top', 'inner', 'bottom'].map(
+              (title) => (
+                <IconButton
+                  sx={styleBtn}
+                  onClick={() => {
+                    setTitleIconBtn(true);
+                  }}
+                >
+                  <Box
+                    component="img"
+                    alt={title}
+                    src={`/assets/pages/result/${title}Icon.png`}
+                    sx={{ height: '50%' }}
+                  />
+                </IconButton>
+              ),
+            )}
+          </Box>
+        )}
       </Box>
     </StyleDescibe>
   );

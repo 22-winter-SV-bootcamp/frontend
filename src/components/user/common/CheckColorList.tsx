@@ -54,7 +54,6 @@ const CheckColorList = ({ setInfo, select }: any) => {
 
   return (
     <Box>
-      <Typography variant="h4">Color</Typography>
       <Box
         sx={{
           display: 'flex',
