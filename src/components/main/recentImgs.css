@@ -1,0 +1,89 @@
+@keyframes ani0 {
+  0% {
+    left: 70%;
+    top: -20%;
+    opacity: 0;
+  }
+
+  100% {
+    left: 60%;
+    top: -15%;
+    opacity: 1;
+  }
+}
+
+@keyframes ani1 {
+  0% {
+    left: 15%;
+    top: 15%;
+    opacity: 0;
+  }
+
+  100% {
+    left: 15%;
+    top: 20%;
+    opacity: 1;
+  }
+}
+
+@keyframes ani2 {
+  0% {
+    left: 65%;
+    top: 35%;
+    opacity: 0;
+  }
+
+  100% {
+    left: 60%;
+    top: 40%;
+    opacity: 1;
+  }
+}
+
+@keyframes ani3 {
+  0% {
+    left: -5%;
+    top: 55%;
+    opacity: 0;
+  }
+
+  100% {
+    left: 0;
+    top: 60%;
+    opacity: 1;
+  }
+}
+
+@keyframes ani4 {
+  0% {
+    left: 70%;
+    top: 70%;
+    opacity: 0;
+  }
+
+  100% {
+    left: 65%;
+    top: 75%;
+    opacity: 1;
+  }
+}
+
+.card0 {
+  animation: ani0 1s ease-out; /*거꾸로 시작해서 왔다갔다*/
+}
+
+.card1 {
+  animation: ani1 1s ease-out; /*거꾸로 시작해서 왔다갔다*/
+}
+
+.card2 {
+  animation: ani2 1s ease-out; /*거꾸로 시작해서 왔다갔다*/
+}
+
+.card3 {
+  animation: ani3 1s ease-out; /*거꾸로 시작해서 왔다갔다*/
+}
+
+.card4 {
+  animation: ani4 1s ease-out; /*거꾸로 시작해서 왔다갔다*/
+}
