@@ -18,11 +18,12 @@ import domToImg from '@/utils/method/domToImg';
 import { saveAs } from 'file-saver';
 import { CustomBox } from './custom/CustomBox';
 import resultFilter from '@/utils/method/resultFilter';
+import postCustomStyleInfo from '@/apis/postCustomStyleInfo';
 
 type Props = {};
 export const ResultPage = (props: Props) => {
   const [url, setUrl] = useState('');
-  const location = useLocation();
+
   const navigate = useNavigate();
   const [change, setChange] = useState(false);
   const [ratioBtn, setRatioBtn] = useState(false);
@@ -30,6 +31,7 @@ export const ResultPage = (props: Props) => {
   const [custom, setCustom] = useState(false);
   const svgRef: any = useRef();
 
+  const location = useLocation();
   const [info, setInfo] = useState({
     gender: 'female',
     hair: 'long',
@@ -38,11 +40,10 @@ export const ResultPage = (props: Props) => {
     topColor: 'white',
     bottom: 'jeans',
     bottomColor: 'white',
-    background: 'background1',
+    backgroundColor: 'pink',
     inner: 'basic_t_shirts',
     innerColor: 'white',
   });
-
   useEffect(() => {
     let result = resultFilter(location.state.result);
 
@@ -62,8 +63,33 @@ export const ResultPage = (props: Props) => {
     setRatioBtn((pre) => !pre);
   };
 
-  const changeBtn = () => {
+  const changeBtn = async () => {
     /* 하단 아이콘 버튼 3개 상태 변환 */
+
+    let formData = new FormData();
+    console.log(svgRef.current);
+    const blob = await domToImg(svgRef.current);
+    // let blob = await html2canvasToBlob(svgRef.current);
+    console.log('blob', blob);
+    saveAs(blob);
+
+    // blob.toBlob((b: any) => formData.append('file', b));
+    formData.append('file', blob);
+    formData.append('gender', info.gender);
+    formData.append('top', info.top);
+    formData.append('top_color', info.topColor);
+    formData.append('bottom', info.bottom);
+    formData.append('bottom_color', info.bottomColor);
+
+    // 모바일에서 안먹힘..?
+    // let link = postCustomStyleInfo(formData);
+    // console.log(link);
+    // alert('hi');
+    // navigate('/result', { state: link });
+
+    let link = await postCustomStyleInfo(formData);
+    setUrl(link.link);
+
     setChange(true);
   };
 
@@ -72,7 +98,7 @@ export const ResultPage = (props: Props) => {
     setModal((pre) => !pre);
   };
 
-  const onChangeCustom = () => {
+  const onChangeCustom = async () => {
     /* 하단 버튼 3개 커스텀 상태 창으로 변환 */
     setCustom((pre) => !pre);
     ratioBtn && setRatioBtn((pre) => !pre);
@@ -85,10 +111,10 @@ export const ResultPage = (props: Props) => {
     const blob = await domToImg(svgRef.current);
     saveAs(blob);
 
-    url &&
-      imageDownload({
-        href: url,
-      });
+    // url &&
+    //   imageDownload({
+    //     href: url,
+    //   });
   };
 
   const styleContainer = {
@@ -273,7 +299,7 @@ export const ResultPage = (props: Props) => {
   return (
     <Box sx={styleContainer}>
       <FilmLayout theme={theme}>
-        <Box ref={svgRef} sx={{ width: '100%' }}>
+        <Box ref={svgRef} sx={{ width: '100%', bgcolor: 'white' }}>
           <Box className="headerLayout" sx={headerLayout}>
             <Typography
               variant="h3"
@@ -286,18 +312,7 @@ export const ResultPage = (props: Props) => {
           <Box className="mainLayout" sx={mainLayout}>
             {modal && <ModalComponent url={url} changeModal={openModal} />}
             <CustomSVG
-              info={{
-                gender: 'female',
-                hair: 'long',
-                hairColor: 'white',
-                top: 'blazer',
-                topColor: 'white',
-                bottom: 'jeans',
-                bottomColor: 'white',
-                background: 'background1',
-                inner: 'basic_t_shirts',
-                innerColor: 'white',
-              }}
+              info={info}
               ratioBtn={ratioBtn}
               custom={custom}
             ></CustomSVG>

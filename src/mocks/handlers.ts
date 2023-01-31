@@ -73,7 +73,7 @@ export const handlers = [
     };
 
     let female = {
-      gender: 'male',
+      gender: 'female',
       top: 'shirts',
       top_color: 'red',
       bottom: 'skirt',

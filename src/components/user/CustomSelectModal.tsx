@@ -1,5 +1,6 @@
 import { Button, Hidden, Typography } from '@mui/material';
 import { Box } from '@mui/material';
+import { prependListener } from 'process';
 import React, { SetStateAction, useState } from 'react';
 import CheckColorList from './common/CheckColorList';
 
@@ -8,12 +9,12 @@ import CheckItemList from './common/CheckItemList';
 function CustomSelectModal({
   select,
   setInfo,
-  gender,
+
   info,
 }: {
   select: string;
   setInfo: any;
-  gender: string;
+
   info: any;
 }) {
   const colorArr = {
@@ -48,62 +49,32 @@ function CustomSelectModal({
   };
 
   const styles: any = {
-    female: {
-      inner: ['basic_t_shirts', 'basic_neck_pole'],
-      hair: ['short', 'middle', 'long'],
-      top: [
-        'blazer',
-        'blouse',
-        'cardigan',
-        'coat',
-        'hoodi',
-        'jumper',
-        'mustang',
-        'onepiece',
-        'pkshirts',
-        'shirts',
-        'sweater',
-        'sweatshirts',
-        't_shirts',
-      ],
-      bottom: [
-        'denim',
-        'half_shortpants',
-        'leggings',
-        'skirt',
-        'slacks',
-        'sweatpants',
-      ],
-      background: ['background1', 'background2', 'background3'],
-    },
-    male: {
-      inner: ['basic_t_shirts', 'basic_neck_pole'],
-      hair: ['short', 'middle', 'long'],
-      top: [
-        'blazer',
-        'blouse',
-        'cardigan',
-        'coat',
-        'hoodi',
-        'jumper',
-        'mustang',
-        'onepiece',
-        'pkshirts',
-        'shirts',
-        'sweater',
-        'sweatshirts',
-        't_shirts',
-      ],
-      bottom: [
-        'denim',
-        'half_shortpants',
-        'leggings',
-        'skirt',
-        'slacks',
-        'sweatpants',
-      ],
-      background: ['background1', 'background2', 'background3'],
-    },
+    inner: ['basic_t_shirts', 'basic_neck_pole', 'basic_nasi'],
+    hair: ['short', 'middle', 'long'],
+    top: [
+      'blazer',
+      'blouse',
+      'cardigan',
+      'coat',
+      'hoodi',
+      'jumper',
+      'mustang',
+      'onepiece',
+      'pkshirts',
+      'shirts',
+      'sweater',
+      'sweatshirts',
+      't_shirts',
+    ],
+    bottom: [
+      'denim',
+      'half_shortpants',
+      'leggings',
+      'skirt',
+      'slacks',
+      'sweatpants',
+    ],
+    background: [],
   };
   console.log('setModalInfo:', info);
   return (
@@ -111,22 +82,47 @@ function CustomSelectModal({
       sx={{
         width: '100%',
         height: '100%',
-
+        marginTop: 10,
         flexDirection: 'column',
         justifyContent: 'space-between',
       }}
     >
-      <CheckItemList
-        select={select}
-        setInfo={setInfo}
-        gender={gender}
-        info={info}
-        arr={styles[gender][select]}
-      ></CheckItemList>
-      <CheckColorList
-        select={select + 'Color'}
-        setInfo={setInfo}
-      ></CheckColorList>
+      {select !== 'gender' ? (
+        <div>
+          {' '}
+          <CheckItemList
+            select={select}
+            setInfo={setInfo}
+            info={info}
+            arr={styles[select]}
+          ></CheckItemList>
+          <CheckColorList
+            select={select + 'Color'}
+            setInfo={setInfo}
+          ></CheckColorList>{' '}
+        </div>
+      ) : (
+        <Box>
+          <Box
+            onClick={() => {
+              setInfo((pre: any) => ({ ...pre, gender: 'female' }));
+            }}
+            sx={{ width: 50, height: 50 }}
+            component="img"
+            src={`/assets/pages/result/female.png`}
+            alt="female"
+          ></Box>
+          <Box
+            onClick={() => {
+              setInfo((pre: any) => ({ ...pre, gender: 'male' }));
+            }}
+            sx={{ width: 50, height: 50 }}
+            component="img"
+            src={`/assets/pages/result/male.png`}
+            alt="male"
+          ></Box>
+        </Box>
+      )}
     </Box>
   );
 }

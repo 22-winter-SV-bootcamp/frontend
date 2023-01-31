@@ -5,6 +5,9 @@ const SVGMaleMiddle = ({ main, sub, detail, viewBox }: any) => (
     data-name="\uB0A8\uC790 \uB2E8\uBC1C"
     xmlns="http://www.w3.org/2000/svg"
     viewBox={viewBox}
+    width="100%"
+    height="100%"
+    style={{ position: 'absolute' }}
   >
     <defs>
       <style>{'.cls-1{fill:#fff;}.cls-2{fill:none;}'}</style>
@@ -61,7 +64,7 @@ const SVGMaleMiddle = ({ main, sub, detail, viewBox }: any) => (
     />
     <path
       className="cls-1"
-      style={{ fill: main, filter: `brightness(${sub}%)` }}
+      style={{ fill: main }}
       d="M289.33,333.29l-2.12,2.55a8.1,8.1,0,0,1-2.17-5.15Z"
     />
     <path

@@ -5,6 +5,8 @@ const SVGMaleLong = ({ main, sub, detail, viewBox }: any) => (
     data-name="\uB0A8\uC790 \uC7A5\uBC1C"
     xmlns="http://www.w3.org/2000/svg"
     viewBox={viewBox}
+    width="100%"
+    height="100%"
   >
     <defs>
       <style>{'.cls-1{fill:#fff;}.cls-2{fill:none;}'}</style>

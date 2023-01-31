@@ -26,7 +26,7 @@ import SVGMaleLeggings from '@/svgComponents/male/bottom/SVGMaleLeggings';
 import SVGMaleSkirt from '@/svgComponents/male/bottom/SVGMaleSkirt';
 import SVGMaleSlacks from '@/svgComponents/male/bottom/SVGMaleSlacks';
 import SVGMaleSweatpants from '@/svgComponents/male/bottom/SVGMaleSweatpants';
-import SVGMaleMiddle from '@/svgComponents/male/hair/SVGMaleShort';
+import SVGMaleMiddle from '@/svgComponents/male/hair/SVGMaleMiddle';
 import SVGMaleBasic_neck_pole from '@/svgComponents/male/inner/SVGMaleBasic_neck_pole';
 import SVGMaleBasic_t_shirts from '@/svgComponents/male/inner/SVGMaleBasic_t_shirts';
 import SVGMaleBlazer from '@/svgComponents/male/top/SVGMaleBlazer';
@@ -78,7 +78,7 @@ const CustomSVG = ({ info, ratioBtn, custom }: any) => {
   let sub = 85;
   let detail = 70;
 
-  let viewBox = ratioBtn ? '11 89 460 460' : '-40 114 550 550';
+  let viewBox = ratioBtn ? '11 89 460 460' : undefined;
 
   const colorArr: ColorArrType = {
     white: '#FFFFFF',
@@ -145,7 +145,7 @@ const CustomSVG = ({ info, ratioBtn, custom }: any) => {
             viewBox={viewBox}
           ></SVGFemaleBasic_t_shirts>
         ),
-        basic_Nasi: (
+        basic_nasi: (
           <SVGFemaleBasic_Nasi
             main={colorArr[innerColor]}
             sub={sub}
@@ -357,7 +357,7 @@ const CustomSVG = ({ info, ratioBtn, custom }: any) => {
             viewBox={viewBox}
           ></SVGMaleBasic_t_shirts>
         ),
-        basic_Nasi: (
+        basic_nasi: (
           <SVGMaleBasic_Nasi
             main={colorArr[innerColor]}
             sub={sub}
@@ -592,7 +592,7 @@ const CustomSVG = ({ info, ratioBtn, custom }: any) => {
     justifyContent: 'center',
     alignItems: 'bottom',
     width: '77%',
-    background: '#FFAEAE',
+    background: colorArr[info.backgroundColor],
     aspectRatio: ratioBtn ? '2/3' : '1/1',
     overflow: 'hidden',
     borderRadius: custom ? 0 : '10%',

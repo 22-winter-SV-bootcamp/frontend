@@ -15,6 +15,7 @@ import { Box } from '@mui/system';
 import ButtonIcon from '@/components/common/ButtonIcon';
 import { theme } from '@/utils/mui/breakpoints';
 import { Translate } from '@mui/icons-material';
+import { prependListener } from 'process';
 
 export default function RankModal({ open, setOpen }: any) {
   const [rankInfo, setRankInfo] = React.useState([
@@ -28,6 +29,7 @@ export default function RankModal({ open, setOpen }: any) {
       hairColor: 'black',
       inner: 'basic_t_shirts',
       innerColor: 'white',
+      backgroundColor: 'pink',
       count: '1',
     },
     {
@@ -40,6 +42,7 @@ export default function RankModal({ open, setOpen }: any) {
       hairColor: 'black',
       inner: 'basic_t_shirts',
       innerColor: 'white',
+      backgroundColor: 'pink',
       count: '1',
     },
   ]);
@@ -48,12 +51,21 @@ export default function RankModal({ open, setOpen }: any) {
     ['maleRank'],
     async () => await getBestStyle('male'),
     {
-      onSuccess(data) {},
+      onSuccess(data) {
+        console.log('male', data);
+        setRankInfo((pre: any) => [{ ...pre[0], ...data }, { ...pre[1] }]);
+      },
     },
   );
   const { data: female } = useQuery(
     ['femaleRank'],
     async () => await getBestStyle('female'),
+    {
+      onSuccess(data) {
+        console.log('female', data);
+        setRankInfo((pre: any) => [{ ...pre[0] }, { ...pre[1], ...data }]);
+      },
+    },
   );
 
   const handleClickOpen = () => {
