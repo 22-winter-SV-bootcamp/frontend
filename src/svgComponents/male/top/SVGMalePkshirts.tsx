@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 const SVGMalePkshirts = ({ main, sub, detail, viewBox }: any) => (
   <svg
     id="pk\uC154\uCE20_\uC774\uBBF8\uC9C0"
@@ -55,7 +55,6 @@ const SVGMalePkshirts = ({ main, sub, detail, viewBox }: any) => (
   </svg>
 );
 SVGMalePkshirts.defaultProps = {
-    viewBox: '0 0 595.2 595.2',
-  };
-  export default SVGMalePkshirts;
-  
+  viewBox: '-40 114 550 550',
+};
+export default SVGMalePkshirts;

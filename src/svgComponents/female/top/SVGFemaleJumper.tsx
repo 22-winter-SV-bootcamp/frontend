@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 const SVGFemaleJumper = ({ main, sub, detail, viewBox }: any) => (
   <svg
     id="\uD56D\uACF5\uC810\uD37C"
@@ -72,6 +72,6 @@ const SVGFemaleJumper = ({ main, sub, detail, viewBox }: any) => (
   </svg>
 );
 SVGFemaleJumper.defaultProps = {
-    viewBox: '0 0 595.2 595.2',
-  };
-  export default SVGFemaleJumper;
+  viewBox: '-40 114 550 550',
+};
+export default SVGFemaleJumper;

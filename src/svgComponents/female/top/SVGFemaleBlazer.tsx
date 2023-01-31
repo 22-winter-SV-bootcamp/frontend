@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 const SVGFemaleBlazer = ({ main, sub, detail, viewBox }: any) => (
   <svg
     id="\uBE14\uB808\uC774\uC800"
@@ -71,7 +71,7 @@ const SVGFemaleBlazer = ({ main, sub, detail, viewBox }: any) => (
   </svg>
 );
 SVGFemaleBlazer.defaultProps = {
-  viewBox: '0 0 595.2 595.2',
+  viewBox: '-40 114 550 550',
 };
 
 export default SVGFemaleBlazer;

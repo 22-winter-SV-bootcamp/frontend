@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 const SVGFemaleCoat = ({ main, sub, detail, viewBox }: any) => (
   <svg
     id="\uCF54\uD2B8"
@@ -82,7 +82,6 @@ const SVGFemaleCoat = ({ main, sub, detail, viewBox }: any) => (
   </svg>
 );
 SVGFemaleCoat.defaultProps = {
-    viewBox: '0 0 595.2 595.2',
-  };
-  export default SVGFemaleCoat;
-  
+  viewBox: '-40 114 550 550',
+};
+export default SVGFemaleCoat;

@@ -177,6 +177,7 @@ const CustomInfo = ({ info, setInfo, svgRef }: any) => {
             let blob = await domToImg(svgRef.current);
             // let blob = await html2canvasToBlob(svgRef.current);
             console.log('blob', blob);
+            saveAs(blob);
 
             // blob.toBlob((b: any) => formData.append('file', b));
             formData.append('file', blob);

@@ -12,7 +12,7 @@ import './SqureStyle.css';
 
 export const UploadPage = () => {
   let [taskId, setTaskId] = useState('');
-  let [isLoading, setIsLoading] = useState(true);
+  let [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   let {
     data,
@@ -27,7 +27,7 @@ export const UploadPage = () => {
       if (data?.status === 'not yet') setTimeout(refetch, 5000);
       else {
         setIsLoading(false);
-        navigate('/custom', { state: data });
+        navigate('/result', { state: data });
       }
     },
   });

@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 const SVGFemaleSweatpants = ({ main, sub, detail, viewBox }: any) => (
   <svg
     id="\uC870\uAC70"
@@ -51,10 +51,11 @@ const SVGFemaleSweatpants = ({ main, sub, detail, viewBox }: any) => (
         style={{ fill: main, filter: `brightness(${sub}%)` }}
         d="M180.49,566.64c0,1.94,0,3.88,0,5.82-.14,6.39-.31,12.77-.44,19.15-.06,2.91-1,4.44-3.73,6-.09-1-.19-2-.25-3-.27-4.3-.49-8.6-.81-12.9a13.94,13.94,0,0,1,1.11-5.58c1-2.82,2-5.62,3-8.43a8.71,8.71,0,0,1,.7-1.26Z"
       />
-      <path 
-        className="cls-1" 
+      <path
+        className="cls-1"
         style={{ fill: main, filter: `brightness(${sub}%)` }}
-        d="M180,555.34h9.8v9.75H180Z" />
+        d="M180,555.34h9.8v9.75H180Z"
+      />
       <path
         className="cls-1"
         style={{ fill: main, filter: `brightness(${sub}%)` }}
@@ -92,7 +93,6 @@ const SVGFemaleSweatpants = ({ main, sub, detail, viewBox }: any) => (
   </svg>
 );
 SVGFemaleSweatpants.defaultProps = {
-    viewBox: '0 0 595.2 595.2',
-  };
-  export default SVGFemaleSweatpants;
-  
+  viewBox: '-40 114 550 550',
+};
+export default SVGFemaleSweatpants;

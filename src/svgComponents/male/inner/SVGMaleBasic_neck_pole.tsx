@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 const SVGMaleBasic_neck_pole = ({ main, sub, detail, viewBox }: any) => (
   <svg
     id="\uBAA9\uD2F0_\uC774\uBBF8\uC9C0"
@@ -24,7 +24,6 @@ const SVGMaleBasic_neck_pole = ({ main, sub, detail, viewBox }: any) => (
   </svg>
 );
 SVGMaleBasic_neck_pole.defaultProps = {
-    viewBox: '0 0 595.2 595.2',
-  };
-  export default SVGMaleBasic_neck_pole;
-  
+  viewBox: '-40 114 550 550',
+};
+export default SVGMaleBasic_neck_pole;

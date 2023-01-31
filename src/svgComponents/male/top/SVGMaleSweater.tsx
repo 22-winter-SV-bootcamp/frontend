@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 const SVGMaleSweater = ({ main, sub, detail, viewBox }: any) => (
   <svg
     id="\uC2A4\uC6E8\uD130_\uC774\uBBF8\uC9C0"
@@ -27,10 +27,11 @@ const SVGMaleSweater = ({ main, sub, detail, viewBox }: any) => (
         style={{ fill: main, filter: `brightness(${sub}%)` }}
         d="M222.15,565.19V553h23a9.37,9.37,0,0,1,.1,1c0,3.4,0,6.79,0,10.19,0,.67-.06,1.12-1,1.11-7.19,0-14.38,0-21.57,0A5.2,5.2,0,0,1,222.15,565.19Z"
       />
-      <path 
-        className="cls-1" 
+      <path
+        className="cls-1"
         style={{ fill: main, filter: `brightness(${sub}%)` }}
-        d="M254.84,565.19V553h21.4v12.22Z" />
+        d="M254.84,565.19V553h21.4v12.22Z"
+      />
       <path
         className="cls-1"
         style={{ fill: main, filter: `brightness(${sub}%)` }}
@@ -46,14 +47,16 @@ const SVGMaleSweater = ({ main, sub, detail, viewBox }: any) => (
         style={{ fill: main, filter: `brightness(${sub}%)` }}
         d="M194.09,565.21h-4.66c.74-3.88,1.44-7.66,2.19-11.44a1,1,0,0,1,.69-.61,17.15,17.15,0,0,1,2.19,0Z"
       />
-      <path 
-        className="cls-1" 
+      <path
+        className="cls-1"
         style={{ fill: main, filter: `brightness(${sub}%)` }}
-        d="M195,553.12h1.88v12.09h-2.3Z" />
-      <path 
-        className="cls-1" 
+        d="M195,553.12h1.88v12.09h-2.3Z"
+      />
+      <path
+        className="cls-1"
         style={{ fill: main, filter: `brightness(${sub}%)` }}
-        d="M247.58,565.22h-1.73V552.94h1.73Z" />
+        d="M247.58,565.22h-1.73V552.94h1.73Z"
+      />
     </g>
     <path
       id="\uC120"
@@ -62,6 +65,6 @@ const SVGMaleSweater = ({ main, sub, detail, viewBox }: any) => (
   </svg>
 );
 SVGMaleSweater.defaultProps = {
-    viewBox: '0 0 595.2 595.2',
-  };
-  export default SVGMaleSweater;
+  viewBox: '-40 114 550 550',
+};
+export default SVGMaleSweater;

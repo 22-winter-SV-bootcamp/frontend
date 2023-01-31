@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 const SVGFemaleSweatshirts = ({ main, sub, detail, viewBox }: any) => (
   <svg
     id="\uB9E8\uD22C\uB9E8_\uC774\uBBF8\uC9C0"
@@ -40,6 +40,6 @@ const SVGFemaleSweatshirts = ({ main, sub, detail, viewBox }: any) => (
   </svg>
 );
 SVGFemaleSweatshirts.defaultProps = {
-    viewBox: '0 0 595.2 595.2',
-  };
-  export default SVGFemaleSweatshirts;
+  viewBox: '-40 114 550 550',
+};
+export default SVGFemaleSweatshirts;

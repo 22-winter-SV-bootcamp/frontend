@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 const SVGFemaleOnepiece = ({ main, sub, detail, viewBox }: any) => (
   <svg
     id="\uC6D0\uD53C\uC2A4"
@@ -55,7 +55,6 @@ const SVGFemaleOnepiece = ({ main, sub, detail, viewBox }: any) => (
   </svg>
 );
 SVGFemaleOnepiece.defaultProps = {
-    viewBox: '0 0 595.2 595.2',
-  };
-  export default SVGFemaleOnepiece;
-  
+  viewBox: '-40 114 550 550',
+};
+export default SVGFemaleOnepiece;

@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 const SVGFemaleCardigan = ({ main, sub, detail, viewBox }: any) => (
   <svg
     id="\uAC00\uB514\uAC74"
@@ -53,6 +53,6 @@ const SVGFemaleCardigan = ({ main, sub, detail, viewBox }: any) => (
   </svg>
 );
 SVGFemaleCardigan.defaultProps = {
-    viewBox: '0 0 595.2 595.2',
-  };
-  export default SVGFemaleCardigan;
+  viewBox: '-40 114 550 550',
+};
+export default SVGFemaleCardigan;

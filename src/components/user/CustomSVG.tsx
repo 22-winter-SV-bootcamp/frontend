@@ -52,6 +52,8 @@ import SVGMaleBasic_Nasi from '@/svgComponents/male/inner/SVGMaleBasic_Nasi';
 import SVGFemaleBasic_Nasi from '@/svgComponents/female/inner/SVGFemaleBasic_Nasi';
 import SVGFemaleShort from '@/svgComponents/female/hair/SVGFemaleShort';
 import SVGFemaleMiddle from '@/svgComponents/female/hair/SVGFemaleMiddle';
+import triangle from '/assets/triangle.png';
+
 type ColorArrType = {
   [key: string]: string;
 };
@@ -59,7 +61,7 @@ type SVGComponentsType = {
   [key: string]: { [key: string]: { [key: string]: JSX.Element } };
 };
 
-const CustomSVG = ({ info }: any) => {
+const CustomSVG = ({ info, ratioBtn }: any) => {
   let {
     gender,
     hair,
@@ -75,6 +77,8 @@ const CustomSVG = ({ info }: any) => {
 
   let sub = 85;
   let detail = 70;
+
+  let viewBox = ratioBtn ? '11 89 460 460' : '-40 114 550 550';
 
   const colorArr: ColorArrType = {
     white: '#FFFFFF',
@@ -130,6 +134,7 @@ const CustomSVG = ({ info }: any) => {
             main={colorArr[innerColor]}
             sub={sub}
             detail={detail}
+            viewBox={viewBox}
           ></SVGFemaleBasic_neck_pole>
         ),
         basic_t_shirts: (
@@ -137,6 +142,7 @@ const CustomSVG = ({ info }: any) => {
             main={colorArr[innerColor]}
             sub={sub}
             detail={detail}
+            viewBox={viewBox}
           ></SVGFemaleBasic_t_shirts>
         ),
         basic_Nasi: (
@@ -144,6 +150,7 @@ const CustomSVG = ({ info }: any) => {
             main={colorArr[innerColor]}
             sub={sub}
             detail={detail}
+            viewBox={viewBox}
           ></SVGFemaleBasic_Nasi>
         ),
       },
@@ -153,6 +160,7 @@ const CustomSVG = ({ info }: any) => {
             main={colorArr[topColor]}
             sub={sub}
             detail={detail}
+            viewBox={viewBox}
           ></SVGFemaleBlouse>
         ),
 
@@ -161,6 +169,7 @@ const CustomSVG = ({ info }: any) => {
             main={colorArr[topColor]}
             sub={sub}
             detail={detail}
+            viewBox={viewBox}
           ></SVGFemaleBlazer>
         ),
         cardigan: (
@@ -168,6 +177,7 @@ const CustomSVG = ({ info }: any) => {
             main={colorArr[topColor]}
             sub={sub}
             detail={detail}
+            viewBox={viewBox}
           ></SVGFemaleCardigan>
         ),
         coat: (
@@ -175,6 +185,7 @@ const CustomSVG = ({ info }: any) => {
             main={colorArr[topColor]}
             sub={sub}
             detail={detail}
+            viewBox={viewBox}
           ></SVGFemaleCoat>
         ),
         hoodi: (
@@ -182,6 +193,7 @@ const CustomSVG = ({ info }: any) => {
             main={colorArr[topColor]}
             sub={sub}
             detail={detail}
+            viewBox={viewBox}
           ></SVGFemaleHoodi>
         ),
         jumper: (
@@ -189,6 +201,7 @@ const CustomSVG = ({ info }: any) => {
             main={colorArr[topColor]}
             sub={sub}
             detail={detail}
+            viewBox={viewBox}
           ></SVGFemaleJumper>
         ),
         mustang: (
@@ -196,6 +209,7 @@ const CustomSVG = ({ info }: any) => {
             main={colorArr[topColor]}
             sub={sub}
             detail={detail}
+            viewBox={viewBox}
           ></SVGFemaleMustang>
         ),
         onepiece: (
@@ -203,6 +217,7 @@ const CustomSVG = ({ info }: any) => {
             main={colorArr[topColor]}
             sub={sub}
             detail={detail}
+            viewBox={viewBox}
           ></SVGFemaleOnepiece>
         ),
         pkshirts: (
@@ -210,6 +225,7 @@ const CustomSVG = ({ info }: any) => {
             main={colorArr[topColor]}
             sub={sub}
             detail={detail}
+            viewBox={viewBox}
           ></SVGFemalePkshirts>
         ),
         shirts: (
@@ -217,6 +233,7 @@ const CustomSVG = ({ info }: any) => {
             main={colorArr[topColor]}
             sub={sub}
             detail={detail}
+            viewBox={viewBox}
           ></SVGFemaleShirts>
         ),
         sweater: (
@@ -224,6 +241,7 @@ const CustomSVG = ({ info }: any) => {
             main={colorArr[topColor]}
             sub={sub}
             detail={detail}
+            viewBox={viewBox}
           ></SVGFemaleSweater>
         ),
         sweatshirts: (
@@ -231,6 +249,7 @@ const CustomSVG = ({ info }: any) => {
             main={colorArr[topColor]}
             sub={sub}
             detail={detail}
+            viewBox={viewBox}
           ></SVGFemaleSweatshirts>
         ),
         t_shirts: (
@@ -238,15 +257,18 @@ const CustomSVG = ({ info }: any) => {
             main={colorArr[topColor]}
             sub={sub}
             detail={detail}
+            viewBox={viewBox}
           ></SVGFemaleT_shirts>
         ),
       },
+
       bottom: {
         denim: (
           <SVGFemaleDenim
             main={colorArr[bottomColor]}
             sub={sub}
             detail={detail}
+            viewBox={viewBox}
           ></SVGFemaleDenim>
         ),
         half_shortpants: (
@@ -254,6 +276,7 @@ const CustomSVG = ({ info }: any) => {
             main={colorArr[bottomColor]}
             sub={sub}
             detail={detail}
+            viewBox={viewBox}
           ></SVGFemaleHalf_shortpants>
         ),
         leggings: (
@@ -261,6 +284,7 @@ const CustomSVG = ({ info }: any) => {
             main={colorArr[bottomColor]}
             sub={sub}
             detail={detail}
+            viewBox={viewBox}
           ></SVGFemaleLeggings>
         ),
         skirt: (
@@ -268,6 +292,7 @@ const CustomSVG = ({ info }: any) => {
             main={colorArr[bottomColor]}
             sub={sub}
             detail={detail}
+            viewBox={viewBox}
           ></SVGFemaleSkirt>
         ),
         slacks: (
@@ -275,6 +300,7 @@ const CustomSVG = ({ info }: any) => {
             main={colorArr[bottomColor]}
             sub={sub}
             detail={detail}
+            viewBox={viewBox}
           ></SVGFemaleSlacks>
         ),
         sweatpants: (
@@ -282,6 +308,7 @@ const CustomSVG = ({ info }: any) => {
             main={colorArr[bottomColor]}
             sub={sub}
             detail={detail}
+            viewBox={viewBox}
           ></SVGFemaleSweatpants>
         ),
       },
@@ -291,6 +318,7 @@ const CustomSVG = ({ info }: any) => {
             main={colorArr[hairColor]}
             sub={sub}
             detail={detail}
+            viewBox={viewBox}
           ></SVGFemaleShort>
         ),
         middle: (
@@ -298,6 +326,7 @@ const CustomSVG = ({ info }: any) => {
             main={colorArr[hairColor]}
             sub={sub}
             detail={detail}
+            viewBox={viewBox}
           ></SVGFemaleMiddle>
         ),
         long: (
@@ -305,6 +334,7 @@ const CustomSVG = ({ info }: any) => {
             main={colorArr[hairColor]}
             sub={sub}
             detail={detail}
+            viewBox={viewBox}
           ></SVGFemaleLong>
         ),
       },
@@ -316,6 +346,7 @@ const CustomSVG = ({ info }: any) => {
             main={colorArr[innerColor]}
             sub={sub}
             detail={detail}
+            viewBox={viewBox}
           ></SVGMaleBasic_neck_pole>
         ),
         basic_t_shirts: (
@@ -323,6 +354,7 @@ const CustomSVG = ({ info }: any) => {
             main={colorArr[innerColor]}
             sub={sub}
             detail={detail}
+            viewBox={viewBox}
           ></SVGMaleBasic_t_shirts>
         ),
         basic_Nasi: (
@@ -330,6 +362,7 @@ const CustomSVG = ({ info }: any) => {
             main={colorArr[innerColor]}
             sub={sub}
             detail={detail}
+            viewBox={viewBox}
           ></SVGMaleBasic_Nasi>
         ),
       },
@@ -339,6 +372,7 @@ const CustomSVG = ({ info }: any) => {
             main={colorArr[topColor]}
             sub={sub}
             detail={detail}
+            viewBox={viewBox}
           ></SVGMaleBlouse>
         ),
 
@@ -347,6 +381,7 @@ const CustomSVG = ({ info }: any) => {
             main={colorArr[topColor]}
             sub={sub}
             detail={detail}
+            viewBox={viewBox}
           ></SVGMaleBlazer>
         ),
         cardigan: (
@@ -354,6 +389,7 @@ const CustomSVG = ({ info }: any) => {
             main={colorArr[topColor]}
             sub={sub}
             detail={detail}
+            viewBox={viewBox}
           ></SVGMaleCardigan>
         ),
         coat: (
@@ -361,6 +397,7 @@ const CustomSVG = ({ info }: any) => {
             main={colorArr[topColor]}
             sub={sub}
             detail={detail}
+            viewBox={viewBox}
           ></SVGMaleCoat>
         ),
         hoodi: (
@@ -368,6 +405,7 @@ const CustomSVG = ({ info }: any) => {
             main={colorArr[topColor]}
             sub={sub}
             detail={detail}
+            viewBox={viewBox}
           ></SVGMaleHoodi>
         ),
         jumper: (
@@ -375,6 +413,7 @@ const CustomSVG = ({ info }: any) => {
             main={colorArr[topColor]}
             sub={sub}
             detail={detail}
+            viewBox={viewBox}
           ></SVGMaleJumper>
         ),
         mustang: (
@@ -382,6 +421,7 @@ const CustomSVG = ({ info }: any) => {
             main={colorArr[topColor]}
             sub={sub}
             detail={detail}
+            viewBox={viewBox}
           ></SVGMaleMustang>
         ),
         onepiece: (
@@ -389,6 +429,7 @@ const CustomSVG = ({ info }: any) => {
             main={colorArr[topColor]}
             sub={sub}
             detail={detail}
+            viewBox={viewBox}
           ></SVGMaleOnepiece>
         ),
         pkshirts: (
@@ -396,6 +437,7 @@ const CustomSVG = ({ info }: any) => {
             main={colorArr[topColor]}
             sub={sub}
             detail={detail}
+            viewBox={viewBox}
           ></SVGMalePkshirts>
         ),
         shirts: (
@@ -403,6 +445,7 @@ const CustomSVG = ({ info }: any) => {
             main={colorArr[topColor]}
             sub={sub}
             detail={detail}
+            viewBox={viewBox}
           ></SVGMaleShirts>
         ),
         sweater: (
@@ -410,6 +453,7 @@ const CustomSVG = ({ info }: any) => {
             main={colorArr[topColor]}
             sub={sub}
             detail={detail}
+            viewBox={viewBox}
           ></SVGMaleSweater>
         ),
         sweatshirts: (
@@ -417,6 +461,7 @@ const CustomSVG = ({ info }: any) => {
             main={colorArr[topColor]}
             sub={sub}
             detail={detail}
+            viewBox={viewBox}
           ></SVGMaleSweatshirts>
         ),
         t_shirts: (
@@ -424,6 +469,7 @@ const CustomSVG = ({ info }: any) => {
             main={colorArr[topColor]}
             sub={sub}
             detail={detail}
+            viewBox={viewBox}
           ></SVGMaleT_shirts>
         ),
       },
@@ -433,6 +479,7 @@ const CustomSVG = ({ info }: any) => {
             main={colorArr[bottomColor]}
             sub={sub}
             detail={detail}
+            viewBox={viewBox}
           ></SVGMaleDenim>
         ),
         half_shortpants: (
@@ -440,6 +487,7 @@ const CustomSVG = ({ info }: any) => {
             main={colorArr[bottomColor]}
             sub={sub}
             detail={detail}
+            viewBox={viewBox}
           ></SVGMaleHalf_shortpants>
         ),
         leggings: (
@@ -447,6 +495,7 @@ const CustomSVG = ({ info }: any) => {
             main={colorArr[bottomColor]}
             sub={sub}
             detail={detail}
+            viewBox={viewBox}
           ></SVGMaleLeggings>
         ),
         skirt: (
@@ -454,6 +503,7 @@ const CustomSVG = ({ info }: any) => {
             main={colorArr[bottomColor]}
             sub={sub}
             detail={detail}
+            viewBox={viewBox}
           ></SVGMaleSkirt>
         ),
         slacks: (
@@ -461,6 +511,7 @@ const CustomSVG = ({ info }: any) => {
             main={colorArr[bottomColor]}
             sub={sub}
             detail={detail}
+            viewBox={viewBox}
           ></SVGMaleSlacks>
         ),
         sweatpants: (
@@ -468,6 +519,7 @@ const CustomSVG = ({ info }: any) => {
             main={colorArr[bottomColor]}
             sub={sub}
             detail={detail}
+            viewBox={viewBox}
           ></SVGMaleSweatpants>
         ),
       },
@@ -477,6 +529,7 @@ const CustomSVG = ({ info }: any) => {
             main={colorArr[hairColor]}
             sub={sub}
             detail={detail}
+            viewBox={viewBox}
           ></SVGMaleShort>
         ),
         middle: (
@@ -484,6 +537,7 @@ const CustomSVG = ({ info }: any) => {
             main={colorArr[hairColor]}
             sub={sub}
             detail={detail}
+            viewBox={viewBox}
           ></SVGMaleMiddle>
         ),
         long: (
@@ -491,6 +545,7 @@ const CustomSVG = ({ info }: any) => {
             main={colorArr[hairColor]}
             sub={sub}
             detail={detail}
+            viewBox={viewBox}
           ></SVGMaleLong>
         ),
       },
@@ -523,41 +578,48 @@ const CustomSVG = ({ info }: any) => {
   };
 
   const Box1 = styled('div')(({ theme }) => ({
-    width: 300,
-    height: 300,
-    [theme.breakpoints.down('mobile')]: {
-      width: 300,
-      height: 300,
-    },
-    [theme.breakpoints.between('mobile', 'tablet')]: {
-      width: 350,
-      height: 350,
-    },
-    [theme.breakpoints.between('tablet', 'desktop')]: {
-      width: 400,
-      height: 400,
+    width: '100%',
+    height: '100%',
+    [theme.breakpoints.down('mobile')]: {},
+    [theme.breakpoints.between('mobile', 'tablet')]: {},
+    [theme.breakpoints.between('tablet', 'desktop')]: {},
+    [theme.breakpoints.up('desktop')]: {},
+  }));
+
+  const StyleMainImg = styled('div')(({ theme }) => ({
+    position: 'relative',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'bottom',
+    width: '77%',
+    background: '#FFAEAE',
+    aspectRatio: ratioBtn ? '2/3' : '1/1',
+    overflow: 'hidden',
+    // filter: 'opacity(0.5) drop-shadow(0 0 0 #CCE7FF)',
+    [theme.breakpoints.down('desktop')]: {
+      maxWidth: '557px',
     },
     [theme.breakpoints.up('desktop')]: {
-      width: 500,
-      height: 500,
+      maxWidth: '477px',
     },
   }));
 
+  const styletriangle = {
+    position: 'absolute',
+    bottom: '0',
+    height: ratioBtn ? '130%' : '140%',
+    width: ratioBtn ? '90%' : '130%',
+    objectFit: 'fill',
+  };
+
   return (
-    <Box1
-      theme={theme}
-      sx={{
-        position: 'relative',
-
-        maxWidth: 200,
-
-        maxHeight: 200,
-        height: 'auto',
-      }}
-    >
-      <Box sx={{ position: 'absolute' }} width="100%" height="100%">
-        {SVGComponents['background']['background'][background]}
-      </Box>
+    <StyleMainImg theme={theme}>
+      <Box
+        component="img"
+        src={triangle}
+        alt="upload Layout"
+        sx={styletriangle}
+      />
       <Box sx={{ position: 'absolute' }} width="100%" height="100%">
         {SVGComponents[gender]['hair'][hair]}
       </Box>
@@ -573,7 +635,7 @@ const CustomSVG = ({ info }: any) => {
       <Box sx={{ position: 'absolute' }} width="100%" height="100%">
         {SVGComponents[gender]['top'][top]}
       </Box>
-    </Box1>
+    </StyleMainImg>
   );
 };
 

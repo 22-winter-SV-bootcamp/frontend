@@ -17,6 +17,6 @@ const SVGFemaleBasic_Nasi = ({ main, sub, detail, viewBox }: any) => (
   </svg>
 );
 SVGFemaleBasic_Nasi.defaultProps = {
-  viewBox: '0 0 595.2 595.2',
+  viewBox: '-40 114 550 550',
 };
 export default SVGFemaleBasic_Nasi;
