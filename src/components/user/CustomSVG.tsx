@@ -81,7 +81,6 @@ const CustomSVG = ({
     topColor,
     bottom,
     bottomColor,
-    background,
     inner,
     innerColor,
   } = info;

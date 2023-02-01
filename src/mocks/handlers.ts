@@ -9,7 +9,7 @@ const dummyTaskId = { task_id: '1' };
 const recentImgs = [
   {
     id: 1,
-    link: 'https://w.namu.la/s/e33686f9d81f80bd310578b4373046f36841b7b419186077446bbcc3079f420bf6bbf5e2c8c996eba38defad7112d2bea8e8d443ca63dd067e97052ac70432163bb041fd54e014845928b66e6722f3157d47823fcd53e944353b2d640f7365d5053118970cb2c7391a842b27316c26d1',
+    link: '/assets/test.png',
   },
   {
     id: 2,
@@ -32,23 +32,19 @@ const recentImgs = [
 const recentImgs1 = [
   {
     id: 1,
-    link: 'https://mblogthumb-phinf.pstatic.net/MjAyMDA1MDRfMjQ4/MDAxNTg4NTY5ODM2MDEx.WyAMhYtqOIQRJ0K0ucdCUvSO4FoMrcxgTa5F7i33YbUg.Ls8hExGrAoSwTmn0oXHBU71Ar0bHoYOAHQyR2kXdCmwg.PNG.wonch888/image.png?type=w800',
+    link: '/assets/test.png',
   },
   {
     id: 2,
-    link: 'https://mblogthumb-phinf.pstatic.net/MjAyMDA1MDRfMjQ4/MDAxNTg4NTY5ODM2MDEx.WyAMhYtqOIQRJ0K0ucdCUvSO4FoMrcxgTa5F7i33YbUg.Ls8hExGrAoSwTmn0oXHBU71Ar0bHoYOAHQyR2kXdCmwg.PNG.wonch888/image.png?type=w800',
+    link: '/assets/test.png',
   },
   {
     id: 3,
-    link: 'https://mblogthumb-phinf.pstatic.net/MjAyMDA1MDVfMjgg/MDAxNTg4NjgyNTkxODYz.bujlnUzbi9J6B_IuTG70QMMkVU_nFh9gBjCO_aSG8ukg.NbHujuRj84h1nq6AiSwEsvNgnYXA4CVdWoS-zheeBuAg.PNG.wonch888/image.png?type=w800',
+    link: '/assets/test.png',
   },
   {
     id: 4,
-    link: 'https://mblogthumb-phinf.pstatic.net/MjAyMDA1MDRfMjQ4/MDAxNTg4NTY5ODM2MDEx.WyAMhYtqOIQRJ0K0ucdCUvSO4FoMrcxgTa5F7i33YbUg.Ls8hExGrAoSwTmn0oXHBU71Ar0bHoYOAHQyR2kXdCmwg.PNG.wonch888/image.png?type=w800',
-  },
-  {
-    id: 5,
-    link: 'http://file3.instiz.net/data/file3/2018/06/05/a/1/e/a1e8fe23fe4dc2b841cd37a0fb9e7175.jpg',
+    link: '/assets/test.png',
   },
 ];
 
@@ -92,6 +88,10 @@ export const handlers = [
   }),
 
   rest.get(base + `/api/v1/images`, (req, res, ctx) => {
+    let page: any = req.url.searchParams.get('page');
+
+    if (page > 3) return res(ctx.status(404));
+
     return res(ctx.status(200), ctx.json(recentImgs1));
   }),
 

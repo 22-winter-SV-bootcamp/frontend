@@ -1,7 +1,7 @@
 import { Button, Hidden, Typography } from '@mui/material';
 import { Box } from '@mui/material';
 import { prependListener } from 'process';
-import React, { SetStateAction, useState } from 'react';
+import React, { SetStateAction, useEffect, useState } from 'react';
 import CheckColorList from './common/CheckColorList';
 
 import CheckItemList from './common/CheckItemList';
@@ -9,14 +9,9 @@ import CheckItemList from './common/CheckItemList';
 function CustomSelectModal({
   select,
   setInfo,
-
-  info,
-}: {
-  select: string;
-  setInfo: any;
-
-  info: any;
-}) {
+  setTitleIconBtn,
+  setCheck,
+}: any) {
   const colorArr = {
     white: '#f9f6f6',
     coolGray: '#d4d4d4',
@@ -48,58 +43,34 @@ function CustomSelectModal({
     pink: '#FFB6B6',
   };
 
-  const styles: any = {
-    inner: ['basic_t_shirts', 'basic_neck_pole', 'basic_nasi'],
-    hair: ['short', 'middle', 'long'],
-    top: [
-      'blazer',
-      'blouse',
-      'cardigan',
-      'coat',
-      'hoodi',
-      'jumper',
-      'mustang',
-      'onepiece',
-      'pkshirts',
-      'shirts',
-      'sweater',
-      'sweatshirts',
-      't_shirts',
-    ],
-    bottom: [
-      'denim',
-      'half_shortpants',
-      'leggings',
-      'skirt',
-      'slacks',
-      'sweatpants',
-    ],
-    background: [],
-  };
-  console.log('setModalInfo:', info);
+  useEffect(() => {
+    console.log('CustomSelectModal');
+  }, []);
+
   return (
     <Box
       sx={{
+        // padding: '20px',
         width: '100%',
         height: '100%',
-        marginTop: 10,
-        flexDirection: 'column',
-        justifyContent: 'space-between',
+        overflow: 'hidden',
+        overflowY: 'scroll',
       }}
     >
       {select !== 'gender' ? (
         <div>
-          {' '}
           <CheckItemList
             select={select}
             setInfo={setInfo}
-            info={info}
-            arr={styles[select]}
+            setCheck={setCheck}
+            setTitleIconBtn={setTitleIconBtn}
           ></CheckItemList>
-          <CheckColorList
-            select={select + 'Color'}
-            setInfo={setInfo}
-          ></CheckColorList>{' '}
+
+          {/* <CheckColorList
+              select={select}
+              setInfo={setInfo}
+            ></CheckColorList>
+       */}
         </div>
       ) : (
         <Box>

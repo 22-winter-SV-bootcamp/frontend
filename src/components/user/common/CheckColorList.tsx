@@ -2,11 +2,12 @@ import { Button, ButtonGroup, Typography } from '@mui/material';
 import { Box } from '@mui/material';
 import React from 'react';
 import Tooltip from '@mui/material/Tooltip';
+import { cp } from 'fs';
 type ColorArrType = {
   [key: string]: string;
 };
 
-const CheckColorList = ({ setInfo, select }: any) => {
+const CheckColorList = ({ setInfo, select, data }: any) => {
   const colorArr: ColorArrType = {
     white: '#FFFFFF',
     melangeGrey: '#D4D4D4',
@@ -72,7 +73,10 @@ const CheckColorList = ({ setInfo, select }: any) => {
               placement="top"
               sx={{ width: 60 }}
               onClick={() => {
-                setInfo((pre: any) => ({ ...pre, [select]: color }));
+                setInfo((pre: any) => ({
+                  ...pre,
+                  [select + 'Color']: color,
+                }));
               }}
             >
               <Box

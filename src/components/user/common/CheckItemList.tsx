@@ -50,7 +50,9 @@ import SVGMaleSweatshirts from '@/svgComponents/male/top/SVGMaleSweatshirts';
 import SVGMaleT_shirts from '@/svgComponents/male/top/SVGMaleT_shirts';
 import { Button, Tooltip, Typography } from '@mui/material';
 import { Box, Stack } from '@mui/material';
-import React from 'react';
+import { setuid } from 'process';
+import React, { useState } from 'react';
+import CheckColorList from './CheckColorList';
 
 type ColorArrType = {
   [key: string]: string;
@@ -59,7 +61,35 @@ type SVGComponentsType = {
   [key: string]: { [key: string]: { [key: string]: JSX.Element } };
 };
 
-const CheckItemList = ({ info, setInfo, arr, select }: any) => {
+const CheckItemList = ({ setInfo, select, setTitleIconBtn }: any) => {
+  let styles: any = {
+    inner: ['basic_t_shirts', 'basic_neck_pole', 'basic_nasi'],
+    hair: ['short', 'middle', 'long'],
+    top: [
+      'blazer',
+      'blouse',
+      'cardigan',
+      'coat',
+      'hoodi',
+      'jumper',
+      'mustang',
+      'onepiece',
+      'pkshirts',
+      'shirts',
+      'sweater',
+      'sweatshirts',
+      't_shirts',
+    ],
+    bottom: [
+      'denim',
+      'half_shortpants',
+      'leggings',
+      'skirt',
+      'slacks',
+      'sweatpants',
+    ],
+    background: [],
+  };
   let sub = 85;
   let detail = 70;
   const viewBoxFemaleInner = '105 405 270 270';
@@ -70,7 +100,7 @@ const CheckItemList = ({ info, setInfo, arr, select }: any) => {
   const viewBoxMaleInner = '95 390 300 300';
   const viewBoxMaleBottom = '135 540 200 200';
   const viewBoxMaleHair = '95 150 300 300';
-  let { hairColor, topColor, bottomColor, innerColor } = info;
+  // let { hairColor, topColor, bottomColor, innerColor } = info;
   const colorArr: ColorArrType = {
     white: '#FFFFFF',
     melangeGrey: '#D4D4D4',
@@ -115,485 +145,37 @@ const CheckItemList = ({ info, setInfo, arr, select }: any) => {
     coral: '#DF5353',
     skin: '#FFD521',
   };
-  const SVGComponents: SVGComponentsType = {
-    female: {
-      inner: {
-        basic_neck_pole: (
-          <SVGFemaleBasic_neck_pole
-            main={colorArr[innerColor]}
-            sub={sub}
-            detail={detail}
-            viewBox={viewBoxFemaleInner}
-          ></SVGFemaleBasic_neck_pole>
-        ),
-        basic_t_shirts: (
-          <SVGFemaleBasic_t_shirts
-            main={colorArr[innerColor]}
-            sub={sub}
-            detail={detail}
-            viewBox={viewBoxFemaleInner}
-          ></SVGFemaleBasic_t_shirts>
-        ),
-        basic_nasi: (
-          <SVGFemaleBasic_Nasi
-            main={colorArr[innerColor]}
-            viewBox={viewBoxFemaleInner}
-          ></SVGFemaleBasic_Nasi>
-        ),
-      },
-      top: {
-        blouse: (
-          <SVGFemaleBlouse
-            main={colorArr[topColor]}
-            sub={sub}
-            detail={detail}
-            viewBox={viewBoxFemaleTop}
-          ></SVGFemaleBlouse>
-        ),
-
-        blazer: (
-          <SVGFemaleBlazer
-            main={colorArr[topColor]}
-            sub={sub}
-            detail={detail}
-            viewBox={viewBoxFemaleTop}
-          ></SVGFemaleBlazer>
-        ),
-        cardigan: (
-          <SVGFemaleCardigan
-            main={colorArr[topColor]}
-            sub={sub}
-            detail={detail}
-            viewBox={viewBoxFemaleTop}
-          ></SVGFemaleCardigan>
-        ),
-        coat: (
-          <SVGFemaleCoat
-            main={colorArr[topColor]}
-            sub={sub}
-            detail={detail}
-            viewBox="73 412 340 340"
-          ></SVGFemaleCoat>
-        ),
-        hoodi: (
-          <SVGFemaleHoodi
-            main={colorArr[topColor]}
-            sub={sub}
-            detail={detail}
-            viewBox={viewBoxFemaleTop}
-          ></SVGFemaleHoodi>
-        ),
-        jumper: (
-          <SVGFemaleJumper
-            main={colorArr[topColor]}
-            sub={sub}
-            detail={detail}
-            viewBox={viewBoxFemaleTop}
-          ></SVGFemaleJumper>
-        ),
-        mustang: (
-          <SVGFemaleMustang
-            main={colorArr[topColor]}
-            sub={sub}
-            detail={detail}
-            viewBox={viewBoxFemaleTop}
-          ></SVGFemaleMustang>
-        ),
-        onepiece: (
-          <SVGFemaleOnepiece
-            main={colorArr[topColor]}
-            sub={sub}
-            detail={detail}
-            viewBox="73 425 340 340"
-          ></SVGFemaleOnepiece>
-        ),
-        pkshirts: (
-          <SVGFemalePkshirts
-            main={colorArr[topColor]}
-            sub={sub}
-            detail={detail}
-            viewBox={viewBoxFemaleTop}
-          ></SVGFemalePkshirts>
-        ),
-        shirts: (
-          <SVGFemaleShirts
-            main={colorArr[topColor]}
-            sub={sub}
-            detail={detail}
-            viewBox={viewBoxFemaleTop}
-          ></SVGFemaleShirts>
-        ),
-        sweater: (
-          <SVGFemaleSweater
-            main={colorArr[topColor]}
-            sub={sub}
-            detail={detail}
-            viewBox={viewBoxFemaleTop}
-          ></SVGFemaleSweater>
-        ),
-        sweatshirts: (
-          <SVGFemaleSweatshirts
-            main={colorArr[topColor]}
-            sub={sub}
-            detail={detail}
-            viewBox={viewBoxFemaleTop}
-          ></SVGFemaleSweatshirts>
-        ),
-        t_shirts: (
-          <SVGFemaleT_shirts
-            main={colorArr[topColor]}
-            sub={sub}
-            detail={detail}
-            viewBox={viewBoxFemaleTop}
-          ></SVGFemaleT_shirts>
-        ),
-      },
-      bottom: {
-        denim: (
-          <SVGFemaleDenim
-            main={colorArr[bottomColor]}
-            sub={sub}
-            detail={detail}
-            viewBox={viewBoxFemaleBottom}
-          ></SVGFemaleDenim>
-        ),
-        half_shortpants: (
-          <SVGFemaleHalf_shortpants
-            main={colorArr[bottomColor]}
-            sub={sub}
-            detail={detail}
-            viewBox={viewBoxFemaleBottom}
-          ></SVGFemaleHalf_shortpants>
-        ),
-        leggings: (
-          <SVGFemaleLeggings
-            main={colorArr[bottomColor]}
-            sub={sub}
-            detail={detail}
-            viewBox={viewBoxFemaleBottom}
-          ></SVGFemaleLeggings>
-        ),
-        skirt: (
-          <SVGFemaleSkirt
-            main={colorArr[bottomColor]}
-            sub={sub}
-            detail={detail}
-            viewBox={viewBoxFemaleBottom}
-          ></SVGFemaleSkirt>
-        ),
-        slacks: (
-          <SVGFemaleSlacks
-            main={colorArr[bottomColor]}
-            sub={sub}
-            detail={detail}
-            viewBox={viewBoxFemaleBottom}
-          ></SVGFemaleSlacks>
-        ),
-        sweatpants: (
-          <SVGFemaleSweatpants
-            main={colorArr[bottomColor]}
-            sub={sub}
-            detail={detail}
-            viewBox={viewBoxFemaleBottom}
-          ></SVGFemaleSweatpants>
-        ),
-      },
-      hair: {
-        long: (
-          <SVGFemaleLong
-            main={colorArr[hairColor]}
-            sub={sub}
-            detail={detail}
-            viewBox={viewBoxFemaleHair}
-          ></SVGFemaleLong>
-        ),
-        middle: (
-          <SVGFemaleMiddle
-            main={colorArr[hairColor]}
-            sub={sub}
-            detail={detail}
-            viewBox={viewBoxFemaleHair}
-          ></SVGFemaleMiddle>
-        ),
-        short: (
-          <SVGFemaleShort
-            main={colorArr[hairColor]}
-            sub={sub}
-            detail={detail}
-            viewBox={viewBoxFemaleHair}
-          ></SVGFemaleShort>
-        ),
-      },
-    },
-    male: {
-      inner: {
-        basic_neck_pole: (
-          <SVGMaleBasic_neck_pole
-            main={colorArr[innerColor]}
-            sub={sub}
-            detail={detail}
-            viewBox={viewBoxMaleInner}
-          ></SVGMaleBasic_neck_pole>
-        ),
-        basic_t_shirts: (
-          <SVGMaleBasic_t_shirts
-            main={colorArr[innerColor]}
-            sub={sub}
-            detail={detail}
-            viewBox={viewBoxMaleInner}
-          ></SVGMaleBasic_t_shirts>
-        ),
-        basic_nasi: (
-          <SVGMaleBasic_Nasi
-            main={colorArr[innerColor]}
-            viewBox={viewBoxMaleInner}
-          ></SVGMaleBasic_Nasi>
-        ),
-      },
-      top: {
-        blouse: (
-          <SVGMaleBlouse
-            main={colorArr[topColor]}
-            sub={sub}
-            detail={detail}
-            viewBox={viewBoxMaleTop}
-          ></SVGMaleBlouse>
-        ),
-
-        blazer: (
-          <SVGMaleBlazer
-            main={colorArr[topColor]}
-            sub={sub}
-            detail={detail}
-            viewBox={viewBoxMaleTop}
-          ></SVGMaleBlazer>
-        ),
-        cardigan: (
-          <SVGMaleCardigan
-            main={colorArr[topColor]}
-            sub={sub}
-            detail={detail}
-            viewBox={viewBoxMaleTop}
-          ></SVGMaleCardigan>
-        ),
-        coat: (
-          <SVGMaleCoat
-            main={colorArr[topColor]}
-            sub={sub}
-            detail={detail}
-            viewBox="75 394 330 330"
-          ></SVGMaleCoat>
-        ),
-        hoodi: (
-          <SVGMaleHoodi
-            main={colorArr[topColor]}
-            sub={sub}
-            detail={detail}
-            viewBox={viewBoxMaleTop}
-          ></SVGMaleHoodi>
-        ),
-        jumper: (
-          <SVGMaleJumper
-            main={colorArr[topColor]}
-            sub={sub}
-            detail={detail}
-            viewBox={viewBoxMaleTop}
-          ></SVGMaleJumper>
-        ),
-        mustang: (
-          <SVGMaleMustang
-            main={colorArr[topColor]}
-            sub={sub}
-            detail={detail}
-            viewBox={viewBoxMaleTop}
-          ></SVGMaleMustang>
-        ),
-        onepiece: (
-          <SVGMaleOnepiece
-            main={colorArr[topColor]}
-            sub={sub}
-            detail={detail}
-            viewBox="68 400 360 360"
-          ></SVGMaleOnepiece>
-        ),
-        pkshirts: (
-          <SVGMalePkshirts
-            main={colorArr[topColor]}
-            sub={sub}
-            detail={detail}
-            viewBox={viewBoxMaleTop}
-          ></SVGMalePkshirts>
-        ),
-        shirts: (
-          <SVGMaleShirts
-            main={colorArr[topColor]}
-            sub={sub}
-            detail={detail}
-            viewBox={viewBoxMaleTop}
-          ></SVGMaleShirts>
-        ),
-        sweater: (
-          <SVGMaleSweater
-            main={colorArr[topColor]}
-            sub={sub}
-            detail={detail}
-            viewBox={viewBoxMaleTop}
-          ></SVGMaleSweater>
-        ),
-        sweatshirts: (
-          <SVGMaleSweatshirts
-            main={colorArr[topColor]}
-            sub={sub}
-            detail={detail}
-            viewBox={viewBoxMaleTop}
-          ></SVGMaleSweatshirts>
-        ),
-        t_shirts: (
-          <SVGMaleT_shirts
-            main={colorArr[topColor]}
-            sub={sub}
-            detail={detail}
-            viewBox={viewBoxMaleTop}
-          ></SVGMaleT_shirts>
-        ),
-      },
-      bottom: {
-        denim: (
-          <SVGMaleDenim
-            main={colorArr[bottomColor]}
-            sub={sub}
-            detail={detail}
-            viewBox={viewBoxMaleBottom}
-          ></SVGMaleDenim>
-        ),
-        half_shortpants: (
-          <SVGMaleHalf_shortpants
-            main={colorArr[bottomColor]}
-            sub={sub}
-            detail={detail}
-            viewBox={viewBoxMaleBottom}
-          ></SVGMaleHalf_shortpants>
-        ),
-        leggings: (
-          <SVGMaleLeggings
-            main={colorArr[bottomColor]}
-            sub={sub}
-            detail={detail}
-            viewBox={viewBoxMaleBottom}
-          ></SVGMaleLeggings>
-        ),
-        skirt: (
-          <SVGMaleSkirt
-            main={colorArr[bottomColor]}
-            sub={sub}
-            detail={detail}
-            viewBox={viewBoxMaleBottom}
-          ></SVGMaleSkirt>
-        ),
-        slacks: (
-          <SVGMaleSlacks
-            main={colorArr[bottomColor]}
-            sub={sub}
-            detail={detail}
-            viewBox={viewBoxMaleBottom}
-          ></SVGMaleSlacks>
-        ),
-        sweatpants: (
-          <SVGMaleSweatpants
-            main={colorArr[bottomColor]}
-            sub={sub}
-            detail={detail}
-            viewBox={viewBoxMaleBottom}
-          ></SVGMaleSweatpants>
-        ),
-      },
-      hair: {
-        long: (
-          <SVGMaleLong
-            main={colorArr[hairColor]}
-            sub={sub}
-            detail={detail}
-            viewBox={viewBoxMaleHair}
-          ></SVGMaleLong>
-        ),
-        middle: (
-          <SVGMaleMiddle
-            main={colorArr[hairColor]}
-            sub={sub}
-            detail={detail}
-            viewBox={viewBoxMaleHair}
-          ></SVGMaleMiddle>
-        ),
-        short: (
-          <SVGMaleShort
-            main={colorArr[hairColor]}
-            sub={sub}
-            detail={detail}
-            viewBox={viewBoxMaleHair}
-          ></SVGMaleShort>
-        ),
-      },
-    },
-    background: {
-      background: {
-        background1: (
-          <img
-            width="100%"
-            height="100%"
-            src="src/assets/custom/background/background1.png"
-          ></img>
-        ),
-        background2: (
-          <img
-            width="100%"
-            height="100%"
-            src="src/assets/custom/background/background2.png"
-          ></img>
-        ),
-        background3: (
-          <img
-            width="100%"
-            height="100%"
-            src="src/assets/custom/background/background3.png"
-          ></img>
-        ),
-      },
-    },
-  };
 
   return (
-    <Box>
+    <Box sx={{ heigth: '100%' }}>
       <Box
         sx={{
+          overflowX: 'hidden',
           display: 'flex',
+          flexWrap: 'wrap',
           width: '100%',
-          height: 'auto',
-          overflow: 'auto',
-          overflowY: 'hidden',
+          height: '100%',
         }}
       >
-        {arr?.map((v: any) => (
-          <Tooltip title={v}>
-            <Button
-              sx={{ width: 'auto' }}
-              key={v}
-              onClick={() => {
-                setInfo((pre: any) => ({ ...pre, [select]: v }));
-              }}
-            >
-              {select === 'background' ? (
+        <>
+          {styles[select]?.map((v: any) => (
+            <Tooltip title={v}>
+              <Button
+                sx={{ width: '30%', margin: '10px' }}
+                key={v}
+                onClick={() => {
+                  setInfo((pre: any) => ({ ...pre, [select]: v }));
+                }}
+              >
                 <Box
-                  width={100}
                   component="img"
-                  alt={v}
-                  src={`/assets/custom/background/${v}.png`}
-                />
-              ) : (
-                SVGComponents[info.gender][select][v]
-              )}
-            </Button>
-          </Tooltip>
-        ))}
+                  src={`/assets/custom/${'female'}/${select}/${v}.svg`}
+                ></Box>
+                {/* {SVGComponents[info.gender][select][v]} */}
+              </Button>
+            </Tooltip>
+          ))}
+        </>
       </Box>
     </Box>
   );
