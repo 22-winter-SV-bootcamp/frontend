@@ -48,15 +48,17 @@ const ModalComponent = ({ url, changeModal }: Props) => {
     // display: 'flex',
     // justifyContent: 'center',
     // alignItems: 'bottom',
-    width: '77%',
-    height: '40%',
+    width: '50%',
+    height: '230%',
     minheight: '185px',
     background: '#FFE2C5',
     borderRadius: '15%',
     position: 'absolute',
-    bottom: 0,
+    bottom: '80%',
+    right: '13%',
     zIndex: 1,
     boxShadow: '4px 4px rgba(0, 0, 0, 0.25)',
+    // alignSelf: 'end',
     [theme.breakpoints.down('desktop')]: {
       maxWidth: '557px',
     },
@@ -100,7 +102,6 @@ const ModalComponent = ({ url, changeModal }: Props) => {
   const styleShareBox = {
     width: '90%',
     height: '85%',
-    minWidth: '249px',
     minHeight: '117px',
     background: '#FFFFFF',
     borderRadius: '15%',
@@ -135,7 +136,7 @@ const ModalComponent = ({ url, changeModal }: Props) => {
   };
 
   return (
-    <ModalLayout theme={theme}>
+    <ModalLayout className="modalLayout" theme={theme}>
       <Box className="headerLayout" sx={headerLayout}>
         <Button sx={closeBtn} onClick={closeModal}>
           <Box component="img" src={closeIcon} sx={stylecloseIcon} />

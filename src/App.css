@@ -3,6 +3,7 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  font-family: 'Jua', sans-serif;
 }
 
 .logo {
@@ -31,6 +32,8 @@
     animation: logo-spin infinite 20s linear;
   }
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
 
 .card {
   padding: 2em;

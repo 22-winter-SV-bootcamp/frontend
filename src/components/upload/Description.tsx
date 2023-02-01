@@ -3,7 +3,6 @@ import { Box, Typography } from '@mui/material';
 const Description = () => {
   const textStyle = {
     fontWeight: 'medium',
-    fontFamily: 'Jua',
     fontSize: '1em',
     color: '#FFFFFF',
     mb: '10px',

@@ -65,11 +65,11 @@ const CheckItemList = ({ info, setInfo, arr, select }: any) => {
   const viewBoxFemaleInner = '105 405 270 270';
   const viewBoxFemaleTop = '100 395 285 285';
   const viewBoxFemaleBottom = '135 540 200 200';
-  const viewBoxFemaleHair = '10 140 450 450';
+  const viewBoxFemaleHair = '105 175 300 300';
   const viewBoxMaleTop = '100 395 285 285';
   const viewBoxMaleInner = '95 390 300 300';
   const viewBoxMaleBottom = '135 540 200 200';
-  const viewBoxMaleHair = '-40 80 550 550';
+  const viewBoxMaleHair = '95 150 300 300';
   let { hairColor, topColor, bottomColor, innerColor } = info;
   const colorArr: ColorArrType = {
     white: '#FFFFFF',

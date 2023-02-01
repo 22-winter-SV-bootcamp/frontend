@@ -24,7 +24,8 @@ export const CustomBox = ({ onChangeCustom, info, setInfo }: Props) => {
     height: '30%',
     width: '77%',
     maxWidth: '450px' /* 화면에 따라 수정 예정 */,
-    borderRadius: '10%',
+    borderRadius: '10% 10% 10% 10% / 20% 20% 20% 20%',
+
     background: '#FFBA75',
     whiteSpace: 'pre-line',
     boxShadow: '3px 3px rgba(0, 0, 0, 0.25)',
