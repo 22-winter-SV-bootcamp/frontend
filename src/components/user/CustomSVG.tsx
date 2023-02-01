@@ -665,5 +665,7 @@ const CustomSVG = ({
 };
 CustomSVG.defaultProps = {
   kingHat: false,
+  ratioBtn: false,
+  custom: true,
 };
 export default CustomSVG;
