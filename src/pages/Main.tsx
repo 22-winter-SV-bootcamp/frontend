@@ -123,7 +123,8 @@ const Main = () => {
 
   return (
     <>
-      <MainBox theme={theme}>
+      <MainBox className="mainBox" theme={theme}>
+        <RankModal open={open} setOpen={setOpen}></RankModal>
         {open ? (
           <Box
             onClick={() => {
@@ -131,7 +132,7 @@ const Main = () => {
             }}
             sx={{
               position: 'absolute',
-              background: 'white',
+              background: '#000000',
               width: '100vw',
               height: '100vh',
               top: 0,
@@ -141,25 +142,22 @@ const Main = () => {
             }}
           ></Box>
         ) : null}
-        <TopBox theme={theme}>
+        <TopBox className="topBox" theme={theme}>
           <Box sx={{ marginBottom: 1, color: 'white', fontWeight: 400 }}>
             심슨필름
           </Box>
           <Box sx={{ fontSize: '50%', color: 'white', fontWeight: 400 }}>
             D’oh film
           </Box>
-          {!matches ? (
-            <RankModal open={open} setOpen={setOpen}></RankModal>
-          ) : null}
         </TopBox>
         {/* <Box1 theme={theme}> */}
         <RecentImgs cards={cards}></RecentImgs>
         {/* </Box1> */}
 
         <BottomBox theme={theme}>
-          {matches ? (
+          {/* {matches ? (
             <RankModal open={open} setOpen={setOpen}></RankModal>
-          ) : null}
+          ) : null} */}
           <Box
             sx={{
               width: '100%',

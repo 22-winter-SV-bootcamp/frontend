@@ -28,6 +28,8 @@ export const ResultPage = (props: Props) => {
   const [change, setChange] = useState(false);
   const [ratioBtn, setRatioBtn] = useState(false);
   const [modal, setModal] = useState(false);
+  const [hoverModal, setHoverModal] = useState(false);
+  const [clickModal, setClickModal] = useState(false);
   const [custom, setCustom] = useState(false);
   const svgRef: any = useRef();
 
@@ -95,7 +97,22 @@ export const ResultPage = (props: Props) => {
 
   const openModal = () => {
     /* 모달창 상태 변환 */
+    setClickModal((pre) => !pre);
     setModal((pre) => !pre);
+  };
+
+  const openHoverModal = () => {
+    clickModal === false && hoverModal === false
+      ? setModal((pre) => true)
+      : console.log('이미 모달이 열려있습니다.');
+    setHoverModal((pre) => true);
+  };
+
+  const closeHoverModal = () => {
+    clickModal === false && hoverModal === true
+      ? setModal((pre) => false)
+      : console.log('이미 모달이 닫혀있습니다.');
+    setHoverModal((pre) => false);
   };
 
   const onChangeCustom = async () => {
@@ -207,6 +224,7 @@ export const ResultPage = (props: Props) => {
     boxShadow: '3px 3px rgba(0, 0, 0, 0.25)',
     background: 'linear-gradient(135deg, #E9E9E9, #FFFFFF)',
     fontSize: 'inherit',
+    position: 'relative',
   };
 
   const styleCenterBtn = {
@@ -310,7 +328,7 @@ export const ResultPage = (props: Props) => {
             </Typography>
           </Box>
           <Box className="mainLayout" sx={mainLayout}>
-            {modal && <ModalComponent url={url} changeModal={openModal} />}
+            {/* {modal && <ModalComponent url={url} changeModal={openModal} />} */}
             <CustomSVG
               info={info}
               ratioBtn={ratioBtn}
@@ -374,6 +392,8 @@ export const ResultPage = (props: Props) => {
               <IconButton
                 sx={styleRightBtn}
                 onClick={change ? openModal : ratioChange}
+                onMouseOver={change ? openHoverModal : undefined}
+                onMouseOut={change ? closeHoverModal : undefined}
               >
                 {change ? (
                   <ShareOutlinedIcon sx={styleCameraIcon} />
@@ -386,6 +406,7 @@ export const ResultPage = (props: Props) => {
                   />
                 )}
               </IconButton>
+              {modal && <ModalComponent url={url} changeModal={openModal} />}
             </Box>
           </Box>
         )}
