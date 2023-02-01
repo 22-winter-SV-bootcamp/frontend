@@ -104,6 +104,7 @@ const Main = () => {
   // const [cards, setCards] = useState<CardsType[]>([]);
   const [page, setPage] = useState(1);
 
+  // TODO: 페이지 없을 때 처리!!
   const {
     isLoading,
     isError,
@@ -111,6 +112,10 @@ const Main = () => {
   } = useQuery(['recentPage', page], async () => await getRecentImgs(page), {
     staleTime: 1000 * 60 ** 60,
     refetchOnWindowFocus: false,
+    retry: 0,
+    onError: () => {
+      setPage((pre) => pre - 1);
+    },
   });
 
   const navigate = useNavigate();
@@ -120,7 +125,7 @@ const Main = () => {
   // useEffect(() => {
   //   if (data) setCards([...data]);
   // }, [data]);
-
+  console.log(page);
   return (
     <>
       <MainBox theme={theme}>

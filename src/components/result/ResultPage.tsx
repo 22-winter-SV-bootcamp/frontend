@@ -1,6 +1,6 @@
 // @flow
 import { Box, Button, Typography, styled, IconButton } from '@mui/material';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import downloadIcon from '/assets/pages/result/downloadIcon.png';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
@@ -16,12 +16,15 @@ import ModalComponent from './modal/ModalComponent';
 import CustomSVG from '../user/CustomSVG';
 import domToImg from '@/utils/method/domToImg';
 import { saveAs } from 'file-saver';
-import { CustomBox } from './custom/CustomBox';
+import CustomBox from './custom/CustomBox';
 import resultFilter from '@/utils/method/resultFilter';
 import postCustomStyleInfo from '@/apis/postCustomStyleInfo';
 
 type Props = {};
 export const ResultPage = (props: Props) => {
+  useEffect(() => {
+    console.log('ResultPage');
+  }, []);
   const [url, setUrl] = useState('');
 
   const navigate = useNavigate();
@@ -44,6 +47,7 @@ export const ResultPage = (props: Props) => {
     inner: 'basic_t_shirts',
     innerColor: 'white',
   });
+  console.log('info', info);
   useEffect(() => {
     let result = resultFilter(location.state.result);
 
@@ -98,7 +102,7 @@ export const ResultPage = (props: Props) => {
     setModal((pre) => !pre);
   };
 
-  const onChangeCustom = async () => {
+  const onChangeCustom = () => {
     /* 하단 버튼 3개 커스텀 상태 창으로 변환 */
     setCustom((pre) => !pre);
     ratioBtn && setRatioBtn((pre) => !pre);
@@ -322,11 +326,7 @@ export const ResultPage = (props: Props) => {
           </Box>
         </Box>
         {!custom ? (
-          <CustomBox
-            info={info}
-            setInfo={setInfo}
-            onChangeCustom={onChangeCustom}
-          />
+          <CustomBox setInfo={setInfo} onChangeCustom={onChangeCustom} />
         ) : (
           <Box
             /* footerlayout 제일 하단에 고정 */

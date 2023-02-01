@@ -5,6 +5,7 @@ import { Box } from '@mui/material';
 import { theme } from '@/utils/mui/breakpoints';
 import { url } from 'inspector';
 import './recentImgs.css';
+import './re.css';
 const RecentImgs = ({ cards }: any) => {
   const p = [
     {
@@ -27,15 +28,21 @@ const RecentImgs = ({ cards }: any) => {
   ];
 
   const Box1 = styled('div')(({ theme }) => ({
-    top: 0,
-    left: 0,
-
     position: 'absolute',
     zIndex: -1,
     overflow: 'hidden',
     height: '100vh',
     width: '100%',
-    background: `linear-gradient(160deg, #C5E8FF 40%, #dde9f1 50%, rgba(179,139,99,1) 50%, #dfdad5 100%)`,
+    // display: 'flex',
+    // justifyContent: 'center',
+    // alignItems: 'center',
+    // top: '50%',
+    // left: '50%',
+    // transform: 'translate(-50%,-50%)',
+
+    // backgroundImage:
+    //   "url('https://i.pinimg.com/564x/b8/e4/11/b8e4117f92711c7d299dd34527b42821.jpg')",
+    // background: `linear-gradient(160deg, #C5E8FF 40%, #dde9f1 50%, rgba(179,139,99,1) 50%, #dfdad5 100%)`,
     [theme.breakpoints.down('tablet')]: {},
     [theme.breakpoints.between('tablet', 'desktop')]: {
       width: 700,
@@ -48,7 +55,7 @@ const RecentImgs = ({ cards }: any) => {
       position: 'relative',
       //     width: 270,
       //     height: '100vh',
-      background: `linear-gradient(160deg, #FFE3C6 40%, #f5eee7 50%, rgba(179,139,99,1) 50%, #dfdad5 100%)`,
+      // background: `linear-gradient(160deg, #FFE3C6 40%, #f5eee7 50%, rgba(179,139,99,1) 50%, #dfdad5 100%)`,
     },
   }));
 
@@ -73,7 +80,7 @@ const RecentImgs = ({ cards }: any) => {
 
   return (
     <Box1 theme={theme}>
-      {cards?.map((card: any, i: number) => (
+      {/* {cards?.map((card: any, i: number) => (
         <Card
           className={`card${i}`}
           theme={theme}
@@ -83,7 +90,18 @@ const RecentImgs = ({ cards }: any) => {
           }}
           src={card.link}
         ></Card>
-      ))}
+      ))} */}
+      <div className="wrapper">
+        {cards?.map((card: any) => (
+          <>
+            <div className="item">
+              <div className="polaroid">
+                <img width={250} src={card.link} />
+              </div>
+            </div>
+          </>
+        ))}
+      </div>
     </Box1>
   );
 };

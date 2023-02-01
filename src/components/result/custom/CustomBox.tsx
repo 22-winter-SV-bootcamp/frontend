@@ -1,5 +1,5 @@
 // @flow
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { theme } from '@/utils/mui/breakpoints';
 import { Box, Button, IconButton, styled } from '@mui/material';
 import closeIcon from '/assets/pages/result/closeIcon.png';
@@ -7,13 +7,14 @@ import CustomSelectModal from '@/components/user/CustomSelectModal';
 import { width } from '@mui/system';
 import { useLocation } from 'react-router-dom';
 import resultFilter from '@/utils/method/resultFilter';
+import CheckColorList from '@/components/user/common/CheckColorList';
 
 type Props = {
   onChangeCustom: () => void;
-  info: any;
+
   setInfo: any;
 };
-export const CustomBox = ({ onChangeCustom, info, setInfo }: Props) => {
+const CustomBox = ({ onChangeCustom, setInfo }: Props) => {
   const StyleDescibe = styled('div')(({ theme }) => ({
     position: 'relative',
     display: 'flex',
@@ -21,20 +22,16 @@ export const CustomBox = ({ onChangeCustom, info, setInfo }: Props) => {
 
     // justifyContent: 'center',
     // paddingLeft: '10%',
-    height: '30%',
-    width: '77%',
-    maxWidth: '450px' /* 화면에 따라 수정 예정 */,
-    borderRadius: '10%',
-    background: '#FFBA75',
+    height: '35%',
+    width: '100%',
+
+    borderRadius: '30px 30px 0 0',
+    background: '#f7bf88',
     whiteSpace: 'pre-line',
     boxShadow: '3px 3px rgba(0, 0, 0, 0.25)',
-    marginBottom: '50px',
-    [theme.breakpoints.down('desktop')]: {
-      maxWidth: '557px',
-    },
-    [theme.breakpoints.up('desktop')]: {
-      maxWidth: '477px',
-    },
+
+    [theme.breakpoints.down('desktop')]: {},
+    [theme.breakpoints.up('desktop')]: {},
   }));
 
   const HeaderLayout = {
@@ -63,7 +60,6 @@ export const CustomBox = ({ onChangeCustom, info, setInfo }: Props) => {
   };
 
   const mainLayout = {
-    width: '100%',
     height: '100%',
     position: 'relative',
     display: 'flex',
@@ -93,9 +89,22 @@ export const CustomBox = ({ onChangeCustom, info, setInfo }: Props) => {
     background: 'linear-gradient(135deg, #E9E9E9, #FFFFFF)',
     fontSize: 'inherit',
   };
-
+  console.log('custombox');
   const [titleIconBtn, setTitleIconBtn] = useState(false);
   const [title, setTitle] = useState('hair');
+  console.log(title);
+  const [check, setCheck] = useState(true);
+  console.log(check);
+
+  useEffect(() => {
+    console.log('CustomBox');
+  }, []);
+
+  // const memoSetInfo = useMemo(setInfo,[]);
+  // const memoSetInfo = useMemo(,[]);
+  // const memoSetInfo = useMemo(setCheck,[]);
+  // const memoSetInfo = useMemo(setInfo,[]);
+
   return (
     <StyleDescibe theme={theme}>
       <Button sx={okBtn}>
@@ -119,35 +128,38 @@ export const CustomBox = ({ onChangeCustom, info, setInfo }: Props) => {
       </Button>
 
       <Box className="mainLayout" sx={mainLayout}>
-        {titleIconBtn ? (
-          <CustomSelectModal
-            info={info}
-            setInfo={setInfo}
-            select={title}
-          ></CustomSelectModal>
-        ) : (
-          <Box className="firstLayout" sx={subLayout}>
-            {['gender', 'hair', 'background', 'top', 'inner', 'bottom'].map(
-              (title) => (
-                <IconButton
-                  sx={styleBtn}
-                  onClick={() => {
-                    setTitleIconBtn(true);
-                    setTitle(title);
-                  }}
-                >
-                  <Box
-                    component="img"
-                    alt={title}
-                    src={`/assets/pages/result/${title}Icon.png`}
-                    sx={{ height: '50%' }}
-                  />
-                </IconButton>
-              ),
-            )}
-          </Box>
-        )}
+        <CustomSelectModal
+          setInfo={setInfo}
+          select={title}
+          setCheck={setCheck}
+          setTitleIconBtn={setTitleIconBtn}
+        ></CustomSelectModal>
+
+        {/* <CheckColorList setInfo={setInfo} select={title}></CheckColorList> */}
+
+        <Box className="firstLayout" sx={subLayout}>
+          {['gender', 'hair', 'background', 'top', 'inner', 'bottom'].map(
+            (title) => (
+              <IconButton
+                sx={styleBtn}
+                onClick={() => {
+                  setTitle(title);
+                  // setTitleIconBtn(true);
+                }}
+              >
+                <Box
+                  component="img"
+                  alt={title}
+                  src={`/assets/pages/result/${title}Icon.png`}
+                  sx={{ height: '50%' }}
+                />
+              </IconButton>
+            ),
+          )}
+        </Box>
       </Box>
     </StyleDescibe>
   );
 };
+
+export default React.memo(CustomBox);

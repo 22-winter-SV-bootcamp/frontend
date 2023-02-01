@@ -70,7 +70,6 @@ const CustomSVG = ({ info, ratioBtn, custom }: any) => {
     topColor,
     bottom,
     bottomColor,
-    background,
     inner,
     innerColor,
   } = info;
