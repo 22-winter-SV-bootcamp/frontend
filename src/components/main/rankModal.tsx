@@ -29,7 +29,7 @@ export default function RankModal({ open, setOpen }: any) {
       hairColor: 'black',
       inner: 'basic_t_shirts',
       innerColor: 'white',
-      backgroundColor: 'pink',
+      backgroundColor: 'black',
       count: '1',
     },
     {
@@ -75,33 +75,18 @@ export default function RankModal({ open, setOpen }: any) {
     setOpen(false);
   };
 
-  const Box1 = styled('div')(({ theme }) => ({
-    backgroundColor: 'white',
-    opacity: 0.7,
-    zIndex: 10,
-    width: '100vw',
-    height: '100vh',
-    position: 'absolute',
-
-    [theme.breakpoints.down('tablet')]: {},
-    [theme.breakpoints.between('tablet', 'desktop')]: {},
-    [theme.breakpoints.between('desktop', 'bigDesktop')]: {},
-    [theme.breakpoints.up('bigDesktop')]: {},
-  }));
-
   const Box2 = styled('div')(({ theme }) => ({
     display: 'flex',
-    justifyContent: 'space-between',
+    justifyContent: ' center',
     alignItems: 'center',
     backgroundColor: 'white',
     position: 'absolute',
-
-    top: 0,
-    left: 0,
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
     padding: 20,
     boxShadow: '4px 4px 0px 0px #C7C7C7',
 
-    // transform: `translate(-50%,-50%)`,
     zIndex: 20,
     [theme.breakpoints.down('tablet')]: {
       width: '276px',
@@ -112,17 +97,24 @@ export default function RankModal({ open, setOpen }: any) {
       width: '500px',
       height: '500px',
       borderRadius: 30,
+      fontSize: '18px',
     },
 
     [theme.breakpoints.up('desktop')]: {
       width: '440px',
       height: '440px',
-      left: '50%',
-      transform: 'translateX(-50%)',
-      top: '-600px',
       borderRadius: 30,
+      fontSize: '15px',
     },
   }));
+
+  const StylecommonRank = {
+    position: 'relative',
+    width: '100%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  };
 
   return (
     <>
@@ -132,21 +124,78 @@ export default function RankModal({ open, setOpen }: any) {
             setOpen(false);
           }}
           theme={theme}
-          sx={{ display: 'flex' }}
         >
-          {rankInfo?.map((gender) => (
+          <Box
+            sx={[
+              StylecommonRank,
+              { height: '100%', flexDirection: 'column', paddingTop: '10px' },
+            ]}
+          >
             <Box
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-              }}
+              sx={[
+                StylecommonRank,
+                {
+                  height: '14%',
+                },
+              ]}
             >
-              <Typography variant="h4">1st</Typography>
-              <CustomSVG info={gender}></CustomSVG>
-              <Typography variant="h3">{gender.count}'s pick</Typography>
+              <Typography
+                variant="h4"
+                sx={{
+                  color: '#000000',
+                  fontSize: '2em',
+                }}
+              >
+                Best Outfit of This Week
+              </Typography>
             </Box>
-          ))}
+            <Box sx={[StylecommonRank, { height: '86%' }]}>
+              {rankInfo?.map((gender) => (
+                <Box
+                  sx={{
+                    position: 'relative',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    width: '50%',
+                    height: '100%',
+                  }}
+                >
+                  <Box
+                    sx={[
+                      StylecommonRank,
+                      {
+                        height: '80%',
+                      },
+                    ]}
+                  >
+                    <CustomSVG
+                      info={gender}
+                      ratioBtn={true}
+                      custom={true}
+                      kingHat={true}
+                    ></CustomSVG>
+                  </Box>
+
+                  <Box
+                    sx={[
+                      StylecommonRank,
+                      {
+                        height: '20%',
+                      },
+                    ]}
+                  >
+                    <Typography
+                      variant="h3"
+                      sx={{ color: '#585858', fontSize: '2em' }}
+                    >
+                      {gender.count}'s pick
+                    </Typography>
+                  </Box>
+                </Box>
+              ))}
+            </Box>
+          </Box>
         </Box2>
       ) : null}
     </>

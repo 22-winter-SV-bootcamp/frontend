@@ -53,6 +53,7 @@ import SVGFemaleBasic_Nasi from '@/svgComponents/female/inner/SVGFemaleBasic_Nas
 import SVGFemaleShort from '@/svgComponents/female/hair/SVGFemaleShort';
 import SVGFemaleMiddle from '@/svgComponents/female/hair/SVGFemaleMiddle';
 import triangle from '/assets/triangle.png';
+import kingHatImg from '/assets/pages/main/kingHatImg.png';
 
 type ColorArrType = {
   [key: string]: string;
@@ -61,7 +62,17 @@ type SVGComponentsType = {
   [key: string]: { [key: string]: { [key: string]: JSX.Element } };
 };
 
-const CustomSVG = ({ info, ratioBtn, custom }: any) => {
+const CustomSVG = ({
+  info,
+  ratioBtn,
+  custom,
+  kingHat,
+}: {
+  info: any;
+  ratioBtn: boolean;
+  custom: boolean;
+  kingHat: boolean;
+}) => {
   let {
     gender,
     hair,
@@ -594,7 +605,7 @@ const CustomSVG = ({ info, ratioBtn, custom }: any) => {
     background: colorArr[info.backgroundColor],
     aspectRatio: ratioBtn ? '2/3' : '1/1',
     overflow: 'hidden',
-    borderRadius: custom ? 0 : '10%',
+    borderRadius: custom ? '0' : '10%',
     // filter: 'opacity(0.5) drop-shadow(0 0 0 #CCE7FF)',
     [theme.breakpoints.down('desktop')]: {
       maxWidth: '557px',
@@ -611,7 +622,7 @@ const CustomSVG = ({ info, ratioBtn, custom }: any) => {
     width: ratioBtn ? '90%' : '130%',
     objectFit: 'fill',
   };
-
+  // console.log(ratioBtn, custom, kingHat);
   return (
     <StyleMainImg theme={theme}>
       <Box
@@ -635,8 +646,25 @@ const CustomSVG = ({ info, ratioBtn, custom }: any) => {
       <Box sx={{ position: 'absolute' }} width="100%" height="100%">
         {SVGComponents[gender]['top'][top]}
       </Box>
+      {kingHat ? (
+        <Box
+          component="img"
+          sx={{
+            position: 'absolute',
+            top: gender === 'male' ? '24%' : '28%',
+            left: '36%',
+            // transform: 'translatX(-50%)',
+            width: '27%',
+          }}
+          src={kingHatImg}
+        ></Box>
+      ) : null}
     </StyleMainImg>
   );
 };
-
+CustomSVG.defaultProps = {
+  kingHat: false,
+  ratioBtn: false,
+  custom: true,
+};
 export default CustomSVG;

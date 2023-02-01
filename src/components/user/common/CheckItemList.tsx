@@ -90,6 +90,61 @@ const CheckItemList = ({ setInfo, select, setTitleIconBtn }: any) => {
     ],
     background: [],
   };
+  let sub = 85;
+  let detail = 70;
+  const viewBoxFemaleInner = '105 405 270 270';
+  const viewBoxFemaleTop = '100 395 285 285';
+  const viewBoxFemaleBottom = '135 540 200 200';
+  const viewBoxFemaleHair = '105 175 300 300';
+  const viewBoxMaleTop = '100 395 285 285';
+  const viewBoxMaleInner = '95 390 300 300';
+  const viewBoxMaleBottom = '135 540 200 200';
+  const viewBoxMaleHair = '95 150 300 300';
+  // let { hairColor, topColor, bottomColor, innerColor } = info;
+  const colorArr: ColorArrType = {
+    white: '#FFFFFF',
+    melangeGrey: '#D4D4D4',
+    grey: '#A6A6A6',
+    coolGrey: '#4B5053',
+    charcoal: '#444444',
+    black: '#2B2929',
+    ivory: '#F5EFEF',
+    lightBeige: '#DED3AA',
+    beige: '#D6BB87',
+    peachBeige: '#DBBC97',
+    deepBeige: '#BEA78C',
+    darkBeige: '#A3907B',
+    beigeBrown: '#7B6146',
+    deepbrown: '#4A3A2A',
+    darkBrown: '#362710',
+    blond: '#FFECAE',
+    lightBrown: '#A36B3E',
+    brickBrown: '#854809',
+    brown: '#54310A',
+    khaki: '#3C492A',
+    dustyGreen: '#76A973',
+    lightBlue: '#CCE7FF',
+    middleBlue: '#417797',
+    deepBlue: '#165690',
+    indigoBlue: '#1A2B47',
+    burgundy: '#740E21',
+    orange: '#D98200',
+    black2: '#FFCB00',
+    navy: '#2C376F',
+    purple: '#8A00AC',
+    skyBlue: '#9CB0FF',
+    sora: '#5C71C9',
+    blue: '#0088D4',
+    pink: '#FFB6B6',
+    magentaPink: '#EE6989',
+    red: '#A40707',
+    pastelGreen: '#87B24A',
+    lightGreen: '#629021',
+    green: '#0A7C00',
+    neonBlue: '#02ABCF',
+    coral: '#DF5353',
+    skin: '#FFD521',
+  };
   // let sub = 85;
   // let detail = 70;
   // const viewBoxFemaleInner = '105 405 270 270';

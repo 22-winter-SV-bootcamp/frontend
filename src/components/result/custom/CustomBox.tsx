@@ -22,11 +22,20 @@ const CustomBox = ({ onChangeCustom, setInfo }: Props) => {
 
     // justifyContent: 'center',
     // paddingLeft: '10%',
+<<<<<<< HEAD
     height: '35%',
     width: '100%',
 
     borderRadius: '30px 30px 0 0',
     background: '#f7bf88',
+=======
+    height: '30%',
+    width: '77%',
+    maxWidth: '450px' /* 화면에 따라 수정 예정 */,
+    borderRadius: '10% 10% 10% 10% / 20% 20% 20% 20%',
+
+    background: '#FFBA75',
+>>>>>>> 7916ea2ba292b9ee322cb7cac4b905d1daaf37d0
     whiteSpace: 'pre-line',
     boxShadow: '3px 3px rgba(0, 0, 0, 0.25)',
 
