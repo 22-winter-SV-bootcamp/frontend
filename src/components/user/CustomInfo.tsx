@@ -203,11 +203,8 @@ const CustomInfo = ({ info, setInfo, svgRef }: any) => {
       {modal && (
         <CustomSelectModal
           info={info}
-          gender={info.gender}
           select={select}
           setInfo={setInfo}
-          modal={modal}
-          setModal={setModal}
         ></CustomSelectModal>
       )}
     </Box1>
