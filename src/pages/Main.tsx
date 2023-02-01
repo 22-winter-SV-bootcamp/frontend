@@ -78,6 +78,7 @@ const Main = () => {
     [theme.breakpoints.between('tablet', 'desktop')]: {
       width: 372,
       height: 261,
+      fontSize: '20px',
     },
 
     [theme.breakpoints.up('desktop')]: {
@@ -86,6 +87,7 @@ const Main = () => {
       marginBottom: 100,
       width: 270,
       height: 200,
+      fontSize: '15px',
     },
   }));
 
@@ -143,12 +145,21 @@ const Main = () => {
           ></Box>
         ) : null}
         <TopBox className="topBox" theme={theme}>
-          <Box sx={{ marginBottom: 1, color: 'white', fontWeight: 400 }}>
-            심슨필름
+          <Box sx={{ marginBottom: 1 }}>
+            <Typography
+              sx={{
+                marginBottom: 1,
+                color: 'white',
+                fontSize: 100,
+                fontWeight: 400,
+              }}
+            >
+              심슨필름
+            </Typography>
           </Box>
-          <Box sx={{ fontSize: '50%', color: 'white', fontWeight: 400 }}>
+          <Typography sx={{ fontSize: '50%', color: 'white', fontWeight: 400 }}>
             D’oh film
-          </Box>
+          </Typography>
         </TopBox>
         {/* <Box1 theme={theme}> */}
         <RecentImgs cards={cards}></RecentImgs>
@@ -190,9 +201,16 @@ const Main = () => {
               padding: 2,
               borderRadius: '50px',
               backgroundColor: '#FFFFFF',
+              fontSize: 'inherit',
             }}
           >
-            <Typography sx={{ opacity: 0.5 }} variant="h2">
+            <Typography
+              sx={{
+                opacity: 0.5,
+                fontSize: '3em',
+              }}
+              variant="h2"
+            >
               찍으러 가기
             </Typography>
           </Button>

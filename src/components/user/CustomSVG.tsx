@@ -623,7 +623,7 @@ const CustomSVG = ({
     width: ratioBtn ? '90%' : '130%',
     objectFit: 'fill',
   };
-  console.log(ratioBtn, custom, kingHat);
+  // console.log(ratioBtn, custom, kingHat);
   return (
     <StyleMainImg theme={theme}>
       <Box

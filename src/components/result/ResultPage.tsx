@@ -30,6 +30,7 @@ export const ResultPage = (props: Props) => {
   const [modal, setModal] = useState(false);
   const [hoverModal, setHoverModal] = useState(false);
   const [clickModal, setClickModal] = useState(false);
+  const [hoverPosition, setHoverPosition] = useState(false);
   const [custom, setCustom] = useState(false);
   const svgRef: any = useRef();
 
@@ -96,23 +97,32 @@ export const ResultPage = (props: Props) => {
   };
 
   const openModal = () => {
-    /* 모달창 상태 변환 */
-    setClickModal((pre) => !pre);
-    setModal((pre) => !pre);
+    if (clickModal) {
+      setModal(false);
+      return;
+    }
+    setClickModal(true);
+    setModal(true);
+  };
+
+  const closeModal = () => {
+    setModal(false);
   };
 
   const openHoverModal = () => {
-    clickModal === false && hoverModal === false
-      ? setModal((pre) => true)
-      : console.log('이미 모달이 열려있습니다.');
-    setHoverModal((pre) => true);
+    if (!clickModal) {
+      setModal(true);
+      return;
+    }
   };
 
   const closeHoverModal = () => {
-    clickModal === false && hoverModal === true
-      ? setModal((pre) => false)
-      : console.log('이미 모달이 닫혀있습니다.');
-    setHoverModal((pre) => false);
+    if (!clickModal) {
+      setModal(false);
+      setClickModal(false);
+      return;
+    }
+    setClickModal(false);
   };
 
   const onChangeCustom = async () => {
@@ -154,14 +164,14 @@ export const ResultPage = (props: Props) => {
     alignItems: 'center',
     [theme.breakpoints.down('desktop')]: {
       maxWidth: '760px',
-      fontSize: '15px',
+      fontSize: '34px',
     },
     [theme.breakpoints.down('tablet')]: {
-      fontSize: '10px',
+      fontSize: '20px',
     },
     [theme.breakpoints.up('desktop')]: {
       maxWidth: '652px',
-      fontSize: '13px',
+      fontSize: '32px',
     },
   }));
 
@@ -175,7 +185,7 @@ export const ResultPage = (props: Props) => {
 
   const styleTitle = {
     fontWeight: 'medium',
-    fontFamily: 'Monospace',
+    fontSize: '1em',
   };
 
   const mainLayout = {
@@ -198,11 +208,10 @@ export const ResultPage = (props: Props) => {
   const styleLeftBtn = {
     p: '6px',
     '&:hover': {
-      height: '6.5em',
-      width: '6.5em',
+      transform: 'scale(1.2)',
     },
-    height: '5.8em',
-    width: '5.8em',
+    height: '3em',
+    width: '3em',
     minWidth: '58px',
     background: change
       ? 'linear-gradient(135deg, #E9E9E9, #FFFFFF)'
@@ -215,11 +224,10 @@ export const ResultPage = (props: Props) => {
     p: '6px',
     pr: ratioBtn ? '6px' : 0,
     '&:hover': {
-      height: '6.5em',
-      width: '6.5em',
+      transform: 'scale(1.2)',
     },
-    height: '5.8em',
-    width: '5.8em',
+    height: '3em',
+    width: '3em',
     minWidth: '58px',
     boxShadow: '3px 3px rgba(0, 0, 0, 0.25)',
     background: 'linear-gradient(135deg, #E9E9E9, #FFFFFF)',
@@ -230,11 +238,10 @@ export const ResultPage = (props: Props) => {
   const styleCenterBtn = {
     p: '6px',
     '&:hover': {
-      height: '7.6em',
-      width: '9.2em',
+      transform: 'scale(1.2)',
     },
-    height: '6.6em',
-    width: '8.2em',
+    height: '3.5em',
+    width: '3.5em',
     minWidth: '82px',
     minHeight: '66px',
     background: 'linear-gradient(135deg, #E9E9E9, #FFFFFF)',
@@ -246,8 +253,8 @@ export const ResultPage = (props: Props) => {
   const styleCameraIcon = {
     color: '#989898',
     fontSize: 'inherit',
-    height: '4em',
-    width: '4em',
+    height: '2em',
+    width: '2em',
   };
 
   const styleCustomIcon = {
@@ -257,11 +264,10 @@ export const ResultPage = (props: Props) => {
   const styleDownloadBtn = {
     p: 0,
     '&:hover': {
-      height: '9em',
-      width: '9em',
+      transform: 'scale(1.2)',
     },
-    height: '8em',
-    width: '8em',
+    height: '4em',
+    width: '4em',
     minWidth: '82px',
     minHeight: '66px',
     fontSize: 'inherit',
@@ -406,7 +412,7 @@ export const ResultPage = (props: Props) => {
                   />
                 )}
               </IconButton>
-              {modal && <ModalComponent url={url} changeModal={openModal} />}
+              {modal && <ModalComponent url={url} changeModal={closeModal} />}
             </Box>
           </Box>
         )}

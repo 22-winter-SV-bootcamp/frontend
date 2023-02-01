@@ -54,7 +54,7 @@ const ModalComponent = ({ url, changeModal }: Props) => {
     background: '#FFE2C5',
     borderRadius: '15%',
     position: 'absolute',
-    bottom: '100%',
+    bottom: '80%',
     right: '13%',
     zIndex: 1,
     boxShadow: '4px 4px rgba(0, 0, 0, 0.25)',
