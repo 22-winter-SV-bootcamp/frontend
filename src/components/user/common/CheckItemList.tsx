@@ -61,8 +61,8 @@ type SVGComponentsType = {
   [key: string]: { [key: string]: { [key: string]: JSX.Element } };
 };
 
-const CheckItemList = ({ setInfo, select, setTitleIconBtn, setCheck }: any) => {
-  const styles: any = {
+const CheckItemList = ({ setInfo, select, setTitleIconBtn }: any) => {
+  let styles: any = {
     inner: ['basic_t_shirts', 'basic_neck_pole', 'basic_nasi'],
     hair: ['short', 'middle', 'long'],
     top: [
@@ -610,7 +610,6 @@ const CheckItemList = ({ setInfo, select, setTitleIconBtn, setCheck }: any) => {
                 key={v}
                 onClick={() => {
                   setInfo((pre: any) => ({ ...pre, [select]: v }));
-                  setCheck((pre: any) => !pre);
                 }}
               >
                 <Box
