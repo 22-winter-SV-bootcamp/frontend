@@ -12,11 +12,12 @@ jobs:
       - name: Checkout source code.   
         uses: actions/checkout@v2
       
-      - name: Check Node v            
-        run: node -v
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
 
-      - name: Install Dependencies   
-        run: yarn install --frozen-lockfile
+      - name: Install Dependencies and Surge
+        run: npm install
 
-      - name: Build                   # React Build
-        run: yarn run build
+      - name: Build React Application
+        run: npm run build
