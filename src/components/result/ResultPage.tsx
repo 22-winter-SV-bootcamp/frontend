@@ -118,7 +118,7 @@ export const ResultPage = (props: Props) => {
 
     console.log(svgRef.current);
     const blob = await domToImg(svgRef.current);
-    // saveAs(blob);
+    saveAs(blob);
 
     // url &&
     //   imageDownload({
