@@ -175,6 +175,7 @@ export const ResultPage = (props: Props) => {
   const styleTitle = {
     fontWeight: 'medium',
     fontSize: '1em',
+    fontFamily: "'Indie Flower', cursive",
   };
 
   const mainLayout = {
@@ -212,7 +213,7 @@ export const ResultPage = (props: Props) => {
 
   const styleRightBtn = {
     p: '6px',
-    pr: ratioBtn ? '6px' : 0,
+    pr: change ? '6px' : 0,
     '&:hover': {
       transform: 'scale(1.2)',
     },
@@ -256,8 +257,8 @@ export const ResultPage = (props: Props) => {
     '&:hover': {
       transform: 'scale(1.2)',
     },
-    height: '4em',
-    width: '4em',
+    height: '3.5em',
+    width: '3.5em',
     minWidth: '82px',
     minHeight: '66px',
     fontSize: 'inherit',
@@ -408,17 +409,17 @@ export const ResultPage = (props: Props) => {
                 )}
               </IconButton>
               {change ? (
-                <Button sx={styleDownloadBtn} onClick={download}>
+                <IconButton sx={styleDownloadBtn} onClick={download}>
                   <Box
                     component="img"
                     alt="downloadImage"
                     src={downloadIcon}
                     sx={{
-                      height: '100%',
+                      height: '120%',
                       textShadow: '3px 3px rgba(0, 0, 0, 0.25)',
                     }}
                   />
-                </Button>
+                </IconButton>
               ) : (
                 <Button sx={styleCenterBtn} onClick={changeBtn}>
                   <PhotoCameraIcon sx={styleCameraIcon} />

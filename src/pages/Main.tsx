@@ -18,6 +18,7 @@ type CardsType = {
 };
 
 const Main = () => {
+  const [animation, setAnimaion] = useState(false);
   const MainBox = styled('div')(({ theme }) => ({
     width: '100vw',
     overflow: 'hidden',
@@ -128,6 +129,15 @@ const Main = () => {
   //   if (data) setCards([...data]);
   // }, [data]);
   console.log(page);
+
+  const TitleBox = styled('div')(({ theme }) => ({
+    [theme.breakpoints.down('desktop')]: {},
+    [theme.breakpoints.down('tablet')]: {
+      marginBottom: 0,
+      height: '120px',
+    },
+    [theme.breakpoints.up('desktop')]: {},
+  }));
   return (
     <>
       <MainBox className="mainBox" theme={theme}>
@@ -150,7 +160,7 @@ const Main = () => {
           ></Box>
         ) : null}
         <TopBox className="topBox" theme={theme}>
-          <Box sx={{ marginBottom: 1 }}>
+          <TitleBox sx={{ marginBottom: 1 }} theme={theme}>
             <Typography
               sx={{
                 marginBottom: 1,
@@ -163,13 +173,13 @@ const Main = () => {
             >
               심슨필름
             </Typography>
-          </Box>
+          </TitleBox>
           <Typography sx={{ fontSize: '50%', color: 'white', fontWeight: 400 }}>
-            D’oh film
+            Simpson film
           </Typography>
         </TopBox>
         {/* <Box1 theme={theme}> */}
-        <RecentImgs cards={cards}></RecentImgs>
+        <RecentImgs cards={cards} animation={animation}></RecentImgs>
         {/* </Box1> */}
 
         <BottomBox theme={theme}>
@@ -193,6 +203,7 @@ const Main = () => {
               title="rank"
               setPage={setPage}
               setOpen={setOpen}
+              setAnimaion={setAnimaion}
             ></ButtonIcon>
           </Box>
           <Button

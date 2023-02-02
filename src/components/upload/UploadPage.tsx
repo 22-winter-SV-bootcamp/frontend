@@ -85,8 +85,10 @@ export const UploadPage = () => {
   const styleTitle = {
     fontWeight: 'medium',
     fontSize: '1em',
+
     // alignSelf: 'center',
     // FontFamily: "'Indie Flower', cursive",
+
   };
 
   const mainLayout = {
@@ -196,6 +198,7 @@ export const UploadPage = () => {
   return (
     <Box sx={styleContainer}>
       <FilmLayout className="filmLayout" theme={theme}>
+
         <Box
           sx={{
             width: '100%',
@@ -223,6 +226,7 @@ export const UploadPage = () => {
               ]}
             >
               simpsonfilm.com
+
             </Typography>
           </Box>
           <Box className="mainLayout" sx={mainLayout}>

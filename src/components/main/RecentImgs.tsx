@@ -6,7 +6,7 @@ import { theme } from '@/utils/mui/breakpoints';
 import { url } from 'inspector';
 import './recentImgs.css';
 import './re.css';
-const RecentImgs = ({ cards }: any) => {
+const RecentImgs = ({ cards, animation }: any) => {
   const p = [
     {
       left: '60%',
@@ -53,37 +53,54 @@ const RecentImgs = ({ cards }: any) => {
       top: '50%',
       left: '50%',
       transform: 'translate(-50%, -50%)',
+      // fontSize: '12px',
     },
     [theme.breakpoints.up('desktop')]: {
       width: 700,
       position: 'relative',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContents: 'center',
       //     width: 270,
       //     height: '100vh',
       // background: `linear-gradient(160deg, #FFE3C6 40%, #f5eee7 50%, rgba(179,139,99,1) 50%, #dfdad5 100%)`,
     },
   }));
 
-  const Card = styled('img')(({ theme }) => ({
-    position: 'absolute',
+  const Box2 = styled('div')(({ theme }) => ({
     [theme.breakpoints.down('tablet')]: {
-      width: 200,
-      height: 350,
+      width: '100%',
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%,-50%)',
+      fontSize: '3px',
     },
-    [theme.breakpoints.between('tablet', 'desktop')]: {
-      width: 300,
-      height: 450,
-    },
-
-    [theme.breakpoints.up('desktop')]: {
-      width: 250,
-      height: 400,
-    },
+    [theme.breakpoints.between('tablet', 'desktop')]: {},
+    [theme.breakpoints.up('desktop')]: {},
   }));
 
-  const Triangle = styled('div')(({ theme }) => ({}));
+  // const Card = styled('img')(({ theme }) => ({
+  //   position: 'absolute',
+  //   [theme.breakpoints.down('tablet')]: {
+  //     width: 200,
+  //     height: 350,
+  //   },
+  //   [theme.breakpoints.between('tablet', 'desktop')]: {
+  //     width: 300,
+  //     height: 450,
+  //   },
+
+  //   [theme.breakpoints.up('desktop')]: {
+  //     width: 250,
+  //     height: 400,
+  //   },
+  // }));
+
+  // const Triangle = styled('div')(({ theme }) => ({}));
 
   return (
-    <Box1 theme={theme}>
+    <Box1 className="recentImageLayout" theme={theme}>
       {/* {cards?.map((card: any, i: number) => (
         <Card
           className={`card${i}`}
@@ -95,17 +112,22 @@ const RecentImgs = ({ cards }: any) => {
           src={card.link}
         ></Card>
       ))} */}
-      <div className="wrapper">
+      <Box2 className="wrapper" sx={{ fontSize: 'inherit' }} theme={theme}>
         {cards?.map((card: any) => (
           <>
-            <div className="item">
-              <div className="polaroid">
-                <img width={250} className="image" src={card.link} />
-              </div>
-            </div>
+            <Box className="item" sx={{ fontSize: 'inherit' }}>
+              <Box className="polaroid" sx={{ fontSize: 'inherit' }}>
+                <Box
+                  component="img"
+                  className="image"
+                  src={card.link}
+                  sx={{ width: '25em' }}
+                />
+              </Box>
+            </Box>
           </>
         ))}
-      </div>
+      </Box2>
     </Box1>
   );
 };
