@@ -165,7 +165,7 @@ export const ResultPage = (props: Props) => {
   }));
 
   const headerLayout = {
-    height: '10%',
+    // height: '',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
@@ -271,7 +271,7 @@ export const ResultPage = (props: Props) => {
     justifyContent: 'center',
     paddingLeft: '10%',
     height: '30%',
-    width: '77%',
+    // width: '100%',
     maxWidth: '450px' /* 화면에 따라 수정 예정 */,
     borderRadius: '10%',
     background: '#FFBA75',
@@ -310,6 +310,7 @@ export const ResultPage = (props: Props) => {
     filter: 'drop-shadow(4px 2px rgba(0, 0, 0, 0.25))',
   };
 
+  const date = new Date();
   return (
     <Box sx={styleContainer}>
       {/* {custom && (
@@ -325,27 +326,32 @@ export const ResultPage = (props: Props) => {
           className={animation ? 'fadein' : undefined}
           ref={svgRef}
           sx={{
-            width: '77%',
+            width: '100%',
             bgcolor: 'white',
-            padding: `10px 20px 0px 20px`,
+            padding: `15px 20px 0px 20px`,
           }}
         >
           <Box className="headerLayout" sx={headerLayout}>
-            <Button
-              sx={{ height: '40%', fontSize: 'inherit' }}
+            <Typography
               onClick={goFirstPage}
+              variant="h3"
+              align="center"
+              sx={[
+                styleTitle,
+                {
+                  // fontFamily: "'Indie Flower', cursive",
+                  fontFamily: '-moz-initial',
+                  width: '100%',
+                  color: '#7E7E7E',
+                  opacity: '0.8',
+                  lineHeight: 1,
+                  padding: '-6px -8px',
+                  marginBottom: '6px',
+                },
+              ]}
             >
-              <Typography
-                variant="h3"
-                align="center"
-                sx={[
-                  styleTitle,
-                  { color: '#7E7E7E', marginBottom: '10px', opacity: '0.8' },
-                ]}
-              >
-                심슨필름
-              </Typography>
-            </Button>
+              simpsonfilm.com
+            </Typography>
           </Box>
           <Box className="mainLayout" sx={mainLayout}>
             <CustomSVG
@@ -354,7 +360,21 @@ export const ResultPage = (props: Props) => {
               custom={custom}
             ></CustomSVG>
             {!custom ? null : (
-              <Box sx={{ height: 120, width: '100%', bgcolor: 'white' }}></Box>
+              <Box
+                sx={{
+                  display: 'flex',
+                  height: 130,
+                  width: '100%',
+                  bgcolor: 'white',
+                  justifyContent: 'end',
+                  padding: 1,
+                  fontFamily: '-moz-initial',
+                  opacity: '0.8',
+                  color: '#7E7E7E',
+                }}
+              >
+                {date.toLocaleDateString()}
+              </Box>
             )}
           </Box>
         </Box>

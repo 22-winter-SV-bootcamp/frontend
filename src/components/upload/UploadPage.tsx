@@ -10,7 +10,6 @@ import AddIcon from '@mui/icons-material/Add';
 import CircularProgress from '@mui/material/CircularProgress';
 import ButtonIcon from '../common/ButtonIcon';
 
-
 export const UploadPage = () => {
   let [taskId, setTaskId] = useState('');
   let [gender, setGender] = useState('female');
@@ -76,7 +75,7 @@ export const UploadPage = () => {
   }));
 
   const headerLayout = {
-    height: '10%',
+    // height: '',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
@@ -86,12 +85,13 @@ export const UploadPage = () => {
   const styleTitle = {
     fontWeight: 'medium',
     fontSize: '1em',
-    alignSelf: 'center',
-    FontFamily: "'Indie Flower', cursive",
+    // alignSelf: 'center',
+    // FontFamily: "'Indie Flower', cursive",
   };
 
   const mainLayout = {
-    height: '62%',
+    // height: '62%',
+
     position: 'relative',
     display: 'flex',
     flexDirection: 'column',
@@ -105,16 +105,16 @@ export const UploadPage = () => {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    width: '77%',
-    maxWidth: '450px' /* 화면에 따라 수정 예정 */,
+    width: '100%',
+    // maxWidth: '450px' /* 화면에 따라 수정 예정 */,
     background: isLoading ? '#FFE2C5' : '#C7C7C7',
-    aspectRatio: '2/3',
+    aspectRatio: '1/1',
     fontSize: 'inherit',
     [theme.breakpoints.down('desktop')]: {
-      maxWidth: '557px',
+      // maxWidth: '557px',
     },
     [theme.breakpoints.up('desktop')]: {
-      maxWidth: '477px',
+      // maxWidth: '477px',
     },
   }));
 
@@ -196,67 +196,87 @@ export const UploadPage = () => {
   return (
     <Box sx={styleContainer}>
       <FilmLayout className="filmLayout" theme={theme}>
-        <Box className="headerLayout" sx={headerLayout}>
-          <Button
-            sx={{ height: '40%', fontSize: 'inherit' }}
-            onClick={goFirstPage}
-          >
-            <Typography variant="h3" sx={[styleTitle, { color: '#7E7E7E' }]}>
-              심슨필름
+        <Box
+          sx={{
+            width: '100%',
+            bgcolor: 'white',
+            padding: `15px 20px 0px 20px`,
+          }}
+        >
+          <Box className="headerLayout" sx={headerLayout}>
+            <Typography
+              onClick={goFirstPage}
+              variant="h3"
+              align="center"
+              sx={[
+                styleTitle,
+                {
+                  // fontFamily: "'Indie Flower', cursive",
+                  fontFamily: '-moz-initial',
+                  width: '100%',
+                  color: '#7E7E7E',
+                  opacity: '0.8',
+                  lineHeight: 1,
+                  padding: '-6px -8px',
+                  marginBottom: '6px',
+                },
+              ]}
+            >
+              simpsonfilm.com
             </Typography>
-          </Button>
-        </Box>
-        <Box className="mainLayout" sx={mainLayout}>
-          <StyleMainImg
-            className="MainImg"
-            onDragOver={handleDragOver}
-            onDrop={handleDrop}
-            theme={theme}
-          >
-            <Box
-              component="img"
-              src={triangle}
-              alt="upload Layout"
-              sx={styletriangle}
-            ></Box>
-            {isLoading ? (
-              <CircularProgress
-                sx={{
-                  color: '#FFFFFF',
-                  // fontSize: 'inherit',
-                  // width: '10em',
-                  // height: '10em',
-                }}
-                size="3em"
-                thickness={6}
-              />
-            ) : (
-              <Button
-                variant="text"
-                sx={styleUpload}
-                aria-label="upload picture"
-                component="label"
-              >
-                <input
-                  hidden
-                  accept="image/*"
-                  type="file"
-                  onChange={handleClickFileUpload}
-                />
-                <AddIcon
+          </Box>
+          <Box className="mainLayout" sx={mainLayout}>
+            <StyleMainImg
+              className="MainImg"
+              onDragOver={handleDragOver}
+              onDrop={handleDrop}
+              theme={theme}
+            >
+              <Box
+                component="img"
+                src={triangle}
+                alt="upload Layout"
+                sx={styletriangle}
+              ></Box>
+              {isLoading ? (
+                <CircularProgress
                   sx={{
-                    // fontSize: {
-                    //   mobile: '4em',
-                    //   tablet: '7em',
-                    //   laptop: '15em',
-                    // },
-                    fontSize: '8em',
                     color: '#FFFFFF',
+                    // fontSize: 'inherit',
+                    // width: '10em',
+                    // height: '10em',
                   }}
+                  size="3em"
+                  thickness={6}
                 />
-              </Button>
-            )}
-          </StyleMainImg>
+              ) : (
+                <Button
+                  variant="text"
+                  sx={styleUpload}
+                  aria-label="upload picture"
+                  component="label"
+                >
+                  <input
+                    hidden
+                    accept="image/*"
+                    type="file"
+                    onChange={handleClickFileUpload}
+                  />
+                  <AddIcon
+                    sx={{
+                      // fontSize: {
+                      //   mobile: '4em',
+                      //   tablet: '7em',
+                      //   laptop: '15em',
+                      // },
+                      fontSize: '8em',
+                      color: '#FFFFFF',
+                    }}
+                  />
+                </Button>
+              )}
+            </StyleMainImg>
+          </Box>
         </Box>
         <Box className="footerLayout" sx={footerLayout}>
           {/* <Button
