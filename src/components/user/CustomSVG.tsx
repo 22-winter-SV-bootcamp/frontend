@@ -608,10 +608,10 @@ const CustomSVG = ({
     // borderRadius: custom ? '0' : '10%',
     // filter: 'opacity(0.5) drop-shadow(0 0 0 #CCE7FF)',
     [theme.breakpoints.down('desktop')]: {
-      maxWidth: '557px',
+      // maxWidth: '557px',
     },
     [theme.breakpoints.up('desktop')]: {
-      maxWidth: '477px',
+      // maxWidth: '477px',
     },
   }));
 
