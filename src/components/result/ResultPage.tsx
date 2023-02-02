@@ -19,7 +19,7 @@ import { saveAs } from 'file-saver';
 import CustomBox from './custom/CustomBox';
 import resultFilter from '@/utils/method/resultFilter';
 import postCustomStyleInfo from '@/apis/postCustomStyleInfo';
-
+import './result.css';
 type Props = {};
 export const ResultPage = (props: Props) => {
   useEffect(() => {
@@ -78,7 +78,7 @@ export const ResultPage = (props: Props) => {
     const blob = await domToImg(svgRef.current);
     // let blob = await html2canvasToBlob(svgRef.current);
     console.log('blob', blob);
-    saveAs(blob);
+    // saveAs(blob);
 
     // blob.toBlob((b: any) => formData.append('file', b));
     formData.append('file', blob);
@@ -140,7 +140,7 @@ export const ResultPage = (props: Props) => {
 
     console.log(svgRef.current);
     const blob = await domToImg(svgRef.current);
-    saveAs(blob);
+    // saveAs(blob);
 
     // url &&
     //   imageDownload({
@@ -163,7 +163,13 @@ export const ResultPage = (props: Props) => {
     position: 'relative',
     display: 'flex',
     flexDirection: 'column',
-    background: '#FFFFFF',
+    background: '#ffffff',
+
+    // TODO: 두 가지 버전 확인 받기
+    boxShadow:
+      'rgba(0, 0, 0, 0.15) 0px 20px 30px, rgba(0, 0, 0, 0.05) 0px 10px 15px',
+
+    // boxShadow: 'rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px',
     justifyContent: 'space-between',
     alignItems: 'center',
     [theme.breakpoints.down('desktop')]: {
@@ -180,8 +186,6 @@ export const ResultPage = (props: Props) => {
   }));
 
   const headerLayout = {
-    marginTop: 1,
-    marginBottom: 1,
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
@@ -194,6 +198,7 @@ export const ResultPage = (props: Props) => {
 
   const mainLayout = {
     // height: '70%',
+
     position: 'relative',
     display: 'flex',
     flexDirection: 'column',
@@ -327,25 +332,32 @@ export const ResultPage = (props: Props) => {
   return (
     <Box sx={styleContainer}>
       <FilmLayout theme={theme}>
-        <Box ref={svgRef} sx={{ width: '100%', bgcolor: 'white' }}>
+        <Box
+          className={change ? 'fadein' : undefined}
+          ref={svgRef}
+          sx={{
+            width: '77%',
+            bgcolor: 'white',
+            padding: `10px 20px 0px 20px`,
+          }}
+        >
           <Box className="headerLayout" sx={headerLayout}>
             <Typography
               variant="h3"
               align="center"
-              sx={[styleTitle, { color: '#7E7E7E' }]}
+              sx={[styleTitle, { color: '#7E7E7E', marginBottom: '10px' }]}
             >
               심슨필름
             </Typography>
           </Box>
           <Box className="mainLayout" sx={mainLayout}>
-            {/* {modal && <ModalComponent url={url} changeModal={openModal} />} */}
             <CustomSVG
               info={info}
               ratioBtn={ratioBtn}
               custom={custom}
             ></CustomSVG>
             {!custom ? null : (
-              <Box sx={{ height: 100, width: '100%', bgcolor: 'white' }}></Box>
+              <Box sx={{ height: 120, width: '100%', bgcolor: 'white' }}></Box>
             )}
           </Box>
         </Box>
