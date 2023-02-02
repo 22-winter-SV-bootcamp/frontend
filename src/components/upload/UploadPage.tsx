@@ -80,7 +80,7 @@ export const UploadPage = () => {
     fontWeight: 'medium',
     fontSize: '1em',
     alignSelf: 'center',
-    FontFamily: "'Indie Flower', cursive",
+    fontFamily: "'Indie Flower', cursive",
   };
 
   const mainLayout = {
@@ -191,7 +191,10 @@ export const UploadPage = () => {
             sx={{ height: '40%', fontSize: 'inherit' }}
             onClick={goFirstPage}
           >
-            <Typography variant="h3" sx={[styleTitle, { color: '#7E7E7E' }]}>
+            <Typography
+              variant="h3"
+              sx={[styleTitle, { color: '#7E7E7E', opacity: '0.8' }]}
+            >
               심슨필름
             </Typography>
           </Button>

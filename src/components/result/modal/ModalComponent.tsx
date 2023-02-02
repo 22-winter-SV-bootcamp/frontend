@@ -92,9 +92,7 @@ const ModalComponent = ({ url }: Props) => {
     height: '2em',
     width: '2em',
     boxShadow: '3px 3px rgba(0, 0, 0, 0.25)',
-    background: copy
-      ? 'linear-gradient(135deg, #FFFFFF, #FFD521, #FAFAFA)'
-      : 'linear-gradient(135deg, #FFFFFF, #F1F1F1, #FFFFFF)',
+    background: 'linear-gradient(135deg, #FFFFFF, #F1F1F1, #FFFFFF)',
     fontSize: 'inherit',
   };
 
