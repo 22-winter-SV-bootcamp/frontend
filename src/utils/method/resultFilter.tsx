@@ -1,5 +1,6 @@
 const resultFilter = (result: any) => {
-  let { top, bottom, gender } = result;
+  let { top, bottom } = result.result;
+  let { gender } = result;
 
   if (top === '-blazer') top = 'blazer';
   if (top === 't-shirts') top = 't_shirts';
