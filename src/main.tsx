@@ -28,7 +28,6 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
         <ReactQueryDevtools initialIsOpen={false}></ReactQueryDevtools>
       </QueryClientProvider>
     </RecoilRoot>
-    ,
-  </ThemeProvider>,
+  </ThemeProvider>
   // </React.StrictMode>
 );

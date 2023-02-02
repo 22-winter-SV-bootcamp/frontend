@@ -8,13 +8,18 @@ import { width } from '@mui/system';
 import { useLocation } from 'react-router-dom';
 import resultFilter from '@/utils/method/resultFilter';
 import CheckColorList from '@/components/user/common/CheckColorList';
+import { CloseOutlined } from '@mui/icons-material';
 
 type Props = {
   onChangeCustom: () => void;
-
+  setTitle:any;
+  title:string;
   setInfo: any;
+  setIsColorChange:any;
+  info:any;
+  isColorChange:any;
 };
-const CustomBox = ({ onChangeCustom, setInfo }: Props) => {
+const CustomBox = ({ onChangeCustom, setInfo,setTitle,title,setIsColorChange,isColorChange,info }: Props) => {
   const StyleDescibe = styled('div')(({ theme }) => ({
     position: 'relative',
     display: 'flex',
@@ -23,15 +28,18 @@ const CustomBox = ({ onChangeCustom, setInfo }: Props) => {
     // justifyContent: 'center',
     // paddingLeft: '10%',
 
-    height: '30%',
-    width: '77%',
-    maxWidth: '450px' /* 화면에 따라 수정 예정 */,
-    borderRadius: '10% 10% 10% 10% / 20% 20% 20% 20%',
+    height: '40%',
+    width: '100%',
+    padding: "16px",
+    margin: "0px",
+    // maxWidth: '450px' /* 화면에 따라 수정 예정 */,
 
-    background: '#FFBA75',
+    // borderTopLeftRadius:"5%",
+    // borderTopRightRadius:"5%",
+
+    background: '#FAE3C8',
 
     whiteSpace: 'pre-line',
-    boxShadow: '3px 3px rgba(0, 0, 0, 0.25)',
 
     [theme.breakpoints.down('desktop')]: {},
     [theme.breakpoints.up('desktop')]: {},
@@ -51,7 +59,7 @@ const CustomBox = ({ onChangeCustom, setInfo }: Props) => {
     minWidth: '40px',
     minHeight: '40px',
     position: 'absolute',
-    right: 0,
+    right: 16,
     zIndex: 20,
   };
 
@@ -92,16 +100,9 @@ const CustomBox = ({ onChangeCustom, setInfo }: Props) => {
     background: 'linear-gradient(135deg, #E9E9E9, #FFFFFF)',
     fontSize: 'inherit',
   };
-  console.log('custombox');
-  const [titleIconBtn, setTitleIconBtn] = useState(false);
-  const [title, setTitle] = useState('hair');
-  console.log(title);
-  const [check, setCheck] = useState(true);
-  console.log(check);
 
-  useEffect(() => {
-    console.log('CustomBox');
-  }, []);
+  const [titleIconBtn, setTitleIconBtn] = useState(false);
+  const [check, setCheck] = useState(true);
 
   // const memoSetInfo = useMemo(setInfo,[]);
   // const memoSetInfo = useMemo(,[]);
@@ -110,7 +111,7 @@ const CustomBox = ({ onChangeCustom, setInfo }: Props) => {
 
   return (
     <StyleDescibe theme={theme}>
-      <Button sx={okBtn}>
+      {/* <Button sx={okBtn}>
         {titleIconBtn ? (
           <Box
             onClick={() => {
@@ -128,38 +129,55 @@ const CustomBox = ({ onChangeCustom, setInfo }: Props) => {
             sx={styleOkIcon}
           />
         )}
-      </Button>
-
-      <Box className="mainLayout" sx={mainLayout}>
-        <CustomSelectModal
-          setInfo={setInfo}
-          select={title}
-          setCheck={setCheck}
-          setTitleIconBtn={setTitleIconBtn}
-        ></CustomSelectModal>
-
-        {/* <CheckColorList setInfo={setInfo} select={title}></CheckColorList> */}
-
-        <Box className="firstLayout" sx={subLayout}>
+      </Button> */}
+      <Box sx={{height:"15%",minHeight:"48px", overflow:"hidden", display:"flex",justifyContent:"space-evenly"}}>
           {['gender', 'hair', 'background', 'top', 'inner', 'bottom'].map(
-            (title) => (
+            (tmpTitle) => (
               <IconButton
-                sx={styleBtn}
+                sx={{
+                  height:"100%",
+                  p:0,
+                  px:1.6,
+                  bgcolor: title === tmpTitle ? "#DCC5AF" :"inherit",
+                  borderRadius: "100%",
+                }}
                 onClick={() => {
-                  setTitle(title);
+                  if(isColorChange !== ""){
+                    setIsColorChange("");
+                  }
+                  setTitle(tmpTitle);
                   // setTitleIconBtn(true);
                 }}
               >
                 <Box
                   component="img"
-                  alt={title}
-                  src={`/assets/pages/result/${title}Icon.png`}
+                  alt={tmpTitle}
+                  src={`/assets/pages/result/${tmpTitle}Icon.png`}
                   sx={{ height: '50%' }}
                 />
               </IconButton>
             ),
           )}
-        </Box>
+          <IconButton onClick={onChangeCustom} sx={{p:0}}>
+            <CloseOutlined/>
+          </IconButton>
+      </Box>
+      <Box className="mainLayout" sx={{
+        display:"flex",
+        height:1,
+        overflow:"auto"
+      }}>
+        <CustomSelectModal
+          info={info}
+          setInfo={setInfo}
+          select={title}
+          setCheck={setCheck}
+          isColorChange={isColorChange}
+          setIsColorChange={setIsColorChange}
+          setTitleIconBtn={setTitleIconBtn}
+        ></CustomSelectModal>
+
+        {/* <CheckColorList setInfo={setInfo} select={title}></CheckColorList> */}
       </Box>
     </StyleDescibe>
   );

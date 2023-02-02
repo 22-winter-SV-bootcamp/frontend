@@ -61,7 +61,53 @@ type SVGComponentsType = {
   [key: string]: { [key: string]: { [key: string]: JSX.Element } };
 };
 
-const CheckItemList = ({ setInfo, select, setTitleIconBtn }: any) => {
+  const colorArr:Record<string,string> = {
+    white: '#FFFFFF',
+    melangeGrey: '#D4D4D4',
+    grey: '#A6A6A6',
+    coolGrey: '#4B5053',
+    charcoal: '#444444',
+    black: '#2B2929',
+    realBlack: '#171717',
+    ivory: '#F5EFEF',
+    lightBeige: '#DED3AA',
+    beige: '#D6BB87',
+    peachBeige: '#DBBC97',
+    deepBeige: '#BEA78C',
+    darkBeige: '#A3907B',
+    beigeBrown: '#7B6146',
+    deepBrown: '#4A3A2A',
+    darkBrown: '#362710',
+    blond: '#FFECAE',
+    lightBrown: '#A36B3E',
+    brickBrown: '#854809',
+    brown: '#54310A',
+    khaki: '#3C492A',
+    dustyGreen: '#779C74',
+    lightBlue: '#CCE7FF',
+    middleBlue: '#417797',
+    deepBlue: '#165690',
+    indigoBlue: '#1A2B47',
+    burgundy: '#640013',
+    orange: '#E88100',
+    yellow: '#FFCB00',
+    navy: '#002A58',
+    purple: '#78009C',
+    skyBlue: '#9CB0FF',
+    vintageBlue: '#324C7E',
+    blue: '#0088D4',
+    pink: '#FFB6B6',
+    magentaPink: '#EF5A7D',
+    red: '#B50300',
+    pastelGreen: '#87B24A',
+    lightGreen: '#629021',
+    green: '#0A7C00',
+    neonBlue: '#02ABCF',
+    coral: '#DF5353',
+    skin: '#FFD521',
+  };
+
+const CheckItemList = ({ setInfo,info, select, setTitleIconBtn,setIsColorChange,isColorChange }: any) => {
   let styles: any = {
     inner: ['basic_t_shirts', 'basic_neck_pole', 'basic_nasi'],
     hair: ['short', 'middle', 'long'],
@@ -101,50 +147,6 @@ const CheckItemList = ({ setInfo, select, setTitleIconBtn }: any) => {
   const viewBoxMaleBottom = '135 540 200 200';
   const viewBoxMaleHair = '95 150 300 300';
   // let { hairColor, topColor, bottomColor, innerColor } = info;
-  const colorArr: ColorArrType = {
-    white: '#FFFFFF',
-    melangeGrey: '#D4D4D4',
-    grey: '#A6A6A6',
-    coolGrey: '#4B5053',
-    charcoal: '#444444',
-    black: '#2B2929',
-    ivory: '#F5EFEF',
-    lightBeige: '#DED3AA',
-    beige: '#D6BB87',
-    peachBeige: '#DBBC97',
-    deepBeige: '#BEA78C',
-    darkBeige: '#A3907B',
-    beigeBrown: '#7B6146',
-    deepbrown: '#4A3A2A',
-    darkBrown: '#362710',
-    blond: '#FFECAE',
-    lightBrown: '#A36B3E',
-    brickBrown: '#854809',
-    brown: '#54310A',
-    khaki: '#3C492A',
-    dustyGreen: '#76A973',
-    lightBlue: '#CCE7FF',
-    middleBlue: '#417797',
-    deepBlue: '#165690',
-    indigoBlue: '#1A2B47',
-    burgundy: '#740E21',
-    orange: '#D98200',
-    black2: '#FFCB00',
-    navy: '#2C376F',
-    purple: '#8A00AC',
-    skyBlue: '#9CB0FF',
-    sora: '#5C71C9',
-    blue: '#0088D4',
-    pink: '#FFB6B6',
-    magentaPink: '#EE6989',
-    red: '#A40707',
-    pastelGreen: '#87B24A',
-    lightGreen: '#629021',
-    green: '#0A7C00',
-    neonBlue: '#02ABCF',
-    coral: '#DF5353',
-    skin: '#FFD521',
-  };
 
   return (
     <Box sx={{ heigth: '100%' }}>
@@ -157,25 +159,44 @@ const CheckItemList = ({ setInfo, select, setTitleIconBtn }: any) => {
           height: '100%',
         }}
       >
-        <>
+        {isColorChange && <>{
+          Object.keys(colorArr).map((v)=>{
+            return <Tooltip title={v}>
+              <Button
+                sx={{ width: "32px", height:"32px", borderRadius:"32px" , margin: '10px', bgcolor:colorArr[v] }}
+                key={v}
+                onClick={() => {
+                  setInfo((pre: any) => ({ ...pre, [isColorChange]: v }));
+                  setIsColorChange("");
+                }}
+              >
+              </Button>
+            </Tooltip>
+          })
+        }
+        </>}
+        {!isColorChange && <>
           {styles[select]?.map((v: any) => (
             <Tooltip title={v}>
               <Button
                 sx={{ width: '30%', margin: '10px' }}
                 key={v}
                 onClick={() => {
+                  if(select!=="backgroundColor"){
+                    setIsColorChange(`${select}Color`);
+                  }
                   setInfo((pre: any) => ({ ...pre, [select]: v }));
                 }}
               >
                 <Box
                   component="img"
-                  src={`/assets/custom/${'female'}/${select}/${v}.svg`}
+                  src={`/assets/custom/${info.gender}/${select}/${v}.svg`}
                 ></Box>
                 {/* {SVGComponents[info.gender][select][v]} */}
               </Button>
             </Tooltip>
           ))}
-        </>
+        </>}
       </Box>
     </Box>
   );
