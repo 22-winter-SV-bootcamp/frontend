@@ -23,22 +23,24 @@ import simpsonFilm from '/assets/pages/result/simpsonFilm.png';
 
 import './result.css';
 type Props = {};
+
 export const ResultPage = (props: Props) => {
-  useEffect(() => {
-    console.log('ResultPage');
-  }, []);
   const [url, setUrl] = useState('');
 
   const navigate = useNavigate();
   const [change, setChange] = useState(false);
   const [ratioBtn, setRatioBtn] = useState(false);
   const [modal, setModal] = useState(false);
+  const [title, setTitle] = useState('hair');
+  const [isColorChange,setIsColorChange] = React.useState('');
   const [custom, setCustom] = useState(false);
+  const [previousRatio,setPreviousRatio] = React.useState(false);
   const [animation, setAnimation] = useState(false);
 
   const svgRef: any = useRef();
 
   const location = useLocation();
+  
   const [info, setInfo] = useState({
     gender: 'female',
     hair: 'long',
@@ -51,12 +53,19 @@ export const ResultPage = (props: Props) => {
     inner: 'basic_t_shirts',
     innerColor: 'white',
   });
-  console.log('info', info);
+  
   useEffect(() => {
     let result = resultFilter(location.state.result);
 
     setInfo((pre: any) => ({ ...pre, ...result }));
   }, []);
+
+  useEffect(()=>{
+    if(custom){
+      setRatioBtn(previousRatio);
+    }
+  },[custom])
+
   // useEffect(() => {
   //   /* Link로 결과 페이지로 넘어갈떄 props에 state값을 주면 결과 페이지 에서 사용 가능, 나는 이걸 url 상태값에 저장 */
   //   setUrl(location.state.link);
@@ -116,14 +125,9 @@ export const ResultPage = (props: Props) => {
   const download = async () => {
     /* location의 state값이 undefined이 아니라는 걸 알려주기 위해 사용 */
 
-    console.log(svgRef.current);
     const blob = await domToImg(svgRef.current);
     saveAs(blob);
 
-    // url &&
-    //   imageDownload({
-    //     href: url,
-    //   });
   };
 
   const styleContainer = {
@@ -142,6 +146,7 @@ export const ResultPage = (props: Props) => {
     position: 'relative',
     display: 'flex',
     flexDirection: 'column',
+    flexWrap:"wrap",
     background: '#ffffff',
 
     // TODO: 두 가지 버전 확인 받기
@@ -183,6 +188,7 @@ export const ResultPage = (props: Props) => {
 
     position: 'relative',
     display: 'flex',
+    height:"100%",
     flexDirection: 'column',
     alignItems: 'center',
   };
@@ -264,64 +270,15 @@ export const ResultPage = (props: Props) => {
     fontSize: 'inherit',
     filter: 'drop-shadow(3px 3px rgba(0, 0, 0, 0.25))',
   };
-
-  const StyleDescibe = styled('div')(({ theme }) => ({
-    position: 'relative',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    paddingLeft: '10%',
-    height: '30%',
-    // width: '100%',
-    maxWidth: '450px' /* 화면에 따라 수정 예정 */,
-    borderRadius: '10%',
-    background: '#FFBA75',
-    whiteSpace: 'pre-line',
-    boxShadow: '3px 3px rgba(0, 0, 0, 0.25)',
-    marginBottom: '3px',
-    [theme.breakpoints.down('desktop')]: {
-      maxWidth: '557px',
-    },
-    [theme.breakpoints.up('desktop')]: {
-      maxWidth: '477px',
-    },
-  }));
-
-  const firstLayout = {
-    height: '15%',
-    position: 'relative',
-    display: 'flex',
-    justifyContent: 'end',
-    alignItems: 'bottom',
-    paddingRight: '10px',
-    paddingTop: '10px',
-  };
-
-  const okBtn = {
-    minWidth: '23px',
-    minHeight: '50px',
-    height: '90%',
-    position: 'relative',
-  };
-
-  const styleOkIcon = {
-    width: '100%',
-    height: '70%',
-    color: '#FFFFFF',
-    filter: 'drop-shadow(4px 2px rgba(0, 0, 0, 0.25))',
-  };
+  
+  React.useEffect(()=>{
+    setIsColorChange("");
+  },[title])
 
   const date = new Date();
+
   return (
     <Box sx={styleContainer}>
-      {/* {custom && (
-        <Button
-          sx={{ position: 'absolute', top: 40, left: 55, width: '25%' }}
-          onClick={goFirstPage}
-        >
-          <Box component="img" sx={{ width: '100%' }} src={simpsonFilm} />
-        </Button>
-      )} */}
       <FilmLayout theme={theme}>
         <Box
           className={animation ? 'fadein' : undefined}
@@ -329,6 +286,7 @@ export const ResultPage = (props: Props) => {
           sx={{
             width: '100%',
             bgcolor: 'white',
+            maxHeight: !custom ? "50%" : "100%",
             padding: `15px 20px 0px 20px`,
           }}
         >
@@ -380,7 +338,10 @@ export const ResultPage = (props: Props) => {
           </Box>
         </Box>
         {!custom ? (
-          <CustomBox setInfo={setInfo} onChangeCustom={onChangeCustom} />
+          <CustomBox setInfo={setInfo} onChangeCustom={onChangeCustom} setTitle={setTitle} title={title}
+          info={info}
+          isColorChange={isColorChange}
+          setIsColorChange={setIsColorChange} />
         ) : (
           <Box
             /* footerlayout 제일 하단에 고정 */
@@ -393,9 +354,19 @@ export const ResultPage = (props: Props) => {
             }}
           >
             <Box className="footerLayout" sx={footerLayout}>
+              {/* 커스텀 버튼 */}
               <IconButton
                 sx={[styleLeftBtn, { paddingRight: 0 }]}
-                onClick={change ? goFirstPage : onChangeCustom}
+                onClick={()=>{
+                  if(change){
+                    goFirstPage();
+                  }else{
+                    console.log(ratioBtn)
+                    setPreviousRatio(ratioBtn)
+                    onChangeCustom();
+                  }
+                }
+              }
               >
                 {change ? (
                   <HomeOutlinedIcon sx={styleCameraIcon} />
@@ -408,6 +379,7 @@ export const ResultPage = (props: Props) => {
                   />
                 )}
               </IconButton>
+              {/* 다운로드 버튼 */}
               {change ? (
                 <IconButton sx={styleDownloadBtn} onClick={download}>
                   <Box
@@ -425,6 +397,7 @@ export const ResultPage = (props: Props) => {
                   <PhotoCameraIcon sx={styleCameraIcon} />
                 </Button>
               )}
+              {/* 비율 변경 버튼 */}
               <IconButton
                 sx={styleRightBtn}
                 onClick={change ? openModal : ratioChange}

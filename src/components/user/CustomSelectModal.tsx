@@ -1,4 +1,4 @@
-import { Button, Hidden, Typography } from '@mui/material';
+import { Button, Hidden, Tooltip, Typography } from '@mui/material';
 import { Box } from '@mui/material';
 import { prependListener } from 'process';
 import React, { SetStateAction, useEffect, useState } from 'react';
@@ -11,36 +11,54 @@ function CustomSelectModal({
   setInfo,
   setTitleIconBtn,
   setCheck,
+  setIsColorChange,
+  info,
+  isColorChange
 }: any) {
-  const colorArr = {
-    white: '#f9f6f6',
-    coolGray: '#d4d4d4',
-    gray: '#a6a6a6',
-    darkGray: '#4b5053',
+  const colorArr:Record<string,string> = {
+    white: '#FFFFFF',
+    melangeGrey: '#D4D4D4',
+    grey: '#A6A6A6',
+    coolGrey: '#4B5053',
     charcoal: '#444444',
-    red: '#900000',
-    orange: '#d98200',
-    yellow: '#ffcb00',
-    navy: '#2c376f',
-    purple: '#8a00ac',
-    green: '#0a7c00',
-    black: '#000000',
-    neonBlue: '#02abcf',
-    peach: '#DF5353',
+    black: '#2B2929',
+    realBlack: '#171717',
+    ivory: '#F5EFEF',
+    lightBeige: '#DED3AA',
+    beige: '#D6BB87',
+    peachBeige: '#DBBC97',
+    deepBeige: '#BEA78C',
+    darkBeige: '#A3907B',
+    beigeBrown: '#7B6146',
+    deepBrown: '#4A3A2A',
     darkBrown: '#362710',
-    brown: '#4A3A2A',
-    darkBagie: '#A3907B',
-    bagie: '#A3907B',
-    ligthBegie: '#A3907B',
-    ivory: '#DED3AA',
-    kaki: '#3C492A',
-    ligthBlue: '#CCE7FF',
+    blond: '#FFECAE',
+    lightBrown: '#A36B3E',
+    brickBrown: '#854809',
+    brown: '#54310A',
+    khaki: '#3C492A',
+    dustyGreen: '#779C74',
+    lightBlue: '#CCE7FF',
     middleBlue: '#417797',
-    darkBlue: '#165690',
-    denim: '#1A2B47',
-    sora: '#5C71C9',
+    deepBlue: '#165690',
+    indigoBlue: '#1A2B47',
+    burgundy: '#640013',
+    orange: '#E88100',
+    yellow: '#FFCB00',
+    navy: '#002A58',
+    purple: '#78009C',
     skyBlue: '#9CB0FF',
+    vintageBlue: '#324C7E',
+    blue: '#0088D4',
     pink: '#FFB6B6',
+    magentaPink: '#EF5A7D',
+    red: '#B50300',
+    pastelGreen: '#87B24A',
+    lightGreen: '#629021',
+    green: '#0A7C00',
+    neonBlue: '#02ABCF',
+    coral: '#DF5353',
+    skin: '#FFD521',
   };
 
   useEffect(() => {
@@ -57,12 +75,15 @@ function CustomSelectModal({
         overflowY: 'scroll',
       }}
     >
-      {select !== 'gender' ? (
+      {select !== 'gender' && select !=="backgroundColor" && (
         <div>
           <CheckItemList
+            info={info}
             select={select}
             setInfo={setInfo}
+            isColorChange={isColorChange}
             setCheck={setCheck}
+            setIsColorChange={setIsColorChange}
             setTitleIconBtn={setTitleIconBtn}
           ></CheckItemList>
 
@@ -72,7 +93,25 @@ function CustomSelectModal({
             ></CheckColorList>
        */}
         </div>
-      ) : (
+      )
+      }
+    { select === "background" && (
+        <Box>
+          {Object.keys(colorArr).map((v)=>{
+            return <Tooltip title={v}>
+              <Button
+                sx={{ width: "32px", height:"32px", borderRadius:"32px" , margin: '10px', bgcolor:colorArr[v] }}
+                key={v}
+                onClick={() => {
+                  setInfo((pre: any) => ({ ...pre, backgroundColor: v }));
+                }}
+              >
+              </Button>
+            </Tooltip>
+          })}
+        </Box>
+      )}
+      { select === "gender" && (
         <Box>
           <Box
             onClick={() => {
