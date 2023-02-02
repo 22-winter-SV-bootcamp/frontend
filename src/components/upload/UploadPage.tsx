@@ -49,6 +49,11 @@ export const UploadPage = () => {
     display: 'flex',
     flexDirection: 'column',
     background: '#FFFFFF',
+    // TODO: 두 가지 버전 확인 받기
+    boxShadow:
+      'rgba(0, 0, 0, 0.15) 0px 20px 30px, rgba(0, 0, 0, 0.05) 0px 10px 15px',
+
+    // boxShadow: 'rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px',
     [theme.breakpoints.down('desktop')]: {
       maxWidth: '760px',
       fontSize: '34px',

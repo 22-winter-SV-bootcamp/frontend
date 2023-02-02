@@ -601,7 +601,7 @@ const CustomSVG = ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'bottom',
-    width: '77%',
+    width: '100%',
     background: colorArr[info.backgroundColor],
     aspectRatio: ratioBtn ? '2/3' : '1/1',
     overflow: 'hidden',
