@@ -6,9 +6,8 @@ import getAiResult from '@/apis/getAiResult';
 import { postUploadImage } from '@/apis/postUploadImage';
 import triangle from '/assets/triangle.png';
 import { theme } from '@/utils/mui/breakpoints';
-import AddIcon from '@mui/icons-material/Add';
 import CircularProgress from '@mui/material/CircularProgress';
-import ButtonIcon from '../common/ButtonIcon';
+import uploadIcon from '/assets/pages/upload/uploadIcon.png';
 
 export const UploadPage = () => {
   let [taskId, setTaskId] = useState('');
@@ -88,7 +87,6 @@ export const UploadPage = () => {
 
     // alignSelf: 'center',
     // FontFamily: "'Indie Flower', cursive",
-
   };
 
   const mainLayout = {
@@ -198,7 +196,6 @@ export const UploadPage = () => {
   return (
     <Box sx={styleContainer}>
       <FilmLayout className="filmLayout" theme={theme}>
-
         <Box
           sx={{
             width: '100%',
@@ -226,7 +223,6 @@ export const UploadPage = () => {
               ]}
             >
               simpsonfilm.com
-
             </Typography>
           </Box>
           <Box className="mainLayout" sx={mainLayout}>
@@ -266,15 +262,13 @@ export const UploadPage = () => {
                     type="file"
                     onChange={handleClickFileUpload}
                   />
-                  <AddIcon
+                  <Box
+                    component="img"
+                    src={uploadIcon}
                     sx={{
-                      // fontSize: {
-                      //   mobile: '4em',
-                      //   tablet: '7em',
-                      //   laptop: '15em',
-                      // },
-                      fontSize: '8em',
-                      color: '#FFFFFF',
+                      width: '6em',
+                      color:
+                        '#FFFFFF' /* 적용 안됨 색 변경 시 다른 이미지 또란 svg로 변경해야함 */,
                     }}
                   />
                 </Button>
