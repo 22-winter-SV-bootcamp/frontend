@@ -6,9 +6,7 @@ import getAiResult from '@/apis/getAiResult';
 import { postUploadImage } from '@/apis/postUploadImage';
 import triangle from '/assets/triangle.png';
 import { theme } from '@/utils/mui/breakpoints';
-import Description from './Description';
 import AddIcon from '@mui/icons-material/Add';
-import './SqureStyle.css';
 
 export const UploadPage = () => {
   let [taskId, setTaskId] = useState('');
@@ -36,8 +34,8 @@ export const UploadPage = () => {
 
   const styleContainer = {
     height: '100%',
-    // background: 'linear-gradient(to bottom, #C5E8FF, #FFFFFF 90%)',
-    background: 'linear-gradient(to bottom, #FFE3C5, #FFF3E5 90%)',
+    // background: 'linear-gradient(to bottom, #FFE3C5, #FFF3E5 90%)',
+    background: 'linear-gradient(to bottom, #C5E8FF 80%, #FFFFFF 100%)',
     position: 'relative',
     display: 'flex',
     justifyContent: 'center',
@@ -51,6 +49,11 @@ export const UploadPage = () => {
     display: 'flex',
     flexDirection: 'column',
     background: '#FFFFFF',
+    // TODO: 두 가지 버전 확인 받기
+    boxShadow:
+      'rgba(0, 0, 0, 0.15) 0px 20px 30px, rgba(0, 0, 0, 0.05) 0px 10px 15px',
+
+    // boxShadow: 'rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px',
     [theme.breakpoints.down('desktop')]: {
       maxWidth: '760px',
       fontSize: '34px',
@@ -69,11 +72,13 @@ export const UploadPage = () => {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
+    alignItems: 'center',
   };
 
   const styleTitle = {
     fontWeight: 'medium',
     fontSize: '1em',
+    alignSelf: 'center',
   };
 
   const mainLayout = {
@@ -93,30 +98,8 @@ export const UploadPage = () => {
     alignItems: 'center',
     width: '77%',
     maxWidth: '450px' /* 화면에 따라 수정 예정 */,
-    borderRadius: '10%',
     background: isLoading ? '#FFE2C5' : '#C7C7C7',
-    aspectRatio: '1/1',
-    [theme.breakpoints.down('desktop')]: {
-      maxWidth: '557px',
-    },
-    [theme.breakpoints.up('desktop')]: {
-      maxWidth: '477px',
-    },
-  }));
-  const StyleDescibe = styled('div')(({ theme }) => ({
-    position: 'relative',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    paddingLeft: '10%',
-    height: '30%',
-    width: '77%',
-    maxWidth: '450px' /* 화면에 따라 수정 예정 */,
-    borderRadius: '10% 10% 10% 10% / 20% 20% 20% 20%',
-    background: '#FFBA75',
-    whiteSpace: 'pre-line',
-    boxShadow: '3px 3px rgba(0, 0, 0, 0.25)',
-    marginBottom: '3px',
+    aspectRatio: '2/3',
     [theme.breakpoints.down('desktop')]: {
       maxWidth: '557px',
     },
@@ -197,11 +180,7 @@ export const UploadPage = () => {
     <Box sx={styleContainer}>
       <FilmLayout className="filmLayout" theme={theme}>
         <Box className="headerLayout" sx={headerLayout}>
-          <Typography
-            variant="h3"
-            align="center"
-            sx={[styleTitle, { color: '#7E7E7E' }]}
-          >
+          <Typography variant="h3" sx={[styleTitle, { color: '#7E7E7E' }]}>
             심슨필름
           </Typography>
         </Box>
@@ -259,9 +238,6 @@ export const UploadPage = () => {
               </Button>
             )}
           </StyleMainImg>
-          <StyleDescibe theme={theme}>
-            <Description />
-          </StyleDescibe>
         </Box>
         <Box className="footerLayout" sx={footerLayout}></Box>
       </FilmLayout>

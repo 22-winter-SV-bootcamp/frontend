@@ -43,7 +43,11 @@ const RecentImgs = ({ cards }: any) => {
     // backgroundImage:
     //   "url('https://i.pinimg.com/564x/b8/e4/11/b8e4117f92711c7d299dd34527b42821.jpg')",
     // background: `linear-gradient(160deg, #C5E8FF 40%, #dde9f1 50%, rgba(179,139,99,1) 50%, #dfdad5 100%)`,
-    [theme.breakpoints.down('tablet')]: {},
+    [theme.breakpoints.down('tablet')]: {
+      // top: '50%',
+      // left: '50%',
+      // transform: 'translate(-50%, -50%)',
+    },
     [theme.breakpoints.between('tablet', 'desktop')]: {
       width: 700,
       top: '50%',
@@ -96,7 +100,7 @@ const RecentImgs = ({ cards }: any) => {
           <>
             <div className="item">
               <div className="polaroid">
-                <img width={250} src={card.link} />
+                <img width={250} className="image" src={card.link} />
               </div>
             </div>
           </>

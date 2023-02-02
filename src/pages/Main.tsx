@@ -56,7 +56,7 @@ const Main = () => {
 
     [theme.breakpoints.up('desktop')]: {
       margin: '0 auto',
-      marginTop: 100,
+      marginTop: 50,
       alignSelf: 'start',
       display: 'flex',
       justifyContent: 'center',
@@ -157,6 +157,8 @@ const Main = () => {
                 color: 'white',
                 fontSize: 100,
                 fontWeight: 400,
+                textShadow: '3px 3px #ACACAC',
+                // WebkitTextStroke: '2px #000000',
               }}
             >
               심슨필름
@@ -204,6 +206,7 @@ const Main = () => {
               height: '45%',
               boxShadow: '3px 3px 0px 0px #C7C7C7',
               padding: 2,
+              paddingTop: 3,
               borderRadius: '50px',
               backgroundColor: '#FFFFFF',
               fontSize: 'inherit',

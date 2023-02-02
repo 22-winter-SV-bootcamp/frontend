@@ -20,6 +20,7 @@ import CustomBox from './custom/CustomBox';
 import resultFilter from '@/utils/method/resultFilter';
 import postCustomStyleInfo from '@/apis/postCustomStyleInfo';
 
+import './result.css';
 type Props = {};
 export const ResultPage = (props: Props) => {
   useEffect(() => {
@@ -31,9 +32,6 @@ export const ResultPage = (props: Props) => {
   const [change, setChange] = useState(false);
   const [ratioBtn, setRatioBtn] = useState(false);
   const [modal, setModal] = useState(false);
-  const [hoverModal, setHoverModal] = useState(false);
-  const [clickModal, setClickModal] = useState(false);
-  const [hoverPosition, setHoverPosition] = useState(false);
   const [custom, setCustom] = useState(false);
   const svgRef: any = useRef();
 
@@ -78,7 +76,7 @@ export const ResultPage = (props: Props) => {
     const blob = await domToImg(svgRef.current);
     // let blob = await html2canvasToBlob(svgRef.current);
     console.log('blob', blob);
-    saveAs(blob);
+    // saveAs(blob);
 
     // blob.toBlob((b: any) => formData.append('file', b));
     formData.append('file', blob);
@@ -101,32 +99,7 @@ export const ResultPage = (props: Props) => {
   };
 
   const openModal = () => {
-    if (clickModal) {
-      setModal(false);
-      return;
-    }
-    setClickModal(true);
-    setModal(true);
-  };
-
-  const closeModal = () => {
-    setModal(false);
-  };
-
-  const openHoverModal = () => {
-    if (!clickModal) {
-      setModal(true);
-      return;
-    }
-  };
-
-  const closeHoverModal = () => {
-    if (!clickModal) {
-      setModal(false);
-      setClickModal(false);
-      return;
-    }
-    setClickModal(false);
+    setModal((pre) => !pre);
   };
 
   const onChangeCustom = () => {
@@ -140,7 +113,7 @@ export const ResultPage = (props: Props) => {
 
     console.log(svgRef.current);
     const blob = await domToImg(svgRef.current);
-    saveAs(blob);
+    // saveAs(blob);
 
     // url &&
     //   imageDownload({
@@ -150,10 +123,11 @@ export const ResultPage = (props: Props) => {
 
   const styleContainer = {
     height: '100%',
-    background: 'linear-gradient(to bottom, #FFE3C5, #FFF3E5 90%)',
+    background: 'linear-gradient(to bottom, #C5E8FF 80%, #FFFFFF 100%)',
     position: 'relative',
     display: 'flex',
     justifyContent: 'center',
+    overflow: 'hidden',
   };
 
   const FilmLayout = styled('div')(({ theme }) => ({
@@ -163,7 +137,13 @@ export const ResultPage = (props: Props) => {
     position: 'relative',
     display: 'flex',
     flexDirection: 'column',
-    background: '#FFFFFF',
+    background: '#ffffff',
+
+    // TODO: 두 가지 버전 확인 받기
+    boxShadow:
+      'rgba(0, 0, 0, 0.15) 0px 20px 30px, rgba(0, 0, 0, 0.05) 0px 10px 15px',
+
+    // boxShadow: 'rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px',
     justifyContent: 'space-between',
     alignItems: 'center',
     [theme.breakpoints.down('desktop')]: {
@@ -180,8 +160,6 @@ export const ResultPage = (props: Props) => {
   }));
 
   const headerLayout = {
-    marginTop: 1,
-    marginBottom: 1,
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
@@ -194,6 +172,7 @@ export const ResultPage = (props: Props) => {
 
   const mainLayout = {
     // height: '70%',
+
     position: 'relative',
     display: 'flex',
     flexDirection: 'column',
@@ -327,25 +306,32 @@ export const ResultPage = (props: Props) => {
   return (
     <Box sx={styleContainer}>
       <FilmLayout theme={theme}>
-        <Box ref={svgRef} sx={{ width: '100%', bgcolor: 'white' }}>
+        <Box
+          className={change ? 'fadein' : undefined}
+          ref={svgRef}
+          sx={{
+            width: '77%',
+            bgcolor: 'white',
+            padding: `10px 20px 0px 20px`,
+          }}
+        >
           <Box className="headerLayout" sx={headerLayout}>
             <Typography
               variant="h3"
               align="center"
-              sx={[styleTitle, { color: '#7E7E7E' }]}
+              sx={[styleTitle, { color: '#7E7E7E', marginBottom: '10px' }]}
             >
               심슨필름
             </Typography>
           </Box>
           <Box className="mainLayout" sx={mainLayout}>
-            {/* {modal && <ModalComponent url={url} changeModal={openModal} />} */}
             <CustomSVG
               info={info}
               ratioBtn={ratioBtn}
               custom={custom}
             ></CustomSVG>
             {!custom ? null : (
-              <Box sx={{ height: 100, width: '100%', bgcolor: 'white' }}></Box>
+              <Box sx={{ height: 120, width: '100%', bgcolor: 'white' }}></Box>
             )}
           </Box>
         </Box>
@@ -385,7 +371,7 @@ export const ResultPage = (props: Props) => {
                     alt="downloadImage"
                     src={downloadIcon}
                     sx={{
-                      height: '110%',
+                      height: '100%',
                       textShadow: '3px 3px rgba(0, 0, 0, 0.25)',
                     }}
                   />
@@ -398,8 +384,6 @@ export const ResultPage = (props: Props) => {
               <IconButton
                 sx={styleRightBtn}
                 onClick={change ? openModal : ratioChange}
-                onMouseOver={change ? openHoverModal : undefined}
-                onMouseOut={change ? closeHoverModal : undefined}
               >
                 {change ? (
                   <ShareOutlinedIcon sx={styleCameraIcon} />
@@ -412,7 +396,27 @@ export const ResultPage = (props: Props) => {
                   />
                 )}
               </IconButton>
-              {modal && <ModalComponent url={url} changeModal={closeModal} />}
+              {modal && (
+                <>
+                  <Box
+                    onClick={() => {
+                      openModal();
+                    }}
+                    sx={{
+                      position: 'absolute',
+                      background: '#000000',
+                      width: '150vw',
+                      height: '120vh',
+                      top: 0,
+                      left: 0,
+                      transform: 'translate(-30%,-80%)',
+                      opacity: 0.7,
+                      zIndex: 5,
+                    }}
+                  />
+                  <ModalComponent url={url} />
+                </>
+              )}
             </Box>
           </Box>
         )}
