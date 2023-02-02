@@ -6,6 +6,7 @@ const SVGFemaleBasic_neck_pole = ({ main, sub, detail, viewBox }: any) => (
     viewBox={viewBox}
     width="100%"
     height="100%"
+    style={{ position: 'absolute' }}
   >
     <defs>
       <style></style>

@@ -19,6 +19,7 @@ import { saveAs } from 'file-saver';
 import CustomBox from './custom/CustomBox';
 import resultFilter from '@/utils/method/resultFilter';
 import postCustomStyleInfo from '@/apis/postCustomStyleInfo';
+import simpsonFilm from '/assets/pages/result/simpsonFilm.png';
 
 import './result.css';
 type Props = {};
@@ -33,6 +34,8 @@ export const ResultPage = (props: Props) => {
   const [ratioBtn, setRatioBtn] = useState(false);
   const [modal, setModal] = useState(false);
   const [custom, setCustom] = useState(false);
+  const [animation, setAnimation] = useState(false);
+
   const svgRef: any = useRef();
 
   const location = useLocation();
@@ -96,9 +99,11 @@ export const ResultPage = (props: Props) => {
     setUrl(link.link);
 
     setChange(true);
+    setAnimation(true);
   };
 
   const openModal = () => {
+    setAnimation(false);
     setModal((pre) => !pre);
   };
 
@@ -160,9 +165,11 @@ export const ResultPage = (props: Props) => {
   }));
 
   const headerLayout = {
+    height: '10%',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
+    alignItems: 'center',
   };
 
   const styleTitle = {
@@ -305,9 +312,17 @@ export const ResultPage = (props: Props) => {
 
   return (
     <Box sx={styleContainer}>
+      {/* {custom && (
+        <Button
+          sx={{ position: 'absolute', top: 40, left: 55, width: '25%' }}
+          onClick={goFirstPage}
+        >
+          <Box component="img" sx={{ width: '100%' }} src={simpsonFilm} />
+        </Button>
+      )} */}
       <FilmLayout theme={theme}>
         <Box
-          className={change ? 'fadein' : undefined}
+          className={animation ? 'fadein' : undefined}
           ref={svgRef}
           sx={{
             width: '77%',
@@ -316,13 +331,21 @@ export const ResultPage = (props: Props) => {
           }}
         >
           <Box className="headerLayout" sx={headerLayout}>
-            <Typography
-              variant="h3"
-              align="center"
-              sx={[styleTitle, { color: '#7E7E7E', marginBottom: '10px' }]}
+            <Button
+              sx={{ height: '40%', fontSize: 'inherit' }}
+              onClick={goFirstPage}
             >
-              심슨필름
-            </Typography>
+              <Typography
+                variant="h3"
+                align="center"
+                sx={[
+                  styleTitle,
+                  { color: '#7E7E7E', marginBottom: '10px', opacity: '0.8' },
+                ]}
+              >
+                심슨필름
+              </Typography>
+            </Button>
           </Box>
           <Box className="mainLayout" sx={mainLayout}>
             <CustomSVG
@@ -410,7 +433,7 @@ export const ResultPage = (props: Props) => {
                       top: 0,
                       left: 0,
                       transform: 'translate(-30%,-80%)',
-                      opacity: 0.7,
+                      opacity: 0.5,
                       zIndex: 5,
                     }}
                   />

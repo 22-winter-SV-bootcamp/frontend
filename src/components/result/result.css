@@ -8,6 +8,7 @@
 }
 
 .fadein {
+  animation-fill-mode: forwards;
   animation: fadein 5s ease-in;
   /* animation-fill-mode: backwards; */
 }
