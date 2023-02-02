@@ -7,10 +7,13 @@ import { postUploadImage } from '@/apis/postUploadImage';
 import triangle from '/assets/triangle.png';
 import { theme } from '@/utils/mui/breakpoints';
 import AddIcon from '@mui/icons-material/Add';
+import ButtonIcon from '../common/ButtonIcon';
 
 export const UploadPage = () => {
   let [taskId, setTaskId] = useState('');
+  let [gender, setGender] = useState('female');
   let [isLoading, setIsLoading] = useState(false);
+
   const navigate = useNavigate();
   let {
     data,
@@ -25,7 +28,10 @@ export const UploadPage = () => {
       if (data?.status === 'not yet') setTimeout(refetch, 5000);
       else {
         setIsLoading(false);
-        navigate('/result', { state: data });
+        console.log('aaa', { ...data.result, gender: gender });
+        navigate('/result', {
+          state: { ...data, result: { ...data, gender: gender } },
+        });
       }
     },
   });
@@ -82,7 +88,7 @@ export const UploadPage = () => {
   };
 
   const mainLayout = {
-    height: '82%',
+    height: '62%',
     position: 'relative',
     display: 'flex',
     flexDirection: 'column',
@@ -130,11 +136,14 @@ export const UploadPage = () => {
   };
 
   const footerLayout = {
-    height: '8%',
+    height: '28%',
+
+    padding: '20px 60px',
     position: 'relative',
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
+    // justifyContent: 'space-between',
     alignItems: 'center',
   };
 
@@ -239,7 +248,96 @@ export const UploadPage = () => {
             )}
           </StyleMainImg>
         </Box>
-        <Box className="footerLayout" sx={footerLayout}></Box>
+        <Box className="footerLayout" sx={footerLayout}>
+          {/* <Button
+            onClick={() => {
+              setGender('female');
+            }}
+            variant="contained"
+            color="inherit"
+            sx={{
+              boxShadow: '3px 3px 0px 0px #C7C7C7',
+              padding: 2,
+              width: '40%',
+              height: '100%',
+              borderRadius: '50px',
+              backgroundColor: '#FFFFFF',
+              fontSize: 'inherit',
+            }}
+          >
+            <Box
+              sx={[
+                { opacity: 0.5 },
+                gender === 'male' ? { filter: `grayscale(1)` } : {},
+              ]}
+              component="img"
+              width="3em"
+              src={`/assets/pages/result/female.png`}
+            ></Box>
+          </Button>
+          <Button
+            onClick={() => {
+              setGender('male');
+            }}
+            variant="contained"
+            color="inherit"
+            sx={{
+              boxShadow: '3px 3px 0px 0px #C7C7C7',
+              padding: 2,
+              width: '40%',
+              height: '100%',
+              borderRadius: '50px',
+              backgroundColor: '#FFFFFF',
+              fontSize: 'inherit',
+            }}
+          >
+            <Box
+              sx={[
+                { opacity: 0.5 },
+                gender === 'female' ? { filter: `grayscale(1)` } : {},
+              ]}
+              component="img"
+              width="3em"
+              src={`/assets/pages/result/male.png`}
+            ></Box>
+          </Button> */}
+          <Box
+            onClick={() => {
+              setGender('female');
+            }}
+            sx={[
+              {
+                opacity: 0.5,
+                marginRight: '20px',
+                '&:hover': {
+                  transform: 'scale(1.2)',
+                },
+              },
+              gender === 'male' ? { filter: `grayscale(1)` } : {},
+            ]}
+            component="img"
+            width="3.2em"
+            src={`/assets/pages/result/female.png`}
+          ></Box>
+          <Box
+            onClick={() => {
+              setGender('male');
+            }}
+            sx={[
+              {
+                opacity: 0.5,
+                marginLeft: '20px',
+                '&:hover': {
+                  transform: 'scale(1.2)',
+                },
+              },
+              gender === 'female' ? { filter: `grayscale(1)` } : {},
+            ]}
+            component="img"
+            width="3em"
+            src={`/assets/pages/result/male.png`}
+          ></Box>
+        </Box>
       </FilmLayout>
     </Box>
   );

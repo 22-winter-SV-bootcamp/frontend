@@ -605,7 +605,7 @@ const CustomSVG = ({
     background: colorArr[info.backgroundColor],
     aspectRatio: ratioBtn ? '2/3' : '1/1',
     overflow: 'hidden',
-    borderRadius: custom ? '0' : '10%',
+    // borderRadius: custom ? '0' : '10%',
     // filter: 'opacity(0.5) drop-shadow(0 0 0 #CCE7FF)',
     [theme.breakpoints.down('desktop')]: {
       maxWidth: '557px',
