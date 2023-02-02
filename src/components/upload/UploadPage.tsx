@@ -7,6 +7,7 @@ import { postUploadImage } from '@/apis/postUploadImage';
 import triangle from '/assets/triangle.png';
 import { theme } from '@/utils/mui/breakpoints';
 import AddIcon from '@mui/icons-material/Add';
+import CircularProgress from '@mui/material/CircularProgress';
 
 export const UploadPage = () => {
   let [taskId, setTaskId] = useState('');
@@ -79,6 +80,7 @@ export const UploadPage = () => {
     fontWeight: 'medium',
     fontSize: '1em',
     alignSelf: 'center',
+    FontFamily: "'Indie Flower', cursive",
   };
 
   const mainLayout = {
@@ -100,6 +102,7 @@ export const UploadPage = () => {
     maxWidth: '450px' /* 화면에 따라 수정 예정 */,
     background: isLoading ? '#FFE2C5' : '#C7C7C7',
     aspectRatio: '2/3',
+    fontSize: 'inherit',
     [theme.breakpoints.down('desktop')]: {
       maxWidth: '557px',
     },
@@ -123,10 +126,10 @@ export const UploadPage = () => {
     transform: 'translate(-50%, -50%)',
     width: '23%',
     height: '12%',
-    bgcolor: '#FFFFFF',
+    // bgcolor: '#FFFFFF',
     borderRadius: '150px',
     color: '#999999',
-    boxShadow: '3px 3px rgba(0, 0, 0, 0.25)',
+    // boxShadow: '3px 3px rgba(0, 0, 0, 0.25)',
   };
 
   const footerLayout = {
@@ -172,6 +175,10 @@ export const UploadPage = () => {
     });
   };
 
+  const goFirstPage = () => {
+    navigate('/', { replace: true });
+  };
+
   useEffect(() => {
     if (taskId !== '') refetch();
   }, [taskId]);
@@ -180,9 +187,14 @@ export const UploadPage = () => {
     <Box sx={styleContainer}>
       <FilmLayout className="filmLayout" theme={theme}>
         <Box className="headerLayout" sx={headerLayout}>
-          <Typography variant="h3" sx={[styleTitle, { color: '#7E7E7E' }]}>
-            심슨필름
-          </Typography>
+          <Button
+            sx={{ height: '40%', fontSize: 'inherit' }}
+            onClick={goFirstPage}
+          >
+            <Typography variant="h3" sx={[styleTitle, { color: '#7E7E7E' }]}>
+              심슨필름
+            </Typography>
+          </Button>
         </Box>
         <Box className="mainLayout" sx={mainLayout}>
           <StyleMainImg
@@ -198,20 +210,16 @@ export const UploadPage = () => {
               sx={styletriangle}
             ></Box>
             {isLoading ? (
-              <Typography
-                className="loadingText"
-                variant="h3"
-                align="center"
-                sx={[
-                  styleTitle,
-                  {
-                    color: '#FFFFFF',
-                    textShadow: '3px 3px #ACACAC',
-                  },
-                ]}
-              >
-                로딩중 ..
-              </Typography>
+              <CircularProgress
+                sx={{
+                  color: '#FFFFFF',
+                  // fontSize: 'inherit',
+                  // width: '10em',
+                  // height: '10em',
+                }}
+                size="3em"
+                thickness={6}
+              />
             ) : (
               <Button
                 variant="text"
@@ -232,7 +240,8 @@ export const UploadPage = () => {
                     //   tablet: '7em',
                     //   laptop: '15em',
                     // },
-                    fontSize: '4em',
+                    fontSize: '8em',
+                    color: '#FFFFFF',
                   }}
                 />
               </Button>

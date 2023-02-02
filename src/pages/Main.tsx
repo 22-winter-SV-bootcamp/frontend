@@ -56,7 +56,7 @@ const Main = () => {
 
     [theme.breakpoints.up('desktop')]: {
       margin: '0 auto',
-      marginTop: 50,
+      marginTop: 150,
       alignSelf: 'start',
       display: 'flex',
       justifyContent: 'center',
@@ -144,7 +144,7 @@ const Main = () => {
               height: '100vh',
               top: 0,
               left: 0,
-              opacity: 0.7,
+              opacity: 0.5,
               zIndex: 1,
             }}
           ></Box>
