@@ -11,16 +11,15 @@ import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 
 type Props = {
   url: string;
-  changeModal: () => void;
 };
 
-const ModalComponent = ({ url, changeModal }: Props) => {
+const ModalComponent = ({ url }: Props) => {
   const [copy, setCopy] = useState(false);
   const [open, setOpen] = useState(false);
 
-  const closeModal = () => {
-    changeModal();
-  };
+  // const closeModal = () => {
+  //   changeModal();
+  // };
 
   const onCopyClick = async () => {
     setCopy((pre) => !pre);
@@ -48,81 +47,50 @@ const ModalComponent = ({ url, changeModal }: Props) => {
     // display: 'flex',
     // justifyContent: 'center',
     // alignItems: 'bottom',
-    width: '50%',
-    height: '230%',
-    minheight: '185px',
-    background: '#FFE2C5',
-    borderRadius: '15%',
+    // width: '160px',
+    // height: '160px',
+    width: '5em',
+    height: '3em',
+    // minheight: '185px',
+    // background: '#FFFFFF',
+    // borderRadius: '10% 10% 10% 10%/ 12% 12% 12% 12%',
+
     position: 'absolute',
-    bottom: '80%',
-    right: '13%',
-    zIndex: 1,
-    boxShadow: '4px 4px rgba(0, 0, 0, 0.25)',
+    bottom: '70px',
+    zIndex: 10,
+    // boxShadow: '4px 4px rgba(0, 0, 0, 0.25)',
     // alignSelf: 'end',
-    [theme.breakpoints.down('desktop')]: {
+    [theme.breakpoints.down('tablet')]: {
+      right: '15.5%',
+      maxWidth: '300px',
+    },
+    [theme.breakpoints.between('tablet', 'desktop')]: {
+      bottom: '115px',
+      right: '9.5%',
       maxWidth: '557px',
     },
     [theme.breakpoints.up('desktop')]: {
+      right: '8%',
+      bottom: '110px',
       maxWidth: '477px',
     },
   }));
 
-  const headerLayout = {
-    height: '30%',
-    position: 'relative',
-    display: 'flex',
-    justifyContent: 'end',
-    alignItems: 'bottom',
-    paddingRight: '10px',
-    paddingTop: '10px',
-  };
-
-  const closeBtn = {
-    minWidth: '23px',
-    minHeight: '50px',
-    height: '90%',
-    position: 'relative',
-  };
-
-  const stylecloseIcon = {
-    width: '100%',
-    height: '70%',
-    color: '#FFFFFF',
-    filter: 'drop-shadow(4px 2px rgba(0, 0, 0, 0.25))',
-  };
-
   const mainLayout = {
-    height: '70%',
     position: 'relative',
+    height: '100%',
     display: 'flex',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     alignItems: 'center',
-  };
-
-  const styleShareBox = {
-    width: '90%',
-    height: '85%',
-    minHeight: '117px',
-    background: '#FFFFFF',
-    borderRadius: '15%',
-    boxShadow: '4px 4px rgba(0, 0, 0, 0.25)',
-    position: 'relative',
-    display: 'flex',
-    justifyContent: 'space-evenly',
-    alignItems: 'center',
-    marginBottom: '15px',
   };
 
   const styleBtn = {
     p: '6px',
-    pr: 0,
     '&:hover': {
-      height: '6.5em',
-      width: '6.5em',
+      transform: 'scale(1.2)',
     },
-    height: '5.8em',
-    width: '5.8em',
-    minWidth: '58px',
+    height: '2em',
+    width: '2em',
     boxShadow: '3px 3px rgba(0, 0, 0, 0.25)',
     background: copy
       ? 'linear-gradient(135deg, #FFFFFF, #FFD521, #FAFAFA)'
@@ -137,51 +105,43 @@ const ModalComponent = ({ url, changeModal }: Props) => {
 
   return (
     <ModalLayout className="modalLayout" theme={theme}>
-      <Box className="headerLayout" sx={headerLayout}>
-        <Button sx={closeBtn} onClick={closeModal}>
-          <Box component="img" src={closeIcon} sx={stylecloseIcon} />
-        </Button>
-      </Box>
-      <Box className="mainLayout" sx={mainLayout}>
-        <Box sx={styleShareBox}>
-          <CustomTooltip
-            arrow
-            placement="top-end"
-            title={
-              <>
-                <CheckCircleOutlineIcon
-                  fontSize="inherit"
-                  sx={{
-                    mr: '10px',
-                  }}
-                />
-                <Box sx={{ display: 'inline' }}>copyed</Box>
-              </>
-            }
-            open={open}
-            disableFocusListener
-            disableHoverListener
-            disableTouchListener
-            disableInteractive
-            TransitionProps={{ timeout: 2200 }}
-          >
-            <IconButton sx={styleBtn} onClick={onCopyClick}>
-              <Box component="img" src={linkIcon} sx={styleIcon} />
-            </IconButton>
-          </CustomTooltip>
-          <IconButton
-            sx={[
-              styleBtn,
-              {
-                background:
-                  'linear-gradient(135deg, #FFFFFF, #FFD521, #FAFAFA)',
-              },
-            ]}
-            onClick={() => sendKakao(url)}
-          >
-            <Box component="img" src={kakaotalkIcon} sx={styleIcon} />
+      <Box sx={mainLayout}>
+        <CustomTooltip
+          arrow
+          placement="top-end"
+          title={
+            <>
+              <CheckCircleOutlineIcon
+                fontSize="inherit"
+                sx={{
+                  mr: '10px',
+                }}
+              />
+              <Box sx={{ display: 'inline' }}>copyed</Box>
+            </>
+          }
+          open={open}
+          disableFocusListener
+          disableHoverListener
+          disableTouchListener
+          disableInteractive
+          TransitionProps={{ timeout: 2200 }}
+        >
+          <IconButton sx={styleBtn} onClick={onCopyClick}>
+            <Box component="img" src={linkIcon} sx={styleIcon} />
           </IconButton>
-        </Box>
+        </CustomTooltip>
+        <IconButton
+          sx={[
+            styleBtn,
+            {
+              background: 'linear-gradient(135deg, #FFFFFF, #FFD521, #FAFAFA)',
+            },
+          ]}
+          onClick={() => sendKakao(url)}
+        >
+          <Box component="img" src={kakaotalkIcon} sx={styleIcon} />
+        </IconButton>
       </Box>
     </ModalLayout>
   );
