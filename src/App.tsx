@@ -13,10 +13,6 @@ import { ResultPage } from './components/result/ResultPage';
 import { UploadPage } from './components/upload/UploadPage';
 
 function App() {
-
   return <RouterProvider router={router}></RouterProvider>;
-
 }
 export default App;
-
-

@@ -17,13 +17,13 @@ const ButtonIcon = ({ title, setOpen, setPage }: any) => {
         height: '100%',
         borderRadius: '50px',
         backgroundColor: '#FFFFFF',
+        fontSize: 'inherit',
       }}
     >
       <Box
         sx={{ opacity: 0.5 }}
         component="img"
-        width="75%"
-        height="75%"
+        width="3em"
         src={`/assets/pages/main/${title}.png`}
       ></Box>
     </Button>

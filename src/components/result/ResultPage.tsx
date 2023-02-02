@@ -19,6 +19,7 @@ import { saveAs } from 'file-saver';
 import CustomBox from './custom/CustomBox';
 import resultFilter from '@/utils/method/resultFilter';
 import postCustomStyleInfo from '@/apis/postCustomStyleInfo';
+import { Translate } from '@mui/icons-material';
 
 type Props = {};
 export const ResultPage = (props: Props) => {
@@ -31,9 +32,6 @@ export const ResultPage = (props: Props) => {
   const [change, setChange] = useState(false);
   const [ratioBtn, setRatioBtn] = useState(false);
   const [modal, setModal] = useState(false);
-  const [hoverModal, setHoverModal] = useState(false);
-  const [clickModal, setClickModal] = useState(false);
-  const [hoverPosition, setHoverPosition] = useState(false);
   const [custom, setCustom] = useState(false);
   const svgRef: any = useRef();
 
@@ -101,32 +99,7 @@ export const ResultPage = (props: Props) => {
   };
 
   const openModal = () => {
-    if (clickModal) {
-      setModal(false);
-      return;
-    }
-    setClickModal(true);
-    setModal(true);
-  };
-
-  const closeModal = () => {
-    setModal(false);
-  };
-
-  const openHoverModal = () => {
-    if (!clickModal) {
-      setModal(true);
-      return;
-    }
-  };
-
-  const closeHoverModal = () => {
-    if (!clickModal) {
-      setModal(false);
-      setClickModal(false);
-      return;
-    }
-    setClickModal(false);
+    setModal((pre) => !pre);
   };
 
   const onChangeCustom = () => {
@@ -150,10 +123,11 @@ export const ResultPage = (props: Props) => {
 
   const styleContainer = {
     height: '100%',
-    background: 'linear-gradient(to bottom, #FFE3C5, #FFF3E5 90%)',
+    background: 'linear-gradient(to bottom, #C5E8FF 80%, #FFFFFF 100%)',
     position: 'relative',
     display: 'flex',
     justifyContent: 'center',
+    overflow: 'hidden',
   };
 
   const FilmLayout = styled('div')(({ theme }) => ({
@@ -385,7 +359,7 @@ export const ResultPage = (props: Props) => {
                     alt="downloadImage"
                     src={downloadIcon}
                     sx={{
-                      height: '110%',
+                      height: '100%',
                       textShadow: '3px 3px rgba(0, 0, 0, 0.25)',
                     }}
                   />
@@ -398,8 +372,6 @@ export const ResultPage = (props: Props) => {
               <IconButton
                 sx={styleRightBtn}
                 onClick={change ? openModal : ratioChange}
-                onMouseOver={change ? openHoverModal : undefined}
-                onMouseOut={change ? closeHoverModal : undefined}
               >
                 {change ? (
                   <ShareOutlinedIcon sx={styleCameraIcon} />
@@ -412,7 +384,27 @@ export const ResultPage = (props: Props) => {
                   />
                 )}
               </IconButton>
-              {modal && <ModalComponent url={url} changeModal={closeModal} />}
+              {modal && (
+                <>
+                  <Box
+                    onClick={() => {
+                      openModal();
+                    }}
+                    sx={{
+                      position: 'absolute',
+                      background: '#000000',
+                      width: '150vw',
+                      height: '120vh',
+                      top: 0,
+                      left: 0,
+                      transform: 'translate(-30%,-80%)',
+                      opacity: 0.7,
+                      zIndex: 5,
+                    }}
+                  />
+                  <ModalComponent url={url} />
+                </>
+              )}
             </Box>
           </Box>
         )}
