@@ -213,7 +213,7 @@ export const ResultPage = (props: Props) => {
 
   const styleRightBtn = {
     p: '6px',
-    pr: change ? '6px' : 0,
+    pr: ratioBtn ? '6px' : 0,
     '&:hover': {
       transform: 'scale(1.2)',
     },
@@ -263,52 +263,6 @@ export const ResultPage = (props: Props) => {
     minHeight: '66px',
     fontSize: 'inherit',
     filter: 'drop-shadow(3px 3px rgba(0, 0, 0, 0.25))',
-  };
-
-  const StyleDescibe = styled('div')(({ theme }) => ({
-    position: 'relative',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    paddingLeft: '10%',
-    height: '30%',
-    // width: '100%',
-    maxWidth: '450px' /* 화면에 따라 수정 예정 */,
-    borderRadius: '10%',
-    background: '#FFBA75',
-    whiteSpace: 'pre-line',
-    boxShadow: '3px 3px rgba(0, 0, 0, 0.25)',
-    marginBottom: '3px',
-    [theme.breakpoints.down('desktop')]: {
-      maxWidth: '557px',
-    },
-    [theme.breakpoints.up('desktop')]: {
-      maxWidth: '477px',
-    },
-  }));
-
-  const firstLayout = {
-    height: '15%',
-    position: 'relative',
-    display: 'flex',
-    justifyContent: 'end',
-    alignItems: 'bottom',
-    paddingRight: '10px',
-    paddingTop: '10px',
-  };
-
-  const okBtn = {
-    minWidth: '23px',
-    minHeight: '50px',
-    height: '90%',
-    position: 'relative',
-  };
-
-  const styleOkIcon = {
-    width: '100%',
-    height: '70%',
-    color: '#FFFFFF',
-    filter: 'drop-shadow(4px 2px rgba(0, 0, 0, 0.25))',
   };
 
   const date = new Date();
@@ -436,7 +390,7 @@ export const ResultPage = (props: Props) => {
                     component="img"
                     alt="ratioControl"
                     src={ratioBtn ? ratio_1_1 : ratio_2_3}
-                    sx={{ height: ratioBtn ? '50%' : '40%' }}
+                    sx={{ height: ratioBtn ? '45%' : '40%' }}
                   />
                 )}
               </IconButton>

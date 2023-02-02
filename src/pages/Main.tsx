@@ -57,7 +57,7 @@ const Main = () => {
 
     [theme.breakpoints.up('desktop')]: {
       margin: '0 auto',
-      marginTop: 150,
+      marginTop: 100,
       alignSelf: 'start',
       display: 'flex',
       justifyContent: 'center',
@@ -131,10 +131,13 @@ const Main = () => {
   console.log(page);
 
   const TitleBox = styled('div')(({ theme }) => ({
-    [theme.breakpoints.down('desktop')]: {},
     [theme.breakpoints.down('tablet')]: {
+      height: '80px',
+    },
+    [theme.breakpoints.between('tablet', 'desktop')]: {
       marginBottom: 0,
-      height: '120px',
+      height: '160px',
+      // fontSize: '100px',
     },
     [theme.breakpoints.up('desktop')]: {},
   }));
@@ -165,7 +168,7 @@ const Main = () => {
               sx={{
                 marginBottom: 1,
                 color: 'white',
-                fontSize: 100,
+                fontSize: '1em',
                 fontWeight: 400,
                 textShadow: '3px 3px #ACACAC',
                 // WebkitTextStroke: '2px #000000',

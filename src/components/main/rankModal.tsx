@@ -126,10 +126,7 @@ export default function RankModal({ open, setOpen }: any) {
           theme={theme}
         >
           <Box
-            sx={[
-              StylecommonRank,
-              { height: '100%', flexDirection: 'column', paddingTop: '10px' },
-            ]}
+            sx={[StylecommonRank, { height: '100%', flexDirection: 'column' }]}
           >
             <Box
               sx={[
@@ -149,7 +146,12 @@ export default function RankModal({ open, setOpen }: any) {
                 Best Outfit of This Week
               </Typography>
             </Box>
-            <Box sx={[StylecommonRank, { height: '86%' }]}>
+            <Box
+              sx={[
+                StylecommonRank,
+                { height: '86%', justifyContent: 'space-evenly' },
+              ]}
+            >
               {rankInfo?.map((gender) => (
                 <Box
                   sx={{
@@ -157,7 +159,7 @@ export default function RankModal({ open, setOpen }: any) {
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
-                    width: '50%',
+                    width: '45%',
                     height: '100%',
                   }}
                 >

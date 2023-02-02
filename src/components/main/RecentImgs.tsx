@@ -76,7 +76,14 @@ const RecentImgs = ({ cards, animation }: any) => {
       transform: 'translate(-50%,-50%)',
       fontSize: '3px',
     },
-    [theme.breakpoints.between('tablet', 'desktop')]: {},
+    [theme.breakpoints.between('tablet', 'desktop')]: {
+      width: '100%',
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%,-50%)',
+      fontSize: '11px',
+    },
     [theme.breakpoints.up('desktop')]: {},
   }));
 
