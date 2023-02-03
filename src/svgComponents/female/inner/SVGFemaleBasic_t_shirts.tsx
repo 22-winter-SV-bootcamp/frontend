@@ -6,7 +6,7 @@ const SVGFemaleBasic_t_shirts = ({ main, sub, detail, viewBox }: any) => (
     viewBox={viewBox}
     width="100%"
     height="100%"
-    style={{ position: 'absolute' }}
+    // style={{ position: 'absolute' }}
   >
     <defs></defs>
     <g id="\uC0C9">
@@ -23,7 +23,7 @@ const SVGFemaleBasic_t_shirts = ({ main, sub, detail, viewBox }: any) => (
 );
 
 SVGFemaleBasic_t_shirts.defaultProps = {
-  viewBox: '-40 114 550 550',
+  viewBox: '-41.5 113 550 550',
 };
 
 export default SVGFemaleBasic_t_shirts;

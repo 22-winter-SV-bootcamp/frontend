@@ -6,7 +6,8 @@ import { theme } from '@/utils/mui/breakpoints';
 import { url } from 'inspector';
 import './recentImgs.css';
 import './re.css';
-const RecentImgs = ({ cards, animation }: any) => {
+import { useEffect, useState } from 'react';
+const RecentImgs = ({ cards, open, re }: any) => {
   const p = [
     {
       left: '60%',
@@ -105,7 +106,7 @@ const RecentImgs = ({ cards, animation }: any) => {
   // }));
 
   // const Triangle = styled('div')(({ theme }) => ({}));
-
+  console.log('tre', re);
   return (
     <Box1 className="recentImageLayout" theme={theme}>
       {/* {cards?.map((card: any, i: number) => (
@@ -119,10 +120,18 @@ const RecentImgs = ({ cards, animation }: any) => {
           src={card.link}
         ></Card>
       ))} */}
+
       <Box2 className="wrapper" sx={{ fontSize: 'inherit' }} theme={theme}>
         {cards?.map((card: any) => (
           <>
-            <Box className="item" sx={{ fontSize: 'inherit' }}>
+            <Box
+              key={card.link}
+              className={`item  ${re ? 'opacity0' : 'opacity1'} ${
+                !open && re ? 'item_animation' : undefined
+              }
+              `}
+              sx={{ fontSize: 'inherit' }}
+            >
               <Box className="polaroid" sx={{ fontSize: 'inherit' }}>
                 <Box
                   component="img"

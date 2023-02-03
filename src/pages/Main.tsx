@@ -18,7 +18,7 @@ type CardsType = {
 };
 
 const Main = () => {
-  const [animation, setAnimaion] = useState(false);
+  const [animation, setAnimaion] = useState(true);
   const MainBox = styled('div')(({ theme }) => ({
     width: '100vw',
     overflow: 'hidden',
@@ -106,14 +106,14 @@ const Main = () => {
   const [open, setOpen] = useState(false);
   // const [cards, setCards] = useState<CardsType[]>([]);
   const [page, setPage] = useState(1);
-
+  console.log('ani', animation);
   // TODO: 페이지 없을 때 처리!!
   const {
     isLoading,
     isError,
     data: cards,
   } = useQuery(['recentPage', page], async () => await getRecentImgs(page), {
-    staleTime: 1000 * 60 ** 60,
+    // staleTime: 1000 * 60 ** 60,
     refetchOnWindowFocus: false,
     retry: 0,
     onError: () => {
@@ -129,7 +129,7 @@ const Main = () => {
   //   if (data) setCards([...data]);
   // }, [data]);
   console.log(page);
-
+  const [re, setRe] = useState(true);
   const TitleBox = styled('div')(({ theme }) => ({
     [theme.breakpoints.down('tablet')]: {
       height: '80px',
@@ -144,11 +144,12 @@ const Main = () => {
   return (
     <>
       <MainBox className="mainBox" theme={theme}>
-        <RankModal open={open} setOpen={setOpen}></RankModal>
+        <RankModal open={open} setOpen={setOpen} setRe={setRe}></RankModal>
         {open ? (
           <Box
             onClick={() => {
               setOpen(false);
+              setRe(false);
             }}
             sx={{
               position: 'absolute',
@@ -182,7 +183,7 @@ const Main = () => {
           </Typography>
         </TopBox>
         {/* <Box1 theme={theme}> */}
-        <RecentImgs cards={cards} animation={animation}></RecentImgs>
+        <RecentImgs cards={cards} open={open} re={re}></RecentImgs>
         {/* </Box1> */}
 
         <BottomBox theme={theme}>
@@ -200,13 +201,14 @@ const Main = () => {
             <ButtonIcon
               setPage={setPage}
               setOpen={setOpen}
+              setRe={setRe}
               title="refresh"
             ></ButtonIcon>
             <ButtonIcon
               title="rank"
+              setRe={setRe}
               setPage={setPage}
               setOpen={setOpen}
-              setAnimaion={setAnimaion}
             ></ButtonIcon>
           </Box>
           <Button
