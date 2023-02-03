@@ -64,7 +64,7 @@ export const handlers = [
       top: 'shirts',
       top_color: 'white',
       bottom: 'slacks',
-      bottom_color: 'balck',
+      bottom_color: 'black',
       count: '333',
     };
 
