@@ -144,7 +144,7 @@ const CustomBox = ({
           minHeight: '48px',
           overflow: 'hidden',
           display: 'flex',
-          justifyContent: 'space-evenly',
+          justifyContent:"space-around"
         }}
       >
         {['gender', 'hair', 'top', 'inner', 'bottom', 'background'].map(
@@ -152,8 +152,8 @@ const CustomBox = ({
             <IconButton
               sx={{
                 height: '100%',
+                width: 0.136,
                 p: 0,
-                px: 1.6,
                 bgcolor: title === tmpTitle ? '#DCC5AF' : 'inherit',
                 borderRadius: '100%',
               }}
@@ -165,17 +165,19 @@ const CustomBox = ({
                 // setTitleIconBtn(true);
               }}
             >
-              <Box
-                component="img"
-                alt={tmpTitle}
-                src={`/assets/pages/result/${tmpTitle}Icon.png`}
-                sx={{ height: '50%' }}
-              />
+                 <Box
+                  component="img"
+                  alt={tmpTitle}
+                  src={`/assets/pages/result/${tmpTitle}Icon.png`}
+                  sx={{  
+                    width:0.5
+                  }}
+                />
             </IconButton>
           ),
         )}
-        <IconButton onClick={onChangeCustom} sx={{ p: 0 }}>
-          <CloseOutlined />
+        <IconButton onClick={onChangeCustom} sx={{ p: 0, width: 0.136, }}>
+          <CloseOutlined sx={{width:0.3,height:0.3}}/>
         </IconButton>
       </Box>
       <Box
