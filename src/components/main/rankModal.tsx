@@ -22,9 +22,9 @@ export default function RankModal({ open, setOpen, setRe }: any) {
     {
       gender: 'male',
       top: 'shirts',
-      top_color: 'white',
+      topColor: 'white',
       bottom: 'denim',
-      bottom_color: 'deepBlue',
+      bottomColor: 'deepBlue',
       hair: 'short',
       hairColor: 'black',
       inner: 'basic_t_nasi',
@@ -35,9 +35,9 @@ export default function RankModal({ open, setOpen, setRe }: any) {
     {
       gender: 'female',
       top: 'shirts',
-      top_color: 'white',
+      topColor: 'white',
       bottom: 'slacks',
-      bottom_color: 'white',
+      bottomColor: 'pink',
       hair: 'long',
       hairColor: 'black',
       inner: 'basic_t_nasi',
@@ -53,7 +53,15 @@ export default function RankModal({ open, setOpen, setRe }: any) {
     {
       onSuccess(data) {
         console.log('male', data);
-        setRankInfo((pre: any) => [{ ...pre[0], ...data }, { ...pre[1] }]);
+        setRankInfo((pre: any) => [
+          {
+            ...pre[0],
+            ...data,
+            topColor: data.top_color,
+            bottomColor: data.bottom_color,
+          },
+          { ...pre[1] },
+        ]);
       },
     },
   );
@@ -63,7 +71,15 @@ export default function RankModal({ open, setOpen, setRe }: any) {
     {
       onSuccess(data) {
         console.log('female', data);
-        setRankInfo((pre: any) => [{ ...pre[0] }, { ...pre[1], ...data }]);
+        setRankInfo((pre: any) => [
+          { ...pre[0] },
+          {
+            ...pre[1],
+            ...data,
+            topColor: data.top_color,
+            bottomColor: data.bottom_color,
+          },
+        ]);
       },
     },
   );
