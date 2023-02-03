@@ -17,19 +17,19 @@ import { theme } from '@/utils/mui/breakpoints';
 import { Translate } from '@mui/icons-material';
 import { prependListener } from 'process';
 
-export default function RankModal({ open, setOpen }: any) {
+export default function RankModal({ open, setOpen, setRe }: any) {
   const [rankInfo, setRankInfo] = React.useState([
     {
       gender: 'male',
       top: 'shirts',
       top_color: 'white',
-      bottom: 'slacks',
-      bottom_color: 'white',
-      hair: 'middle',
+      bottom: 'denim',
+      bottom_color: 'deepBlue',
+      hair: 'short',
       hairColor: 'black',
-      inner: 'basic_t_shirts',
-      innerColor: 'white',
-      backgroundColor: 'black',
+      inner: 'basic_t_nasi',
+      innerColor: 'skin',
+      backgroundColor: 'coolGrey',
       count: '1',
     },
     {
@@ -40,7 +40,7 @@ export default function RankModal({ open, setOpen }: any) {
       bottom_color: 'white',
       hair: 'long',
       hairColor: 'black',
-      inner: 'basic_t_shirts',
+      inner: 'basic_t_nasi',
       innerColor: 'white',
       backgroundColor: 'pink',
       count: '1',
@@ -121,6 +121,7 @@ export default function RankModal({ open, setOpen }: any) {
       {open ? (
         <Box2
           onClick={() => {
+            setRe(false);
             setOpen(false);
           }}
           theme={theme}
