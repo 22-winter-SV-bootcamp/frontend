@@ -6,7 +6,7 @@ const SVGFemaleBasic_t_shirts = ({ main, sub, detail, viewBox }: any) => (
     viewBox={viewBox}
     width="100%"
     height="100%"
-    style={{ position: 'absolute' }}
+    // style={{ position: 'absolute' }}
   >
     <defs></defs>
     <g id="\uC0C9">

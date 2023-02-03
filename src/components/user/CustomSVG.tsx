@@ -144,7 +144,7 @@ const CustomSVG = ({
             main={colorArr[innerColor]}
             sub={sub}
             detail={detail}
-            viewBox={viewBox}
+            viewBox={ratioBtn ? '12.5 89 460 460' : undefined}
           ></SVGFemaleBasic_neck_pole>
         ),
         basic_t_shirts: (
@@ -152,7 +152,7 @@ const CustomSVG = ({
             main={colorArr[innerColor]}
             sub={sub}
             detail={detail}
-            viewBox={viewBox}
+            viewBox={ratioBtn ? '12.5 90 460 460' : undefined}
           ></SVGFemaleBasic_t_shirts>
         ),
         basic_nasi: (

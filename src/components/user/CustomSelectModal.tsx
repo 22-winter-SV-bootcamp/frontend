@@ -131,7 +131,16 @@ function CustomSelectModal({
             onClick={() => {
               setInfo((pre: any) => ({ ...pre, gender: 'female' }));
             }}
-            sx={{ width: '20%' }}
+            sx={[
+              {
+                marginRight: 5,
+                width: '20%',
+                '&:hover': {
+                  transform: 'scale(1.2)',
+                },
+              },
+              info.gender === 'male' ? { filter: `grayscale(1)` } : {},
+            ]}
             component="img"
             src={`/assets/pages/result/female.png`}
             alt="female"
@@ -140,7 +149,16 @@ function CustomSelectModal({
             onClick={() => {
               setInfo((pre: any) => ({ ...pre, gender: 'male' }));
             }}
-            sx={{ width: '20%' }}
+            sx={[
+              {
+                marginLeft: 5,
+                width: '20%',
+                '&:hover': {
+                  transform: 'scale(1.2)',
+                },
+              },
+              info.gender === 'female' ? { filter: `grayscale(1)` } : {},
+            ]}
             component="img"
             src={`/assets/pages/result/m.png`}
             alt="male"

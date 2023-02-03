@@ -1,14 +1,17 @@
-import { Box, Button } from '@mui/material';
+import { Box, Button, setRef } from '@mui/material';
 import React, { useState } from 'react';
 
-const ButtonIcon = ({ title, setOpen, setPage, setAnimation }: any) => {
+const ButtonIcon = ({ title, setOpen, setPage, setRe }: any) => {
   return (
     <Button
-      onClick={() => {
+      onClick={async () => {
         if (title === 'rank') {
+          setRe(false);
           setOpen(true);
-          setAnimation(true);
-        } else setPage((page: number) => page + 1);
+        } else {
+          setRe(true);
+          setPage((page: number) => page + 1);
+        }
       }}
       variant="contained"
       color="inherit"

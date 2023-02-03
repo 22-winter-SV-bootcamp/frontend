@@ -17,30 +17,30 @@ import { theme } from '@/utils/mui/breakpoints';
 import { Translate } from '@mui/icons-material';
 import { prependListener } from 'process';
 
-export default function RankModal({ open, setOpen }: any) {
+export default function RankModal({ open, setOpen, setRe }: any) {
   const [rankInfo, setRankInfo] = React.useState([
     {
       gender: 'male',
       top: 'shirts',
-      top_color: 'white',
-      bottom: 'slacks',
-      bottom_color: 'white',
-      hair: 'middle',
+      topColor: 'white',
+      bottom: 'denim',
+      bottomColor: 'deepBlue',
+      hair: 'short',
       hairColor: 'black',
-      inner: 'basic_t_shirts',
-      innerColor: 'white',
-      backgroundColor: 'black',
+      inner: 'basic_t_nasi',
+      innerColor: 'skin',
+      backgroundColor: 'coolGrey',
       count: '1',
     },
     {
       gender: 'female',
       top: 'shirts',
-      top_color: 'white',
+      topColor: 'white',
       bottom: 'slacks',
-      bottom_color: 'white',
+      bottomColor: 'pink',
       hair: 'long',
       hairColor: 'black',
-      inner: 'basic_t_shirts',
+      inner: 'basic_t_nasi',
       innerColor: 'white',
       backgroundColor: 'pink',
       count: '1',
@@ -53,7 +53,15 @@ export default function RankModal({ open, setOpen }: any) {
     {
       onSuccess(data) {
         console.log('male', data);
-        setRankInfo((pre: any) => [{ ...pre[0], ...data }, { ...pre[1] }]);
+        setRankInfo((pre: any) => [
+          {
+            ...pre[0],
+            ...data,
+            topColor: data.top_color,
+            bottomColor: data.bottom_color,
+          },
+          { ...pre[1] },
+        ]);
       },
     },
   );
@@ -63,7 +71,15 @@ export default function RankModal({ open, setOpen }: any) {
     {
       onSuccess(data) {
         console.log('female', data);
-        setRankInfo((pre: any) => [{ ...pre[0] }, { ...pre[1], ...data }]);
+        setRankInfo((pre: any) => [
+          { ...pre[0] },
+          {
+            ...pre[1],
+            ...data,
+            topColor: data.top_color,
+            bottomColor: data.bottom_color,
+          },
+        ]);
       },
     },
   );
@@ -121,6 +137,7 @@ export default function RankModal({ open, setOpen }: any) {
       {open ? (
         <Box2
           onClick={() => {
+            setRe(false);
             setOpen(false);
           }}
           theme={theme}
