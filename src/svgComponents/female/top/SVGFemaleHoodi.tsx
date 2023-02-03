@@ -129,6 +129,6 @@ const SVGFemaleHoodi = ({ main, sub, detail, viewBox }: any) => (
   </svg>
 );
 SVGFemaleHoodi.defaultProps = {
-  viewBox: '-40 114 550 550',
+  viewBox: '-40.5 115 550 550',
 };
 export default SVGFemaleHoodi;

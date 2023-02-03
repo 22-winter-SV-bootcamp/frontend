@@ -23,7 +23,7 @@ const SVGFemaleBasic_t_shirts = ({ main, sub, detail, viewBox }: any) => (
 );
 
 SVGFemaleBasic_t_shirts.defaultProps = {
-  viewBox: '-40 114 550 550',
+  viewBox: '-42 113 550 550',
 };
 
 export default SVGFemaleBasic_t_shirts;
