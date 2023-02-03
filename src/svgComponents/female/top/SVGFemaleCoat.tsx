@@ -82,6 +82,6 @@ const SVGFemaleCoat = ({ main, sub, detail, viewBox }: any) => (
   </svg>
 );
 SVGFemaleCoat.defaultProps = {
-  viewBox: '-40 114 550 550',
+  viewBox: '-41.25 114 550 550',
 };
 export default SVGFemaleCoat;

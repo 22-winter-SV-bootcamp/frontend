@@ -51,6 +51,6 @@ const SVGFemalePkshirts = ({ main, sub, detail, viewBox }: any) => (
   </svg>
 );
 SVGFemalePkshirts.defaultProps = {
-  viewBox: '-40 114 550 550',
+  viewBox: '-41.5 116 550 550',
 };
 export default SVGFemalePkshirts;

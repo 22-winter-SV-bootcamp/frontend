@@ -39,6 +39,6 @@ const SVGFemaleBlouse = ({ main, sub, detail, viewBox }: any) => (
   </svg>
 );
 SVGFemaleBlouse.defaultProps = {
-  viewBox: '-40 114 550 550',
+  viewBox: '-40 113 550 550',
 };
 export default SVGFemaleBlouse;

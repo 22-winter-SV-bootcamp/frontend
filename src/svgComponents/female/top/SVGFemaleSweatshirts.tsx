@@ -40,6 +40,6 @@ const SVGFemaleSweatshirts = ({ main, sub, detail, viewBox }: any) => (
   </svg>
 );
 SVGFemaleSweatshirts.defaultProps = {
-  viewBox: '-40 114 550 550',
+  viewBox: '-42 114 550 550',
 };
 export default SVGFemaleSweatshirts;

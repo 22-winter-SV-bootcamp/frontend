@@ -24,6 +24,6 @@ const SVGFemaleBasic_neck_pole = ({ main, sub, detail, viewBox }: any) => (
   </svg>
 );
 SVGFemaleBasic_neck_pole.defaultProps = {
-  viewBox: '-41.5 114 550 550',
+  viewBox: '-42 114 550 550',
 };
 export default SVGFemaleBasic_neck_pole;

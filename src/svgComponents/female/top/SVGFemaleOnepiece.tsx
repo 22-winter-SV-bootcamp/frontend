@@ -55,6 +55,6 @@ const SVGFemaleOnepiece = ({ main, sub, detail, viewBox }: any) => (
   </svg>
 );
 SVGFemaleOnepiece.defaultProps = {
-  viewBox: '-40 114 550 550',
+  viewBox: '-42 114 550 550',
 };
 export default SVGFemaleOnepiece;
