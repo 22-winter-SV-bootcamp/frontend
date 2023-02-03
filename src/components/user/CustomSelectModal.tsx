@@ -13,9 +13,9 @@ function CustomSelectModal({
   setCheck,
   setIsColorChange,
   info,
-  isColorChange
+  isColorChange,
 }: any) {
-  const colorArr:Record<string,string> = {
+  const colorArr: Record<string, string> = {
     white: '#FFFFFF',
     melangeGrey: '#D4D4D4',
     grey: '#A6A6A6',
@@ -75,7 +75,7 @@ function CustomSelectModal({
         overflowY: 'scroll',
       }}
     >
-      {select !== 'gender' && select !=="backgroundColor" && (
+      {select !== 'gender' && select !== 'backgroundColor' && (
         <div>
           <CheckItemList
             info={info}
@@ -93,31 +93,45 @@ function CustomSelectModal({
             ></CheckColorList>
        */}
         </div>
-      )
-      }
-    { select === "background" && (
+      )}
+      {select === 'background' && (
         <Box>
-          {Object.keys(colorArr).map((v)=>{
-            return <Tooltip title={v}>
-              <Button
-                sx={{ width: "32px", height:"32px", borderRadius:"32px" , margin: '10px', bgcolor:colorArr[v] }}
-                key={v}
-                onClick={() => {
-                  setInfo((pre: any) => ({ ...pre, backgroundColor: v }));
-                }}
-              >
-              </Button>
-            </Tooltip>
+          {Object.keys(colorArr).map((v) => {
+            return (
+              <Tooltip title={v}>
+                <Button
+                  sx={{
+                    width: '32px',
+                    height: '32px',
+                    borderRadius: '32px',
+                    margin: '10px',
+                    bgcolor: colorArr[v],
+                  }}
+                  key={v}
+                  onClick={() => {
+                    setInfo((pre: any) => ({ ...pre, backgroundColor: v }));
+                  }}
+                ></Button>
+              </Tooltip>
+            );
           })}
         </Box>
       )}
-      { select === "gender" && (
-        <Box>
+      {select === 'gender' && (
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            width: '100%',
+            height: '100%',
+          }}
+        >
           <Box
             onClick={() => {
               setInfo((pre: any) => ({ ...pre, gender: 'female' }));
             }}
-            sx={{ width: 50, height: 50 }}
+            sx={{ width: '20%' }}
             component="img"
             src={`/assets/pages/result/female.png`}
             alt="female"
@@ -126,9 +140,9 @@ function CustomSelectModal({
             onClick={() => {
               setInfo((pre: any) => ({ ...pre, gender: 'male' }));
             }}
-            sx={{ width: 50, height: 50 }}
+            sx={{ width: '20%' }}
             component="img"
-            src={`/assets/pages/result/male.png`}
+            src={`/assets/pages/result/m.png`}
             alt="male"
           ></Box>
         </Box>

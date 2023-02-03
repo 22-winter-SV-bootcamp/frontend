@@ -12,14 +12,22 @@ import { CloseOutlined } from '@mui/icons-material';
 
 type Props = {
   onChangeCustom: () => void;
-  setTitle:any;
-  title:string;
+  setTitle: any;
+  title: string;
   setInfo: any;
-  setIsColorChange:any;
-  info:any;
-  isColorChange:any;
+  setIsColorChange: any;
+  info: any;
+  isColorChange: any;
 };
-const CustomBox = ({ onChangeCustom, setInfo,setTitle,title,setIsColorChange,isColorChange,info }: Props) => {
+const CustomBox = ({
+  onChangeCustom,
+  setInfo,
+  setTitle,
+  title,
+  setIsColorChange,
+  isColorChange,
+  info,
+}: Props) => {
   const StyleDescibe = styled('div')(({ theme }) => ({
     position: 'relative',
     display: 'flex',
@@ -30,8 +38,8 @@ const CustomBox = ({ onChangeCustom, setInfo,setTitle,title,setIsColorChange,isC
 
     height: '40%',
     width: '100%',
-    padding: "16px",
-    margin: "0px",
+    padding: '16px',
+    margin: '0px',
     // maxWidth: '450px' /* 화면에 따라 수정 예정 */,
 
     // borderTopLeftRadius:"5%",
@@ -130,43 +138,54 @@ const CustomBox = ({ onChangeCustom, setInfo,setTitle,title,setIsColorChange,isC
           />
         )}
       </Button> */}
-      <Box sx={{height:"15%",minHeight:"48px", overflow:"hidden", display:"flex",justifyContent:"space-evenly"}}>
-          {['gender', 'hair', 'background', 'top', 'inner', 'bottom'].map(
-            (tmpTitle) => (
-              <IconButton
-                sx={{
-                  height:"100%",
-                  p:0,
-                  px:1.6,
-                  bgcolor: title === tmpTitle ? "#DCC5AF" :"inherit",
-                  borderRadius: "100%",
-                }}
-                onClick={() => {
-                  if(isColorChange !== ""){
-                    setIsColorChange("");
-                  }
-                  setTitle(tmpTitle);
-                  // setTitleIconBtn(true);
-                }}
-              >
-                <Box
-                  component="img"
-                  alt={tmpTitle}
-                  src={`/assets/pages/result/${tmpTitle}Icon.png`}
-                  sx={{ height: '50%' }}
-                />
-              </IconButton>
-            ),
-          )}
-          <IconButton onClick={onChangeCustom} sx={{p:0}}>
-            <CloseOutlined/>
-          </IconButton>
+      <Box
+        sx={{
+          height: '15%',
+          minHeight: '48px',
+          overflow: 'hidden',
+          display: 'flex',
+          justifyContent: 'space-evenly',
+        }}
+      >
+        {['gender', 'hair', 'top', 'inner', 'bottom', 'background'].map(
+          (tmpTitle) => (
+            <IconButton
+              sx={{
+                height: '100%',
+                p: 0,
+                px: 1.6,
+                bgcolor: title === tmpTitle ? '#DCC5AF' : 'inherit',
+                borderRadius: '100%',
+              }}
+              onClick={() => {
+                if (isColorChange !== '') {
+                  setIsColorChange('');
+                }
+                setTitle(tmpTitle);
+                // setTitleIconBtn(true);
+              }}
+            >
+              <Box
+                component="img"
+                alt={tmpTitle}
+                src={`/assets/pages/result/${tmpTitle}Icon.png`}
+                sx={{ height: '50%' }}
+              />
+            </IconButton>
+          ),
+        )}
+        <IconButton onClick={onChangeCustom} sx={{ p: 0 }}>
+          <CloseOutlined />
+        </IconButton>
       </Box>
-      <Box className="mainLayout" sx={{
-        display:"flex",
-        height:1,
-        overflow:"auto"
-      }}>
+      <Box
+        className="mainLayout"
+        sx={{
+          display: 'flex',
+          height: 1,
+          overflow: 'auto',
+        }}
+      >
         <CustomSelectModal
           info={info}
           setInfo={setInfo}
